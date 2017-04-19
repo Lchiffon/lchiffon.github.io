@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="UA-66633229-1" />
+  
+  <title>Introdcution to Wordccloud2</title>
+  <meta name="author" content="Chiffon Lang">
+   <meta name="description" content="This is an introduction to wordcloud2  package. This package provides an HTML5 interface to wordcloud for data visualization. Timdream’s wordcloud2.js">
+  
+
+  <meta property="og:title" content="Introdcution to Wordccloud2"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="七风阁"/>
+ <meta property="og:image" content="undefined"/>
+  
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="七风阁" type="application/atom+xml">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+  <a id="top"></a>
+  <div id='wx_pic' style='display:none;'><img src='/wx_share.png'/></div>
+  <div id="main">
+    <div class="back">
+      <a href="/" class="black-color"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+    <div class="behind">
+
+      <div class="description">
+        &nbsp;不写R包的分析师不是好全栈
+      </div>
+    </div>
+    <div class="container">
+      
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        Introdcution to Wordccloud2
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      
+<time datetime="2016-06-09T16:00:00.000Z">
+  <i class="fa fa-calendar"></i>&nbsp;
+  2016-06-10
+</time>
+
+
+
+    
+    &nbsp;
+    <i class="fa fa-tag"></i>&nbsp;
+    <a href="/categories/R/">R</a>
+
+
+
+
+
+    </div>
+    <hr>
+    <div class="picture-container">
+      
+    </div>
+    <p>This is an introduction to <code>wordcloud2</code>  <a href="http://github.com/lchiffon/wordcloud2" target="_blank" rel="external">package</a>. This package provides an HTML5 interface to wordcloud for data visualization. <a href="https://github.com/timdream/wordcloud2.js" target="_blank" rel="external">Timdream’s wordcloud2.js</a> is used in this package.<br><img src="http://7xr5em.com1.z0.glb.clouddn.com/wordcloud2.png" alt=""></p>
+<p>This document show two main function in <code>Wordcloud2</code>:</p>
+<ol>
+<li><code>wordcloud2</code>: provide traditional wordcloud with HTML5</li>
+<li><code>letterCloud</code>: provide wordcloud with selected word(letters).</li>
+</ol>
+<h3 id="install-wordcloud2"><a href="#install-wordcloud2" class="headerlink" title="install wordcloud2"></a>install wordcloud2</h3><p>You may have installed this package. Well, I still want to leave these codes here for installing.</p>
+<pre><code>devtools::install_github(&quot;lchiffon/wordcloud2&quot;)
+</code></pre><h3 id="wordlcoud2-function"><a href="#wordlcoud2-function" class="headerlink" title="wordlcoud2 function"></a><code>wordlcoud2</code> function</h3><p>You can use wordcloud directly:</p>
+<pre><code>library(wordcloud2)
+wordcloud2(data = demoFreq)
+</code></pre><p><img src="http://7xr5em.com1.z0.glb.clouddn.com/ex0.png" alt=""></p>
+<p><code>demoFreq</code> is a data.frame including word and freq in each column.</p>
+<pre><code>head(demoFreq)
+
+
+         word freq
+oil       oil   85
+said     said   73
+prices prices   48
+opec     opec   42
+mln       mln   31
+the       the   26
+</code></pre><h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><ul>
+<li><code>data</code><ul>
+<li>A data frame including word and freq in each column</li>
+</ul>
+</li>
+<li><code>size</code><ul>
+<li>Font size, default is 1. The larger size means the bigger word.</li>
+</ul>
+</li>
+<li><code>fontFamily</code><ul>
+<li>Font to use.</li>
+</ul>
+</li>
+<li><code>fontWeight</code><ul>
+<li>Font weight to use, e.g. normal, bold or 600</li>
+</ul>
+</li>
+<li><code>color</code><ul>
+<li>color of the text, keyword ‘random-dark’ and ‘random-light’ can be used. color vector is also supported in this param</li>
+</ul>
+</li>
+<li><code>minSize</code><ul>
+<li>A character string of the subtitle</li>
+</ul>
+</li>
+<li><code>backgroundColor</code><ul>
+<li>Color of the background.</li>
+</ul>
+</li>
+<li><code>gridSize</code><ul>
+<li>Size of the grid in pixels for marking the availability of the canvas the larger the grid size, the bigger the gap between words.</li>
+</ul>
+</li>
+<li><code>minRotation</code><ul>
+<li>If the word should rotate, the minimum rotation (in rad) the text should rotate.</li>
+</ul>
+</li>
+<li><code>maxRotation</code><ul>
+<li>If the word should rotate, the maximum rotation (in rad) the text should rotate. Set the two value equal to keep all text in one angle.</li>
+</ul>
+</li>
+<li><code>rotateRatio</code><ul>
+<li>Probability for the word to rotate. Set the number to 1 to always rotate.</li>
+</ul>
+</li>
+<li><code>shape</code><ul>
+<li>The shape of the “cloud” to draw. Can be a keyword present. Available presents are ‘circle’ (default), ‘cardioid’ (apple or heart shape curve, the most known polar equation), ‘diamond’ (alias of square), ‘triangle-forward’, ‘triangle’, ‘pentagon’, and ‘star’.</li>
+</ul>
+</li>
+<li><code>ellipticity</code><ul>
+<li>degree of “flatness” of the shape wordcloud2.js should draw.</li>
+</ul>
+</li>
+<li><code>figPath</code><ul>
+<li>A fig used for the wordcloud.</li>
+</ul>
+</li>
+<li><code>widgetsize</code><ul>
+<li>size of the widgets</li>
+</ul>
+</li>
+</ul>
+<h4 id="Example1-use-color-and-backgroundcolor"><a href="#Example1-use-color-and-backgroundcolor" class="headerlink" title="Example1: use color and backgroundcolor"></a>Example1: use color and backgroundcolor</h4><pre><code>wordcloud2(demoFreq, color = &quot;random-light&quot;, backgroundColor = &quot;grey&quot;)
+</code></pre><p><img src="http://7xr5em.com1.z0.glb.clouddn.com/ex1.png" alt=""></p>
+<h4 id="Example2-use-rotations"><a href="#Example2-use-rotations" class="headerlink" title="Example2: use rotations"></a>Example2: use rotations</h4><pre><code>wordcloud2(demoFreq, minRotation = -pi/6, maxRotation = -pi/6, minSize = 10,
+  rotateRatio = 1)
+</code></pre><p><img src="http://7xr5em.com1.z0.glb.clouddn.com/ex3.png" alt=""></p>
+<h4 id="Example3-use-figure-file-as-a-mask"><a href="#Example3-use-figure-file-as-a-mask" class="headerlink" title="Example3: use figure file as a mask."></a>Example3: use figure file as a mask.</h4><p>For example, <code>t.png</code> is A BIRD with black and white:<br><img src="http://7xr5em.com1.z0.glb.clouddn.com/t.png" alt=""></p>
+<pre><code>figPath = system.file(&quot;examples/t.png&quot;,package = &quot;wordcloud2&quot;)
+wordcloud2(demoFreq, figPath = figPath, size = 1.5,color = &quot;skyblue&quot;)
+</code></pre><p><img src="http://7xr5em.com1.z0.glb.clouddn.com/tcloud.png" alt=""></p>
+<h3 id="letterCloud-function"><a href="#letterCloud-function" class="headerlink" title="letterCloud function"></a><code>letterCloud</code> function</h3><p><code>letterCloud</code> provide the function to create a wordcloud with a word, like this:</p>
+<pre><code>letterCloud(demoFreq, word = &quot;R&quot;, size = 2)
+</code></pre><p><img src="http://7xr5em.com1.z0.glb.clouddn.com/R.png" alt=""></p>
+<p>Or:</p>
+<pre><code>letterCloud(demoFreq, word = &quot;WORDCLOUD2&quot;, wordSize = 1)
+</code></pre><p><img src="http://7xr5em.com1.z0.glb.clouddn.com/wordcloud2.png" alt=""><br><strong>wordcloud with fig and letterCloud may disappeared in Rstudio Viewer, open into browser when you meet this bug</strong></p>
+<h4 id="Parameters-1"><a href="#Parameters-1" class="headerlink" title="Parameters"></a>Parameters</h4><ul>
+<li><code>data</code><ul>
+<li>A data frame including word and freq in each column</li>
+</ul>
+</li>
+<li><code>word</code><ul>
+<li>A word to create shape for wordcloud.</li>
+</ul>
+</li>
+<li><code>wordSize</code><ul>
+<li>Parameter of the size of the word, default is 2.</li>
+</ul>
+</li>
+<li><code>letterFont</code><ul>
+<li>Letter font</li>
+</ul>
+</li>
+<li><code>...</code><ul>
+<li>Other parameters for wordcloud2<br>Go to <a href="http://github.com/lchiffon/wordcloud2" target="_blank" rel="external">wordcloud2</a> in the github to leave a comment or give this package a star.</li>
+</ul>
+</li>
+</ul>
+
+
+  </article>
+  </script>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+  <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_24x24" style = 'float:right'>
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+      </div>
+      <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+      <!-- JiaThis Button END -->
+
+      <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="Introdcution to Wordccloud2" data-title="Introdcution to Wordccloud2" data-url="langdawei.com/2016/06/10/wordcloud.html"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"lchiffon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+  <!-- 多说公共JS代码 end -->
+  <div class="busuanzi center">
+    页阅读量:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    站访问量:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    站访客数:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+
+
+    </div>
+  </div>
+   <a id="rocket" href="#top" class=""></a>
+   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot container">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <i class="fa fa-arrow-right"></i>
+        </a>
+        © Chiffon 2014-2017
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+$(".dropdown").click(function(event) {
+  var current = $(this);
+  event.stopPropagation();
+  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
+});
+$(document).click(function(){
+    $(".dropdown-content").removeClass("open");
+})
+
+var path = "/search.xml";
+searchFunc(path, 'local-search-input', 'local-search-result');
+
+</script>
+
+</body>
+</html>

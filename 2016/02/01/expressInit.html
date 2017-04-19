@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="UA-66633229-1" />
+  
+  <title>Express所挖的坑...</title>
+  <meta name="author" content="Chiffon Lang">
+   <meta name="description" content="ExpressExpress.js是一款轻量级的node框架…可以用于快速的网页开发.
+目前自己需要写一个图片标记的HTML工具,作为一个小白,在node的框架和React之间徘徊后,决定用Express来坑自己一把…
+需要安装的环境:
+
+Node.js
+Express
+express-genner">
+  
+
+  <meta property="og:title" content="Express所挖的坑..."/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="七风阁"/>
+ <meta property="og:image" content="undefined"/>
+  
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="七风阁" type="application/atom+xml">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+  <a id="top"></a>
+  <div id='wx_pic' style='display:none;'><img src='/wx_share.png'/></div>
+  <div id="main">
+    <div class="back">
+      <a href="/" class="black-color"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+    <div class="behind">
+
+      <div class="description">
+        &nbsp;不写R包的分析师不是好全栈
+      </div>
+    </div>
+    <div class="container">
+      
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        Express所挖的坑...
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      
+<time datetime="2016-01-31T16:00:00.000Z">
+  <i class="fa fa-calendar"></i>&nbsp;
+  2016-02-01
+</time>
+
+
+
+    
+    &nbsp;
+    <i class="fa fa-tag"></i>&nbsp;
+    <a href="/categories/tect/">技术学习</a>
+
+
+
+
+
+    </div>
+    <hr>
+    <div class="picture-container">
+      
+    </div>
+    <h2 id="Express"><a href="#Express" class="headerlink" title="Express"></a>Express</h2><p>Express.js是一款轻量级的node框架…可以用于快速的网页开发.</p>
+<p>目前自己需要写一个图片标记的HTML工具,作为一个小白,在node的框架和React之间徘徊后,<br>决定用Express来坑自己一把…</p>
+<p>需要安装的环境:</p>
+<ul>
+<li>Node.js</li>
+<li>Express</li>
+<li>express-gennernator</li>
+</ul>
+<p>有用的学习链接:</p>
+<ul>
+<li><a href="http://www.expressjs.com.cn" target="_blank" rel="external">Express中文网</a></li>
+</ul>
+<h2 id="安装使用Express"><a href="#安装使用Express" class="headerlink" title="安装使用Express"></a>安装使用Express</h2><ul>
+<li>安装依赖:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install express --save</div><div class="line">npm isntall express-generator -g</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Hello-World1"><a href="#Hello-World1" class="headerlink" title="Hello World1"></a>Hello World1</h2><p>用建立一个js文件,比如app.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var express = require(&apos;express&apos;);</div><div class="line">var app = express();</div><div class="line"></div><div class="line">app.get(&apos;/&apos;, function (req, res) &#123;</div><div class="line">  res.send(&apos;Hello World!&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">var server = app.listen(3000, function () &#123;</div><div class="line">  var host = server.address().address;</div><div class="line">  var port = server.address().port;</div><div class="line"></div><div class="line">  console.log(&apos;Example app listening at http://%s:%s&apos;, host, port);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>端口3000,app是express的初始化,调用get,以”/“的路径返回HelloWorld,后面的server是建立的IP地址和端口.</p>
+<p>用如下的命令来启动app.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm app.js</div></pre></td></tr></table></figure></p>
+<p>访问自己的端口<code>http://localhost:3000</code>就能看到这个结果了..</p>
+<h2 id="Hello-World2"><a href="#Hello-World2" class="headerlink" title="Hello World2"></a>Hello World2</h2><p>HelloWorld2用express gennernator来建立一个server:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">express myapp</div><div class="line">cd myapp</div><div class="line">npm install</div></pre></td></tr></table></figure></p>
+<p>运行:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">## Mac&amp;Linux</div><div class="line">DEBUG=myapp npm start</div><div class="line">## Windows</div><div class="line">set DEBUG=myapp &amp; npm start</div></pre></td></tr></table></figure></p>
+<p>该默认的端口还是3000:<code>http://localhost:3000</code></p>
+
+
+  </article>
+  </script>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+  <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_24x24" style = 'float:right'>
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+      </div>
+      <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+      <!-- JiaThis Button END -->
+
+      <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="Express所挖的坑..." data-title="Express所挖的坑..." data-url="langdawei.com/2016/02/01/expressInit.html"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"lchiffon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+  <!-- 多说公共JS代码 end -->
+  <div class="busuanzi center">
+    页阅读量:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    站访问量:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    站访客数:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+
+
+    </div>
+  </div>
+   <a id="rocket" href="#top" class=""></a>
+   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot container">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <i class="fa fa-arrow-right"></i>
+        </a>
+        © Chiffon 2014-2017
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+$(".dropdown").click(function(event) {
+  var current = $(this);
+  event.stopPropagation();
+  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
+});
+$(document).click(function(){
+    $(".dropdown-content").removeClass("open");
+})
+
+var path = "/search.xml";
+searchFunc(path, 'local-search-input', 'local-search-result');
+
+</script>
+
+</body>
+</html>

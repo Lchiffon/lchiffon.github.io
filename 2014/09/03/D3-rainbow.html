@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="UA-66633229-1" />
+  
+  <title>D3-rainbow</title>
+  <meta name="author" content="Chiffon Lang">
+   <meta name="description" content="&amp;lt;!DOCTYPE html&amp;gt;body {  background: #333;}var margin = {top: 100, right: 100, bottom: 100, left: 100},    width = 960 - margin.left - margin.righ">
+  
+
+  <meta property="og:title" content="D3-rainbow"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="七风阁"/>
+ <meta property="og:image" content="undefined"/>
+  
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="七风阁" type="application/atom+xml">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+  <a id="top"></a>
+  <div id='wx_pic' style='display:none;'><img src='/wx_share.png'/></div>
+  <div id="main">
+    <div class="back">
+      <a href="/" class="black-color"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+    <div class="behind">
+
+      <div class="description">
+        &nbsp;不写R包的分析师不是好全栈
+      </div>
+    </div>
+    <div class="container">
+      
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        D3-rainbow
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      
+<time datetime="2014-09-02T16:00:00.000Z">
+  <i class="fa fa-calendar"></i>&nbsp;
+  2014-09-03
+</time>
+
+
+
+    
+    &nbsp;
+    <i class="fa fa-tag"></i>&nbsp;
+    <a href="/categories/jspy/">JsPy&Others</a>
+
+
+
+
+
+    </div>
+    <hr>
+    <div class="picture-container">
+      
+    </div>
+    <iframe height="400px" width="95%"><br>&lt;!DOCTYPE html&gt;<br><meta charset="utf-8"><br><style><br><br>body {<br>  background: #333;<br>}<br><br></style><br><body><br><script src="http://d3js.org/d3.v3.min.js"></script><br><script><br><br>var margin = {top: 100, right: 100, bottom: 100, left: 100},<br>    width = 960 - margin.left - margin.right,<br>    height = 500 - margin.top - margin.bottom;<br><br>var x = d3.scale.linear()<br>    .domain([0, 5.9])<br>    .range([0, width]);<br><br>var y = d3.scale.linear()<br>    .domain([-1, 1])<br>    .range([height, 0]);<br><br>var z = d3.scale.linear()<br>    .domain([0, 5.9])<br>    .range([0, 360]);<br><br>var points = d3.range(0, 6, .1).map(function(t) {<br>  return {value: t, 0: x(t), 1: y(Math.sin(t))};<br>});<br><br>var svg = d3.select(“body”).append(“svg”)<br>    .attr(“width”, width + margin.left + margin.right)<br>    .attr(“height”, height + margin.top + margin.bottom)<br>  .append(“g”)<br>    .attr(“transform”, “translate(“ + margin.left + “,” + margin.top + “)”);<br><br>var path = svg.selectAll(“path”)<br>    .data(quad(points))<br>  .enter().append(“path”)<br>    .style(“fill”, function(d) { return d3.hsl(z(d[1].value), 1, .5); })<br>    .style(“stroke”, “#000”);<br><br>var t0 = Date.now();<br>d3.timer(function() {<br>  var dt = (Date.now() - t0) <em> .001;<br>  points.forEach(function(d) { d[1] = y(d.scale = Math.sin(d.value + dt)); });<br>  path.attr(“d”, function(d) { return lineJoin(d[0], d[1], d[2], d[3], 80 </em> d[1].scale <em> d[1].scale + 10); });<br>});<br><br>// Compute quads of adjacent points [p0, p1, p2, p3].<br>function quad(points) {<br>  return d3.range(points.length - 1).map(function(i) {<br>    return [points[i - 1], points[i], points[i + 1], points[i + 2]];<br>  });<br>}<br><br>// Compute stroke outline for segment p12.<br>function lineJoin(p0, p1, p2, p3, width) {<br>  var u12 = perp(p1, p2),<br>      r = width / 2,<br>      a = [p1[0] + u12[0] </em> r, p1[1] + u12[1] <em> r],<br>      b = [p2[0] + u12[0] </em> r, p2[1] + u12[1] <em> r],<br>      c = [p2[0] - u12[0] </em> r, p2[1] - u12[1] <em> r],<br>      d = [p1[0] - u12[0] </em> r, p1[1] - u12[1] <em> r];<br><br>  if (p0) { // clip ad and dc using average of u01 and u12<br>    var u01 = perp(p0, p1), e = [p1[0] + u01[0] + u12[0], p1[1] + u01[1] + u12[1]];<br>    a = lineIntersect(p1, e, a, b);<br>    d = lineIntersect(p1, e, d, c);<br>  }<br><br>  if (p3) { // clip ab and dc using average of u12 and u23<br>    var u23 = perp(p2, p3), e = [p2[0] + u23[0] + u12[0], p2[1] + u23[1] + u12[1]];<br>    b = lineIntersect(p2, e, a, b);<br>    c = lineIntersect(p2, e, d, c);<br>  }<br><br>  return “M” + a + “L” + b + “ “ + c + “ “ + d + “Z”;<br>}<br><br>// Compute intersection of two infinite lines ab and cd.<br>function lineIntersect(a, b, c, d) {<br>  var x1 = c[0], x3 = a[0], x21 = d[0] - x1, x43 = b[0] - x3,<br>      y1 = c[1], y3 = a[1], y21 = d[1] - y1, y43 = b[1] - y3,<br>      ua = (x43 </em> (y1 - y3) - y43 <em> (x1 - x3)) / (y43 </em> x21 - x43 <em> y21);<br>  return [x1 + ua </em> x21, y1 + ua <em> y21];<br>}<br><br>// Compute unit vector perpendicular to p01.<br>function perp(p0, p1) {<br>  var u01x = p0[1] - p1[1], u01y = p1[0] - p0[0],<br>      u01d = Math.sqrt(u01x </em> u01x + u01y * u01y);<br>  return [u01x / u01d, u01y / u01d];<br>}<br><br></script><br></body></iframe>
+
+
+  </article>
+  </script>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+  <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_24x24" style = 'float:right'>
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+      </div>
+      <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+      <!-- JiaThis Button END -->
+
+      <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="D3-rainbow" data-title="D3-rainbow" data-url="langdawei.com/2014/09/03/D3-rainbow.html"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"lchiffon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+  <!-- 多说公共JS代码 end -->
+  <div class="busuanzi center">
+    页阅读量:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    站访问量:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    站访客数:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+
+
+    </div>
+  </div>
+   <a id="rocket" href="#top" class=""></a>
+   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot container">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <i class="fa fa-arrow-right"></i>
+        </a>
+        © Chiffon 2014-2017
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+$(".dropdown").click(function(event) {
+  var current = $(this);
+  event.stopPropagation();
+  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
+});
+$(document).click(function(){
+    $(".dropdown-content").removeClass("open");
+})
+
+var path = "/search.xml";
+searchFunc(path, 'local-search-input', 'local-search-result');
+
+</script>
+
+</body>
+</html>

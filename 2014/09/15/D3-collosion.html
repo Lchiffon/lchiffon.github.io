@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="UA-66633229-1" />
+  
+  <title>D3-collosion</title>
+  <meta name="author" content="Chiffon Lang">
+   <meta name="description" content="&amp;lt;!DOCTYPE html&amp;gt;var width = 960,    height = 500;var nodes = d3.range(200).map(function() { return {radius: Math.random()  12 + 4}; }),    root =">
+  
+
+  <meta property="og:title" content="D3-collosion"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="七风阁"/>
+ <meta property="og:image" content="undefined"/>
+  
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="七风阁" type="application/atom+xml">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+  <a id="top"></a>
+  <div id='wx_pic' style='display:none;'><img src='/wx_share.png'/></div>
+  <div id="main">
+    <div class="back">
+      <a href="/" class="black-color"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+    <div class="behind">
+
+      <div class="description">
+        &nbsp;不写R包的分析师不是好全栈
+      </div>
+    </div>
+    <div class="container">
+      
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        D3-collosion
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      
+<time datetime="2014-09-14T16:00:00.000Z">
+  <i class="fa fa-calendar"></i>&nbsp;
+  2014-09-15
+</time>
+
+
+
+    
+    &nbsp;
+    <i class="fa fa-tag"></i>&nbsp;
+    <a href="/categories/jspy/">JsPy&Others</a>
+
+
+
+
+
+    </div>
+    <hr>
+    <div class="picture-container">
+      
+    </div>
+    <iframe height="400px" width="95%"><br>&lt;!DOCTYPE html&gt;<br><meta charset="utf-8"><br><body><br><script src="http://d3js.org/d3.v3.min.js"></script><br><script><br><br>var width = 960,<br>    height = 500;<br><br>var nodes = d3.range(200).map(function() { return {radius: Math.random() <em> 12 + 4}; }),<br>    root = nodes[0],<br>    color = d3.scale.category10();<br><br>root.radius = 0;<br>root.fixed = true;<br><br>var force = d3.layout.force()<br>    .gravity(0.05)<br>    .charge(function(d, i) { return i ? 0 : -2000; })<br>    .nodes(nodes)<br>    .size([width, height]);<br><br>force.start();<br><br>var svg = d3.select(“body”).append(“svg”)<br>    .attr(“width”, width)<br>    .attr(“height”, height);<br><br>svg.selectAll(“circle”)<br>    .data(nodes.slice(1))<br>  .enter().append(“circle”)<br>    .attr(“r”, function(d) { return d.radius; })<br>    .style(“fill”, function(d, i) { return color(i % 3); });<br><br>force.on(“tick”, function(e) {<br>  var q = d3.geom.quadtree(nodes),<br>      i = 0,<br>      n = nodes.length;<br><br>  while (++i &lt; n) q.visit(collide(nodes[i]));<br><br>  svg.selectAll(“circle”)<br>      .attr(“cx”, function(d) { return d.x; })<br>      .attr(“cy”, function(d) { return d.y; });<br>});<br><br>svg.on(“mousemove”, function() {<br>  var p1 = d3.mouse(this);<br>  root.px = p1[0];<br>  root.py = p1[1];<br>  force.resume();<br>});<br><br>function collide(node) {<br>  var r = node.radius + 16,<br>      nx1 = node.x - r,<br>      nx2 = node.x + r,<br>      ny1 = node.y - r,<br>      ny2 = node.y + r;<br>  return function(quad, x1, y1, x2, y2) {<br>    if (quad.point &amp;&amp; (quad.point !== node)) {<br>      var x = node.x - quad.point.x,<br>          y = node.y - quad.point.y,<br>          l = Math.sqrt(x </em> x + y <em> y),<br>          r = node.radius + quad.point.radius;<br>      if (l &lt; r) {<br>        l = (l - r) / l </em> .5;<br>        node.x -= x <em>= l;<br>        node.y -= y </em>= l;<br>        quad.point.x += x;<br>        quad.point.y += y;<br>      }<br>    }<br>    return x1 &gt; nx2 || x2 &lt; nx1 || y1 &gt; ny2 || y2 &lt; ny1;<br>  };<br>}<br><br></script><br></body></iframe>
+
+
+  </article>
+  </script>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+  <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_24x24" style = 'float:right'>
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+      </div>
+      <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+      <!-- JiaThis Button END -->
+
+      <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="D3-collosion" data-title="D3-collosion" data-url="langdawei.com/2014/09/15/D3-collosion.html"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"lchiffon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+  <!-- 多说公共JS代码 end -->
+  <div class="busuanzi center">
+    页阅读量:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    站访问量:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    站访客数:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+
+
+    </div>
+  </div>
+   <a id="rocket" href="#top" class=""></a>
+   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot container">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <i class="fa fa-arrow-right"></i>
+        </a>
+        © Chiffon 2014-2017
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+$(".dropdown").click(function(event) {
+  var current = $(this);
+  event.stopPropagation();
+  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
+});
+$(document).click(function(){
+    $(".dropdown-content").removeClass("open");
+})
+
+var path = "/search.xml";
+searchFunc(path, 'local-search-input', 'local-search-result');
+
+</script>
+
+</body>
+</html>

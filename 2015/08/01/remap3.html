@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="UA-66633229-1" />
+  
+  <title>REmap使用手册(3)</title>
+  <meta name="author" content="Chiffon Lang">
+   <meta name="description" content="REmap是一个基于Echarts http://echarts.baidu.com 的一个R包.主要的目的是为广大数据玩家提供一个简便的,可交互的地图数据可视化工具.目前托管在github, https://github.com/lchiffon/REmap
+remapBremapB是用于创建一个">
+  
+
+  <meta property="og:title" content="REmap使用手册(3)"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="七风阁"/>
+ <meta property="og:image" content="undefined"/>
+  
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="七风阁" type="application/atom+xml">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+  <a id="top"></a>
+  <div id='wx_pic' style='display:none;'><img src='/wx_share.png'/></div>
+  <div id="main">
+    <div class="back">
+      <a href="/" class="black-color"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+    <div class="behind">
+
+      <div class="description">
+        &nbsp;不写R包的分析师不是好全栈
+      </div>
+    </div>
+    <div class="container">
+      
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        REmap使用手册(3)
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      
+<time datetime="2015-07-31T16:00:00.000Z">
+  <i class="fa fa-calendar"></i>&nbsp;
+  2015-08-01
+</time>
+
+
+
+    
+    &nbsp;
+    <i class="fa fa-tag"></i>&nbsp;
+    <a href="/categories/R/">R</a>
+
+
+
+
+
+    </div>
+    <hr>
+    <div class="picture-container">
+      
+    </div>
+    <p></p><p>REmap是一个基于Echarts <a href="http://echarts.baidu.com" class="uri" target="_blank" rel="external">http://echarts.baidu.com</a> 的一个R包.主要的目的是为广大数据玩家提供一个简便的,可交互的地图数据可视化工具.目前托管在github, <a href="https://github.com/lchiffon/REmap" class="uri" target="_blank" rel="external">https://github.com/lchiffon/REmap</a></p><p></p>
+<div id="remapb" class="section level2"><br><h2>remapB</h2><br><p>remapB是用于创建一个以百度地图为底图的recharts效果,有以下特点:</p><br><ol style="list-style-type: decimal"><br><li>支持滚轮缩放,拖拽地图</li><br><li>详细的地图效果</li><br><li>可视化主要以标线与标点的形式做出</li><br></ol><br><img src="http://7xr5em.com1.z0.glb.clouddn.com/15.png"><br><br><p>具体的地图是有多详细呢?打开百度地图App,恩,知道了吧,就是这么详细.</p><br><div id="remapb" class="section level3"><br><h3>remapB的使用</h3><br><p>函数的调用形式为:</p><br><pre><code>remapB(center = c(104.114129,37.550339),<br>       zoom = 5,<br>       color = &quot;Bright&quot;,<br>       title = &quot;&quot;,<br>       subtitle = &quot;&quot;,<br>       # mark Line &amp; point<br>       markLineData = NA,<br>       markPointData = NA,<br>       markLineTheme = markLineControl(),<br>       markPointTheme = markPointControl(),<br>       geoData = NA)</code></pre><br><p>先说除去markline和markpoint的参数: - center: 地图的中心(经纬度坐标),可以从<code>get_city_coord</code>获得 - zoom: 地图缩放尺寸,越小地图越大,(5代表国家级的地图,15代表市级的地图) - color: 地图的颜色风格,目前仅开放了“Bright”和“Blue”,两种,细节调整参见<a href="http://developer.baidu.com/map/reference/index.php?title=Class:%E6%A0%B8%E5%BF%83%E7%B1%BB/MapStyle" target="_blank" rel="external">百度地图API</a>来修改html的源代码</p><br><p>先来看下没有标点和标线的Bmap效果:</p><br><pre class="r"><code>remapB()</code></pre><br><img src="http://7xr5em.com1.z0.glb.clouddn.com/16.png"><br><br><p>可以用remapB来查看某个城市的地图</p><br><pre class="r"><code>remapB(get_city_coord(&quot;北京&quot;),zoom = 12)</code></pre><br><img src="http://7xr5em.com1.z0.glb.clouddn.com/17.png"><br><br><p>换一个theme:</p><br><pre class="r"><code>remapB(color = &quot;Blue&quot;)</code></pre><br><br><img src="http://7xr5em.com1.z0.glb.clouddn.com/18.png"><br><br><p>简单演示下remapB中使用markLine和markPoint的效果:</p><br><pre><code>remapB(title = &quot;Bmap 迁徙图示例&quot;,<br>        color = &quot;Blue&quot;,<br>        markLineData = demoC,<br>        markPointData = demoC[,2])</code></pre><br><img src="http://7xr5em.com1.z0.glb.clouddn.com/15.png"><br><br></div><br></div>
+
+
+  </article>
+  </script>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+  <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_24x24" style = 'float:right'>
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+      </div>
+      <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+      <!-- JiaThis Button END -->
+
+      <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="REmap使用手册(3)" data-title="REmap使用手册(3)" data-url="langdawei.com/2015/08/01/remap3.html"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"lchiffon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+  <!-- 多说公共JS代码 end -->
+  <div class="busuanzi center">
+    页阅读量:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    站访问量:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    站访客数:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+
+
+    </div>
+  </div>
+   <a id="rocket" href="#top" class=""></a>
+   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot container">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <i class="fa fa-arrow-right"></i>
+        </a>
+        © Chiffon 2014-2017
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+$(".dropdown").click(function(event) {
+  var current = $(this);
+  event.stopPropagation();
+  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
+});
+$(document).click(function(){
+    $(".dropdown-content").removeClass("open");
+})
+
+var path = "/search.xml";
+searchFunc(path, 'local-search-input', 'local-search-result');
+
+</script>
+
+</body>
+</html>

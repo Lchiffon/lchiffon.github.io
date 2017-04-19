@@ -1,0 +1,1931 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>七风阁</title>
+    <link>http://lchiffon.github.io/</link>
+    <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description></description>
+    <pubDate>Wed, 19 Apr 2017 09:43:08 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Vue2的一些阅读</title>
+      <link>http://lchiffon.github.io/2017/04/19/vue2.html</link>
+      <guid>http://lchiffon.github.io/2017/04/19/vue2.html</guid>
+      <pubDate>Tue, 18 Apr 2017 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;learn vue.js 2 最近在搞一些前端的东西, 所以就读了下这本技术的书籍, 技术的深度还可以, 适合读完官网教程并且拒绝继续使用vue1的用户进行更深的阅读,里面着重讲述了模板, 单文件系统, vuex等内容.&lt;br&gt;里面无聊的技术就不再分享, 分享下读这个书的一
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>learn vue.js 2 最近在搞一些前端的东西, 所以就读了下这本技术的书籍, 技术的深度还可以, 适合读完官网教程并且拒绝继续使用vue1的用户进行更深的阅读,里面着重讲述了模板, 单文件系统, vuex等内容.<br>里面无聊的技术就不再分享, 分享下读这个书的一些小细节.</p>
+<p>我一直觉得前端的世界很有意思, 很有创造力, 大家根本不介意重复造轮子, 而是介意这个工具是不是自己喜欢的.<br>作者在第一章就写下了这样一段话, 鼓励大家去尝试创造有意思的东西:<br>‘When you realize that something cool does not exist and you are able to create it—just do it!’<br>(当你意识到有些很Cool的东西还没有人做, 而你恰好能创造它, 那你还在等什么呢? Just do it!)</p>
+<p>在另一部分里面, 作者详细的说明了如何去修改vue.js的源码并且做出自己的贡献:<br>‘I’m sure you have plenty of ideas<br>about how to improve or add some functionality to Vue.js. So change it, rebuild, test, deploy!<br>Happy pull requests!’<br>(我确信你对Vue.js有很多想法, 那么就开心的修改, 测试, 提交, 为开源社区做出自己的贡献吧~)</p>
+<p>作者为了说明vue的轻量级, 黑起Angular.js(另一个主流的前端框架)也不遗余力, 你想写个’Hello World’么, 先准备上18个依赖包, 以及数千个字吧，噗哈哈:<br>“Even without TypeScript, Angular’s Quickstart guide starts out with an app that uses<br>ES2015 JavaScript, NPM with 18 dependencies, 4 files, and over 3,000 words to explain it<br>all - just to say Hello World.”</p>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2017/04/19/vue2.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>cosx</title>
+      <link>http://lchiffon.github.io/2017/04/19/cosx.html</link>
+      <guid>http://lchiffon.github.io/2017/04/19/cosx.html</guid>
+      <pubDate>Tue, 18 Apr 2017 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;最近一个月除了自己超花心思的事情之外, 跟着益辉大大后面做一些打杂的事情: &lt;cos.name&gt;要将原来在wordpress的网站重写成一套依赖blogdown的网站,  细节可以参考&lt;a href=&quot;https://yihui.name/cn/2017/03/drink-
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>最近一个月除了自己超花心思的事情之外, 跟着益辉大大后面做一些打杂的事情: <cos.name>要将原来在wordpress的网站重写成一套依赖blogdown的网站,  细节可以参考<a href="https://yihui.name/cn/2017/03/drink-more/" target="_blank" rel="external">能复饮乎</a>及<a href="http://statsjoke.me/rocket/" target="_blank" rel="external">送火箭升天</a>.</cos.name></p>
+<p>有些收获, 略记一二:</p>
+<h1 id="git"><a href="#git" class="headerlink" title="git"></a>git</h1><p>之前一直对于git就停留在几个基本命令, pull, add, commit, push, reset, clone.<br>这次在益辉大大以及西红柿的监督下, 慢慢懂了各种分支的使用, merge, pr等工具, 改到<br>后来, 又发掘出来了Atom里面的git-plus, 各种黑魔法, 熟了分支切换之后直接进行一键提交,<br>把add+commit+push一锅端, 可惜Yalei来我家在秀操作的时候Atom出了问题, 黑历史!</p>
+<h1 id="Chrome-Extention"><a href="#Chrome-Extention" class="headerlink" title="Chrome Extention"></a>Chrome Extention</h1><p>在文章review的过程中, 益辉大大写了一小段JS的代码, 用来快速打开PR里面的开发版的文章页面.<br>在谢大大的感召下, 写了个<a href="https://github.com/Lchiffon/cosxReviewTool" target="_blank" rel="external">谷歌拓展工具</a>.<br>中间翻了很多博客和文档, 谷歌扩展真心复杂, 最难的在找到适合使用的那个函数, 最后搞出了一个代码<br>注入的方式解决掉了</p>
+<h1 id="Vue实现的搜索"><a href="#Vue实现的搜索" class="headerlink" title="Vue实现的搜索"></a>Vue实现的搜索</h1><p>因为是静态页面, 所以搜索是个小问题, 这段时间为了公司一个项目在没日没夜的看vue, 谢大大在一个issue里面提了使用js+githubAPI来写这个静态搜索之后, 就着手写了这个<a href="https://github.com/Lchiffon/vue-github-api" target="_blank" rel="external">小页面</a>, 目前还在考虑怎么<br>把这个东西合并到主站里面, 等谢大大起来再说吧.</p>
+<h1 id="最大的收获"><a href="#最大的收获" class="headerlink" title="最大的收获"></a>最大的收获</h1><p>其实, 最大的收获是在改统计之都早期文章的收获, 改文章的过程中将08年开始的文章一篇篇读了下来,<br>虽然还没有全部读完, 大概到10年左右吧. 但是从字里行间透露出来的力量让我觉得还是很振奋人心的.<br>当时基本是一个没有太多大神的时代, 做一切事情都是靠年轻(lao)一辈的爱好和一腔热血, 看完还是有一些感动的. 这也是到后来越来月越愿意在这个项目上跟着谢大大忙前忙后的原因.</p>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2017/04/19/cosx.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>一个忧伤的bug</title>
+      <link>http://lchiffon.github.io/2017/03/14/bugs.html</link>
+      <guid>http://lchiffon.github.io/2017/03/14/bugs.html</guid>
+      <pubDate>Mon, 13 Mar 2017 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;最近在开发一个神秘的package, 如果能做出来, 估计会很好玩, 涉及到几个神奇的库的整合:)&lt;/p&gt;
+&lt;p&gt;然而, 在开发过程中, 出现了一个神奇的bug, 看到问题后我哭笑不得, 然后认真地把它记录下来:&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;前两天去静安寺上香,祈祷了三件事, 
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>最近在开发一个神秘的package, 如果能做出来, 估计会很好玩, 涉及到几个神奇的库的整合:)</p>
+<p>然而, 在开发过程中, 出现了一个神奇的bug, 看到问题后我哭笑不得, 然后认真地把它记录下来:</p>
+<p><del>前两天去静安寺上香,祈祷了三件事, 代码无bug, 航班不晚点, 机油速脱单. 看来只能指望后两件事情实现了</del></p>
+<p>其实问题就是我写的两个包, <code>leafletCN</code>与<code>REmap</code>里面竟然有一个函数名是重复了:(. 所以二者不能同时使用, kkk.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">leafletCN::mapNames		Demo dataset and other function</div><div class="line">maps::internal		Internally Required Functions</div><div class="line">REmap::mapNames		Get the names of a choropleth map for remapC</div></pre></td></tr></table></figure>
+<p>从此不得不感慨自己的智商是不是有下限, 速度改掉leafletCN里面的函数名, 不过CRAN上面是没办法了..</p>
+<p>请让我等几个月更新到CRAN, 否则Uwe又要找我事情了..</p>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2017/03/14/bugs.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>GT6 ba汽车工程</title>
+      <link>http://lchiffon.github.io/2017/03/05/car.html</link>
+      <guid>http://lchiffon.github.io/2017/03/05/car.html</guid>
+      <pubDate>Sat, 04 Mar 2017 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;在鸟兄的推荐下看了这本书， GT6 ba汽车工程。&lt;/p&gt;
+&lt;p&gt;这本书是GT6游戏光盘附赠手册，然而，在整本书中你根本无法看到任何关于GT6的内容。取而代之的是各种关于汽车工程与赛车调教的内容。&lt;/p&gt;
+&lt;p&gt;这本手册，能让读者明白一些基本的常识与名词，里面关于各种物理学
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>在鸟兄的推荐下看了这本书， GT6 ba汽车工程。</p>
+<p>这本书是GT6游戏光盘附赠手册，然而，在整本书中你根本无法看到任何关于GT6的内容。取而代之的是各种关于汽车工程与赛车调教的内容。</p>
+<p>这本手册，能让读者明白一些基本的常识与名词，里面关于各种物理学的描述也让自己穿越回了那个什么都不懂的学生时代，比如扭力的概念，空气动力学的伯努利定律，阻尼力与阻尼系数…</p>
+<p>但是在这之外，读完全书，反而激起了自己的很多兴趣与思考，比如尝试解释为什么大部分乘用车都是发动机在前面而驱动轮在后面（简单说是因为容易调教车身平衡，不易出现转向不足与过度）。</p>
+<p>还有就是以前总感觉一辆A级车比C级车更好开，油门更灵敏，怠速够快。长者给的解释是调教不同，细看了这本手册之后，发现从调教与车的区别有好多方式可以得到油门更灵敏的结果:</p>
+<ol>
+<li>最简单的，车重不同，同扭力下加速度不同</li>
+<li>其次，同扭力下，车身越长，传递到后轮的马力就越少，时间就越长(?)</li>
+<li>变速箱的密齿比与疏齿比决定了低速与高速下的马力区别</li>
+<li>。。。</li>
+</ol>
+<p>油门更灵敏也是有代价的，最高速度上不去，舒适性减弱….</p>
+<p>大概就是这样吧，这本书会让我基本入门, 也会让我了解到汽车工程,调教这一领域是有多有趣, 又多复杂。</p>
+<p>PS: 那天和肖老师聊起我读这本书被问到，可不可以通过历史数据与模型来得到一辆汽车调教的最优结果。<br>细细想来，样本量的多少和驾驶员的不确定性是这个问题求解的最棘手的因素。</p>
+<p>以及，如果自动驾驶能达到一般赛车手的水平，这个问题我觉得是可以用模型解决的。</p>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2017/03/05/car.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>我的美食观</title>
+      <link>http://lchiffon.github.io/2017/03/04/food.html</link>
+      <guid>http://lchiffon.github.io/2017/03/04/food.html</guid>
+      <pubDate>Fri, 03 Mar 2017 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;blockquote&gt;
+&lt;p&gt;为什么我不去卖光碟的店挑电影呢?&lt;br&gt;因为里面没有评分啊&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;作为一个吃货, 挑选餐厅总是一个艰难而痛苦的决定. 幸好, 现代很多网站提供了各种餐厅的评价分数, 以一个量化的指标来评价餐厅的好坏.&lt;/p&gt;
+&lt;
+      
+      </description>
+      
+      <content:encoded><![CDATA[<blockquote>
+<p>为什么我不去卖光碟的店挑电影呢?<br>因为里面没有评分啊</p>
+</blockquote>
+<p>作为一个吃货, 挑选餐厅总是一个艰难而痛苦的决定. 幸好, 现代很多网站提供了各种餐厅的评价分数, 以一个量化的指标来评价餐厅的好坏.</p>
+<p>但是, 没有一个网站是以口味来评价餐厅的, 而是以点评来评价, 换句话说, 口味, 环境, 服务, 缺一不可.</p>
+<p>而且, 不得不承认, 餐厅背后的商业价值才是默认排序最需要考虑的.</p>
+<p>对于只在意口味不在意环境和服务的我来说, 经常使用的是口味从高到低来排序, 但这个排序会很自然带来一个问题, 餐厅消费越高, 环境越好, 口味就越棒.</p>
+<blockquote>
+<p>人们总希望在花了一大笔钱之后不承认自己被坑了…</p>
+</blockquote>
+<p>所以呢, 我后来开始关注餐厅的分差, 口味环境分差越大, 说明这家店是一个超越了餐厅本身环境的美食.</p>
+<p>支持这一论点需要一些数据比如:<br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">head(data)</div></pre></td></tr></table></figure></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">                          name city avg_price product_rating environment_rating</div><div class="line"><span class="number">1</span>    黑柴日本料理铁板烧(黑柴Ⅰ) 上海       <span class="number">168</span>            <span class="number">8.6</span>                <span class="number">8.5</span></div><div class="line"><span class="number">2</span>         王品牛排(上海松江店) 上海       <span class="number">371</span>            <span class="number">9.1</span>                <span class="number">9.2</span></div><div class="line"><span class="number">3</span>       赞巴拉藏餐(松江万达店) 上海        <span class="number">77</span>            <span class="number">8.8</span>                <span class="number">9.1</span></div><div class="line"><span class="number">4</span>   松荣之风和里烧肉(江学路店) 上海       <span class="number">144</span>            <span class="number">7.9</span>                <span class="number">8.2</span></div><div class="line"><span class="number">5</span>             吃好丸好(外冈店) 上海        <span class="number">12</span>            <span class="number">7.1</span>                <span class="number">7.1</span></div><div class="line"><span class="number">6</span> 陌生人火锅餐厅(开元地中海店) 上海        <span class="number">99</span>            <span class="number">9.0</span>                <span class="number">9.1</span></div></pre></td></tr></table></figure>
+<p><del>你问了数据怎么来的我也不会说的</del></p>
+<p>最简单的方法是做个回归, 用残差看下各个餐厅是溢价还是折价<br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">model = lm(product_rating~environment_rating+avg_price+<span class="number">0</span>,data=data)</div><div class="line">summary(model)</div></pre></td></tr></table></figure></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">...</span></div><div class="line">Coefficients:</div><div class="line">                     Estimate Std. Error  t value Pr(&gt;|t|)    </div><div class="line">environment_rating  <span class="number">1.002e+00</span>  <span class="number">2.889e-05</span> <span class="number">34673.77</span>   &lt;<span class="number">2e-16</span> ***</div><div class="line">avg_price          -<span class="number">1.524e-05</span>  <span class="number">5.622e-07</span>   -<span class="number">27.11</span>   &lt;<span class="number">2e-16</span> ***</div><div class="line">---</div><div class="line">Signif. codes:  <span class="number">0</span> ‘***’ <span class="number">0.001</span> ‘**’ <span class="number">0.01</span> ‘*’ <span class="number">0.05</span> ‘.’ <span class="number">0.1</span> ‘ ’ <span class="number">1</span></div><div class="line"><span class="keyword">...</span></div></pre></td></tr></table></figure>
+<p>我还以为有个新参数出来呢, 结果就是1.0, R-square 0.99.</p>
+<p>因为某些原因(看官自己脑补), avg_price平均价格不显著, 所以, 不用考虑价格, 直接用口味减环境来评价餐厅就好.</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(dplyr)</div><div class="line">data %&gt;%</div><div class="line">  mutate(rate = product_rating-environment_rating) %&gt;%   arrange(-rate) %&gt;%</div><div class="line">  filter(city==<span class="string">'上海'</span>) %&gt;%</div><div class="line">  head(<span class="number">10</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">                       name city avg_price product_rating environment_rating rate</div><div class="line">1  八村烧烤海鲜满天红小龙虾 上海        42            7.5                4.2  3.3</div><div class="line">2                    馄饨店 上海        10            4.0                1.0  3.0</div><div class="line">3                    大肠面 上海        27            7.8                5.0  2.8</div><div class="line">4              旧款宁波饭店 上海       120            8.2                5.5  2.7</div><div class="line">5                华华川菜馆 上海        50            7.2                4.6  2.6</div><div class="line">6                康林农家乐 上海        77            8.7                6.2  2.5</div><div class="line">7            D&amp;D Steakhouse 上海       288            8.8                6.4  2.4</div><div class="line">8      老四海鲜城(通北路店) 上海        51            6.3                3.9  2.4</div><div class="line">9  彩虹寿司(东体育会路总店) 上海        43            8.2                5.8  2.4</div><div class="line">10       芷月楼老法师高汤面 上海        33            6.9                4.6  2.3</div></pre></td></tr></table></figure>
+<p>这批店有点恐怖, 我还是定下环境上6.5以上的店吧..我对美食的心还不够诚…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">data %&gt;%</div><div class="line">  mutate(rate = product_rating-environment_rating) %&gt;%   arrange(-rate) %&gt;%</div><div class="line">  filter(city==&apos;上海&apos; &amp; environment_rating&gt;6.5) %&gt;%</div><div class="line">  head(20)</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">                              name city avg_price product_rating environment_rating rate</div><div class="line"><span class="number">1</span>                       佳味海鲜馆 上海       <span class="number">142</span>            <span class="number">9.0</span>                <span class="number">6.8</span>  <span class="number">2.2</span></div><div class="line"><span class="number">2</span>                         凯恩酒家 上海       <span class="number">100</span>            <span class="number">9.1</span>                <span class="number">6.9</span>  <span class="number">2.2</span></div><div class="line"><span class="number">3</span>             粤汕一牛(徐虹中路店) 上海        <span class="number">96</span>            <span class="number">9.0</span>                <span class="number">7.0</span>  <span class="number">2.0</span></div><div class="line"><span class="number">4</span>                           潮汕庄 上海       <span class="number">163</span>            <span class="number">8.6</span>                <span class="number">6.6</span>  <span class="number">2.0</span></div><div class="line"><span class="number">5</span>                 北士大酒店中餐厅 上海       <span class="number">138</span>            <span class="number">8.9</span>                <span class="number">6.9</span>  <span class="number">2.0</span></div><div class="line"><span class="number">6</span>                       谷沙屋面铺 上海        <span class="number">18</span>            <span class="number">8.7</span>                <span class="number">6.7</span>  <span class="number">2.0</span></div><div class="line"><span class="number">7</span>                 蓝帝老上海本帮菜 上海        <span class="number">98</span>            <span class="number">8.5</span>                <span class="number">6.6</span>  <span class="number">1.9</span></div><div class="line"><span class="number">8</span>             上海为民商行清真饭店 上海        <span class="number">23</span>            <span class="number">8.5</span>                <span class="number">6.6</span>  <span class="number">1.9</span></div><div class="line"><span class="number">9</span>                       大块头排档 上海        <span class="number">78</span>            <span class="number">8.5</span>                <span class="number">6.6</span>  <span class="number">1.9</span></div><div class="line"><span class="number">10</span>                顽固亲父串烧酒馆 上海       <span class="number">155</span>            <span class="number">8.8</span>                <span class="number">6.9</span>  <span class="number">1.9</span></div><div class="line"><span class="number">11</span> 钱家?乔老爷铜炉涮锅(内江路总店) 上海        <span class="number">87</span>            <span class="number">9.1</span>                <span class="number">7.2</span>  <span class="number">1.9</span></div><div class="line"><span class="number">12</span>                          蛇王王 上海       <span class="number">164</span>            <span class="number">8.8</span>                <span class="number">7.0</span>  <span class="number">1.8</span></div><div class="line"><span class="number">13</span>                        金芬食府 上海        <span class="number">71</span>            <span class="number">8.8</span>                <span class="number">7.0</span>  <span class="number">1.8</span></div><div class="line"><span class="number">14</span>                      广东生滚粥 上海        <span class="number">21</span>            <span class="number">8.4</span>                <span class="number">6.6</span>  <span class="number">1.8</span></div><div class="line"><span class="number">15</span>              天全鱼庄(零陵路店) 上海        <span class="number">52</span>            <span class="number">8.4</span>                <span class="number">6.6</span>  <span class="number">1.8</span></div><div class="line"><span class="number">16</span>            新苑私房菜(嘉善路店) 上海       <span class="number">128</span>            <span class="number">8.6</span>                <span class="number">6.8</span>  <span class="number">1.8</span></div><div class="line"><span class="number">17</span>                湘粹(南京西路店) 上海        <span class="number">65</span>            <span class="number">8.6</span>                <span class="number">6.8</span>  <span class="number">1.8</span></div><div class="line"><span class="number">18</span>                  兄弟情海鲜烧烤 上海        <span class="number">86</span>            <span class="number">9.1</span>                <span class="number">7.3</span>  <span class="number">1.8</span></div><div class="line"><span class="number">19</span>                      小灯泡烧烤 上海        <span class="number">38</span>            <span class="number">9.0</span>                <span class="number">7.2</span>  <span class="number">1.8</span></div><div class="line"><span class="number">20</span>                  阿新海鲜加工坊 上海       <span class="number">116</span>            <span class="number">9.0</span>                <span class="number">7.2</span>  <span class="number">1.8</span></div></pre></td></tr></table></figure>
+<p>哦呀, 不错可以的, 试想一下, 其实每天大家吃的店一般是口味8点几的, 一家店能口味上9但是环境只有6分, 那么, 该是有多好吃….</p>
+<p>恩, 可以约起来美食探险了, 前提是要把潮汕牛肉去掉 <del>什么米其林, 美食林,点评米其林的白白</del></p>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2017/03/04/food.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Vue.js学习III(模板语法)</title>
+      <link>http://lchiffon.github.io/2017/02/09/vue03.html</link>
+      <guid>http://lchiffon.github.io/2017/02/09/vue03.html</guid>
+      <pubDate>Wed, 08 Feb 2017 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;有用的链接:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/vuejs/awesome-vue#libraries--plugins&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Vue生态库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>有用的链接:</p>
+<ul>
+<li><a href="https://github.com/vuejs/awesome-vue#libraries--plugins" target="_blank" rel="external">Vue生态库</a></li>
+<li><a href="https://github.com/vuejs/vue" target="_blank" rel="external">Github</a></li>
+<li><a href="https://jsfiddle.net/chrisvfritz/50wL7mdz/" target="_blank" rel="external">在线编辑器</a></li>
+<li><a href="https://cn.vuejs.org" target="_blank" rel="external">中文VUE教程网站</a></li>
+<li><a href="https://cn.vuejs.org/v2/api" target="_blank" rel="external">API文档</a></li>
+</ul>
+<h2 id="模板语法"><a href="#模板语法" class="headerlink" title="模板语法"></a>模板语法</h2><p>模板语法是一套用于将DOM绑定到底层Vue的方法,所有vue.js都可以被HTML解析. 每次底层数据被改变的时候, Vue都会自动计算重新渲染的最小代价, 并应用到整个页面上. 同样也可以使用<a href="https://cn.vuejs.org/v2/guide/render-function.html" target="_blank" rel="external">渲染函数</a>或者用JSX模板</p>
+<h2 id="插值"><a href="#插值" class="headerlink" title="插值"></a>插值</h2><h3 id="最简单的文本插值"><a href="#最简单的文本插值" class="headerlink" title="最简单的文本插值"></a>最简单的文本插值</h3><p>使用大括号插值<code>\{\{}}</code>(名为Mustache)<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>Message: \&#123;\&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>可以使用<code>v-once</code>进行单次插值, 数据改变后插值内容不更新<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">v-once</span>&gt;</span>THIS wont change: \&#123;\&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="纯HTML插值"><a href="#纯HTML插值" class="headerlink" title="纯HTML插值"></a>纯HTML插值</h3><p>纯html插值需要使用<code>v-html</code>来实现, 数据绑定会被忽略, 有可能引起<a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank" rel="external">XSS攻击</a>, 该部分忽略</p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>Mustache不能用于HTML属性, 需要使用<code>v-bind:@attribute</code>来绑定属性:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:id</span>=<span class="string">"dynamicId"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>同样可以使用布尔值来实现:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">v-bind:disabled</span>=<span class="string">"someConditions"</span>&gt;</span>Button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="JavaScript表达式"><a href="#JavaScript表达式" class="headerlink" title="JavaScript表达式"></a>JavaScript表达式</h3><p>Vue可以使用单个表达式实现, 可以使用<code>Math</code>和<code>Date</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">\&#123;\&#123; number + <span class="number">1</span>&#125;&#125;</div><div class="line">\&#123;\&#123; ok ? <span class="string">'Yes'</span> : <span class="string">'No'</span>&#125;&#125;</div><div class="line">\&#123;\&#123; message.split(<span class="string">""</span>).reverse(),join(<span class="string">""</span>) &#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>以下例子是完整的语句, 并不会生效<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">\&#123;\&#123; <span class="keyword">var</span> a = <span class="number">1</span>&#125;&#125;</div><div class="line">\&#123;\&#123; <span class="keyword">if</span>(OK)&#123;<span class="keyword">return</span> message&#125; &#125;&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Vue指令"><a href="#Vue指令" class="headerlink" title="Vue指令"></a>Vue指令</h2><p><code>v-</code>开头的命令为vue使用的指令, 比如<code>v-if</code>为判断表达式真假而插入元素<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">"seen"</span>&gt;</span>NOW UC me<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>一些指令可以接受一个参数, 在后面用冒号指明, 如<code>v-bind</code>用于响应式更新HTML属性:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-bind:href</span>=<span class="string">"url"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>还有一个例子为用<code>v-on:click</code>来对事件进行绑定.</p>
+<h3 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h3><p>用<code>.</code>绑定特殊后缀, 比如用<code>.prevent</code>修饰符告诉<code>v-on</code>调用<code>event.preventDefault()</code>:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">v-on:submit.prevent</span>=<span class="string">"onSubmit"</span>&gt;</span><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><p>使用<code>|</code>来做文本格式化:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">\&#123;\&#123; message | capitalize &#125;&#125;</div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:id</span>=<span class="string">"rawId | formatId"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><code>v-bind</code>仅在2.1.0之后才可以使用.<br>在Vue中的定义如下:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="comment">// el,data,..</span></div><div class="line">  filters:&#123;</div><div class="line">    <span class="attr">capitalize</span>: <span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">      <span class="keyword">if</span>(!value) <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">      value = value.toString()</div><div class="line">      <span class="keyword">return</span> value.chartAt(<span class="number">0</span>).toUpperCase() + value.slice(<span class="number">1</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>过滤器可以串联,可以传其他参数.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">\&#123;\&#123; message | filter1 | filter(Arg2, Arg3) &#125;&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="缩写"><a href="#缩写" class="headerlink" title="缩写"></a>缩写</h2><p><code>v-bind</code>可以缩写为<code>:</code><br><code>v-on</code>可以缩写为<code>@</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--完整语法--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-bind:href</span>=<span class="string">"url"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--缩写--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">:href</span>=<span class="string">"url"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--完整语法--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-on:click</span>=<span class="string">"doSth"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--缩写--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> @<span class="attr">click</span>=<span class="string">"doSth"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2017/02/09/vue03.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Vue.js学习II(Vue实例)</title>
+      <link>http://lchiffon.github.io/2017/02/08/vue02.html</link>
+      <guid>http://lchiffon.github.io/2017/02/08/vue02.html</guid>
+      <pubDate>Tue, 07 Feb 2017 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;有用的链接:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/vuejs/awesome-vue#libraries--plugins&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Vue生态库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>有用的链接:</p>
+<ul>
+<li><a href="https://github.com/vuejs/awesome-vue#libraries--plugins" target="_blank" rel="external">Vue生态库</a></li>
+<li><a href="https://github.com/vuejs/vue" target="_blank" rel="external">Github</a></li>
+<li><a href="https://jsfiddle.net/chrisvfritz/50wL7mdz/" target="_blank" rel="external">在线编辑器</a></li>
+<li><a href="https://cn.vuejs.org" target="_blank" rel="external">中文VUE教程网站</a></li>
+<li><a href="https://cn.vuejs.org/v2/api" target="_blank" rel="external">API文档</a></li>
+</ul>
+<h2 id="Vue实例"><a href="#Vue实例" class="headerlink" title="Vue实例"></a>Vue实例</h2><h3 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h3><ol>
+<li>使用: <code>new Vue({})</code></li>
+<li>可复用的构造器:</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myComponent = Vue.extend(&#123;</div><div class="line">  <span class="comment">//扩展选项</span></div><div class="line">&#125;)</div><div class="line"><span class="keyword">var</span> myComponentInstance = <span class="keyword">new</span> MyComponent</div></pre></td></tr></table></figure>
+<p>建议使用自定义元素而不是可复用构造器</p>
+<h3 id="属性与方法"><a href="#属性与方法" class="headerlink" title="属性与方法"></a>属性与方法</h3><ol>
+<li>每个实例都会自动<strong>代理</strong>data中的对象的所有属性</li>
+<li>只有data的对象是可以被<strong>代理</strong>的</li>
+</ol>
+<h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;</div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">data</span>: data</div><div class="line">&#125;)</div><div class="line"></div><div class="line">data.a==vm.a</div><div class="line"><span class="comment">//设置属性会影响原始数据</span></div><div class="line">vm.a=<span class="number">2</span></div><div class="line">data.a</div><div class="line"><span class="comment">//2</span></div><div class="line"></div><div class="line"><span class="comment">//设置原始数据也会影响Vue对象</span></div><div class="line">data.a=<span class="number">3</span></div><div class="line">vm.a</div></pre></td></tr></table></figure>
+<h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;</div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">"#example"</span>,</div><div class="line">  <span class="attr">data</span>: data</div><div class="line">&#125;)</div><div class="line"></div><div class="line">vm.$data === data</div><div class="line">vm.$el === <span class="built_in">document</span>.getElementById(<span class="string">'example'</span>)</div><div class="line"></div><div class="line"><span class="comment">// $watch是一个实例方法</span></div><div class="line">vm.$watch(<span class="string">'a'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">newVal,oldVal</span>)</span>&#123;</div><div class="line">  <span class="comment">//该方法将在`vm.a改变后被调用`</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="实例生命周期"><a href="#实例生命周期" class="headerlink" title="实例生命周期"></a>实例生命周期</h3><p>create-&gt;mounted-&gt;updated-&gt;destroyed</p>
+<p><code>this</code>用于指向调用它的实例<br><img src="https://cn.vuejs.org/images/lifecycle.png" alt=""></p>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2017/02/08/vue02.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Vue.js学习I(基本使用)</title>
+      <link>http://lchiffon.github.io/2017/02/07/vue01.html</link>
+      <guid>http://lchiffon.github.io/2017/02/07/vue01.html</guid>
+      <pubDate>Mon, 06 Feb 2017 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;h1 id=&quot;VUE-JS&quot;&gt;&lt;a href=&quot;#VUE-JS&quot; class=&quot;headerlink&quot; title=&quot;VUE.JS&quot;&gt;&lt;/a&gt;VUE.JS&lt;/h1&gt;&lt;p&gt;有用的链接:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/vuejs/
+      
+      </description>
+      
+      <content:encoded><![CDATA[<h1 id="VUE-JS"><a href="#VUE-JS" class="headerlink" title="VUE.JS"></a>VUE.JS</h1><p>有用的链接:</p>
+<ul>
+<li><a href="https://github.com/vuejs/awesome-vue#libraries--plugins" target="_blank" rel="external">Vue生态库</a></li>
+<li><a href="https://github.com/vuejs/vue" target="_blank" rel="external">Github</a></li>
+<li><a href="https://jsfiddle.net/chrisvfritz/50wL7mdz/" target="_blank" rel="external">在线编辑器</a></li>
+<li><a href="https://cn.vuejs.org" target="_blank" rel="external">中文VUE教程网站</a></li>
+<li><a href="https://cn.vuejs.org/v2/api" target="_blank" rel="external">API文档</a></li>
+</ul>
+<p>VUE笔记, 手打代码与文档于<a href="https://cn.vuejs.org" target="_blank" rel="external">中文VUE教程网站</a></p>
+<h2 id="第一部分-简介"><a href="#第一部分-简介" class="headerlink" title="第一部分 简介"></a>第一部分 简介</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Vue.js 是一套轻量级js框架, 可以用于构建自己相关的html服务等.<br>Vue.js在设计之初的目标是通过尽可能简单的API去实现响应数据绑定和组合的视图套件</p>
+<p>特性:</p>
+<ul>
+<li><a href="https://cn.vuejs.org/v2/guide/single-file-components.html" target="_blank" rel="external">单文件组件支持</a></li>
+<li><a href="https://github.com/vuejs/awesome-vue#libraries--plugins" target="_blank" rel="external">Vue生态库</a></li>
+<li><a href="https://github.com/vuejs/vue" target="_blank" rel="external">Github</a></li>
+<li><a href="https://jsfiddle.net/chrisvfritz/50wL7mdz/" target="_blank" rel="external">在线编辑器</a></li>
+<li><a href="https://cn.vuejs.org" target="_blank" rel="external">中文VUE教程网站</a></li>
+</ul>
+<p>引用:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'https://unpkg.com/vue/dist/vue.js'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>vue与vue-cli:<br>vue-cli是vue的一个命令行工具, 在熟悉vue之后会进行学习.</p>
+<h3 id="声明式渲染"><a href="#声明式渲染" class="headerlink" title="声明式渲染"></a>声明式渲染</h3><h4 id="例子1"><a href="#例子1" class="headerlink" title="例子1"></a>例子1</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">  \&#123;\&#123; message &#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#app'</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">message</span>: <span class="string">'Hello Vue!'</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>JS中将app与html的DOM绑定到了一起, 所以可以在浏览器中的控制台中更改: <code>app.message=&quot;XXX&quot;</code>来<br>动态修改DOM, (也就可以避免使用jQuery+ifelse去做判断更新的复杂代码).</p>
+<h4 id="例子2"><a href="#例子2" class="headerlink" title="例子2"></a>例子2</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-2"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">v-bind:title</span>=<span class="string">"message"</span>&gt;</span></div><div class="line">    Hover your mouse over me for a few seconds to see my dynamically bound title!</div><div class="line">  <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app2 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#app-2'</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">message</span>: <span class="string">'You loaded this page on '</span> + <span class="keyword">new</span> <span class="built_in">Date</span>()</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>这个例子里面用VUE绑定了一个DOM, <code>v-bind</code>被称为一个<strong>指令</strong>, 以<code>v-</code>开头代表是一个Vue.js<br>的特殊属性, 就像Agular中的<code>ng-</code>一样.这句指令(<code>v-bind:title=&quot;message&quot;</code>)代表将这个DOM的<br><code>title</code>属性与Vue实例的<code>message</code>绑定到一起.</p>
+<p>同样的, 在控制台中可以使用<code>app2.message=&#39;Other commments&#39;</code>进行更新.</p>
+<h3 id="条件与循环"><a href="#条件与循环" class="headerlink" title="条件与循环"></a>条件与循环</h3><h4 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-3"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">"seen"</span>&gt;</span></div><div class="line">    Now U C ME<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app3 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">    <span class="attr">el</span>: <span class="string">"#app-3"</span>,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">      <span class="attr">seen</span>: <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
+<p>这里例子中有一个<code>v-if</code>的属性, 代表如果是true, 将进行显示, 否则不显示.<br>控制台中用<code>app3.seen=false</code>进行隐藏. 过渡中有<a href="https://cn.vuejs.org/v2/guide/transitions.html" target="_blank" rel="external">可以有隐藏效果</a></p>
+<h4 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'app-4'</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ol</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"todo in todos"</span>&gt;</span></div><div class="line">      \&#123;\&#123; todo.text &#125;&#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app4 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">"#app-4"</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">todos</span>: [</div><div class="line">      &#123;<span class="attr">text</span>: <span class="string">'Learn JS'</span>&#125;,</div><div class="line">      &#123;<span class="attr">text</span>: <span class="string">'Learn Vue'</span>&#125;,</div><div class="line">      &#123;<span class="attr">text</span>: <span class="string">'Build Something awesome'</span>&#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>可以用<code>app4.todos.push({text:&#39;new message!&#39;})</code>来更新一个新的内容~</p>
+<h3 id="处理用户输入"><a href="#处理用户输入" class="headerlink" title="处理用户输入"></a>处理用户输入</h3><h4 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h4><p><code>v-on</code>用于绑定事件,Vue中的methods实现方法的定义.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-5"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>\&#123;\&#123;message&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"reverseMessage"</span>&gt;</span>Reverse Message<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#app-5'</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">message</span>: <span class="string">'Hello Vue.js!'</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">methods</span>:&#123;</div><div class="line">    <span class="attr">reverseMessage</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      <span class="keyword">this</span>.message = <span class="keyword">this</span>.message.split(<span class="string">""</span>).reverse().join(<span class="string">""</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h4 id="双向绑定"><a href="#双向绑定" class="headerlink" title="双向绑定"></a>双向绑定</h4><p><code>v-model</code>用于绑定DOM和输入<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-6"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>\&#123;\&#123;message&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"message"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app6 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">"#app-6"</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">message</span>: <span class="string">"Hello Vue~"</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="构造用户组件"><a href="#构造用户组件" class="headerlink" title="构造用户组件"></a>构造用户组件</h3><p>这部分稍微有点抽象,过程是这样的:</p>
+<ol>
+<li>用Vue定义一个新的DOM, 如教程中所讲, 一个组件实质上是一个有预定义选项的Vue实例</li>
+<li>模板中写入组件</li>
+<li>对这个组件绑定数据</li>
+</ol>
+<p><code>Vue.component</code>定义DOM, <code>props</code>定义传入对象, <code>templates</code>决定输出内容<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-7"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ol</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tool-set</span> <span class="attr">v-for</span>=<span class="string">"a in todoList"</span> <span class="attr">v-bind:todo</span>=<span class="string">"a"</span>&gt;</span><span class="tag">&lt;/<span class="name">tool-set</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Vue.component(<span class="string">"tool-set"</span>,&#123;</div><div class="line">  <span class="attr">props</span>:[<span class="string">'todo'</span>],</div><div class="line">  <span class="attr">template</span>:<span class="string">'&lt;li&gt;\&#123;\&#123;todo.text&#125;&#125;&lt;/li&gt;'</span></div><div class="line">&#125;)</div><div class="line"><span class="keyword">var</span> app7 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>:<span class="string">"#app-7"</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">todoList</span>: [</div><div class="line">      &#123;<span class="attr">text</span>: <span class="string">"No.1"</span>&#125;,</div><div class="line">      &#123;<span class="attr">text</span>: <span class="string">"No.2"</span>&#125;,</div><div class="line">      &#123;<span class="attr">text</span>: <span class="string">"No.3"</span>&#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2017/02/07/vue01.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>leafletCN</title>
+      <link>http://lchiffon.github.io/2017/01/07/leafletCN.html</link>
+      <guid>http://lchiffon.github.io/2017/01/07/leafletCN.html</guid>
+      <pubDate>Fri, 06 Jan 2017 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;leafletCN是一个基于&lt;a href=&quot;https://github.com/rstudio/leaflet&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;leaflet&lt;/a&gt;的中国扩展包, 里面保存了一些适用于中国的区域划分数据以及一些有帮助的函
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>leafletCN是一个基于<a href="https://github.com/rstudio/leaflet" target="_blank" rel="external">leaflet</a>的中国扩展包, 里面保存了一些适用于中国的区域划分数据以及一些有帮助的函数, 地理区划数据来源于github的<a href="https://github.com/longwosion/geojson-map-china" target="_blank" rel="external">geojson-map-china</a>项目. 数据细分到县级市.</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">## 稳定版</div><div class="line">install.packages(&quot;leafletCN&quot;)</div><div class="line">## 开发版</div><div class="line">devtools::install_github(&quot;lchiffon/leafletCN&quot;)</div></pre></td></tr></table></figure>
+<h3 id="常用的函数"><a href="#常用的函数" class="headerlink" title="常用的函数"></a>常用的函数</h3><ul>
+<li><code>regionNames</code> 返回某个地图的区域名</li>
+<li><code>demomap</code> 传入地图名绘制示例地图</li>
+<li><code>geojsonMap</code> 将一个分层颜色图绘制在一个实时地图上</li>
+</ul>
+<p>其他辅助leaflet包使用的函数</p>
+<ul>
+<li><code>amap</code> 在leaflet地图上叠加高德地图</li>
+<li><code>read.geoShape</code> 读取一个geojson的对象,保存成spdataframe,以方便leaflet调用</li>
+<li><code>leafletGeo</code>用地图名以及一个数据框创建一个sp的对象</li>
+</ul>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><h4 id="regionNames"><a href="#regionNames" class="headerlink" title="regionNames"></a><em>regionNames</em></h4><p>传入需要查看的城市名, 显示这个城市支持的区域信息, 比如查看成都:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">regionNames(&quot;成都&quot;)</div><div class="line">[1] &quot;成华区&quot;   &quot;崇州市&quot;   &quot;大邑县&quot;   &quot;都江堰市&quot; &quot;金牛区&quot;  </div><div class="line">[6] &quot;金堂县&quot;   &quot;锦江区&quot;   &quot;龙泉驿区&quot; &quot;彭州市&quot;   &quot;蒲江县&quot;  </div><div class="line">[11] &quot;青白江区&quot; &quot;青羊区&quot;   &quot;双流县&quot;   &quot;温江区&quot;   &quot;武侯区&quot;  </div><div class="line">[16] &quot;新都区&quot;   &quot;新津县&quot;   &quot;邛崃市&quot;   &quot;郫县&quot;</div></pre></td></tr></table></figure></p>
+<p>如果不传入对象, 会自动返回300多个支持的名字列表,包括各个城市,省,以及三个特殊的名字:</p>
+<ol>
+<li><code>world</code>世界地图</li>
+<li><code>china</code>中国分省份地图</li>
+<li><code>city</code>中国分城市地图</li>
+</ol>
+<h4 id="demomap"><a href="#demomap" class="headerlink" title="demomap"></a><em>demomap</em></h4><p>传入城市名,显示这个城市的示例地图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">demomap(&quot;台湾&quot;)</div></pre></td></tr></table></figure>
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/demo1.png" alt=""></p>
+<h4 id="geojsonmap"><a href="#geojsonmap" class="headerlink" title="geojsonmap"></a><em>geojsonmap</em></h4><p>将一个数据框显示在需要展示的地图上.<br>在函数中做了一些有趣的设置, leafletCN会自动匹配传入的前两个字符来寻找合适的位置进行绘制,<br>所以基本不需要纠结是写’上海市’还是’上海’了</p>
+<p>图做出来可以在上面点点点…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dat = data.frame(name = regionNames(&quot;china&quot;),</div><div class="line">                 value = runif(34))</div><div class="line">geojsonMap(dat,&quot;china&quot;)</div></pre></td></tr></table></figure>
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/demo2.png" alt=""></p>
+<h5 id="geojsonmap-的参数"><a href="#geojsonmap-的参数" class="headerlink" title="geojsonmap 的参数"></a><em>geojsonmap</em> 的参数</h5><ul>
+<li>还没开始写噗哈哈, 只写了帮助文档, 求PR</li>
+</ul>
+<h3 id="辅助函数"><a href="#辅助函数" class="headerlink" title="辅助函数"></a>辅助函数</h3><h4 id="amap"><a href="#amap" class="headerlink" title="amap"></a><em>amap</em></h4><p>叠加一个高德地图, 使用:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">leaflet() %&gt;%</div><div class="line">  amap() %&gt;%  </div><div class="line">  addMarkers(lng=116.3125774825, lat=39.9707249401, popup=&quot;The birthplace of COS&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/demo3.png" alt=""></p>
+<h4 id="read-geoShape"><a href="#read-geoShape" class="headerlink" title="read.geoShape"></a><em>read.geoShape</em></h4><p><code>read.geoShape</code>这个函数可以把一个geojson格式的数据读取为一个<code>SpatialPolygonsDataFrame</code>对象, 方便sp或者leaflet包中的调用.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if(require(sp))&#123;</div><div class="line">  filePath = system.file(&quot;geojson/china.json&quot;,package = &quot;leafletCN&quot;)</div><div class="line">  map = read.geoShape(filePath)</div><div class="line">  plot(map)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/demo4.png" alt=""></p>
+<h4 id="leafletGeo"><a href="#leafletGeo" class="headerlink" title="leafletGeo"></a><em>leafletGeo</em></h4><p><code>leafletGeo</code>这个函数可以把一个数据框和一个地图组合在一起, 方便用leaflet调用, 其中名字的<br>变量为<code>name</code>, 数值的变量为<code>value</code>~</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">if(require(leaflet))&#123;</div><div class="line">  dat = data.frame(regionNames(&quot;china&quot;),</div><div class="line">                                runif(34))</div><div class="line">  map = leafletGeo(&quot;china&quot;, dat)</div><div class="line"></div><div class="line">   pal &lt;- colorNumeric(</div><div class="line">     palette = &quot;Blues&quot;,</div><div class="line">     domain = map$value)</div><div class="line"></div><div class="line">  leaflet(map) %&gt;% addTiles() %&gt;%</div><div class="line">     addPolygons(stroke = TRUE,</div><div class="line">     smoothFactor = 1,</div><div class="line">     fillOpacity = 0.7,</div><div class="line">     weight = 1,</div><div class="line">     color = ~pal(value),</div><div class="line">     popup = ~htmltools::htmlEscape(popup)</div><div class="line">     ) %&gt;%</div><div class="line">   addLegend(&quot;bottomright&quot;, pal = pal, values = ~value,</div><div class="line">                        title = &quot;legendTitle&quot;,</div><div class="line">                 labFormat = leaflet::labelFormat(prefix = &quot;&quot;),</div><div class="line">                 opacity = 1)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/demo5.png" alt=""></p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p><a href="http://langdawei.com/2017/01/07/aqi.html" target="_blank" rel="external">十行代码完成空气质量的可视化</a></p>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2017/01/07/leafletCN.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>十行代码看到AQI</title>
+      <link>http://lchiffon.github.io/2017/01/07/aqi.html</link>
+      <guid>http://lchiffon.github.io/2017/01/07/aqi.html</guid>
+      <pubDate>Fri, 06 Jan 2017 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;我错了, 我承认我是标题党, 怎么可能用十行代码完成全国三百个多个城市AQI的抓取, 清洗与可视化&lt;/p&gt;
+&lt;p&gt;我仔细数了数, 去掉注释, 一共是11行…&lt;/p&gt;
+&lt;p&gt;AQI是空气质量指数（Air Quality Index，简称AQI）是定量描述空气质量状况的无量纲指
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>我错了, 我承认我是标题党, 怎么可能用十行代码完成全国三百个多个城市AQI的抓取, 清洗与可视化</p>
+<p>我仔细数了数, 去掉注释, 一共是11行…</p>
+<p>AQI是空气质量指数（Air Quality Index，简称AQI）是定量描述空气质量状况的无量纲指数.</p>
+<p>对于最近的空气质量, 我无话可说, 只好先讲个段子(没有干货段子凑, 网侵删):</p>
+<p><em>受朋友委托，大家帮个忙：北京人，女，26岁，未婚，1.68米，体重50公斤，英国海归。貌美，爱好健身。目前在一家世界500强做产品经理，工作稳定，年薪近90万。三环内有四套学区房，一套按揭，三套全款。 名下有一辆宝马7系，上班时开。父母均是国家领导干部。朋友和家人现在非常着急，想让介绍一个效果比较好的防霾口罩。</em></p>
+<p>[手动债见]</p>
+<p>咳咳, 回归正题, 在十一行代码之前, 先介绍下出场的两个包, 单library这些包就占掉了快20%的代码量.</p>
+<h4 id="rvest"><a href="#rvest" class="headerlink" title="rvest"></a><em>rvest</em></h4><p> <a href="https://github.com/hadley/rvest" target="_blank" rel="external">rvest</a>, 一个较新的数据抓取包,类似py的beautiful soup, 在不考虑cookie代理get/post等情况下, 比Rcurl与XML用起来方便, 但话说回来, 爬虫最大工作量也并不一定是写代码.</p>
+<p> 其中抓取用的是CSS selector的语法, 和Xpath略有区别,想快速学习的话可以去这里学下<a href="http://flukeout.github.io/" target="_blank" rel="external">怎么选果冻</a></p>
+<h4 id="leafletCN"><a href="#leafletCN" class="headerlink" title="leafletCN"></a><em>leafletCN</em></h4><p><a href="https://github.com/lchiffon/leafletCN" target="_blank" rel="external">leafletCN</a> 是一个基于<a href="https://github.com/rstudio/leaflet" target="_blank" rel="external">leaflet</a>包做的大中华扩展,<br>优势在于有细分到<strong>县级市</strong>级别的区划数据, 虽然没那么准, 但是也基本能用了~</p>
+<p><em>这玩意连个文档都没有. 作者真懒.</em></p>
+<p>好了, 以下是代码, 运行之后会出现一个以高德地图为底图, 可缩放可点击的结果</p>
+<p>Windows用户<strong>可能需要</strong>运行注释中我标的内容~</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># install.packages("rvest")</span></div><div class="line"><span class="comment"># install.packages("leafletCN")</span></div><div class="line"><span class="comment"># windows:</span></div><div class="line"><span class="comment">#   Sys.setlocale("LC_CTYPE", "eng")</span></div><div class="line"><span class="comment">## GAME begin~</span></div><div class="line"><span class="keyword">library</span>(rvest)</div><div class="line"><span class="keyword">library</span>(leafletCN)</div><div class="line"><span class="comment"># Sys.setlocale("LC_CTYPE", "eng")</span></div><div class="line">doc = read_html(<span class="string">"http://www.pm25s.com/cn/rank/"</span>)</div><div class="line"><span class="comment">## http://flukeout.github.io/</span></div><div class="line">cities = doc %&gt;% html_nodes(<span class="string">".cityrank a"</span>) %&gt;%</div><div class="line">  html_text()</div><div class="line"><span class="comment"># windows:</span></div><div class="line"><span class="comment">#   cities = iconv(cities, "UTF-8", "UTF-8")</span></div><div class="line">AQI = doc %&gt;% html_nodes(<span class="string">"span[class^='lv']"</span>) %&gt;%</div><div class="line">  html_text() %&gt;% .[c(<span class="literal">F</span>,<span class="literal">F</span>,<span class="literal">T</span>)] %&gt;% as.numeric</div><div class="line">dat = data.frame(city = cities, AQI = AQI)</div><div class="line">geojsonMap(dat, <span class="string">"city"</span>,</div><div class="line">           popup =  paste0(dat$city,<span class="string">":"</span>,dat$AQI),</div><div class="line">           palette = <span class="string">"Reds"</span>, legendTitle = <span class="string">"AQI"</span>)</div></pre></td></tr></table></figure>
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/Rplot.png"></p>
+<p>亮点自寻, 欢迎点赞~</p>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2017/01/07/aqi.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Hexo从头搭建自己的博客</title>
+      <link>http://lchiffon.github.io/2017/01/05/hexo.html</link>
+      <guid>http://lchiffon.github.io/2017/01/05/hexo.html</guid>
+      <pubDate>Wed, 04 Jan 2017 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;&lt;em&gt;已然从jekyll的坑跳了出来, 转向了hexo来构建自己的博客, 尤其是在windows下, 再也不需要繁琐的设置源, 每次要用额外的命令来构建server, 赞hexo. &lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://hexo.io/&quot; targe
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p><em>已然从jekyll的坑跳了出来, 转向了hexo来构建自己的博客, 尤其是在windows下, 再也不需要繁琐的设置源, 每次要用额外的命令来构建server, 赞hexo. </em></p>
+<p><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>是一个node.js的库, 是一个快速、简洁且高效的博客框架, hexo的社区有很多好玩的主题, 插件, 里面也有很多中国的开发者, 当然是以前端开发为主. 这篇博客会介绍用hexo搭建自己的<strong>数据</strong>博客的过程</p>
+<p>以下是基本流程, 如果本篇有内容不清楚的过程, 可以根据这个流程查看<a href="https://hexo.io/docs/" target="_blank" rel="external">官方文档</a></p>
+<p>完成这些工作后, 预期可以得到一个自己的网站, 也就是从头到尾搭建自己的网站, (需要买一个顶级域名来实现微信不屏蔽你的博客) 预计工作量如下: </p>
+<p>windows + 完全不懂编程: 8h<br>熟悉git+github: 4h<br>熟悉git+github+node: 1h<br>熟悉git+github+以前有jekyll博客: 48h(迁移的故事太心酸)</p>
+<p>相较于微信公众号和知乎,显然搞这个更有成就感嘛..</p>
+<ul>
+<li>前期准备<ol>
+<li>安装node.js<ul>
+<li><a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a></li>
+</ul>
+</li>
+<li>安装git<ul>
+<li><a href="https://git-scm.com/" target="_blank" rel="external">https://git-scm.com/</a></li>
+</ul>
+</li>
+<li>安装hexo</li>
+<li>注册github<ul>
+<li>新建一个名为[username].github.io的repo</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>博客构建<ol>
+<li>hexo init</li>
+<li>主题选择与设置</li>
+<li>开始写博客吧</li>
+<li>部署</li>
+</ol>
+</li>
+<li>其他问题<ol>
+<li>插件与域名</li>
+</ol>
+</li>
+</ul>
+<h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><h4 id="node-js"><a href="#node-js" class="headerlink" title="node.js"></a><em>node.js</em></h4><p>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境. 如果你对前端的东西不是很熟, 可以忽略前一句, 直接把这个软件装好.<br>下载网址在:</p>
+<ul>
+<li><a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a></li>
+</ul>
+<p>Windows 用户可以直接安装, 如果你是Linux/Mac的用户, 还需要额外设置一下node的环境变量</p>
+<p>以保证在命令行(cmd)中运行 <code>node --version</code> 可以看到版本号,比如我的就是v6.9.2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ node --version</div><div class="line">v6.9.2</div></pre></td></tr></table></figure>
+<p>node 会给你的电脑中安装两个命令,一个是node, JavaScript运行环境, 另外一个是npm (node package manager), 前者基本不会被用到, 后者等下会有一些使用,安装一些需要的包.</p>
+<h4 id="git"><a href="#git" class="headerlink" title="git"></a><em>git</em></h4><p>Git是一款免费、开源的分布式版本控制系统, 作用是处理各式各样版本管理, 文件管理的工作, 在博客搭建中, 它起到与Github沟通, 传输, 部署文件的工作.</p>
+<p>安装可以参考廖雪峰的博客<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137396287703354d8c6c01c904c7d9ff056ae23da865a000/" target="_blank" rel="external">安装Git</a> 三种系统都讲的比较细致.</p>
+<ul>
+<li>Windows用户可以在<a href="https://git-scm.com/" target="_blank" rel="external">https://git-scm.com/</a>进行下载安装</li>
+<li>Ubuntu/Debian用户使用 <code>sudo apt-get install git</code> 安装</li>
+<li>Mac用户可以用AppStore安装Xcode，Xcode集成了Git，不过默认没有安装，你需要运行Xcode，选择菜单“Xcode”-&gt;“Preferences”，在弹出窗口中找到“Downloads”，选择“Command Line Tools”，点“Install”就可以完成安装了</li>
+</ul>
+<p><strong>这个必须要做,否则后面的部署不能成功执行</strong><br>安装完毕之后, 需要设定下自己的名字已经邮箱, 在命令行(git bash)中执行:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name &quot;Your Name&quot;</div><div class="line">$ git config --global user.email &quot;email@example.com&quot;</div></pre></td></tr></table></figure></p>
+<h4 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h4><p>打开你的命令行工具(cmd, git bash, terminal …随便选一个就好,推荐windows用户用git bash, 就在自己的开始菜单里, 其他的用户天生就会命令行)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-cli -g</div></pre></td></tr></table></figure>
+<p>等<a href="http://langdawei.com/coffee/index.html" target="_blank" rel="external">一杯咖啡</a>的时间, 安装好了之后, 看下<code>hexo --version</code> 能否成功执行.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ hexo --version</div><div class="line">hexo-cli: 1.0.2</div><div class="line">os: Windows_NT 6.1.7601 win32 x64</div><div class="line">http_parser: 2.7.0</div><div class="line">node: 6.9.2</div><div class="line">v8: 5.1.281.88</div><div class="line">uv: 1.9.1</div><div class="line">zlib: 1.2.8</div><div class="line">ares: 1.10.1-DEV</div><div class="line">icu: 57.1</div><div class="line">modules: 48</div><div class="line">openssl: 1.0.2j</div></pre></td></tr></table></figure>
+<h4 id="github注册"><a href="#github注册" class="headerlink" title="github注册"></a>github注册</h4><p><a href="https://github.com/" target="_blank" rel="external">Github</a>是一个~与A站与B站齐名, 三大同性交友的网站~面向开源及私有软件项目的托管平台.</p>
+<p>注册与使用Github的原因是它可以免费为你提供一个开放的托管静态页面的网站, 不限流量, 完全免费.<br>注册我就不提了, 注册好了以后, 点加号, 按New Repository, 新建一个名为[username].github.io的repo.<br>比如我的用户名为lchiffon, 新建的repo就是<code>lchiffon.github.io</code>,建好就可以啦, 这步搞定.</p>
+<h3 id="博客构建"><a href="#博客构建" class="headerlink" title="博客构建"></a>博客构建</h3><h4 id="init"><a href="#init" class="headerlink" title="init"></a>init</h4><p>在一个空的文件夹中进入命令行工具, (可以试试点击右键,并点击 Git Bash Here, 如果没有, 可以选择重装git 或者查下<a href="http://www.baidu.com/s?ie=utf-8&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;tn=baidu&amp;wd=cd%E8%BF%99%E4%B8%AA%E5%91%BD%E4%BB%A4%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8&amp;oq=git%20%E5%AE%89%E8%A3%85&amp;rsv_pq=a8447baf0001ef9c&amp;rsv_t=222dUpzNBVPcyA3Hyv4RQH8l9tAj6SYjUco0pklfzobkzt%2FmKn8dsHWLvlc&amp;rqlang=cn&amp;rsv_enter=0&amp;inputT=1053&amp;rsv_n=2&amp;rsv_sug3=46&amp;rsv_sug4=1053" target="_blank" rel="external">cd这个命令怎么使用</a>)<br>并执行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo init</div></pre></td></tr></table></figure>
+<p>等一系列命令完成后, 执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo s</div></pre></td></tr></table></figure>
+<p>当你看到以下命令代表执行成功, 可以用浏览器打开这个网页:<code>http://localhost:4000/</code>来查看自己搭建的博客</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">INFO  Start processing</div><div class="line">INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</div></pre></td></tr></table></figure>
+<p><img src="https://hexo.io/build/screenshots/landscape-60eb5ae7c8.png" alt=""></p>
+<p>localhost代表的是你自己的本地服务, 把这个分享给朋友可不能打开, 需要上传到github,来分享给其他人</p>
+<h4 id="写点什么"><a href="#写点什么" class="headerlink" title="写点什么"></a>写点什么</h4><p>在source/_post文件夹中, 有一个<code>hello-world.md</code>的文件, 按照这个例子写一个自己的文章,也是在这个文件夹中.<br><a href="http://sspai.com/25137" target="_blank" rel="external">markdown的语法可以看这里</a></p>
+<p>写好之后刷新下<code>http://localhost:4000/</code>, 你就能看到自己的文章了~</p>
+<h4 id="提交到github"><a href="#提交到github" class="headerlink" title="提交到github"></a>提交到github</h4><p>对于提交,需要修改文件夹中的<code>_config.yml</code>, 把里面deploy相关的修改成:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: http://github.com/[username]/[username].github.io</div></pre></td></tr></table></figure>
+<p>[username]替换成自己的用户名,不加方括号</p>
+<p>然后使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure></p>
+<p>来推送到github</p>
+<p>稍等一段时间,就可以在<code>http://[username].github.io</code>来查看你自己的博客了~</p>
+<h3 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h3><h4 id="themes"><a href="#themes" class="headerlink" title="themes"></a>themes</h4><p>基本的 theme就是你看到的挫样子, 可以去<a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a>选一款主题,并按照主题的readme去进行设置</p>
+<p>一般操作是:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone [themerepo] themes/[themename]</div></pre></td></tr></table></figure></p>
+<p>然后修改<code>_config.yml</code>, 把里面<code>theme: landscape</code>修改成:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">theme: [themename]</div></pre></td></tr></table></figure>
+<p>之后可能依赖不同的theme去设置theme的参数(<code>themes/[themename]/_config.yml</code>)文件</p>
+<h4 id="RSS"><a href="#RSS" class="headerlink" title="RSS"></a>RSS</h4><p>老bloger们都懂RSS是什么,也就是传说中的RSS订阅,生成方式是:</p>
+<ol>
+<li>安装<code>npm install hexo-generator-feed</code></li>
+<li>修改<code>_config.yml</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">plugin:</div><div class="line">- hexo-generator-feed</div><div class="line">feed:</div><div class="line">  type: rss2</div><div class="line">  path: rss2.xml</div><div class="line">  limit: 20</div></pre></td></tr></table></figure>
+<h4 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h4><p>申请域名,然后加入以下三个CDN记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@        A        192.30.252.153</div><div class="line">@        A        192.30.252.154</div><div class="line">www      CNAME    username.github.io.</div></pre></td></tr></table></figure>
+<p>并在自己的项目中写一个CNAME的文件里面包含自己申请的域名(不包含<a href="http://www部分" target="_blank" rel="external">http://www部分</a>)</p>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2017/01/05/hexo.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>新年快乐|最后一更</title>
+      <link>http://lchiffon.github.io/2017/01/01/newYear.html</link>
+      <guid>http://lchiffon.github.io/2017/01/01/newYear.html</guid>
+      <pubDate>Sat, 31 Dec 2016 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;新年快乐&lt;/p&gt;
+&lt;p&gt;2016年过得好快~&lt;/p&gt;
+&lt;p&gt;上半年还在携程起起伏伏, 准备老老实实做项目, 后来接下来了J.D. Power的offer开始从分析师走向全栈的路上.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;3月沙巴,想再去潜一次水&lt;/li&gt;
+&lt;li&gt;4月西藏,找到了自己的
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>新年快乐</p>
+<p>2016年过得好快~</p>
+<p>上半年还在携程起起伏伏, 准备老老实实做项目, 后来接下来了J.D. Power的offer开始从分析师走向全栈的路上.</p>
+<ul>
+<li>3月沙巴,想再去潜一次水</li>
+<li>4月西藏,找到了自己的信仰(辣椒好吃)</li>
+<li>5月JDpower</li>
+<li>6月写出了wordcloud2</li>
+<li>7月正式入职,开始搬砖</li>
+<li>8月浙软开始上课</li>
+<li>9月搞了一台高配置的机器但在ubuntu上装了steam</li>
+<li>10月~12月 参加了杭州,厦门,上海三场R会,下定决心明年搞meetup</li>
+</ul>
+<p>年初列的计划完成了一半, 至少写文的计划基本全部搁浅, 计划40篇, 只写了12篇, 看来今年我要少计划一点了,</p>
+<p>先说<a href="http://lchiffon.github.io/2016/01/01/newyear.html">年初计划</a>完成程度:</p>
+<ul>
+<li>REmap: 40% 没写htmlwidgets,做好shiny</li>
+<li>recharts: 协助更新做到了</li>
+<li>APItools: 没计划改版, 而且百度真的改版了</li>
+<li>图像分析: 真给mxnet一个PR, 蠢到自己不想讲下去</li>
+<li>博客改版: 妥妥推到明年</li>
+<li>40篇文章: 完成12篇</li>
+</ul>
+<p>wishList 完成了60%,显卡西藏海滩完成了</p>
+<p>列列2017新年的计划吧~</p>
+<ul>
+<li>新版博客</li>
+<li>20篇blog+20本书</li>
+<li>10场meetup</li>
+<li>3个package(有一个已经快做完了hhh)</li>
+<li>5场会议</li>
+<li>100种水生动物</li>
+<li>如果以上能做完,争取把自己的事情搞定</li>
+</ul>
+<p>哦,对了还有一个wishlist:</p>
+<ol>
+<li>BenQ TH670</li>
+<li>Turkey</li>
+<li>Beach</li>
+<li>zx1</li>
+<li>QC35</li>
+</ol>
+<p>不要紧张, 这个或许是<strong>旧版</strong>的最后一更了吧~</p>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2017/01/01/newYear.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>常用R包</title>
+      <link>http://lchiffon.github.io/2016/11/13/Packages.html</link>
+      <guid>http://lchiffon.github.io/2016/11/13/Packages.html</guid>
+      <pubDate>Sat, 12 Nov 2016 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;最近略忙, 没有太多时间更新博客, 这是前段时间做的一个简单的汇总, 有价值的R包.&lt;br&gt;计划明年年初的时候换掉博客的架构, 投身HEXO, 顺便连起公众号…(上一个公众号已经因为太久不&lt;br&gt;更新被微信冻结了,hhh~)&lt;/p&gt;
+&lt;p&gt;网页请点击&lt;a href=&quot;htt
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>最近略忙, 没有太多时间更新博客, 这是前段时间做的一个简单的汇总, 有价值的R包.<br>计划明年年初的时候换掉博客的架构, 投身HEXO, 顺便连起公众号…(上一个公众号已经因为太久不<br>更新被微信冻结了,hhh~)</p>
+<p>网页请点击<a href="http://lchiffon.github.io/reveal_slidify/slides/packages/index.html?theme=sky#/slide-1">http://lchiffon.github.io/reveal_slidify/slides/packages/index.html?theme=sky#/slide-1</a></p>
+<p><br></p>
+<h3 id="请使用Chorme浏览器"><a href="#请使用Chorme浏览器" class="headerlink" title="请使用Chorme浏览器"></a>请使用Chorme浏览器</h3><p><br><br></p>
+<iframe src="http://lchiffon.github.io/reveal_slidify/slides/packages/index.html?theme=sky#/slide-1" height="400px" width="95%"></iframe>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2016/11/13/Packages.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>REmap分享</title>
+      <link>http://lchiffon.github.io/2016/07/30/xqcourse.html</link>
+      <guid>http://lchiffon.github.io/2016/07/30/xqcourse.html</guid>
+      <pubDate>Fri, 29 Jul 2016 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;h2 id=&quot;基本介绍&quot;&gt;&lt;a href=&quot;#基本介绍&quot; class=&quot;headerlink&quot; title=&quot;基本介绍&quot;&gt;&lt;/a&gt;基本介绍&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://lchiffon.github.io/REmap/REmapExamples/N
+      
+      </description>
+      
+      <content:encoded><![CDATA[<h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><ul>
+<li><a href="http://lchiffon.github.io/REmap/REmapExamples/Nanchang/?theme=sky#/slide-1">slides</a></li>
+<li><a href="http://lchiffon.github.io/REmap/REmapExamples/Nanchang/index.Rmd">slides Rmd</a></li>
+<li><a href="https://github.com/lchiffon/REmap" target="_blank" rel="external">Github链接</a></li>
+<li><a href="http://blog.csdn.net/yc_1993/article/details/51407981" target="_blank" rel="external">yc_1993:可视化篇：R可视化–迁徙/通勤图</a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzA3MTM3NTA5Ng==&amp;mid=2651054452&amp;idx=1&amp;sn=e7719b13c1174a024358d43b3d334ed6&amp;scene=1&amp;srcid=0729t5U7XNGCUXZTfTIyr4BH&amp;pass_ticket=2nU9lE1qDt9q520ewexQCXKHI16DYucJRmnbQl5kncRPZ0%2BQkgv9ipHMJ5sGHMs5#rd" target="_blank" rel="external">可视化篇：R可视化–map图</a></li>
+</ul>
+<h2 id="如何获取帮助"><a href="#如何获取帮助" class="headerlink" title="如何获取帮助"></a>如何获取帮助</h2><ul>
+<li>百度/google</li>
+<li><a href="https://github.com/lchiffon/REmap/issues" target="_blank" rel="external">issue</a></li>
+<li><a href="http://stackoverflow.com" target="_blank" rel="external">stackoverflow</a></li>
+</ul>
+<h2 id="其他功能介绍"><a href="#其他功能介绍" class="headerlink" title="其他功能介绍"></a>其他功能介绍</h2><h3 id="knitr"><a href="#knitr" class="headerlink" title="knitr"></a>knitr</h3><p><a href="http://lchiffon.github.io/2015/10/27/knitrREmap.html">在knitr中使用REmap</a></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">remap.init()</div><div class="line"><span class="comment">## 绘制地图</span></div><div class="line">p = remap(demoC)</div><div class="line"><span class="comment">## knitr展示</span></div><div class="line">knitrREmap(p,local=<span class="literal">F</span>)</div></pre></td></tr></table></figure>
+<h3 id="shiny"><a href="#shiny" class="headerlink" title="shiny"></a>shiny</h3><ul>
+<li>D:/Program Files/R/R-3.2.0/library/REmap/shiny/shinyBmap</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(REmap)</div><div class="line"><span class="keyword">library</span>(shiny)</div><div class="line">runApp(system.file(<span class="string">"shiny"</span>,<span class="string">"shinyBmap"</span>, package = <span class="string">"REmap"</span>))</div></pre></td></tr></table></figure>
+<h3 id="个性化定制"><a href="#个性化定制" class="headerlink" title="个性化定制"></a>个性化定制</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">options(browser =getOption(<span class="string">"viewer"</span>))</div><div class="line">data(demoC)</div><div class="line"><span class="comment">## Test for Bmap</span></div><div class="line">geoData  = get_geo_position(unique(demoC[demoC==demoC]))</div><div class="line"><span class="comment"># this may take some time,be patient~</span></div><div class="line">remapB(markLineData = demoC,geoData = geoData)</div><div class="line">remapB(markLineData = demoC,geoData = geoData,</div><div class="line">       markLineTheme = markLineControl(color = <span class="string">'red'</span>))</div><div class="line">data(demoC)</div><div class="line">demoC$tooltip = sample(letters,nrow(demoC))</div><div class="line">remapB(markLineData = demoC,geoData = geoData,</div><div class="line">       markLineTheme = markLineControl(color = <span class="string">'red'</span>))</div><div class="line">newdata = data.frame(a = demoC[,<span class="number">2</span>],</div><div class="line">                     color = c(rep(<span class="string">"blue"</span>,<span class="number">5</span>),rep(<span class="string">"red"</span>,<span class="number">5</span>)))</div><div class="line">remapB(markPointData = newdata,</div><div class="line">       color = <span class="string">"Blue"</span>,geoData = geoData)</div><div class="line">newdata$symbolSize = <span class="number">1</span>:<span class="number">10</span></div><div class="line">remapB(markPointData = newdata,</div><div class="line">       color = <span class="string">"Blue"</span>,geoData = geoData)</div><div class="line">newdata$tooltip = paste(newdata$a,newdata$symbolSize,sep = <span class="string">":"</span>)</div><div class="line">remapB(markPointData = newdata,</div><div class="line">       color = <span class="string">"Blue"</span>,geoData = geoData)</div><div class="line">data(chinaIphone)</div><div class="line"><span class="comment">## markLineControl</span></div><div class="line">mapdata = chinaIphone</div><div class="line">geoData  = get_geo_position(unique(demoC[demoC==demoC]))</div><div class="line">out = remapC(data = mapdata,</div><div class="line">             color = c(<span class="string">"white"</span>,<span class="string">"white"</span>),</div><div class="line">             theme=get_theme(<span class="string">"none"</span>,<span class="string">"white"</span>,<span class="string">"white"</span>,<span class="string">"white"</span>,<span class="string">'white'</span>),</div><div class="line">             markPointData = demoC[,<span class="number">2</span>],</div><div class="line">             markPointTheme = markPointControl(</div><div class="line">               symbol = <span class="string">"image://http://lchiffon.github.io/reveal_slidify/pic/ghost.png"</span>,</div><div class="line">               symbolSize = <span class="number">50</span>,</div><div class="line">               effectType = <span class="string">'bounce'</span> ),</div><div class="line">             geoData = geoData)</div><div class="line">out</div></pre></td></tr></table></figure>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2016/07/30/xqcourse.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>wordcloud2 in CRAN</title>
+      <link>http://lchiffon.github.io/2016/07/26/installpackage.html</link>
+      <guid>http://lchiffon.github.io/2016/07/26/installpackage.html</guid>
+      <pubDate>Mon, 25 Jul 2016 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;最近把&lt;code&gt;wordcloud2&lt;/code&gt;发布到了CRAN上,所以,以后就可以直接用&lt;code&gt;install.packages(&amp;#39;wordcloud2&amp;#39;)&lt;/code&gt;进行安装.&lt;/p&gt;
+&lt;p&gt;这样是不是这篇博客有点短,我再加个用wordclou
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>最近把<code>wordcloud2</code>发布到了CRAN上,所以,以后就可以直接用<code>install.packages(&#39;wordcloud2&#39;)</code>进行安装.</p>
+<p>这样是不是这篇博客有点短,我再加个用wordcloud2 做头像的方法:</p>
+<ul>
+<li>写一个文件,把你喜欢的词(认识的不认识的)放进去</li>
+<li>调整下字数,认识的字少的话可以把文件重复几遍</li>
+<li>生成词频,我用的是<code>seq</code>生成,再用一些小的数字去填空白</li>
+<li>wordcloud!</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">setwd(<span class="string">'E:/tmp'</span>)</div><div class="line">word = readLines(<span class="string">'chiffon.txt'</span>)&lt;/code&gt;&lt;/pre&gt;</div><div class="line">word1 = c(word,word,word,word,word)</div><div class="line">n = length(word)</div><div class="line">freq = c(n:<span class="number">1</span> + <span class="number">5</span>,</div><div class="line">         rep(<span class="number">15</span>,n),</div><div class="line">         rep(<span class="number">5</span>,n),</div><div class="line">         rep(<span class="number">5</span>,n),</div><div class="line">         rep(<span class="number">5</span>,n))</div><div class="line"><span class="keyword">library</span>(wordcloud2)</div><div class="line">dat = data.frame(word,freq)</div><div class="line"><span class="comment"># wordcloud2(dat,size = 0.3)</span></div><div class="line">letterCloud(dat,<span class="string">'R'</span>, color = <span class="string">'random-light'</span>,</div><div class="line">  backgroundColor = <span class="string">'black'</span>,size = <span class="number">0.3</span>)</div></pre></td></tr></table></figure>
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/tou.png"></p>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2016/07/26/installpackage.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>FreeCodeCamp,全栈基本功训练馆</title>
+      <link>http://lchiffon.github.io/2016/06/22/coder.html</link>
+      <guid>http://lchiffon.github.io/2016/06/22/coder.html</guid>
+      <pubDate>Tue, 21 Jun 2016 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;&lt;em&gt;看完本文,或许能解释一些为什么前端(全栈)是这么吸引人了&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;最近在github上发现了这个叫做&lt;a href=&quot;https://github.com/FreeCodeCamp/FreeCodeCamp&quot; target=&quot;_blank&quot; rel=
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p><em>看完本文,或许能解释一些为什么前端(全栈)是这么吸引人了</em></p>
+<p>最近在github上发现了这个叫做<a href="https://github.com/FreeCodeCamp/FreeCodeCamp" target="_blank" rel="external">FreeCodeCamp</a>的项目.玩了一下,觉得get到各种基本知识,遂mark一下,不断学习中.</p>
+<p><img src="https://camo.githubusercontent.com/60c67cf9ac2db30d478d21755289c423e1f985c6/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f66726565636f646563616d702f776964652d736f6369616c2d62616e6e65722e706e67" alt=""></p>
+<p>网站的网址是:</p>
+<p><a href="https://www.freecodecamp.com/" target="_blank" rel="external">https://www.freecodecamp.com/</a></p>
+<p>这个网站一方面为广大入门级的玩家免费提供全栈知识的学习,各种技术,各种练习.另一方面,学员的毕业项目会被免费提供给非盈利组织使用,(网站或者是App).</p>
+<p>整个网站的学习路径为:<br><img src="http://7xr5em.com1.z0.glb.clouddn.com/fcc1.png" alt=""></p>
+<ol>
+<li>HTML5</li>
+<li>CSS3</li>
+<li>Javascript</li>
+<li>Databases</li>
+<li>Git &amp; GitHub</li>
+<li>Node.js</li>
+<li>React.js</li>
+<li>D3.js</li>
+</ol>
+<p>整个的学习时间在2000小时以上(包含了前端,数据可视化和后端三个大块,以及非盈利项目)</p>
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/fcc2.png" alt=""></p>
+<p>不过话说整个项目还在不断的更新中,数据可视化,尤其是D3的部分还在github上开发中,但作为一个入门,推广的技术的网站,做的已经超赞了!</p>
+<blockquote>
+<p>所有能被JS重写的功能,都会被JS重写掉…</p>
+</blockquote>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2016/06/22/coder.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Introdcution to Wordccloud2</title>
+      <link>http://lchiffon.github.io/2016/06/10/wordcloud.html</link>
+      <guid>http://lchiffon.github.io/2016/06/10/wordcloud.html</guid>
+      <pubDate>Thu, 09 Jun 2016 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;This is an introduction to &lt;code&gt;wordcloud2&lt;/code&gt;  &lt;a href=&quot;http://github.com/lchiffon/wordcloud2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;packag
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>This is an introduction to <code>wordcloud2</code>  <a href="http://github.com/lchiffon/wordcloud2" target="_blank" rel="external">package</a>. This package provides an HTML5 interface to wordcloud for data visualization. <a href="https://github.com/timdream/wordcloud2.js" target="_blank" rel="external">Timdream’s wordcloud2.js</a> is used in this package.<br><img src="http://7xr5em.com1.z0.glb.clouddn.com/wordcloud2.png" alt=""></p>
+<p>This document show two main function in <code>Wordcloud2</code>:</p>
+<ol>
+<li><code>wordcloud2</code>: provide traditional wordcloud with HTML5</li>
+<li><code>letterCloud</code>: provide wordcloud with selected word(letters).</li>
+</ol>
+<h3 id="install-wordcloud2"><a href="#install-wordcloud2" class="headerlink" title="install wordcloud2"></a>install wordcloud2</h3><p>You may have installed this package. Well, I still want to leave these codes here for installing.</p>
+<pre><code>devtools::install_github(&quot;lchiffon/wordcloud2&quot;)
+</code></pre><h3 id="wordlcoud2-function"><a href="#wordlcoud2-function" class="headerlink" title="wordlcoud2 function"></a><code>wordlcoud2</code> function</h3><p>You can use wordcloud directly:</p>
+<pre><code>library(wordcloud2)
+wordcloud2(data = demoFreq)
+</code></pre><p><img src="http://7xr5em.com1.z0.glb.clouddn.com/ex0.png" alt=""></p>
+<p><code>demoFreq</code> is a data.frame including word and freq in each column.</p>
+<pre><code>head(demoFreq)
+
+
+         word freq
+oil       oil   85
+said     said   73
+prices prices   48
+opec     opec   42
+mln       mln   31
+the       the   26
+</code></pre><h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><ul>
+<li><code>data</code><ul>
+<li>A data frame including word and freq in each column</li>
+</ul>
+</li>
+<li><code>size</code><ul>
+<li>Font size, default is 1. The larger size means the bigger word.</li>
+</ul>
+</li>
+<li><code>fontFamily</code><ul>
+<li>Font to use.</li>
+</ul>
+</li>
+<li><code>fontWeight</code><ul>
+<li>Font weight to use, e.g. normal, bold or 600</li>
+</ul>
+</li>
+<li><code>color</code><ul>
+<li>color of the text, keyword ‘random-dark’ and ‘random-light’ can be used. color vector is also supported in this param</li>
+</ul>
+</li>
+<li><code>minSize</code><ul>
+<li>A character string of the subtitle</li>
+</ul>
+</li>
+<li><code>backgroundColor</code><ul>
+<li>Color of the background.</li>
+</ul>
+</li>
+<li><code>gridSize</code><ul>
+<li>Size of the grid in pixels for marking the availability of the canvas the larger the grid size, the bigger the gap between words.</li>
+</ul>
+</li>
+<li><code>minRotation</code><ul>
+<li>If the word should rotate, the minimum rotation (in rad) the text should rotate.</li>
+</ul>
+</li>
+<li><code>maxRotation</code><ul>
+<li>If the word should rotate, the maximum rotation (in rad) the text should rotate. Set the two value equal to keep all text in one angle.</li>
+</ul>
+</li>
+<li><code>rotateRatio</code><ul>
+<li>Probability for the word to rotate. Set the number to 1 to always rotate.</li>
+</ul>
+</li>
+<li><code>shape</code><ul>
+<li>The shape of the “cloud” to draw. Can be a keyword present. Available presents are ‘circle’ (default), ‘cardioid’ (apple or heart shape curve, the most known polar equation), ‘diamond’ (alias of square), ‘triangle-forward’, ‘triangle’, ‘pentagon’, and ‘star’.</li>
+</ul>
+</li>
+<li><code>ellipticity</code><ul>
+<li>degree of “flatness” of the shape wordcloud2.js should draw.</li>
+</ul>
+</li>
+<li><code>figPath</code><ul>
+<li>A fig used for the wordcloud.</li>
+</ul>
+</li>
+<li><code>widgetsize</code><ul>
+<li>size of the widgets</li>
+</ul>
+</li>
+</ul>
+<h4 id="Example1-use-color-and-backgroundcolor"><a href="#Example1-use-color-and-backgroundcolor" class="headerlink" title="Example1: use color and backgroundcolor"></a>Example1: use color and backgroundcolor</h4><pre><code>wordcloud2(demoFreq, color = &quot;random-light&quot;, backgroundColor = &quot;grey&quot;)
+</code></pre><p><img src="http://7xr5em.com1.z0.glb.clouddn.com/ex1.png" alt=""></p>
+<h4 id="Example2-use-rotations"><a href="#Example2-use-rotations" class="headerlink" title="Example2: use rotations"></a>Example2: use rotations</h4><pre><code>wordcloud2(demoFreq, minRotation = -pi/6, maxRotation = -pi/6, minSize = 10,
+  rotateRatio = 1)
+</code></pre><p><img src="http://7xr5em.com1.z0.glb.clouddn.com/ex3.png" alt=""></p>
+<h4 id="Example3-use-figure-file-as-a-mask"><a href="#Example3-use-figure-file-as-a-mask" class="headerlink" title="Example3: use figure file as a mask."></a>Example3: use figure file as a mask.</h4><p>For example, <code>t.png</code> is A BIRD with black and white:<br><img src="http://7xr5em.com1.z0.glb.clouddn.com/t.png" alt=""></p>
+<pre><code>figPath = system.file(&quot;examples/t.png&quot;,package = &quot;wordcloud2&quot;)
+wordcloud2(demoFreq, figPath = figPath, size = 1.5,color = &quot;skyblue&quot;)
+</code></pre><p><img src="http://7xr5em.com1.z0.glb.clouddn.com/tcloud.png" alt=""></p>
+<h3 id="letterCloud-function"><a href="#letterCloud-function" class="headerlink" title="letterCloud function"></a><code>letterCloud</code> function</h3><p><code>letterCloud</code> provide the function to create a wordcloud with a word, like this:</p>
+<pre><code>letterCloud(demoFreq, word = &quot;R&quot;, size = 2)
+</code></pre><p><img src="http://7xr5em.com1.z0.glb.clouddn.com/R.png" alt=""></p>
+<p>Or:</p>
+<pre><code>letterCloud(demoFreq, word = &quot;WORDCLOUD2&quot;, wordSize = 1)
+</code></pre><p><img src="http://7xr5em.com1.z0.glb.clouddn.com/wordcloud2.png" alt=""><br><strong>wordcloud with fig and letterCloud may disappeared in Rstudio Viewer, open into browser when you meet this bug</strong></p>
+<h4 id="Parameters-1"><a href="#Parameters-1" class="headerlink" title="Parameters"></a>Parameters</h4><ul>
+<li><code>data</code><ul>
+<li>A data frame including word and freq in each column</li>
+</ul>
+</li>
+<li><code>word</code><ul>
+<li>A word to create shape for wordcloud.</li>
+</ul>
+</li>
+<li><code>wordSize</code><ul>
+<li>Parameter of the size of the word, default is 2.</li>
+</ul>
+</li>
+<li><code>letterFont</code><ul>
+<li>Letter font</li>
+</ul>
+</li>
+<li><code>...</code><ul>
+<li>Other parameters for wordcloud2<br>Go to <a href="http://github.com/lchiffon/wordcloud2" target="_blank" rel="external">wordcloud2</a> in the github to leave a comment or give this package a star.</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2016/06/10/wordcloud.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>wordcloud2</title>
+      <link>http://lchiffon.github.io/2016/06/01/wordcloud2.html</link>
+      <guid>http://lchiffon.github.io/2016/06/01/wordcloud2.html</guid>
+      <pubDate>Tue, 31 May 2016 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;写了一个wordcloud2的R包,调用一个JS的库实现wordcloud.&lt;/p&gt;
+&lt;p&gt;knitr和shiny也全支持…以下是一个基本介绍&lt;/p&gt;
+&lt;p&gt;(后期会加一些需要更新的功能比如图片Mask,颜色个性化,交互式展示数据.完全取决于该项目star的程度…)&lt;/p&gt;
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>写了一个wordcloud2的R包,调用一个JS的库实现wordcloud.</p>
+<p>knitr和shiny也全支持…以下是一个基本介绍</p>
+<p>(后期会加一些需要更新的功能比如图片Mask,颜色个性化,交互式展示数据.完全取决于该项目star的程度…)</p>
+<h2 id="wordcloud2"><a href="#wordcloud2" class="headerlink" title="wordcloud2"></a>wordcloud2</h2><p>R interface to wordcloud for data visualization.<br>Timdream’s <a href="https://github.com/timdream/wordcloud2.js" target="_blank" rel="external">wordcloud2.js</a> is used in this package. Github is <a href="http://github.com/lchiffon/wordcloud2" target="_blank" rel="external">here</a></p>
+<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">devtools::install_github(&quot;lchiffon/wordcloud2&quot;)</div></pre></td></tr></table></figure>
+<p>knitr and shiny is support in wordcloud2 package.</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">library(wordcloud2)</div><div class="line">wordcloud2(demoFreq, size = 1,shape = &apos;star&apos;)</div></pre></td></tr></table></figure>
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/wc1.png" alt="1"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wordcloud2(demoFreq, size = 2, minRotation = -pi/2, maxRotation = -pi/2)</div></pre></td></tr></table></figure>
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/wc2.png" alt="1"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wordcloud2(demoFreq, size = 2, minRotation = -pi/6, maxRotation = -pi/6,</div><div class="line">  rotateRatio = 1)</div></pre></td></tr></table></figure>
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/wc3.png" alt="1"></p>
+<h3 id="Chinese-version"><a href="#Chinese-version" class="headerlink" title="Chinese version"></a>Chinese version</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wordcloud2(demoFreqC, size = 2, fontFamily = &quot;微软雅黑&quot;,</div><div class="line">           color = &quot;random-light&quot;, backgroundColor = &quot;grey&quot;)</div></pre></td></tr></table></figure>
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/wc4.png" alt="1"></p>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2016/06/01/wordcloud2.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>莆田医院的可视化(R)</title>
+      <link>http://lchiffon.github.io/2016/05/07/blackhospital.html</link>
+      <guid>http://lchiffon.github.io/2016/05/07/blackhospital.html</guid>
+      <pubDate>Fri, 06 May 2016 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;Idea来自于&lt;a href=&quot;https://github.com/lenzzz/putianHospitalMap&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;原文作者用python完成了数据爬取,可视化的过程,本文用R实现一遍…&lt;/p&gt;
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>Idea来自于<a href="https://github.com/lenzzz/putianHospitalMap" target="_blank" rel="external">这里</a>原文作者用python完成了数据爬取,可视化的过程,本文用R实现一遍…</p>
+<p><br><br>基本的流程如下:</p>
+<ol>
+<li>爬取数据与整理</li>
+<li>根据医院获取经纬度</li>
+<li>根据获取的经纬度完成可视化</li>
+</ol>
+<p>最终结果是一个可交互的地图,像这样(截图版):<br><img src="http://7xr5em.com1.z0.glb.clouddn.com/102.png"></p>
+<h3 id="数据爬取与整理"><a href="#数据爬取与整理" class="headerlink" title="数据爬取与整理"></a>数据爬取与整理</h3><p>数据来源于<a href="http://news.ifeng.com/mainland/special/ptxyy/" target="_blank" rel="external">凤凰资讯</a>,由于数据隐藏在JS代码中,所以我们使用<code>readLines</code>读取,字符处理的方式获得数据.</p>
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/101.png"></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">raw = readLines(<span class="string">"http://news.ifeng.com/mainland/special/ptxyy/"</span>,</div><div class="line">                encoding = <span class="string">"UTF-8"</span>)</div><div class="line">rawHospital = raw[<span class="number">123</span> : <span class="number">238</span>]</div><div class="line">rawHospital[<span class="number">1</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>] <span class="string">"    ['上海','上海市闵行区中医院&lt;br/&gt;上海华美美莱整形医院&lt;br/&gt;上海万众医院&lt;br/&gt;上海安真医院&lt;br/&gt;上海福华医院&lt;br/&gt;上海玛丽女子医院&lt;br/&gt;上海真爱女子医院&lt;br/&gt;上海心脏病医院&lt;br/&gt;上海远大心胸医院&lt;br/&gt;上海仁爱医院&lt;br/&gt;上海天大医疗美容医院&lt;br/&gt;上海沪申五官科医院&lt;br/&gt;上海博爱医院&lt;br/&gt;上海新虹桥医院&lt;br/&gt;上海九龙男子医院&lt;br/&gt;上海城市女子医院&lt;br/&gt;上海西郊骨科医院&lt;br/&gt;上海真美妇科医院&lt;br/&gt;上海南浦妇科医院&lt;br/&gt;上海虹桥医院&lt;br/&gt;上海健桥医院&lt;br/&gt;上海博爱医院&lt;br/&gt;上海长江医院&lt;br/&gt;解放军411医院&lt;br/&gt;上海阳光中医医院&lt;br/&gt;上海英港泌尿外科医院&lt;br/&gt;上海阿波罗男子医院&lt;br/&gt;上海玫瑰女子医院&lt;br/&gt;上海康新医院&lt;br/&gt;上海圣爱医院&lt;br/&gt;上海同德医院&lt;br/&gt;上海安平医院&lt;br/&gt;江东泌尿外科医院&lt;br/&gt;上海九州泌尿医院&lt;br/&gt;上海青城医院&lt;br/&gt;上海博大医院&lt;br/&gt;上海中亚医院','38'],"</span></div></pre></td></tr></table></figure>
+<p>接下来,用一个函数提取每个<code>rawHospital</code>中的医院名,并整理成一个字符向量.</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">extFun = <span class="keyword">function</span>(x)&#123;</div><div class="line">  split = strsplit(x, <span class="string">"','"</span>)</div><div class="line">  out = strsplit(split[[<span class="number">1</span>]][<span class="number">2</span>], <span class="string">"&lt;br/&gt;"</span>)</div><div class="line">  <span class="keyword">return</span>(out)</div><div class="line">&#125;</div><div class="line">extFun(rawHospital[<span class="number">1</span>])</div><div class="line">hosList = sapply(rawHospital,extFun)</div><div class="line">hospital = c()</div><div class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">1</span>:length(hosList)) hospital = append(hospital, hosList[[i]])</div><div class="line">head(hospital)</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>] <span class="string">"上海市闵行区中医院"</span>   <span class="string">"上海华美美莱整形医院"</span></div><div class="line">[<span class="number">3</span>] <span class="string">"上海万众医院"</span>         <span class="string">"上海安真医院"</span>        </div><div class="line">[<span class="number">5</span>] <span class="string">"上海福华医院"</span>         <span class="string">"上海玛丽女子医院"</span></div></pre></td></tr></table></figure>
+<h3 id="获取经纬度"><a href="#获取经纬度" class="headerlink" title="获取经纬度"></a>获取经纬度</h3><p>获取经纬度使用某大神的<code>baidumap</code>repo在<a href="https://github.com/badbye/baidumap" target="_blank" rel="external">这里</a>(不要纠结为啥还用百度,可视化也是…)</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(baidumap)</div><div class="line">blackHospital = getCoordinate(hospital, formatted = <span class="literal">T</span>)</div><div class="line">blackHospital = na.omit(blackHospital)</div><div class="line">head(blackHospital)</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">                     longtitude latitude</div><div class="line">上海市闵行区中医院     <span class="number">121.4250</span> <span class="number">31.09354</span></div><div class="line">上海华美美莱整形医院   <span class="number">121.4290</span> <span class="number">31.23277</span></div><div class="line">上海万众医院           <span class="number">121.4267</span> <span class="number">31.19537</span></div><div class="line">上海安真医院           <span class="number">121.2353</span> <span class="number">31.00906</span></div><div class="line">上海福华医院           <span class="number">121.7532</span> <span class="number">31.04560</span></div><div class="line">上海玛丽女子医院       <span class="number">121.1253</span> <span class="number">31.15449</span></div></pre></td></tr></table></figure>
+<p>完成了,有一个医院经纬度没找到,用<code>na.omit</code>删去,稍微整理一下:</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">plotdata = data.frame(lon = blackHospital[,<span class="number">1</span>],</div><div class="line">                      lat = blackHospital[,<span class="number">2</span>],</div><div class="line">                      city = rownames(blackHospital))</div></pre></td></tr></table></figure>
+<h2 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h2><p>不好意思,只会<code>REmap</code>,代码见下,用鼠标滚轮和拖动查看细节:</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(REmap)</div><div class="line">remapB(markPointData = data.frame(plotdata$city),</div><div class="line">       markPointTheme = markPointControl(symbol = <span class="string">"pin"</span>,</div><div class="line">                                         effect=<span class="literal">F</span>,</div><div class="line">                                         symbolSize = <span class="number">5</span>,</div><div class="line">                                         color=<span class="string">"red"</span>),</div><div class="line">       geoData = plotdata)</div></pre></td></tr></table></figure>
+<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+<script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+<script type="text/javascript" src="http://lchiffon.github.io/reveal_slidify/echarts/require/main.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=q9U1lWgCK1aBGVC1DVWrgWa7"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/doc/asset/js/jquery.min.js"></script>
+<div id="ID_20160507102219_25810" style="height:300px; width:100%"></div>
+<script>
+                (function () {
+                require.config({
+                paths: {
+                echarts:'http://echarts.baidu.com/doc/example/www/js'
+                },
+                packages: [
+                {
+                name: 'BMap',
+                location: 'http://lchiffon.github.io/reveal_slidify/echarts/require',
+                main: 'main'
+                }
+                ]
+                });
+
+                require(
+                [
+                'echarts',
+                'BMap',
+                'echarts/chart/map'
+                ],
+                function (echarts, BMapExtension) {
+
+                var BMapExt = new BMapExtension($('#ID_20160507102219_25810')[0], BMap, echarts,{
+                enableMapClick: false
+                });
+                var map = BMapExt.getMap();
+                var container = BMapExt.getEchartsContainer();
+
+                var startPoint = {
+                x: 104.114129,
+                y: 37.550339
+                };
+                var point = new BMap.Point(startPoint.x, startPoint.y);
+                map.centerAndZoom(point, 5);
+                map.enableScrollWheelZoom(true);
+                map.setMapStyle({style:'Bright'});
+
+
+optionID_20160507102219_25810 = {
+  color: ['gold','aqua','lime'],
+  title : {
+    text: '',
+    subtext: '',
+    x:'center',
+    textStyle : {
+      color: 'black'
+    }
+  },
+  tooltip : {
+    show: true,
+    trigger: 'item',
+    formatter: function (v) {
+               if(v[2].tooltipValue!=null){
+               return v[2].tooltipValue;
+               }else{
+               return v[1];
+               }
+  }},
+  toolbox: {
+    show : true,
+    orient : 'vertical',
+    x: 'right',
+    y: 'center',
+    feature : {
+      mark : {show: true},
+      dataView : {show: true, readOnly: false},
+      restore : {show: true},
+      saveAsImage : {show: true}
+    }
+  },
+  series : [
+    {
+      type:'map',
+      mapType: 'none',
+      data:[]
+
+      ,markPoint : {
+        symbol:'emptyCircle',
+      symbolSize :5,
+      effect : {
+        show: false,
+        type: 'scale',
+        shadowBlur : 0
+      },
+      itemStyle:{
+      normal:{
+        label:{show:false},
+        color:'red'
+      },
+      emphasis: {
+        label:{show:false}
+      }
+      },
+      data : [{name:'上海市闵行区中医院',value: 79,symbol:'pin'},
+{name:'上海华美美莱整形医院',value: 97,symbol:'pin'},
+{name:'上海万众医院',value: 29,symbol:'pin'},
+{name:'上海安真医院',value: 37,symbol:'pin'},
+{name:'上海福华医院',value: 97,symbol:'pin'},
+{name:'上海玛丽女子医院',value: 94,symbol:'pin'},
+{name:'上海真爱女子医院',value: 86,symbol:'pin'},
+{name:'上海心脏病医院',value: 79,symbol:'pin'},
+{name:'上海远大心胸医院',value: 39,symbol:'pin'},
+{name:'上海仁爱医院',value: 61,symbol:'pin'},
+{name:'上海天大医疗美容医院',value: 67,symbol:'pin'},
+{name:'上海沪申五官科医院',value: 43,symbol:'pin'},
+{name:'上海博爱医院',value: 84,symbol:'pin'},
+{name:'上海新虹桥医院',value: 40,symbol:'pin'},
+{name:'上海九龙男子医院',value: 41,symbol:'pin'},
+{name:'上海城市女子医院',value:  2,symbol:'pin'},
+{name:'上海西郊骨科医院',value: 77,symbol:'pin'},
+{name:'上海真美妇科医院',value: 86,symbol:'pin'},
+{name:'上海南浦妇科医院',value: 11,symbol:'pin'},
+{name:'上海虹桥医院',value: 94,symbol:'pin'},
+{name:'上海健桥医院',value: 53,symbol:'pin'},
+{name:'上海博爱医院',value:  9,symbol:'pin'},
+{name:'上海长江医院',value: 94,symbol:'pin'},
+{name:'解放军411医院',value:  9,symbol:'pin'},
+{name:'上海阳光中医医院',value: 83,symbol:'pin'},
+{name:'上海英港泌尿外科医院',value: 56,symbol:'pin'},
+{name:'上海阿波罗男子医院',value: 40,symbol:'pin'},
+{name:'上海玫瑰女子医院',value: 83,symbol:'pin'},
+{name:'上海康新医院',value: 57,symbol:'pin'},
+{name:'上海圣爱医院',value: 79,symbol:'pin'},
+{name:'上海同德医院',value: 51,symbol:'pin'},
+{name:'上海安平医院',value: 53,symbol:'pin'},
+{name:'江东泌尿外科医院',value: 62,symbol:'pin'},
+{name:'上海九州泌尿医院',value: 27,symbol:'pin'},
+{name:'上海青城医院',value: 73,symbol:'pin'},
+{name:'上海博大医院',value: 92,symbol:'pin'},
+{name:'上海中亚医院',value: 45,symbol:'pin'},
+{name:'北京华美美莱整形医院',value: 70,symbol:'pin'},
+{name:'北京俪人女子医院',value: 68,symbol:'pin'},
+{name:'北京北海医院',value: 26,symbol:'pin'},
+{name:'北京前海股骨头医院',value: 52,symbol:'pin'},
+{name:'北京市慧慈医院',value: 80,symbol:'pin'},
+{name:'北京五洲女子医院',value: 68,symbol:'pin'},
+{name:'北京圣保罗男子医院',value: 61,symbol:'pin'},
+{name:'北京恒安中医院',value: 92,symbol:'pin'},
+{name:'北京建国医院',value: 28,symbol:'pin'},
+{name:'北京国际医疗中心',value: 50,symbol:'pin'},
+{name:'北京天伦不孕不育医院',value: 21,symbol:'pin'},
+{name:'北京美联臣医疗美容医院',value: 50,symbol:'pin'},
+{name:'北京慧中医院',value: 72,symbol:'pin'},
+{name:'北京阳光丽人妇科医院',value: 97,symbol:'pin'},
+{name:'北京恒安中医院',value: 75,symbol:'pin'},
+{name:'北京京城皮肤病医院',value:  7,symbol:'pin'},
+{name:'北京京北医院',value: 56,symbol:'pin'},
+{name:'北京瑞京糖尿病医院',value: 41,symbol:'pin'},
+{name:'北京众安康中医骨科',value:  6,symbol:'pin'},
+{name:'北京玛丽妇婴医院',value: 71,symbol:'pin'},
+{name:'北京麦瑞骨科医院',value: 19,symbol:'pin'},
+{name:'北京健宫医院',value: 36,symbol:'pin'},
+{name:'苏州东吴医院',value: 70,symbol:'pin'},
+{name:'苏州华美美莱整形医院',value: 66,symbol:'pin'},
+{name:'昆山虹桥医院',value:  7,symbol:'pin'},
+{name:'常熟东方妇科医院',value: 83,symbol:'pin'},
+{name:'常熟仁爱医院',value: 89,symbol:'pin'},
+{name:'昆山阳光医院',value: 45,symbol:'pin'},
+{name:'苏州圣爱医院',value: 37,symbol:'pin'},
+{name:'苏州新医科',value: 21,symbol:'pin'},
+{name:'天津坤如玛丽医院',value: 18,symbol:'pin'},
+{name:'天津华北医院',value: 14,symbol:'pin'},
+{name:'天津华厦医院',value: 66,symbol:'pin'},
+{name:'天津丽人女子医院',value: 43,symbol:'pin'},
+{name:'天津华山医院',value: 29,symbol:'pin'},
+{name:'天津怡泰生殖专科医院',value: 42,symbol:'pin'},
+{name:'天津现代女子医院',value: 63,symbol:'pin'},
+{name:'天津怡泰医院',value: 31,symbol:'pin'},
+{name:'天津乐园医院',value: 31,symbol:'pin'},
+{name:'天津长庚耳鼻喉医院',value: 98,symbol:'pin'},
+{name:'广州华美美莱整形医院',value:  6,symbol:'pin'},
+{name:'广州现代医院',value: 19,symbol:'pin'},
+{name:'广州长安医院',value: 54,symbol:'pin'},
+{name:'广州益寿医院',value: 96,symbol:'pin'},
+{name:'广州利德医院',value:  2,symbol:'pin'},
+{name:'番禺东方俪人医院',value: 68,symbol:'pin'},
+{name:'番禺玛莉亚肛肠医院',value: 14,symbol:'pin'},
+{name:'广州圣亚泌尿外科医院',value: 34,symbol:'pin'},
+{name:'广州女子医院',value: 36,symbol:'pin'},
+{name:'广州市江南医院',value: 94,symbol:'pin'},
+{name:'广州济慈医院',value: 97,symbol:'pin'},
+{name:'广东民安医院',value: 24,symbol:'pin'},
+{name:'广州长泰医院',value: 20,symbol:'pin'},
+{name:'广州健安医院',value: 39,symbol:'pin'},
+{name:'广州458医院',value: 12,symbol:'pin'},
+{name:'广州花都人爱医院',value:  9,symbol:'pin'},
+{name:'广州远东美容医院',value: 94,symbol:'pin'},
+{name:'珠海惠爱医院',value: 69,symbol:'pin'},
+{name:'珠海九龙医院',value: 98,symbol:'pin'},
+{name:'珠海阳光医院',value: 54,symbol:'pin'},
+{name:'惠州仁德妇科医院',value:  3,symbol:'pin'},
+{name:'惠阳女子医院',value: 47,symbol:'pin'},
+{name:'惠州东江泌尿专科医院',value:  2,symbol:'pin'},
+{name:'中山现代妇科医院',value: 34,symbol:'pin'},
+{name:'中山市国丹中医院',value: 44,symbol:'pin'},
+{name:'中山阳光医院',value: 76,symbol:'pin'},
+{name:'汕头妇产医院',value: 10,symbol:'pin'},
+{name:'东莞现代妇科医院',value: 60,symbol:'pin'},
+{name:'东莞常平医院',value:  5,symbol:'pin'},
+{name:'东莞康桥妇科医院',value: 52,symbol:'pin'},
+{name:'东莞乌沙医院',value: 66,symbol:'pin'},
+{name:'东莞万福妇产医院',value: 88,symbol:'pin'},
+{name:'东莞南华妇科医院',value: 67,symbol:'pin'},
+{name:'东莞东方泌尿专科医院',value: 49,symbol:'pin'},
+{name:'江门玛丽妇科医院',value: 17,symbol:'pin'},
+{name:'江门福康医院',value: 26,symbol:'pin'},
+{name:'肇庆福康医院',value: 85,symbol:'pin'},
+{name:'佛山三水女子医院',value: 72,symbol:'pin'},
+{name:'顺德广济中医院',value: 77,symbol:'pin'},
+{name:'顺德新世纪泌尿医院',value: 38,symbol:'pin'},
+{name:'顺德庄头医院',value: 95,symbol:'pin'},
+{name:'顺德阳光康复医院',value: 80,symbol:'pin'},
+{name:'深圳美莱美容医院',value: 85,symbol:'pin'},
+{name:'深圳福华中西医结合医院',value: 62,symbol:'pin'},
+{name:'深圳博爱医院',value: 36,symbol:'pin'},
+{name:'深圳曙光医院',value: 49,symbol:'pin'},
+{name:'深圳远东妇儿科医院',value: 16,symbol:'pin'},
+{name:'深圳仁爱医院',value: 10,symbol:'pin'},
+{name:'深圳和美妇儿科医院',value: 72,symbol:'pin'},
+{name:'深圳仁康医院',value: 87,symbol:'pin'},
+{name:'深圳罗岗医院',value: 91,symbol:'pin'},
+{name:'深圳雪象医院',value: 25,symbol:'pin'},
+{name:'深圳健安医院',value: 25,symbol:'pin'},
+{name:'深圳华南妇科医院',value: 99,symbol:'pin'},
+{name:'深圳国瑞泌尿外科医院',value: 83,symbol:'pin'},
+{name:'深圳韩美医疗美容医院',value:  7,symbol:'pin'},
+{name:'深圳健丰医院',value: 15,symbol:'pin'},
+{name:'深圳龙济医院',value: 53,symbol:'pin'},
+{name:'深圳同仁妇科医院',value: 60,symbol:'pin'},
+{name:'深圳凤凰医院',value: 59,symbol:'pin'},
+{name:'深圳阳光医院',value: 98,symbol:'pin'},
+{name:'昆明华美美莱整形医院',value: 47,symbol:'pin'},
+{name:'云南玛莉亚女子医院',value: 74,symbol:'pin'},
+{name:'云南玛莉亚医院',value: 59,symbol:'pin'},
+{name:'昆明西昌路医院',value: 68,symbol:'pin'},
+{name:'昆明阳光医院',value:100,symbol:'pin'},
+{name:'昆明仁爱医院',value: 11,symbol:'pin'},
+{name:'昆明九州医院',value: 35,symbol:'pin'},
+{name:'解放军478医院妇产中心',value: 60,symbol:'pin'},
+{name:'昆明九州泌尿医院',value: 49,symbol:'pin'},
+{name:'玉溪九州医院',value:100,symbol:'pin'},
+{name:'富源阳光医院',value: 98,symbol:'pin'},
+{name:'曲靖九州医院',value: 90,symbol:'pin'},
+{name:'重庆华美美莱整形医院',value: 20,symbol:'pin'},
+{name:'重庆华山中医乳腺病医院',value: 50,symbol:'pin'},
+{name:'重庆坤如玛丽医院',value: 19,symbol:'pin'},
+{name:'重庆现代女子医院',value: 78,symbol:'pin'},
+{name:'重庆都市丽人医院',value: 36,symbol:'pin'},
+{name:'重庆万州博生医院',value: 12,symbol:'pin'},
+{name:'重庆万州美妇产医院',value: 71,symbol:'pin'},
+{name:'涪陵博生和美妇产医院',value: 59,symbol:'pin'},
+{name:'重庆市爱德华医院',value: 16,symbol:'pin'},
+{name:'重庆五洲女子医院',value: 14,symbol:'pin'},
+{name:'第三军医大学重庆新桥医院',value: 60,symbol:'pin'},
+{name:'重庆阳光医院',value: 15,symbol:'pin'},
+{name:'重庆生殖健康医院',value: 30,symbol:'pin'},
+{name:'重庆红楼医院',value:  8,symbol:'pin'},
+{name:'解放军第324医院',value: 75,symbol:'pin'},
+{name:'涪陵三峡医院',value: 41,symbol:'pin'},
+{name:'重庆红十字会医院',value: 61,symbol:'pin'},
+{name:'成都长征医院',value: 13,symbol:'pin'},
+{name:'成都博爱医院',value: 12,symbol:'pin'},
+{name:'成都丽人女子医院',value: 65,symbol:'pin'},
+{name:'成都华美美莱整形医院',value: 54,symbol:'pin'},
+{name:'四川华美紫馨医学美容医院',value: 78,symbol:'pin'},
+{name:'成都安琪儿妇产医院',value: 31,symbol:'pin'},
+{name:'成都蜀都乳腺医院',value: 36,symbol:'pin'},
+{name:'成都糖尿病专科医院',value: 49,symbol:'pin'},
+{name:'成都曙光男科医院',value: 62,symbol:'pin'},
+{name:'成都玛利亚妇产医院',value: 49,symbol:'pin'},
+{name:'成都欧亚男科医院',value: 20,symbol:'pin'},
+{name:'四川阳光妇科医院',value: 17,symbol:'pin'},
+{name:'成都康新妇科医院',value: 33,symbol:'pin'},
+{name:'成都济民女子医院',value: 63,symbol:'pin'},
+{name:'成都糖尿病专科医院',value:100,symbol:'pin'},
+{name:'成都曙光男科医院',value: 45,symbol:'pin'},
+{name:'解放军第三十七医院',value: 45,symbol:'pin'},
+{name:'遵义女子医院',value: 27,symbol:'pin'},
+{name:'凉山妇产医院',value: 95,symbol:'pin'},
+{name:'凉山男科医院',value:  2,symbol:'pin'},
+{name:'南充解放军51医院',value: 88,symbol:'pin'},
+{name:'武警四川总队医院',value:  8,symbol:'pin'},
+{name:'福州华美美莱整形医院',value: 74,symbol:'pin'},
+{name:'福州鼓楼医院',value: 78,symbol:'pin'},
+{name:'福州现代妇产医院',value: 95,symbol:'pin'},
+{name:'福州左海医院',value: 75,symbol:'pin'},
+{name:'福州总医院第二附属医院',value: 63,symbol:'pin'},
+{name:'福清阳光女子医院',value: 38,symbol:'pin'},
+{name:'福州东南女子医院',value: 32,symbol:'pin'},
+{name:'福州福兴妇产医院',value: 10,symbol:'pin'},
+{name:'福州誉盛医院',value: 42,symbol:'pin'},
+{name:'舟山现代妇科医院',value: 66,symbol:'pin'},
+{name:'舟山市千岛医院妇产科',value: 38,symbol:'pin'},
+{name:'厦门登特口腔医院',value: 58,symbol:'pin'},
+{name:'厦门友好妇科',value: 36,symbol:'pin'},
+{name:'厦门湖里康乐门诊部',value: 10,symbol:'pin'},
+{name:'莆田丽人妇科医院',value: 58,symbol:'pin'},
+{name:'莆田盛兴医院',value: 39,symbol:'pin'},
+{name:'莆田中西医肛肠医院',value: 53,symbol:'pin'},
+{name:'宁波美莱整形美容医院',value: 34,symbol:'pin'},
+{name:'宁波博爱医院',value: 53,symbol:'pin'},
+{name:'宁波虹桥医院',value: 56,symbol:'pin'},
+{name:'宁波欧亚男科医院',value: 54,symbol:'pin'},
+{name:'宁波甬城医院',value: 44,symbol:'pin'},
+{name:'慈溪圣爱医院',value: 92,symbol:'pin'},
+{name:'杭州新东方妇产科医院',value: 45,symbol:'pin'},
+{name:'杭州玛莉亚妇女医院',value: 69,symbol:'pin'},
+{name:'杭州虹桥医院',value: 55,symbol:'pin'},
+{name:'杭州建国医院',value: 49,symbol:'pin'},
+{name:'杭州天目山医院',value: 54,symbol:'pin'},
+{name:'杭州萧山九龙男科医院',value:  7,symbol:'pin'},
+{name:'杭州广仁医院',value: 79,symbol:'pin'},
+{name:'杭州阿波罗男子医院',value: 29,symbol:'pin'},
+{name:'杭州和睦医院',value: 47,symbol:'pin'},
+{name:'杭州真爱医院',value: 23,symbol:'pin'},
+{name:'湖州阳光女子医院',value:100,symbol:'pin'},
+{name:'泉州华美美莱整形医院',value: 18,symbol:'pin'},
+{name:'泉州南亚华侨医院',value: 76,symbol:'pin'},
+{name:'泉州新阳光女子医院',value: 64,symbol:'pin'},
+{name:'泉州坤如玛丽医院',value: 99,symbol:'pin'},
+{name:'泉州南亚医院',value:  9,symbol:'pin'},
+{name:'浙江金华博康生殖医院',value: 51,symbol:'pin'},
+{name:'浙江新安国际医院',value: 51,symbol:'pin'},
+{name:'嘉兴曙光中西医结合医院',value: 69,symbol:'pin'},
+{name:'嘉兴博爱医院',value: 93,symbol:'pin'},
+{name:'温岭和平医院',value: 73,symbol:'pin'},
+{name:'瑞安华东医院',value: 88,symbol:'pin'},
+{name:'温州长征医院',value: 96,symbol:'pin'},
+{name:'温州协和医院',value: 58,symbol:'pin'},
+{name:'温州建国医院',value: 23,symbol:'pin'},
+{name:'温州红旗医院',value: 95,symbol:'pin'},
+{name:'温州爱尔五官科医院',value: 93,symbol:'pin'},
+{name:'龙岩女子医院',value: 45,symbol:'pin'},
+{name:'龙岩阳光医院',value: 59,symbol:'pin'},
+{name:'济南美莱整形医院',value: 63,symbol:'pin'},
+{name:'济南乳腺医院',value: 42,symbol:'pin'},
+{name:'济南坤如玛丽医院',value: 64,symbol:'pin'},
+{name:'济南华夏医院',value: 72,symbol:'pin'},
+{name:'济南整形美容医院',value: 30,symbol:'pin'},
+{name:'济南妇科医院',value: 14,symbol:'pin'},
+{name:'山东红十字会医院',value: 97,symbol:'pin'},
+{name:'济南骨科医院',value: 55,symbol:'pin'},
+{name:'济南阳光女子医院',value:100,symbol:'pin'},
+{name:'潍坊博爱医院',value: 49,symbol:'pin'},
+{name:'潍坊长安医院',value: 69,symbol:'pin'},
+{name:'潍坊和平医院',value: 77,symbol:'pin'},
+{name:'青岛妇婴医院',value: 11,symbol:'pin'},
+{name:'青岛玛丽妇产医院',value: 51,symbol:'pin'},
+{name:'青岛长征院',value: 86,symbol:'pin'},
+{name:'青岛曙光男科医院',value: 69,symbol:'pin'},
+{name:'山东青岛曙光医院',value: 94,symbol:'pin'},
+{name:'青岛集美整形美容医院',value: 56,symbol:'pin'},
+{name:'青岛新阳光医院',value: 39,symbol:'pin'},
+{name:'齐河阳光医院',value: 99,symbol:'pin'},
+{name:'威海现代女子医院',value: 41,symbol:'pin'},
+{name:'聊城东昌府三医院',value: 31,symbol:'pin'},
+{name:'山东淄博金盾医院',value: 42,symbol:'pin'},
+{name:'淄博女子医院',value:  6,symbol:'pin'},
+{name:'黑龙江玛丽亚妇产医院',value: 70,symbol:'pin'},
+{name:'黑龙江东北医院',value: 64,symbol:'pin'},
+{name:'黑龙江和平医院',value: 44,symbol:'pin'},
+{name:'黑龙江和美妇产医院',value: 51,symbol:'pin'},
+{name:'哈尔滨市生殖保健中心院',value: 79,symbol:'pin'},
+{name:'哈尔滨欧亚男科医院',value: 58,symbol:'pin'},
+{name:'黑龙江长庚耳鼻喉医院',value: 18,symbol:'pin'},
+{name:'黑龙江阳光女子医院',value: 41,symbol:'pin'},
+{name:'黑龙江省武警黄金医院妇科',value:  4,symbol:'pin'},
+{name:'长春同济医院',value: 44,symbol:'pin'},
+{name:'吉林总队医院',value: 44,symbol:'pin'},
+{name:'长春长庚耳鼻喉医院',value:100,symbol:'pin'},
+{name:'长春阳光女子医院',value: 65,symbol:'pin'},
+{name:'长春阳光口腔医院',value: 51,symbol:'pin'},
+{name:'四平阳光医院',value: 88,symbol:'pin'},
+{name:'延吉博生现代妇科医院',value: 10,symbol:'pin'},
+{name:'沈阳北陵医院',value: 73,symbol:'pin'},
+{name:'沈阳曙光男科医院',value: 98,symbol:'pin'},
+{name:'武警辽宁省总队医院',value: 32,symbol:'pin'},
+{name:'解放军沈阳463医院希美整形美容',value: 23,symbol:'pin'},
+{name:'大连长城妇科医院',value: 74,symbol:'pin'},
+{name:'大连新世纪医院',value: 74,symbol:'pin'},
+{name:'大连阳光医院',value: 41,symbol:'pin'},
+{name:'无锡玛丽亚医院',value: 72,symbol:'pin'},
+{name:'无锡嘉仕恒信医院',value: 86,symbol:'pin'},
+{name:'无锡南站医院',value: 39,symbol:'pin'},
+{name:'无锡虹桥医院',value: 77,symbol:'pin'},
+{name:'江阴东方女子医院',value: 44,symbol:'pin'},
+{name:'宜兴武警医院',value: 42,symbol:'pin'},
+{name:'江阴九龙泌尿外科医院',value: 11,symbol:'pin'},
+{name:'无锡新区医院',value: 34,symbol:'pin'},
+{name:'江苏施尔美整形美容医院',value:  7,symbol:'pin'},
+{name:'南京曙光医院',value: 27,symbol:'pin'},
+{name:'南京江宁博爱医院',value: 25,symbol:'pin'},
+{name:'南京市江宁区众彩门诊部',value: 50,symbol:'pin'},
+{name:'南京世纪现代妇产医院（南院、东院）',value: 89,symbol:'pin'},
+{name:'南京建国男科医院',value: 67,symbol:'pin'},
+{name:'南京康豪妇科',value: 64,symbol:'pin'},
+{name:'南京阳光肿瘤医院',value:  4,symbol:'pin'},
+{name:'张家港朝阳五官科医院',value: 54,symbol:'pin'},
+{name:'江苏泰州红房子医院',value: 61,symbol:'pin'},
+{name:'泰州市海陵医院',value: 26,symbol:'pin'},
+{name:'泰州海陵女子医院',value: 78,symbol:'pin'},
+{name:'盐城协和康复医院',value: 13,symbol:'pin'},
+{name:'宿迁市妇产医院',value: 62,symbol:'pin'},
+{name:'泗洪阳光儿童医院',value: 13,symbol:'pin'},
+{name:'江苏淮安中山医院',value: 35,symbol:'pin'},
+{name:'淮安生殖医院',value: 23,symbol:'pin'},
+{name:'江苏海安华山医院',value: 32,symbol:'pin'},
+{name:'南通和美家妇产科医院',value: 88,symbol:'pin'},
+{name:'南通长城医院',value: 41,symbol:'pin'},
+{name:'武汉华夏医院',value: 93,symbol:'pin'},
+{name:'武汉华美医院',value: 90,symbol:'pin'},
+{name:'武汉现代女子妇科医院',value: 31,symbol:'pin'},
+{name:'武汉当代佳丽医院',value: 93,symbol:'pin'},
+{name:'湖北荣军医院',value:  8,symbol:'pin'},
+{name:'武汉阳光女子医院',value: 91,symbol:'pin'},
+{name:'武汉华仁医院',value: 48,symbol:'pin'},
+{name:'荆州华康医院',value: 20,symbol:'pin'},
+{name:'黄冈泌尿专科医院',value: 23,symbol:'pin'},
+{name:'湖北黄石福康医院',value: 16,symbol:'pin'},
+{name:'襄阳市第五人民医院',value: 44,symbol:'pin'},
+{name:'乌海现代医院',value: 30,symbol:'pin'},
+{name:'内蒙古天骄医院',value: 91,symbol:'pin'},
+{name:'呼和浩特五洲女子医院',value: 10,symbol:'pin'},
+{name:'贵州退休医师医院',value: 16,symbol:'pin'},
+{name:'贵阳五官中心',value:  8,symbol:'pin'},
+{name:'贵阳长江医院',value: 31,symbol:'pin'},
+{name:'贵阳和谐阳光医院',value: 61,symbol:'pin'},
+{name:'贵阳马王庙医院',value:  7,symbol:'pin'},
+{name:'贵阳现代女子医院',value: 58,symbol:'pin'},
+{name:'贵阳和美妇产医院',value: 78,symbol:'pin'},
+{name:'铜仁华夏医院',value:  5,symbol:'pin'},
+{name:'安顺阳光妇科医院',value: 79,symbol:'pin'},
+{name:'毕节现代医院',value: 82,symbol:'pin'},
+{name:'长沙华夏医院',value:  6,symbol:'pin'},
+{name:'长沙湘江医院七大医院',value: 27,symbol:'pin'},
+{name:'长沙阳光医院',value: 96,symbol:'pin'},
+{name:'长沙仁爱医院',value: 28,symbol:'pin'},
+{name:'长沙恒生手外科医院',value: 84,symbol:'pin'},
+{name:'长沙博大泌尿专科医院',value: 36,symbol:'pin'},
+{name:'长沙南方骨外科医院',value: 49,symbol:'pin'},
+{name:'长沙现代女子医院',value: 25,symbol:'pin'},
+{name:'长沙丽人妇产医院',value: 16,symbol:'pin'},
+{name:'武警湖南省总队医院',value: 63,symbol:'pin'},
+{name:'湖南郴州福康医院',value: 47,symbol:'pin'},
+{name:'湘潭阳光眼科中心',value: 41,symbol:'pin'},
+{name:'娄底阳光医院',value: 42,symbol:'pin'},
+{name:'南昌市第五医院',value: 19,symbol:'pin'},
+{name:'南昌仁爱女子医院',value: 59,symbol:'pin'},
+{name:'南昌曙光手足外科医院',value: 99,symbol:'pin'},
+{name:'南昌佳美美容医院',value: 62,symbol:'pin'},
+{name:'南昌华山不孕不育医院',value: 19,symbol:'pin'},
+{name:'南昌博爱泌尿专科医院',value: 10,symbol:'pin'},
+{name:'南昌东大肛肠专科医院',value: 95,symbol:'pin'},
+{name:'南昌博大耳鼻咽喉专科医院',value: 69,symbol:'pin'},
+{name:'南昌泌尿专科医院',value: 73,symbol:'pin'},
+{name:'九江玛丽亚医院',value: 76,symbol:'pin'},
+{name:'九江新世纪医院',value:  5,symbol:'pin'},
+{name:'九江阳光女子医院',value: 41,symbol:'pin'},
+{name:'江西吉安市第二人民医院',value: 75,symbol:'pin'},
+{name:'萍乡市新世纪泌尿专科医院',value: 55,symbol:'pin'},
+{name:'萍乡妇科医院',value: 66,symbol:'pin'},
+{name:'赣州现代泌尿专科医院',value: 71,symbol:'pin'},
+{name:'上饶东大肛肠专科医院',value: 38,symbol:'pin'},
+{name:'上饶协和医院',value:  7,symbol:'pin'},
+{name:'山西现代妇产医院',value:  5,symbol:'pin'},
+{name:'山西民生医院',value: 21,symbol:'pin'},
+{name:'太原糖尿病专科医院',value: 85,symbol:'pin'},
+{name:'太原新医医院',value: 19,symbol:'pin'},
+{name:'太原益民中医院',value: 98,symbol:'pin'},
+{name:'武警山西总队医院',value: 98,symbol:'pin'},
+{name:'山西长庚耳鼻喉医院',value: 51,symbol:'pin'},
+{name:'临汾现代女子医院',value: 29,symbol:'pin'},
+{name:'山西阳泉东方生殖医院',value: 58,symbol:'pin'},
+{name:'长治女子医院',value: 12,symbol:'pin'},
+{name:'大同新时代妇科医院',value: 30,symbol:'pin'},
+{name:'晋城现代女子医院',value: 17,symbol:'pin'},
+{name:'晋城生殖医院',value: 91,symbol:'pin'},
+{name:'山西新阳光妇科医院',value: 71,symbol:'pin'},
+{name:'运城禹都人民医院',value: 81,symbol:'pin'},
+{name:'西安俪人医院',value: 34,symbol:'pin'},
+{name:'武警陕西总队医院',value:  6,symbol:'pin'},
+{name:'西安阳光医院',value: 52,symbol:'pin'},
+{name:'包头现代女子妇产医院',value: 35,symbol:'pin'},
+{name:'澳美佳女子医院',value: 57,symbol:'pin'},
+{name:'蚌埠解放军一二三中心医院',value: 25,symbol:'pin'},
+{name:'涡阳阳光医院',value: 78,symbol:'pin'},
+{name:'芜湖阳光眼科医院',value: 17,symbol:'pin'},
+{name:'芜湖丹凤朝阳妇科医院',value: 49,symbol:'pin'},
+{name:'巢湖康平妇产医院',value: 54,symbol:'pin'},
+{name:'巢湖阳光妇幼医院',value: 13,symbol:'pin'},
+{name:'淮北女子医院',value: 33,symbol:'pin'},
+{name:'淮北阳光心理院',value: 48,symbol:'pin'},
+{name:'合肥市中山医院',value: 17,symbol:'pin'},
+{name:'合肥九龙男科医院',value: 14,symbol:'pin'},
+{name:'合肥丹凤朝阳妇科医院',value: 77,symbol:'pin'},
+{name:'安阳协和医院',value:  1,symbol:'pin'},
+{name:'河南中都皮肤病医院',value: 72,symbol:'pin'},
+{name:'河南省军区医院',value: 10,symbol:'pin'},
+{name:'郑州集美整形美容医院',value: 60,symbol:'pin'},
+{name:'郑州华夏白癜风医院',value: 28,symbol:'pin'},
+{name:'巩义阳光医院',value: 54,symbol:'pin'},
+{name:'郑州华山医院',value: 10,symbol:'pin'},
+{name:'许昌新时代妇科医院',value: 45,symbol:'pin'},
+{name:'许昌凤凰医院',value: 66,symbol:'pin'},
+{name:'许昌中山医院',value: 84,symbol:'pin'},
+{name:'廊坊万福医院',value: 82,symbol:'pin'},
+{name:'廊坊世纪协和医院',value:  9,symbol:'pin'},
+{name:'保定京津医院',value: 78,symbol:'pin'},
+{name:'保定世纪协和医院',value: 44,symbol:'pin'},
+{name:'保定长安医院',value: 31,symbol:'pin'},
+{name:'保定现代女子医院',value: 88,symbol:'pin'},
+{name:'保定白癜风医院',value: 71,symbol:'pin'},
+{name:'唐山京城皮肤病医院',value:100,symbol:'pin'},
+{name:'唐山女子医院',value: 21,symbol:'pin'},
+{name:'唐山红十字医院',value: 90,symbol:'pin'},
+{name:'解放军534医院',value: 80,symbol:'pin'},
+{name:'洛阳牡丹女子医院',value: 16,symbol:'pin'},
+{name:'信阳泌尿外科医院',value: 66,symbol:'pin'},
+{name:'平顶山市武警医院',value: 60,symbol:'pin'},
+{name:'漯河东方医院',value: 70,symbol:'pin'},
+{name:'河北东方中西医结合医院',value: 61,symbol:'pin'},
+{name:'石家庄美联臣医疗美容医院',value: 66,symbol:'pin'},
+{name:'邯郸仁爱妇科医院',value:  3,symbol:'pin'},
+{name:'西藏博爱医院',value: 96,symbol:'pin'},
+{name:'拉萨北大泌尿生殖医院',value: 53,symbol:'pin'},
+{name:'宁夏西京妇产医院',value: 13,symbol:'pin'},
+{name:'兰州仁和医院',value:  6,symbol:'pin'},
+{name:'广西阳光医院',value:  3,symbol:'pin'},
+{name:'桂林阳光医院',value:  3,symbol:'pin'},
+{name:'柳州福康医院',value: 51,symbol:'pin'},
+{name:'伊犁阳光女子医院',value: 34,symbol:'pin'},
+{name:'伊宁阳光女子医院',value: 40,symbol:'pin'},
+{name:'新彊维吾尔自治区人民医院肿瘤中心',value: 52,symbol:'pin'},
+{name:'新疆爱德华医院',value: 84,symbol:'pin'},
+{name:'武警海南总队医院妇科中心',value: 17,symbol:'pin'}
+      ]},
+      geoCoord:{'上海市闵行区中医院': [121.42502,31.09354],
+'上海华美美莱整形医院': [121.42899,31.23277],
+'上海万众医院': [121.42672,31.19537],
+'上海安真医院': [121.23528,31.00906],
+'上海福华医院': [121.75317,31.04560],
+'上海玛丽女子医院': [121.12533,31.15449],
+'上海真爱女子医院': [121.43826,31.21937],
+'上海心脏病医院': [121.48790,31.24916],
+'上海远大心胸医院': [121.44877,31.17593],
+'上海仁爱医院': [121.44233,31.18185],
+'上海天大医疗美容医院': [121.41806,31.22211],
+'上海沪申五官科医院': [121.44923,31.16301],
+'上海博爱医院': [121.45102,31.21486],
+'上海新虹桥医院': [121.40424,31.20913],
+'上海九龙男子医院': [121.41775,31.22267],
+'上海城市女子医院': [121.38382,31.25582],
+'上海西郊骨科医院': [121.48790,31.24916],
+'上海真美妇科医院': [121.51767,31.29510],
+'上海南浦妇科医院': [121.51993,31.20992],
+'上海虹桥医院': [121.40134,31.18060],
+'上海健桥医院': [121.47116,31.25818],
+'上海博爱医院': [121.45102,31.21486],
+'上海长江医院': [121.50519,31.26191],
+'解放军411医院': [113.23080,35.24171],
+'上海阳光中医医院': [121.48790,31.24916],
+'上海英港泌尿外科医院': [121.50380,31.37942],
+'上海阿波罗男子医院': [121.49111,31.21759],
+'上海玫瑰女子医院': [121.45804,31.25339],
+'上海康新医院': [121.44804,31.24273],
+'上海圣爱医院': [121.25842,31.37771],
+'上海同德医院': [121.11204,31.16742],
+'上海安平医院': [121.70283,31.20845],
+'江东泌尿外科医院': [121.59800,29.87539],
+'上海九州泌尿医院': [121.48790,31.24916],
+'上海青城医院': [121.12176,31.16584],
+'上海博大医院': [121.23619,31.01155],
+'上海中亚医院': [121.24178,31.37900],
+'北京华美美莱整形医院': [116.42277,39.93154],
+'北京俪人女子医院': [116.39565,39.92999],
+'北京北海医院': [116.40272,39.94135],
+'北京前海股骨头医院': [116.39095,39.93916],
+'北京市慧慈医院': [117.12858,40.14852],
+'北京五洲女子医院': [116.48373,39.89791],
+'北京圣保罗男子医院': [116.39565,39.92999],
+'北京恒安中医院': [116.48584,39.88995],
+'北京建国医院': [116.48481,39.92028],
+'北京国际医疗中心': [116.47250,39.95562],
+'北京天伦不孕不育医院': [116.44203,39.92441],
+'北京美联臣医疗美容医院': [116.46871,39.89274],
+'北京慧中医院': [116.39565,39.92999],
+'北京阳光丽人妇科医院': [116.37411,39.93681],
+'北京恒安中医院': [116.48584,39.88995],
+'北京京城皮肤病医院': [116.37202,40.01451],
+'北京京北医院': [116.35677,40.03501],
+'北京瑞京糖尿病医院': [116.45839,39.86332],
+'北京众安康中医骨科': [116.39565,39.92999],
+'北京玛丽妇婴医院': [116.43777,39.96571],
+'北京麦瑞骨科医院': [116.42495,40.02963],
+'北京健宫医院': [116.38211,39.88697],
+'苏州东吴医院': [120.60552,31.28659],
+'苏州华美美莱整形医院': [120.61991,31.31799],
+'昆山虹桥医院': [120.98722,31.37636],
+'常熟东方妇科医院': [120.75142,31.66264],
+'常熟仁爱医院': [120.83149,31.66945],
+'昆山阳光医院': [120.96214,31.31981],
+'苏州圣爱医院': [120.56533,31.30277],
+'苏州新医科': [120.61991,31.31799],
+'天津坤如玛丽医院': [117.21081,39.14393],
+'天津华北医院': [117.23244,39.13788],
+'天津华厦医院': [117.21081,39.14393],
+'天津丽人女子医院': [117.24397,39.11625],
+'天津华山医院': [117.16959,39.13394],
+'天津怡泰生殖专科医院': [117.15856,39.13675],
+'天津现代女子医院': [117.20966,39.14090],
+'天津怡泰医院': [117.15856,39.13675],
+'天津乐园医院': [117.22650,39.09810],
+'天津长庚耳鼻喉医院': [117.18706,39.18250],
+'广州华美美莱整形医院': [113.39344,23.20258],
+'广州现代医院': [113.31510,23.16290],
+'广州长安医院': [113.34273,23.13885],
+'广州益寿医院': [113.25566,23.17722],
+'广州利德医院': [113.30576,23.16005],
+'番禺东方俪人医院': [113.37375,22.94602],
+'番禺玛莉亚肛肠医院': [113.41680,22.93459],
+'广州圣亚泌尿外科医院': [113.32144,23.14388],
+'广州女子医院': [113.24324,23.10500],
+'广州市江南医院': [113.31952,23.09732],
+'广州济慈医院': [113.56189,23.10973],
+'广东民安医院': [113.30343,23.13912],
+'广州长泰医院': [113.42127,23.12610],
+'广州健安医院': [113.62551,23.12771],
+'广州458医院': [113.31860,23.13727],
+'广州花都人爱医院': [113.21251,23.40289],
+'广州远东美容医院': [113.26436,23.17892],
+'珠海惠爱医院': [113.56738,22.23244],
+'珠海九龙医院': [113.58025,22.25195],
+'珠海阳光医院': [113.59362,22.25512],
+'惠州仁德妇科医院': [114.40943,23.08068],
+'惠阳女子医院': [114.47565,22.78014],
+'惠州东江泌尿专科医院': [114.41789,23.08091],
+'中山现代妇科医院': [113.40135,22.51823],
+'中山市国丹中医院': [113.46467,22.55778],
+'中山阳光医院': [113.38490,22.50947],
+'汕头妇产医院': [116.73783,23.37819],
+'东莞现代妇科医院': [113.80726,23.06512],
+'东莞常平医院': [114.02401,22.97282],
+'东莞康桥妇科医院': [114.11105,22.81867],
+'东莞乌沙医院': [113.78866,22.80006],
+'东莞万福妇产医院': [113.70183,22.82007],
+'东莞南华妇科医院': [113.92003,22.96606],
+'东莞东方泌尿专科医院': [113.78492,23.04700],
+'江门玛丽妇科医院': [113.07573,22.59780],
+'江门福康医院': [113.07813,22.57512],
+'肇庆福康医院': [112.49843,23.06169],
+'佛山三水女子医院': [112.89332,23.17503],
+'顺德广济中医院': [113.18703,22.84851],
+'顺德新世纪泌尿医院': [113.24545,22.81868],
+'顺德庄头医院': [113.20421,22.99537],
+'顺德阳光康复医院': [113.24651,22.84773],
+'深圳美莱美容医院': [114.02597,22.54605],
+'深圳福华中西医结合医院': [114.09080,22.54338],
+'深圳博爱医院': [114.11141,22.55842],
+'深圳曙光医院': [114.11417,22.55322],
+'深圳远东妇儿科医院': [114.13035,22.54983],
+'深圳仁爱医院': [114.04790,22.52625],
+'深圳和美妇儿科医院': [113.92860,22.54635],
+'深圳仁康医院': [114.12454,22.59111],
+'深圳罗岗医院': [114.13258,22.60214],
+'深圳雪象医院': [114.08508,22.65720],
+'深圳健安医院': [114.04451,22.63505],
+'深圳华南妇科医院': [114.35137,22.69930],
+'深圳国瑞泌尿外科医院': [114.02597,22.54605],
+'深圳韩美医疗美容医院': [114.02597,22.54605],
+'深圳健丰医院': [114.33723,22.70688],
+'深圳龙济医院': [114.01900,22.66463],
+'深圳同仁妇科医院': [113.87835,22.58146],
+'深圳凤凰医院': [114.14423,22.55273],
+'深圳阳光医院': [114.11819,22.54667],
+'昆明华美美莱整形医院': [102.71460,25.04915],
+'云南玛莉亚女子医院': [102.72434,25.06104],
+'云南玛莉亚医院': [102.72459,25.06055],
+'昆明西昌路医院': [102.70618,25.04029],
+'昆明阳光医院': [102.71460,25.04915],
+'昆明仁爱医院': [102.71523,25.07294],
+'昆明九州医院': [102.71460,25.04915],
+'解放军478医院妇产中心': [113.23080,35.24171],
+'昆明九州泌尿医院': [102.71460,25.04915],
+'玉溪九州医院': [102.54507,24.37045],
+'富源阳光医院': [104.26158,25.66467],
+'曲靖九州医院': [103.78254,25.52076],
+'重庆华美美莱整形医院': [106.66219,29.03084],
+'重庆华山中医乳腺病医院': [108.43071,31.06566],
+'重庆坤如玛丽医院': [106.53064,29.54461],
+'重庆现代女子医院': [106.57959,29.53553],
+'重庆都市丽人医院': [106.53064,29.54461],
+'重庆万州博生医院': [108.41344,30.71005],
+'重庆万州美妇产医院': [108.38669,30.81171],
+'涪陵博生和美妇产医院': [107.40267,29.71696],
+'重庆市爱德华医院': [106.46539,29.55922],
+'重庆五洲女子医院': [106.52042,29.53352],
+'第三军医大学重庆新桥医院': [106.44435,29.52852],
+'重庆阳光医院': [106.53498,29.58763],
+'重庆生殖健康医院': [106.52773,29.58596],
+'重庆红楼医院': [106.52967,29.54591],
+'解放军第324医院': [113.34108,23.09963],
+'涪陵三峡医院': [107.40663,29.70074],
+'重庆红十字会医院': [107.78904,30.66652],
+'成都长征医院': [103.67073,30.63643],
+'成都博爱医院': [104.09428,30.65912],
+'成都丽人女子医院': [104.07298,30.67637],
+'成都华美美莱整形医院': [104.14623,30.68307],
+'四川华美紫馨医学美容医院': [103.77114,29.58068],
+'成都安琪儿妇产医院': [104.08694,30.61384],
+'成都蜀都乳腺医院': [104.06496,30.67836],
+'成都糖尿病专科医院': [103.63534,30.99713],
+'成都曙光男科医院': [104.04663,30.66501],
+'成都玛利亚妇产医院': [104.06792,30.67994],
+'成都欧亚男科医院': [104.04769,30.65992],
+'四川阳光妇科医院': [104.03121,30.64443],
+'成都康新妇科医院': [104.08316,30.67618],
+'成都济民女子医院': [104.06792,30.67994],
+'成都糖尿病专科医院': [103.63534,30.99713],
+'成都曙光男科医院': [104.04663,30.66501],
+'解放军第三十七医院': [113.34108,23.09963],
+'遵义女子医院': [106.94127,27.72640],
+'凉山妇产医院': [102.26258,27.89194],
+'凉山男科医院': [102.25959,27.89239],
+'南充解放军51医院': [106.09350,30.81049],
+'武警四川总队医院': [102.89916,30.36748],
+'福州华美美莱整形医院': [119.33022,26.04713],
+'福州鼓楼医院': [119.31697,26.08640],
+'福州现代妇产医院': [119.30145,26.11446],
+'福州左海医院': [119.29446,26.10710],
+'福州总医院第二附属医院': [119.54669,26.64485],
+'福清阳光女子医院': [119.37755,25.63812],
+'福州东南女子医院': [119.34625,26.06130],
+'福州福兴妇产医院': [119.35967,26.07775],
+'福州誉盛医院': [119.36591,26.07888],
+'舟山现代妇科医院': [122.11016,30.01962],
+'舟山市千岛医院妇产科': [122.16987,30.03601],
+'厦门登特口腔医院': [118.12961,24.48911],
+'厦门友好妇科': [118.10389,24.48923],
+'厦门湖里康乐门诊部': [118.12417,24.51278],
+'莆田丽人妇科医院': [119.01103,25.43062],
+'莆田盛兴医院': [119.10964,25.31542],
+'莆田中西医肛肠医院': [119.07773,25.44845],
+'宁波美莱整形美容医院': [121.56367,29.87183],
+'宁波博爱医院': [121.57901,29.88526],
+'宁波虹桥医院': [121.57901,29.88526],
+'宁波欧亚男科医院': [121.55640,29.86596],
+'宁波甬城医院': [121.57901,29.88526],
+'慈溪圣爱医院': [121.24486,30.18639],
+'杭州新东方妇产科医院': [120.21339,30.27007],
+'杭州玛莉亚妇女医院': [120.19954,30.24414],
+'杭州虹桥医院': [120.19072,30.25305],
+'杭州建国医院': [120.21938,30.25924],
+'杭州天目山医院': [120.10960,30.27058],
+'杭州萧山九龙男科医院': [120.28660,30.15441],
+'杭州广仁医院': [120.21453,30.28685],
+'杭州阿波罗男子医院': [120.18903,30.27617],
+'杭州和睦医院': [120.12807,30.31562],
+'杭州真爱医院': [120.21938,30.25924],
+'湖州阳光女子医院': [120.13724,30.87793],
+'泉州华美美莱整形医院': [118.67770,24.60799],
+'泉州南亚华侨医院': [118.91484,25.12630],
+'泉州新阳光女子医院': [118.60449,24.88995],
+'泉州坤如玛丽医院': [118.61542,24.91407],
+'泉州南亚医院': [118.61565,24.91554],
+'浙江金华博康生殖医院': [119.68469,29.11831],
+'浙江新安国际医院': [120.70147,30.77118],
+'嘉兴曙光中西医结合医院': [120.77856,30.74344],
+'嘉兴博爱医院': [120.70793,30.51872],
+'温岭和平医院': [121.37284,28.50622],
+'瑞安华东医院': [120.66084,27.78570],
+'温州长征医院': [120.66909,28.01909],
+'温州协和医院': [120.70142,28.01320],
+'温州建国医院': [120.67185,27.98751],
+'温州红旗医院': [120.69454,27.98832],
+'温州爱尔五官科医院': [120.73528,27.99549],
+'龙岩女子医院': [117.03405,25.07497],
+'龙岩阳光医院': [117.03314,25.09271],
+'济南美莱整形医院': [117.05545,36.66048],
+'济南乳腺医院': [117.02497,36.68278],
+'济南坤如玛丽医院': [117.01977,36.67903],
+'济南华夏医院': [117.00582,36.69050],
+'济南整形美容医院': [117.02497,36.68278],
+'济南妇科医院': [116.99875,36.65521],
+'山东红十字会医院': [116.98977,36.66367],
+'济南骨科医院': [117.00406,36.64192],
+'济南阳光女子医院': [117.02336,36.66578],
+'潍坊博爱医院': [119.40480,36.85167],
+'潍坊长安医院': [119.14263,36.71611],
+'潍坊和平医院': [119.15893,36.71946],
+'青岛妇婴医院': [120.32563,36.07070],
+'青岛玛丽妇产医院': [120.38266,36.09341],
+'青岛长征院': [120.38443,36.10521],
+'青岛曙光男科医院': [120.38443,36.10521],
+'山东青岛曙光医院': [120.41734,36.08939],
+'青岛集美整形美容医院': [120.38443,36.10521],
+'青岛新阳光医院': [120.42416,36.15967],
+'齐河阳光医院': [116.67825,36.72345],
+'威海现代女子医院': [122.09396,37.52879],
+'聊城东昌府三医院': [115.90771,36.45583],
+'山东淄博金盾医院': [118.06802,36.82130],
+'淄博女子医院': [118.05416,36.82654],
+'黑龙江玛丽亚妇产医院': [126.67317,45.75035],
+'黑龙江东北医院': [126.65861,45.75080],
+'黑龙江和平医院': [126.67520,45.77278],
+'黑龙江和美妇产医院': [126.67937,45.74842],
+'哈尔滨市生殖保健中心院': [126.67481,45.76244],
+'哈尔滨欧亚男科医院': [126.67800,45.78355],
+'黑龙江长庚耳鼻喉医院': [126.62927,45.74343],
+'黑龙江阳光女子医院': [128.04741,47.35659],
+'黑龙江省武警黄金医院妇科': [126.64403,45.70945],
+'长春同济医院': [125.31919,43.90034],
+'吉林总队医院': [125.30403,43.94330],
+'长春长庚耳鼻喉医院': [125.34386,43.89503],
+'长春阳光女子医院': [125.31364,43.89834],
+'长春阳光口腔医院': [125.31364,43.89834],
+'四平阳光医院': [124.82564,43.50723],
+'延吉博生现代妇科医院': [129.52386,42.91870],
+'沈阳北陵医院': [123.43834,41.84542],
+'沈阳曙光男科医院': [123.43279,41.80864],
+'武警辽宁省总队医院': [123.42050,41.86880],
+'解放军沈阳463医院希美整形美容': [123.47919,41.79913],
+'大连长城妇科医院': [121.59348,38.94871],
+'大连新世纪医院': [121.59348,38.94871],
+'大连阳光医院': [121.60832,38.91275],
+'无锡玛丽亚医院': [120.30155,31.58376],
+'无锡嘉仕恒信医院': [120.26993,31.55847],
+'无锡南站医院': [120.32942,31.56824],
+'无锡虹桥医院': [120.35074,31.56691],
+'江阴东方女子医院': [120.29258,31.90293],
+'宜兴武警医院': [119.79027,31.36224],
+'江阴九龙泌尿外科医院': [120.31068,31.83743],
+'无锡新区医院': [120.35914,31.55606],
+'江苏施尔美整形美容医院': [118.80923,32.04197],
+'南京曙光医院': [118.78927,32.01273],
+'南京江宁博爱医院': [118.86966,31.96343],
+'南京市江宁区众彩门诊部': [118.83542,31.86397],
+'南京世纪现代妇产医院（南院、东院）': [118.92939,32.04381],
+'南京建国男科医院': [118.80258,32.01993],
+'南京康豪妇科': [118.77807,32.05724],
+'南京阳光肿瘤医院': [118.74195,32.06137],
+'张家港朝阳五官科医院': [120.53979,31.87974],
+'江苏泰州红房子医院': [119.94031,32.48867],
+'泰州市海陵医院': [119.91961,32.47605],
+'泰州海陵女子医院': [119.92117,32.48826],
+'盐城协和康复医院': [120.14887,33.37986],
+'宿迁市妇产医院': [118.27730,33.96478],
+'泗洪阳光儿童医院': [118.31255,33.42596],
+'江苏淮安中山医院': [119.04967,33.60848],
+'淮安生殖医院': [119.01528,33.61964],
+'江苏海安华山医院': [120.47687,32.54399],
+'南通和美家妇产科医院': [120.90178,31.96923],
+'南通长城医院': [120.84037,32.02098],
+'武汉华夏医院': [114.34043,30.53793],
+'武汉华美医院': [114.30134,30.60741],
+'武汉现代女子妇科医院': [114.26781,30.57545],
+'武汉当代佳丽医院': [114.31620,30.58108],
+'湖北荣军医院': [114.38387,30.51157],
+'武汉阳光女子医院': [114.31620,30.58108],
+'武汉华仁医院': [114.35452,30.53426],
+'荆州华康医院': [112.22717,30.35145],
+'黄冈泌尿专科医院': [114.87741,30.44927],
+'湖北黄石福康医院': [115.10853,30.21538],
+'襄阳市第五人民医院': [112.25009,32.22917],
+'乌海现代医院': [106.83129,39.67813],
+'内蒙古天骄医院': [111.65868,40.84864],
+'呼和浩特五洲女子医院': [111.67274,40.80652],
+'贵州退休医师医院': [106.71974,26.57023],
+'贵阳五官中心': [106.70918,26.62991],
+'贵阳长江医院': [106.71815,26.58892],
+'贵阳和谐阳光医院': [106.67415,26.58758],
+'贵阳马王庙医院': [106.66035,26.58921],
+'贵阳现代女子医院': [106.71138,26.58902],
+'贵阳和美妇产医院': [106.69963,26.53691],
+'铜仁华夏医院': [109.20113,27.74443],
+'安顺阳光妇科医院': [105.93131,26.25693],
+'毕节现代医院': [105.29377,27.30759],
+'长沙华夏医院': [113.08653,28.23666],
+'长沙湘江医院七大医院': [113.08820,28.24550],
+'长沙阳光医院': [112.98451,28.18901],
+'长沙仁爱医院': [112.98622,28.21978],
+'长沙恒生手外科医院': [113.01364,28.14268],
+'长沙博大泌尿专科医院': [113.00343,28.18737],
+'长沙南方骨外科医院': [113.08052,28.22977],
+'长沙现代女子医院': [113.00555,28.17338],
+'长沙丽人妇产医院': [113.01279,28.19130],
+'武警湖南省总队医院': [111.72066,27.69586],
+'湖南郴州福康医院': [113.03384,25.81138],
+'湘潭阳光眼科中心': [112.91883,27.87001],
+'娄底阳光医院': [112.00658,27.75718],
+'南昌市第五医院': [115.92232,28.63815],
+'南昌仁爱女子医院': [115.88937,28.66060],
+'南昌曙光手足外科医院': [115.92996,28.66076],
+'南昌佳美美容医院': [115.92828,28.65321],
+'南昌华山不孕不育医院': [115.89353,28.68958],
+'南昌博爱泌尿专科医院': [115.89329,28.69206],
+'南昌东大肛肠专科医院': [115.89299,28.69208],
+'南昌博大耳鼻咽喉专科医院': [115.89353,28.68958],
+'南昌泌尿专科医院': [115.89353,28.68958],
+'九江玛丽亚医院': [115.98697,29.72915],
+'九江新世纪医院': [115.98748,29.72844],
+'九江阳光女子医院': [115.98697,29.72925],
+'江西吉安市第二人民医院': [114.99002,27.10332],
+'萍乡市新世纪泌尿专科医院': [113.85992,27.63954],
+'萍乡妇科医院': [113.85824,27.65388],
+'赣州现代泌尿专科医院': [114.96906,25.82757],
+'上饶东大肛肠专科医院': [117.97489,28.46663],
+'上饶协和医院': [117.98302,28.44765],
+'山西现代妇产医院': [112.58636,37.84578],
+'山西民生医院': [112.55153,37.84416],
+'太原糖尿病专科医院': [112.58970,37.85796],
+'太原新医医院': [112.59003,37.83749],
+'太原益民中医院': [112.58935,37.84515],
+'武警山西总队医院': [112.58487,37.81111],
+'山西长庚耳鼻喉医院': [112.59293,37.85052],
+'临汾现代女子医院': [111.52295,36.07728],
+'山西阳泉东方生殖医院': [113.58800,37.86363],
+'长治女子医院': [113.10709,36.19885],
+'大同新时代妇科医院': [113.29575,40.11703],
+'晋城现代女子医院': [112.85644,35.50318],
+'晋城生殖医院': [112.86141,35.50017],
+'山西新阳光妇科医院': [112.58430,37.83286],
+'运城禹都人民医院': [111.02158,35.04234],
+'西安俪人医院': [108.91452,34.23490],
+'武警陕西总队医院': [109.50379,35.86003],
+'西安阳光医院': [108.97777,34.32520],
+'包头现代女子妇产医院': [109.84609,40.65983],
+'澳美佳女子医院': [117.38357,32.95657],
+'蚌埠解放军一二三中心医院': [117.37281,32.94550],
+'涡阳阳光医院': [116.24704,33.48870],
+'芜湖阳光眼科医院': [118.38411,31.36602],
+'芜湖丹凤朝阳妇科医院': [118.37616,31.36656],
+'巢湖康平妇产医院': [117.88923,31.60373],
+'巢湖阳光妇幼医院': [117.88049,31.60873],
+'淮北女子医院': [116.79990,33.97288],
+'淮北阳光心理院': [116.81433,33.97957],
+'合肥市中山医院': [117.32081,31.87924],
+'合肥九龙男科医院': [117.28270,31.86694],
+'合肥丹凤朝阳妇科医院': [117.31285,31.88919],
+'安阳协和医院': [114.34108,36.09687],
+'河南中都皮肤病医院': [113.74671,34.75559],
+'河南省军区医院': [113.68014,34.77152],
+'郑州集美整形美容医院': [113.64964,34.75661],
+'郑州华夏白癜风医院': [113.69127,34.72206],
+'巩义阳光医院': [112.99051,34.74541],
+'郑州华山医院': [113.60666,34.74249],
+'许昌新时代妇科医院': [113.82408,34.02224],
+'许昌凤凰医院': [113.82738,34.02876],
+'许昌中山医院': [113.83035,34.03419],
+'廊坊万福医院': [116.71236,39.54559],
+'廊坊世纪协和医院': [116.71502,39.51822],
+'保定京津医院': [115.52354,38.87115],
+'保定世纪协和医院': [115.49183,38.86622],
+'保定长安医院': [115.49481,38.88656],
+'保定现代女子医院': [115.46321,38.88862],
+'保定白癜风医院': [115.49979,38.85329],
+'唐山京城皮肤病医院': [118.15669,39.63580],
+'唐山女子医院': [118.14529,39.63078],
+'唐山红十字医院': [118.12124,39.83315],
+'解放军534医院': [113.23080,35.24171],
+'洛阳牡丹女子医院': [112.44752,34.65737],
+'信阳泌尿外科医院': [114.08549,32.12858],
+'平顶山市武警医院': [113.30085,33.74530],
+'漯河东方医院': [114.04720,33.58367],
+'河北东方中西医结合医院': [114.49274,38.04143],
+'石家庄美联臣医疗美容医院': [114.49274,38.04143],
+'邯郸仁爱妇科医院': [114.48269,36.60931],
+'西藏博爱医院': [ 89.13798,31.36732],
+'拉萨北大泌尿生殖医院': [ 91.11189,29.66256],
+'宁夏西京妇产医院': [106.28905,38.45647],
+'兰州仁和医院': [103.83515,36.04710],
+'广西阳光医院': [108.92427,23.55225],
+'桂林阳光医院': [110.26092,25.26290],
+'柳州福康医院': [109.44496,24.30006],
+'伊犁阳光女子医院': [106.38620,39.01537],
+'伊宁阳光女子医院': [ 81.28905,44.02036],
+'新彊维吾尔自治区人民医院肿瘤中心': [ 87.62130,43.79128],
+'新疆爱德华医院': [105.58731,30.50744],
+'武警海南总队医院妇科中心': [110.37421,20.04515]
+                  }
+
+
+    },
+    ]
+};
+
+var myChart = BMapExt.initECharts(container);
+                       window.onresize = myChart.onresize;
+                       BMapExt.setOption(optionID_20160507102219_25810);
+                       }
+);
+                       })();</script>
+
+<p>还是贴张截图吧…万一有手机党呢..</p>
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/102.png"></p>
+<p>最后,把所有的代码放在一起,方便大家调用(顺便我可以数一下有几行,不到30,啧啧啧)</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">##获取数据</span></div><div class="line">raw = readLines(<span class="string">"http://news.ifeng.com/mainland/special/ptxyy/"</span>,</div><div class="line">                encoding = <span class="string">"UTF-8"</span>)</div><div class="line">rawHospital = raw[<span class="number">123</span> : <span class="number">238</span>]</div><div class="line"><span class="comment">## 数据整理</span></div><div class="line">extFun = <span class="keyword">function</span>(x)&#123;</div><div class="line">  split = strsplit(x, <span class="string">"','"</span>)</div><div class="line">  out = strsplit(split[[<span class="number">1</span>]][<span class="number">2</span>], <span class="string">"&lt;br/&gt;"</span>)</div><div class="line">  <span class="keyword">return</span>(out)</div><div class="line">&#125;</div><div class="line">extFun(rawHospital[<span class="number">1</span>])</div><div class="line">hosList = sapply(rawHospital,extFun)</div><div class="line">hospital = c()</div><div class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">1</span>:length(hosList)) hospital = append(hospital, hosList[[i]])</div><div class="line"><span class="comment">## 获取经纬度</span></div><div class="line"><span class="keyword">library</span>(baidumap)</div><div class="line">blackHospital = getCoordinate(hospital, formatted = <span class="literal">T</span>)</div><div class="line">blackHospital = na.omit(blackHospital)</div><div class="line">plotdata = data.frame(lon = blackHospital[,<span class="number">1</span>],</div><div class="line">                      lat = blackHospital[,<span class="number">2</span>],</div><div class="line">                      city = rownames(blackHospital))</div><div class="line"><span class="comment">## 绘制地图</span></div><div class="line"><span class="keyword">library</span>(REmap)</div><div class="line">remapB(markPointData = data.frame(plotdata$city),</div><div class="line">       markPointTheme = markPointControl(symbol = <span class="string">"pin"</span>,</div><div class="line">                                         effect=<span class="literal">F</span>,</div><div class="line">                                         symbolSize = <span class="number">5</span>,</div><div class="line">                                         color=<span class="string">"red"</span>),</div><div class="line">       geoData = plotdata)</div></pre></td></tr></table></figure>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2016/05/07/blackhospital.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>中文优化的slidify</title>
+      <link>http://lchiffon.github.io/2016/02/27/slidify2.html</link>
+      <guid>http://lchiffon.github.io/2016/02/27/slidify2.html</guid>
+      <pubDate>Fri, 26 Feb 2016 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;&lt;a href=&quot;slidify.org&quot;&gt;slidify&lt;/a&gt;是款用Rmd生成精美slides的R包，作者是&lt;a href=&quot;https://github.com/ramnathv&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ramnath Vaid
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p><a href="slidify.org">slidify</a>是款用Rmd生成精美slides的R包，作者是<a href="https://github.com/ramnathv" target="_blank" rel="external">Ramnath Vaidyanathan</a>.<br>以前我也写过关于<a href="http://lchiffon.github.io/2014/11/29/slidify-chinese.html">slidify中文支持的博客</a>和<a href="http://lchiffon.github.io/2015/05/08/RevealJS.html">slidify中的reveal</a>.</p>
+<p>后来由于slidify的种种原因,windows下很多用户都没法正常的使用slidify,(尤其是推出新版stringr和slidify后)</p>
+<p>目前,我fork了Ramnath的slidify包,并在尝试改造成一个中文友好的版本(目前进展不错)</p>
+<p>可以使用以下方式来安装:</p>
+<pre><code>library(devtools)
+install_github(&quot;lchiffon/slidify&quot;)
+install_github(&quot;ramnath/slidifyLibraries&quot;)
+</code></pre><p>不用费心于0.6.2的stringr,不用更改系统语言,不用控制slidify的版本…我只想说应该没问题(测了几次基本没问题)</p>
+<p>欢迎大家试用并提出问题/修改意见<br>这个包并没有在CRAN的镜像上，而是托管在Github上，需要用以下方法安装:</p>
+<pre><code>library(devtools)
+install_github(&quot;lchiffon/slidify&quot;)
+install_github(&quot;ramnath/slidifyLibraries&quot;)
+</code></pre><p>不用费心于0.6.2的stringr,不用更改系统语言,不用控制slidify的版本…我只想说应该没问题(测了几次基本没问题)</p>
+<p>欢迎大家试用并提出问题/修改意见<br>这个包并没有在CRAN的镜像上，而是托管在Github上，需要用以下方法安装:</p>
+<p>(在运行之前需要保证安装了devtools,如果没有请跑下<code>install.packages(&#39;devtools&#39;)</code>)</p>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2016/02/27/slidify2.html#disqus_thread</comments>
+    </item>
+    
+  </channel>
+</rss>
