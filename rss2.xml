@@ -8,8 +8,50 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Wed, 19 Apr 2017 09:43:08 GMT</pubDate>
+    <pubDate>Tue, 25 Apr 2017 13:22:42 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>如何合理的提问</title>
+      <link>http://lchiffon.github.io/2017/04/25/questions.html</link>
+      <guid>http://lchiffon.github.io/2017/04/25/questions.html</guid>
+      <pubDate>Mon, 24 Apr 2017 16:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;经常会遇到有人问问题, 却又问不到点子上, 而且很多东西是可以直接百度或者谷歌, 或者在&lt;br&gt;问答网站&lt;a href=&quot;http://strackoverflow.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;strackoverflow&lt;/a&gt;
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>经常会遇到有人问问题, 却又问不到点子上, 而且很多东西是可以直接百度或者谷歌, 或者在<br>问答网站<a href="http://strackoverflow.com" target="_blank" rel="external">strackoverflow</a> 查到的. 目前我所看到的最好的<br>提问引导是在mxnet的<a href="https://github.com/dmlc/mxnet/issues/new" target="_blank" rel="external">new issue</a>界面上看到的.</p>
+<p>简单总结下需要以下几个部分:</p>
+<ol>
+<li>环境信息</li>
+<li>全部错误信息</li>
+<li>最小<strong>可执行</strong>代码</li>
+<li>哪一步的代码导致了错误</li>
+<li>尝试过用什么方式来解决</li>
+</ol>
+<p>以下是正文信息:</p>
+<p>For bugs or installation issues, please provide the following information.<br>The more information you provide, the more likely people will be able to help you.</p>
+<h2 id="Environment-info"><a href="#Environment-info" class="headerlink" title="Environment info"></a>Environment info</h2><p>Operating System:</p>
+<p>Compiler:</p>
+<p>Package used (Python/R/Scala/Julia):</p>
+<p>MXNet version:</p>
+<p>Or if installed from source:</p>
+<p>MXNet commit hash (<code>git rev-parse HEAD</code>):</p>
+<p>If you are using python package, please provide</p>
+<p>Python version and distribution:</p>
+<p>If you are using R package, please provide</p>
+<p>R <code>sessionInfo()</code>:</p>
+<h2 id="Error-Message"><a href="#Error-Message" class="headerlink" title="Error Message:"></a>Error Message:</h2><p>Please paste the full error message, including stack trace.</p>
+<h2 id="Minimum-reproducible-example"><a href="#Minimum-reproducible-example" class="headerlink" title="Minimum reproducible example"></a>Minimum reproducible example</h2><p>if you are using your own code, please provide a short script that reproduces the error.</p>
+<h2 id="Steps-to-reproduce"><a href="#Steps-to-reproduce" class="headerlink" title="Steps to reproduce"></a>Steps to reproduce</h2><p>or if you are running standard examples, please provide the commands you have run that lead to the error.</p>
+<p>1.<br>2.<br>3.</p>
+<h2 id="What-have-you-tried-to-solve-it"><a href="#What-have-you-tried-to-solve-it" class="headerlink" title="What have you tried to solve it?"></a>What have you tried to solve it?</h2><p>1.<br>2.<br>3.</p>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2017/04/25/questions.html#disqus_thread</comments>
+    </item>
     
     <item>
       <title>Vue2的一些阅读</title>
@@ -1894,37 +1936,6 @@ var myChart = BMapExt.initECharts(container);
 ]]></content:encoded>
       
       <comments>http://lchiffon.github.io/2016/05/07/blackhospital.html#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>中文优化的slidify</title>
-      <link>http://lchiffon.github.io/2016/02/27/slidify2.html</link>
-      <guid>http://lchiffon.github.io/2016/02/27/slidify2.html</guid>
-      <pubDate>Fri, 26 Feb 2016 16:00:00 GMT</pubDate>
-      <description>
-      
-        &lt;p&gt;&lt;a href=&quot;slidify.org&quot;&gt;slidify&lt;/a&gt;是款用Rmd生成精美slides的R包，作者是&lt;a href=&quot;https://github.com/ramnathv&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ramnath Vaid
-      
-      </description>
-      
-      <content:encoded><![CDATA[<p><a href="slidify.org">slidify</a>是款用Rmd生成精美slides的R包，作者是<a href="https://github.com/ramnathv" target="_blank" rel="external">Ramnath Vaidyanathan</a>.<br>以前我也写过关于<a href="http://lchiffon.github.io/2014/11/29/slidify-chinese.html">slidify中文支持的博客</a>和<a href="http://lchiffon.github.io/2015/05/08/RevealJS.html">slidify中的reveal</a>.</p>
-<p>后来由于slidify的种种原因,windows下很多用户都没法正常的使用slidify,(尤其是推出新版stringr和slidify后)</p>
-<p>目前,我fork了Ramnath的slidify包,并在尝试改造成一个中文友好的版本(目前进展不错)</p>
-<p>可以使用以下方式来安装:</p>
-<pre><code>library(devtools)
-install_github(&quot;lchiffon/slidify&quot;)
-install_github(&quot;ramnath/slidifyLibraries&quot;)
-</code></pre><p>不用费心于0.6.2的stringr,不用更改系统语言,不用控制slidify的版本…我只想说应该没问题(测了几次基本没问题)</p>
-<p>欢迎大家试用并提出问题/修改意见<br>这个包并没有在CRAN的镜像上，而是托管在Github上，需要用以下方法安装:</p>
-<pre><code>library(devtools)
-install_github(&quot;lchiffon/slidify&quot;)
-install_github(&quot;ramnath/slidifyLibraries&quot;)
-</code></pre><p>不用费心于0.6.2的stringr,不用更改系统语言,不用控制slidify的版本…我只想说应该没问题(测了几次基本没问题)</p>
-<p>欢迎大家试用并提出问题/修改意见<br>这个包并没有在CRAN的镜像上，而是托管在Github上，需要用以下方法安装:</p>
-<p>(在运行之前需要保证安装了devtools,如果没有请跑下<code>install.packages(&#39;devtools&#39;)</code>)</p>
-]]></content:encoded>
-      
-      <comments>http://lchiffon.github.io/2016/02/27/slidify2.html#disqus_thread</comments>
     </item>
     
   </channel>
