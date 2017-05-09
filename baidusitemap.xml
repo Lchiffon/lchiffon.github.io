@@ -115,24 +115,6 @@
 
     
   <url>
-    <loc>http://lchiffon.github.io/2017/03/04/food.html</loc>
-    <lastmod>2017-04-19T09:34:17.780Z</lastmod>
-    <data>
-        <display>
-        <title>我的美食观</title>
-        <pubTime>2017-03-03T16:00:00.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="R" url="http://lchiffon.github.io/categories/R/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://lchiffon.github.io/2017/02/09/vue03.html</loc>
     <lastmod>2017-04-19T09:34:17.780Z</lastmod>
     <data>
@@ -144,6 +126,24 @@
            
              
               <breadCrumb title="JsPy&amp;Others" url="http://lchiffon.github.io/categories/jspy/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://lchiffon.github.io/2017/03/04/food.html</loc>
+    <lastmod>2017-04-19T09:34:17.780Z</lastmod>
+    <data>
+        <display>
+        <title>我的美食观</title>
+        <pubTime>2017-03-03T16:00:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="R" url="http://lchiffon.github.io/categories/R/"/>
           
         </display>
     </data>
@@ -187,24 +187,6 @@
 
     
   <url>
-    <loc>http://lchiffon.github.io/2017/02/07/vue01.html</loc>
-    <lastmod>2017-04-19T09:34:17.778Z</lastmod>
-    <data>
-        <display>
-        <title>Vue.js学习I(基本使用)</title>
-        <pubTime>2017-02-06T16:00:00.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="JsPy&amp;Others" url="http://lchiffon.github.io/categories/jspy/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://lchiffon.github.io/2017/01/07/aqi.html</loc>
     <lastmod>2017-04-19T09:34:17.778Z</lastmod>
     <data>
@@ -216,6 +198,24 @@
            
              
               <breadCrumb title="R" url="http://lchiffon.github.io/categories/R/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://lchiffon.github.io/2017/02/07/vue01.html</loc>
+    <lastmod>2017-04-19T09:34:17.778Z</lastmod>
+    <data>
+        <display>
+        <title>Vue.js学习I(基本使用)</title>
+        <pubTime>2017-02-06T16:00:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="JsPy&amp;Others" url="http://lchiffon.github.io/categories/jspy/"/>
           
         </display>
     </data>
@@ -277,24 +277,6 @@
 
     
   <url>
-    <loc>http://lchiffon.github.io/2016/07/26/installpackage.html</loc>
-    <lastmod>2017-04-19T09:34:17.776Z</lastmod>
-    <data>
-        <display>
-        <title>wordcloud2 in CRAN</title>
-        <pubTime>2016-07-25T16:00:00.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="R" url="http://lchiffon.github.io/categories/R/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://lchiffon.github.io/2016/07/30/xqcourse.html</loc>
     <lastmod>2017-04-19T09:34:17.776Z</lastmod>
     <data>
@@ -306,6 +288,24 @@
            
              
               <breadCrumb title="幻灯片保存" url="http://lchiffon.github.io/categories/slides/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://lchiffon.github.io/2016/07/26/installpackage.html</loc>
+    <lastmod>2017-04-19T09:34:17.776Z</lastmod>
+    <data>
+        <display>
+        <title>wordcloud2 in CRAN</title>
+        <pubTime>2016-07-25T16:00:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="R" url="http://lchiffon.github.io/categories/R/"/>
           
         </display>
     </data>
@@ -385,12 +385,12 @@
 
     
   <url>
-    <loc>http://lchiffon.github.io/2016/02/23/themeREmap.html</loc>
+    <loc>http://lchiffon.github.io/2016/02/27/slidify2.html</loc>
     <lastmod>2017-04-19T09:34:17.773Z</lastmod>
     <data>
         <display>
-        <title>0.3.2版本新增的一些theme</title>
-        <pubTime>2016-02-22T16:00:00.000Z</pubTime>
+        <title>中文优化的slidify</title>
+        <pubTime>2016-02-26T16:00:00.000Z</pubTime>
         
          
            
@@ -403,12 +403,12 @@
 
     
   <url>
-    <loc>http://lchiffon.github.io/2016/02/27/slidify2.html</loc>
+    <loc>http://lchiffon.github.io/2016/02/23/themeREmap.html</loc>
     <lastmod>2017-04-19T09:34:17.773Z</lastmod>
     <data>
         <display>
-        <title>中文优化的slidify</title>
-        <pubTime>2016-02-26T16:00:00.000Z</pubTime>
+        <title>0.3.2版本新增的一些theme</title>
+        <pubTime>2016-02-22T16:00:00.000Z</pubTime>
         
          
            
@@ -475,24 +475,6 @@
 
     
   <url>
-    <loc>http://lchiffon.github.io/2015/12/12/preReport.html</loc>
-    <lastmod>2017-04-19T09:34:17.771Z</lastmod>
-    <data>
-        <display>
-        <title>快速撰写数据报告,preReport</title>
-        <pubTime>2015-12-11T16:00:00.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="R" url="http://lchiffon.github.io/categories/R/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://lchiffon.github.io/2015/11/23/shRcon.html</loc>
     <lastmod>2017-04-19T09:34:17.771Z</lastmod>
     <data>
@@ -504,6 +486,24 @@
            
              
               <breadCrumb title="幻灯片保存" url="http://lchiffon.github.io/categories/slides/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://lchiffon.github.io/2015/12/12/preReport.html</loc>
+    <lastmod>2017-04-19T09:34:17.771Z</lastmod>
+    <data>
+        <display>
+        <title>快速撰写数据报告,preReport</title>
+        <pubTime>2015-12-11T16:00:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="R" url="http://lchiffon.github.io/categories/R/"/>
           
         </display>
     </data>
@@ -601,24 +601,6 @@
 
     
   <url>
-    <loc>http://lchiffon.github.io/2015/10/18/snippets.html</loc>
-    <lastmod>2017-04-19T09:34:17.716Z</lastmod>
-    <data>
-        <display>
-        <title>snippets代码快捷键</title>
-        <pubTime>2015-10-17T16:00:00.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="R" url="http://lchiffon.github.io/categories/R/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://lchiffon.github.io/2015/10/25/remapnanchang.html</loc>
     <lastmod>2017-04-19T09:34:17.716Z</lastmod>
     <data>
@@ -630,6 +612,24 @@
            
              
               <breadCrumb title="幻灯片保存" url="http://lchiffon.github.io/categories/slides/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://lchiffon.github.io/2015/10/18/snippets.html</loc>
+    <lastmod>2017-04-19T09:34:17.716Z</lastmod>
+    <data>
+        <display>
+        <title>snippets代码快捷键</title>
+        <pubTime>2015-10-17T16:00:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="R" url="http://lchiffon.github.io/categories/R/"/>
           
         </display>
     </data>
@@ -673,24 +673,6 @@
 
     
   <url>
-    <loc>http://lchiffon.github.io/2015/08/26/docxtractr.html</loc>
-    <lastmod>2017-04-19T09:34:17.714Z</lastmod>
-    <data>
-        <display>
-        <title>R中的黑魔法--读取WORD文档中的表格</title>
-        <pubTime>2015-08-25T16:00:00.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="R" url="http://lchiffon.github.io/categories/R/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://lchiffon.github.io/2015/08/25/hire-or-not.html</loc>
     <lastmod>2017-04-19T09:34:17.714Z</lastmod>
     <data>
@@ -702,6 +684,24 @@
            
              
               <breadCrumb title="技术学习" url="http://lchiffon.github.io/categories/tect/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://lchiffon.github.io/2015/08/26/docxtractr.html</loc>
+    <lastmod>2017-04-19T09:34:17.714Z</lastmod>
+    <data>
+        <display>
+        <title>R中的黑魔法--读取WORD文档中的表格</title>
+        <pubTime>2015-08-25T16:00:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="R" url="http://lchiffon.github.io/categories/R/"/>
           
         </display>
     </data>
@@ -745,11 +745,11 @@
 
     
   <url>
-    <loc>http://lchiffon.github.io/2015/08/01/remap2.html</loc>
+    <loc>http://lchiffon.github.io/2015/08/01/remap3.html</loc>
     <lastmod>2017-04-19T09:34:17.712Z</lastmod>
     <data>
         <display>
-        <title>REmap使用手册(2)</title>
+        <title>REmap使用手册(3)</title>
         <pubTime>2015-07-31T16:00:00.000Z</pubTime>
         
          
@@ -763,11 +763,11 @@
 
     
   <url>
-    <loc>http://lchiffon.github.io/2015/08/01/remap3.html</loc>
+    <loc>http://lchiffon.github.io/2015/08/01/remap2.html</loc>
     <lastmod>2017-04-19T09:34:17.712Z</lastmod>
     <data>
         <display>
-        <title>REmap使用手册(3)</title>
+        <title>REmap使用手册(2)</title>
         <pubTime>2015-07-31T16:00:00.000Z</pubTime>
         
          
@@ -817,24 +817,6 @@
 
     
   <url>
-    <loc>http://lchiffon.github.io/2015/06/30/apriori.html</loc>
-    <lastmod>2017-04-19T09:34:17.700Z</lastmod>
-    <data>
-        <display>
-        <title>关联规则,从啤酒与尿片到Apriori</title>
-        <pubTime>2015-06-29T16:00:00.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="R" url="http://lchiffon.github.io/categories/R/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://lchiffon.github.io/2015/07/02/qianxi.html</loc>
     <lastmod>2017-04-19T09:34:17.700Z</lastmod>
     <data>
@@ -846,6 +828,24 @@
            
              
               <breadCrumb title="JsPy&amp;Others" url="http://lchiffon.github.io/categories/jspy/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://lchiffon.github.io/2015/06/30/apriori.html</loc>
+    <lastmod>2017-04-19T09:34:17.700Z</lastmod>
+    <data>
+        <display>
+        <title>关联规则,从啤酒与尿片到Apriori</title>
+        <pubTime>2015-06-29T16:00:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="R" url="http://lchiffon.github.io/categories/R/"/>
           
         </display>
     </data>
@@ -997,24 +997,6 @@
 
     
   <url>
-    <loc>http://lchiffon.github.io/2015/01/10/MLE.html</loc>
-    <lastmod>2017-04-19T09:34:17.686Z</lastmod>
-    <data>
-        <display>
-        <title>MLE在R中的实现</title>
-        <pubTime>2015-01-09T16:00:00.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="R" url="http://lchiffon.github.io/categories/R/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://lchiffon.github.io/2015/01/19/book-List-Jan.html</loc>
     <lastmod>2017-04-19T09:34:17.686Z</lastmod>
     <data>
@@ -1026,6 +1008,24 @@
            
              
               <breadCrumb title="杂七杂八" url="http://lchiffon.github.io/categories/others/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://lchiffon.github.io/2015/01/10/MLE.html</loc>
+    <lastmod>2017-04-19T09:34:17.686Z</lastmod>
+    <data>
+        <display>
+        <title>MLE在R中的实现</title>
+        <pubTime>2015-01-09T16:00:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="R" url="http://lchiffon.github.io/categories/R/"/>
           
         </display>
     </data>
@@ -1141,24 +1141,6 @@
 
     
   <url>
-    <loc>http://lchiffon.github.io/2014/08/30/how-to.html</loc>
-    <lastmod>2017-04-19T09:34:17.658Z</lastmod>
-    <data>
-        <display>
-        <title>如何成为一名数据科学家(Data Scientist)</title>
-        <pubTime>2014-08-29T16:00:00.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="杂七杂八" url="http://lchiffon.github.io/categories/others/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://lchiffon.github.io/2014/09/03/D3-rainbow.html</loc>
     <lastmod>2017-04-19T09:34:17.658Z</lastmod>
     <data>
@@ -1170,6 +1152,24 @@
            
              
               <breadCrumb title="JsPy&amp;Others" url="http://lchiffon.github.io/categories/jspy/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://lchiffon.github.io/2014/08/30/how-to.html</loc>
+    <lastmod>2017-04-19T09:34:17.658Z</lastmod>
+    <data>
+        <display>
+        <title>如何成为一名数据科学家(Data Scientist)</title>
+        <pubTime>2014-08-29T16:00:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="杂七杂八" url="http://lchiffon.github.io/categories/others/"/>
           
         </display>
     </data>

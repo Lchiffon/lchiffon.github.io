@@ -129,11 +129,11 @@
       <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
       <!-- JiaThis Button END -->
 
-      <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="你并不需要一个数据科学家(至少现在不需要)" data-title="你并不需要一个数据科学家(至少现在不需要)" data-url="langdawei.com/2015/08/25/hire-or-not.html"></div>
+  <!-- 多说评论框 start -->
+  <!-- <div class="ds-thread" data-thread-key="你并不需要一个数据科学家(至少现在不需要)" data-title="你并不需要一个数据科学家(至少现在不需要)" data-url="langdawei.com/2015/08/25/hire-or-not.html"></div> -->
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
   var duoshuoQuery = {short_name:"lchiffon"};
     (function() {
       var ds = document.createElement('script');
@@ -143,36 +143,37 @@
       (document.getElementsByTagName('head')[0]
        || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
-    </script>
+    </script> -->
   <!-- 多说公共JS代码 end -->
+  <div id="container"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+    const gitment = new Gitment({
+      id: 'Your page ID', // optional
+      owner: 'lchiffon',
+      repo: 'lchiffon.github.io',
+      oauth: {
+        client_id: '7ae350c4fb8aa708af09',
+        client_secret: '1260522fee3e783d77736648af95caae8b8e015a',
+      },
+      // ...
+      // For more available options, check out the documentation below
+    })
+
+    gitment.render('container')
+    // or
+    // gitment.render(document.getElementById('comments'))
+    // or
+    // document.body.appendChild(gitment.render())
+  </script>
+
   <div class="busuanzi center">
     page PV:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
     site PV:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
     site UV:&nbsp;<span id="busuanzi_value_site_uv"></span>
   </div>
 
-<div id="container"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-  const gitment = new Gitment({
-    id: 'Your page ID', // optional
-    owner: 'lchiffon',
-    repo: 'lchiffon.github.io',
-    oauth: {
-      client_id: '7ae350c4fb8aa708af09',
-      client_secret: '1260522fee3e783d77736648af95caae8b8e015a',
-    },
-    // ...
-    // For more available options, check out the documentation below
-  })
-
-  gitment.render('container')
-  // or
-  // gitment.render(document.getElementById('comments'))
-  // or
-  // document.body.appendChild(gitment.render())
-</script>
 
 
     </div>
