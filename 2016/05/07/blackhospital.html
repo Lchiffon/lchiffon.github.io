@@ -1,0 +1,1224 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="UA-66633229-1" />
+  
+  <title>莆田医院的可视化(R)</title>
+  <meta name="author" content="Chiffon Lang">
+   <meta name="description" content="Idea来自于这里原文作者用python完成了数据爬取,可视化的过程,本文用R实现一遍…
+基本的流程如下:
+
+爬取数据与整理
+根据医院获取经纬度
+根据获取的经纬度完成可视化
+
+最终结果是一个可交互的地图,像这样(截图版):
+数据爬取与整理数据来源于凤凰资讯,由于数据隐藏在JS代码中,所以我们使用re">
+  
+
+  <meta property="og:title" content="莆田医院的可视化(R)"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="七风阁"/>
+ <meta property="og:image" content="undefined"/>
+  
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="七风阁" type="application/atom+xml">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+  <a id="top"></a>
+  <div id='wx_pic' style='display:none;'><img src='/wx_share.png'/></div>
+  <div id="main">
+    <div class="back">
+      <a href="/" class="black-color"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+    <div class="behind">
+
+      <div class="description">
+        &nbsp;不写R包的分析师不是好全栈
+      </div>
+    </div>
+    <div class="container">
+      
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        莆田医院的可视化(R)
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      
+<time datetime="2016-05-07T00:00:00.000Z">
+  <i class="fa fa-calendar"></i>&nbsp;
+  2016-05-07
+</time>
+
+
+
+    
+    &nbsp;
+    <i class="fa fa-tag"></i>&nbsp;
+    <a href="/categories/R/">R</a>
+
+
+
+
+
+    </div>
+    <hr>
+    <div class="picture-container">
+      
+    </div>
+    <p>Idea来自于<a href="https://github.com/lenzzz/putianHospitalMap" target="_blank" rel="external">这里</a>原文作者用python完成了数据爬取,可视化的过程,本文用R实现一遍…</p>
+<p><br><br>基本的流程如下:</p>
+<ol>
+<li>爬取数据与整理</li>
+<li>根据医院获取经纬度</li>
+<li>根据获取的经纬度完成可视化</li>
+</ol>
+<p>最终结果是一个可交互的地图,像这样(截图版):<br><img src="http://7xr5em.com1.z0.glb.clouddn.com/102.png"></p>
+<h3 id="数据爬取与整理"><a href="#数据爬取与整理" class="headerlink" title="数据爬取与整理"></a>数据爬取与整理</h3><p>数据来源于<a href="http://news.ifeng.com/mainland/special/ptxyy/" target="_blank" rel="external">凤凰资讯</a>,由于数据隐藏在JS代码中,所以我们使用<code>readLines</code>读取,字符处理的方式获得数据.</p>
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/101.png"></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">raw = readLines(<span class="string">"http://news.ifeng.com/mainland/special/ptxyy/"</span>,</div><div class="line">                encoding = <span class="string">"UTF-8"</span>)</div><div class="line">rawHospital = raw[<span class="number">123</span> : <span class="number">238</span>]</div><div class="line">rawHospital[<span class="number">1</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>] <span class="string">"    ['上海','上海市闵行区中医院&lt;br/&gt;上海华美美莱整形医院&lt;br/&gt;上海万众医院&lt;br/&gt;上海安真医院&lt;br/&gt;上海福华医院&lt;br/&gt;上海玛丽女子医院&lt;br/&gt;上海真爱女子医院&lt;br/&gt;上海心脏病医院&lt;br/&gt;上海远大心胸医院&lt;br/&gt;上海仁爱医院&lt;br/&gt;上海天大医疗美容医院&lt;br/&gt;上海沪申五官科医院&lt;br/&gt;上海博爱医院&lt;br/&gt;上海新虹桥医院&lt;br/&gt;上海九龙男子医院&lt;br/&gt;上海城市女子医院&lt;br/&gt;上海西郊骨科医院&lt;br/&gt;上海真美妇科医院&lt;br/&gt;上海南浦妇科医院&lt;br/&gt;上海虹桥医院&lt;br/&gt;上海健桥医院&lt;br/&gt;上海博爱医院&lt;br/&gt;上海长江医院&lt;br/&gt;解放军411医院&lt;br/&gt;上海阳光中医医院&lt;br/&gt;上海英港泌尿外科医院&lt;br/&gt;上海阿波罗男子医院&lt;br/&gt;上海玫瑰女子医院&lt;br/&gt;上海康新医院&lt;br/&gt;上海圣爱医院&lt;br/&gt;上海同德医院&lt;br/&gt;上海安平医院&lt;br/&gt;江东泌尿外科医院&lt;br/&gt;上海九州泌尿医院&lt;br/&gt;上海青城医院&lt;br/&gt;上海博大医院&lt;br/&gt;上海中亚医院','38'],"</span></div></pre></td></tr></table></figure>
+<p>接下来,用一个函数提取每个<code>rawHospital</code>中的医院名,并整理成一个字符向量.</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">extFun = <span class="keyword">function</span>(x)&#123;</div><div class="line">  split = strsplit(x, <span class="string">"','"</span>)</div><div class="line">  out = strsplit(split[[<span class="number">1</span>]][<span class="number">2</span>], <span class="string">"&lt;br/&gt;"</span>)</div><div class="line">  <span class="keyword">return</span>(out)</div><div class="line">&#125;</div><div class="line">extFun(rawHospital[<span class="number">1</span>])</div><div class="line">hosList = sapply(rawHospital,extFun)</div><div class="line">hospital = c()</div><div class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">1</span>:length(hosList)) hospital = append(hospital, hosList[[i]])</div><div class="line">head(hospital)</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>] <span class="string">"上海市闵行区中医院"</span>   <span class="string">"上海华美美莱整形医院"</span></div><div class="line">[<span class="number">3</span>] <span class="string">"上海万众医院"</span>         <span class="string">"上海安真医院"</span>        </div><div class="line">[<span class="number">5</span>] <span class="string">"上海福华医院"</span>         <span class="string">"上海玛丽女子医院"</span></div></pre></td></tr></table></figure>
+<h3 id="获取经纬度"><a href="#获取经纬度" class="headerlink" title="获取经纬度"></a>获取经纬度</h3><p>获取经纬度使用某大神的<code>baidumap</code>repo在<a href="https://github.com/badbye/baidumap" target="_blank" rel="external">这里</a>(不要纠结为啥还用百度,可视化也是…)</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(baidumap)</div><div class="line">blackHospital = getCoordinate(hospital, formatted = <span class="literal">T</span>)</div><div class="line">blackHospital = na.omit(blackHospital)</div><div class="line">head(blackHospital)</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">                     longtitude latitude</div><div class="line">上海市闵行区中医院     <span class="number">121.4250</span> <span class="number">31.09354</span></div><div class="line">上海华美美莱整形医院   <span class="number">121.4290</span> <span class="number">31.23277</span></div><div class="line">上海万众医院           <span class="number">121.4267</span> <span class="number">31.19537</span></div><div class="line">上海安真医院           <span class="number">121.2353</span> <span class="number">31.00906</span></div><div class="line">上海福华医院           <span class="number">121.7532</span> <span class="number">31.04560</span></div><div class="line">上海玛丽女子医院       <span class="number">121.1253</span> <span class="number">31.15449</span></div></pre></td></tr></table></figure>
+<p>完成了,有一个医院经纬度没找到,用<code>na.omit</code>删去,稍微整理一下:</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">plotdata = data.frame(lon = blackHospital[,<span class="number">1</span>],</div><div class="line">                      lat = blackHospital[,<span class="number">2</span>],</div><div class="line">                      city = rownames(blackHospital))</div></pre></td></tr></table></figure>
+<h2 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h2><p>不好意思,只会<code>REmap</code>,代码见下,用鼠标滚轮和拖动查看细节:</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(REmap)</div><div class="line">remapB(markPointData = data.frame(plotdata$city),</div><div class="line">       markPointTheme = markPointControl(symbol = <span class="string">"pin"</span>,</div><div class="line">                                         effect=<span class="literal">F</span>,</div><div class="line">                                         symbolSize = <span class="number">5</span>,</div><div class="line">                                         color=<span class="string">"red"</span>),</div><div class="line">       geoData = plotdata)</div></pre></td></tr></table></figure>
+<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+<script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+<script type="text/javascript" src="http://lchiffon.github.io/reveal_slidify/echarts/require/main.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=q9U1lWgCK1aBGVC1DVWrgWa7"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/doc/asset/js/jquery.min.js"></script>
+<div id="ID_20160507102219_25810" style="height:300px; width:100%"></div>
+<script>
+                (function () {
+                require.config({
+                paths: {
+                echarts:'http://echarts.baidu.com/doc/example/www/js'
+                },
+                packages: [
+                {
+                name: 'BMap',
+                location: 'http://lchiffon.github.io/reveal_slidify/echarts/require',
+                main: 'main'
+                }
+                ]
+                });
+
+                require(
+                [
+                'echarts',
+                'BMap',
+                'echarts/chart/map'
+                ],
+                function (echarts, BMapExtension) {
+
+                var BMapExt = new BMapExtension($('#ID_20160507102219_25810')[0], BMap, echarts,{
+                enableMapClick: false
+                });
+                var map = BMapExt.getMap();
+                var container = BMapExt.getEchartsContainer();
+
+                var startPoint = {
+                x: 104.114129,
+                y: 37.550339
+                };
+                var point = new BMap.Point(startPoint.x, startPoint.y);
+                map.centerAndZoom(point, 5);
+                map.enableScrollWheelZoom(true);
+                map.setMapStyle({style:'Bright'});
+
+
+optionID_20160507102219_25810 = {
+  color: ['gold','aqua','lime'],
+  title : {
+    text: '',
+    subtext: '',
+    x:'center',
+    textStyle : {
+      color: 'black'
+    }
+  },
+  tooltip : {
+    show: true,
+    trigger: 'item',
+    formatter: function (v) {
+               if(v[2].tooltipValue!=null){
+               return v[2].tooltipValue;
+               }else{
+               return v[1];
+               }
+  }},
+  toolbox: {
+    show : true,
+    orient : 'vertical',
+    x: 'right',
+    y: 'center',
+    feature : {
+      mark : {show: true},
+      dataView : {show: true, readOnly: false},
+      restore : {show: true},
+      saveAsImage : {show: true}
+    }
+  },
+  series : [
+    {
+      type:'map',
+      mapType: 'none',
+      data:[]
+
+      ,markPoint : {
+        symbol:'emptyCircle',
+      symbolSize :5,
+      effect : {
+        show: false,
+        type: 'scale',
+        shadowBlur : 0
+      },
+      itemStyle:{
+      normal:{
+        label:{show:false},
+        color:'red'
+      },
+      emphasis: {
+        label:{show:false}
+      }
+      },
+      data : [{name:'上海市闵行区中医院',value: 79,symbol:'pin'},
+{name:'上海华美美莱整形医院',value: 97,symbol:'pin'},
+{name:'上海万众医院',value: 29,symbol:'pin'},
+{name:'上海安真医院',value: 37,symbol:'pin'},
+{name:'上海福华医院',value: 97,symbol:'pin'},
+{name:'上海玛丽女子医院',value: 94,symbol:'pin'},
+{name:'上海真爱女子医院',value: 86,symbol:'pin'},
+{name:'上海心脏病医院',value: 79,symbol:'pin'},
+{name:'上海远大心胸医院',value: 39,symbol:'pin'},
+{name:'上海仁爱医院',value: 61,symbol:'pin'},
+{name:'上海天大医疗美容医院',value: 67,symbol:'pin'},
+{name:'上海沪申五官科医院',value: 43,symbol:'pin'},
+{name:'上海博爱医院',value: 84,symbol:'pin'},
+{name:'上海新虹桥医院',value: 40,symbol:'pin'},
+{name:'上海九龙男子医院',value: 41,symbol:'pin'},
+{name:'上海城市女子医院',value:  2,symbol:'pin'},
+{name:'上海西郊骨科医院',value: 77,symbol:'pin'},
+{name:'上海真美妇科医院',value: 86,symbol:'pin'},
+{name:'上海南浦妇科医院',value: 11,symbol:'pin'},
+{name:'上海虹桥医院',value: 94,symbol:'pin'},
+{name:'上海健桥医院',value: 53,symbol:'pin'},
+{name:'上海博爱医院',value:  9,symbol:'pin'},
+{name:'上海长江医院',value: 94,symbol:'pin'},
+{name:'解放军411医院',value:  9,symbol:'pin'},
+{name:'上海阳光中医医院',value: 83,symbol:'pin'},
+{name:'上海英港泌尿外科医院',value: 56,symbol:'pin'},
+{name:'上海阿波罗男子医院',value: 40,symbol:'pin'},
+{name:'上海玫瑰女子医院',value: 83,symbol:'pin'},
+{name:'上海康新医院',value: 57,symbol:'pin'},
+{name:'上海圣爱医院',value: 79,symbol:'pin'},
+{name:'上海同德医院',value: 51,symbol:'pin'},
+{name:'上海安平医院',value: 53,symbol:'pin'},
+{name:'江东泌尿外科医院',value: 62,symbol:'pin'},
+{name:'上海九州泌尿医院',value: 27,symbol:'pin'},
+{name:'上海青城医院',value: 73,symbol:'pin'},
+{name:'上海博大医院',value: 92,symbol:'pin'},
+{name:'上海中亚医院',value: 45,symbol:'pin'},
+{name:'北京华美美莱整形医院',value: 70,symbol:'pin'},
+{name:'北京俪人女子医院',value: 68,symbol:'pin'},
+{name:'北京北海医院',value: 26,symbol:'pin'},
+{name:'北京前海股骨头医院',value: 52,symbol:'pin'},
+{name:'北京市慧慈医院',value: 80,symbol:'pin'},
+{name:'北京五洲女子医院',value: 68,symbol:'pin'},
+{name:'北京圣保罗男子医院',value: 61,symbol:'pin'},
+{name:'北京恒安中医院',value: 92,symbol:'pin'},
+{name:'北京建国医院',value: 28,symbol:'pin'},
+{name:'北京国际医疗中心',value: 50,symbol:'pin'},
+{name:'北京天伦不孕不育医院',value: 21,symbol:'pin'},
+{name:'北京美联臣医疗美容医院',value: 50,symbol:'pin'},
+{name:'北京慧中医院',value: 72,symbol:'pin'},
+{name:'北京阳光丽人妇科医院',value: 97,symbol:'pin'},
+{name:'北京恒安中医院',value: 75,symbol:'pin'},
+{name:'北京京城皮肤病医院',value:  7,symbol:'pin'},
+{name:'北京京北医院',value: 56,symbol:'pin'},
+{name:'北京瑞京糖尿病医院',value: 41,symbol:'pin'},
+{name:'北京众安康中医骨科',value:  6,symbol:'pin'},
+{name:'北京玛丽妇婴医院',value: 71,symbol:'pin'},
+{name:'北京麦瑞骨科医院',value: 19,symbol:'pin'},
+{name:'北京健宫医院',value: 36,symbol:'pin'},
+{name:'苏州东吴医院',value: 70,symbol:'pin'},
+{name:'苏州华美美莱整形医院',value: 66,symbol:'pin'},
+{name:'昆山虹桥医院',value:  7,symbol:'pin'},
+{name:'常熟东方妇科医院',value: 83,symbol:'pin'},
+{name:'常熟仁爱医院',value: 89,symbol:'pin'},
+{name:'昆山阳光医院',value: 45,symbol:'pin'},
+{name:'苏州圣爱医院',value: 37,symbol:'pin'},
+{name:'苏州新医科',value: 21,symbol:'pin'},
+{name:'天津坤如玛丽医院',value: 18,symbol:'pin'},
+{name:'天津华北医院',value: 14,symbol:'pin'},
+{name:'天津华厦医院',value: 66,symbol:'pin'},
+{name:'天津丽人女子医院',value: 43,symbol:'pin'},
+{name:'天津华山医院',value: 29,symbol:'pin'},
+{name:'天津怡泰生殖专科医院',value: 42,symbol:'pin'},
+{name:'天津现代女子医院',value: 63,symbol:'pin'},
+{name:'天津怡泰医院',value: 31,symbol:'pin'},
+{name:'天津乐园医院',value: 31,symbol:'pin'},
+{name:'天津长庚耳鼻喉医院',value: 98,symbol:'pin'},
+{name:'广州华美美莱整形医院',value:  6,symbol:'pin'},
+{name:'广州现代医院',value: 19,symbol:'pin'},
+{name:'广州长安医院',value: 54,symbol:'pin'},
+{name:'广州益寿医院',value: 96,symbol:'pin'},
+{name:'广州利德医院',value:  2,symbol:'pin'},
+{name:'番禺东方俪人医院',value: 68,symbol:'pin'},
+{name:'番禺玛莉亚肛肠医院',value: 14,symbol:'pin'},
+{name:'广州圣亚泌尿外科医院',value: 34,symbol:'pin'},
+{name:'广州女子医院',value: 36,symbol:'pin'},
+{name:'广州市江南医院',value: 94,symbol:'pin'},
+{name:'广州济慈医院',value: 97,symbol:'pin'},
+{name:'广东民安医院',value: 24,symbol:'pin'},
+{name:'广州长泰医院',value: 20,symbol:'pin'},
+{name:'广州健安医院',value: 39,symbol:'pin'},
+{name:'广州458医院',value: 12,symbol:'pin'},
+{name:'广州花都人爱医院',value:  9,symbol:'pin'},
+{name:'广州远东美容医院',value: 94,symbol:'pin'},
+{name:'珠海惠爱医院',value: 69,symbol:'pin'},
+{name:'珠海九龙医院',value: 98,symbol:'pin'},
+{name:'珠海阳光医院',value: 54,symbol:'pin'},
+{name:'惠州仁德妇科医院',value:  3,symbol:'pin'},
+{name:'惠阳女子医院',value: 47,symbol:'pin'},
+{name:'惠州东江泌尿专科医院',value:  2,symbol:'pin'},
+{name:'中山现代妇科医院',value: 34,symbol:'pin'},
+{name:'中山市国丹中医院',value: 44,symbol:'pin'},
+{name:'中山阳光医院',value: 76,symbol:'pin'},
+{name:'汕头妇产医院',value: 10,symbol:'pin'},
+{name:'东莞现代妇科医院',value: 60,symbol:'pin'},
+{name:'东莞常平医院',value:  5,symbol:'pin'},
+{name:'东莞康桥妇科医院',value: 52,symbol:'pin'},
+{name:'东莞乌沙医院',value: 66,symbol:'pin'},
+{name:'东莞万福妇产医院',value: 88,symbol:'pin'},
+{name:'东莞南华妇科医院',value: 67,symbol:'pin'},
+{name:'东莞东方泌尿专科医院',value: 49,symbol:'pin'},
+{name:'江门玛丽妇科医院',value: 17,symbol:'pin'},
+{name:'江门福康医院',value: 26,symbol:'pin'},
+{name:'肇庆福康医院',value: 85,symbol:'pin'},
+{name:'佛山三水女子医院',value: 72,symbol:'pin'},
+{name:'顺德广济中医院',value: 77,symbol:'pin'},
+{name:'顺德新世纪泌尿医院',value: 38,symbol:'pin'},
+{name:'顺德庄头医院',value: 95,symbol:'pin'},
+{name:'顺德阳光康复医院',value: 80,symbol:'pin'},
+{name:'深圳美莱美容医院',value: 85,symbol:'pin'},
+{name:'深圳福华中西医结合医院',value: 62,symbol:'pin'},
+{name:'深圳博爱医院',value: 36,symbol:'pin'},
+{name:'深圳曙光医院',value: 49,symbol:'pin'},
+{name:'深圳远东妇儿科医院',value: 16,symbol:'pin'},
+{name:'深圳仁爱医院',value: 10,symbol:'pin'},
+{name:'深圳和美妇儿科医院',value: 72,symbol:'pin'},
+{name:'深圳仁康医院',value: 87,symbol:'pin'},
+{name:'深圳罗岗医院',value: 91,symbol:'pin'},
+{name:'深圳雪象医院',value: 25,symbol:'pin'},
+{name:'深圳健安医院',value: 25,symbol:'pin'},
+{name:'深圳华南妇科医院',value: 99,symbol:'pin'},
+{name:'深圳国瑞泌尿外科医院',value: 83,symbol:'pin'},
+{name:'深圳韩美医疗美容医院',value:  7,symbol:'pin'},
+{name:'深圳健丰医院',value: 15,symbol:'pin'},
+{name:'深圳龙济医院',value: 53,symbol:'pin'},
+{name:'深圳同仁妇科医院',value: 60,symbol:'pin'},
+{name:'深圳凤凰医院',value: 59,symbol:'pin'},
+{name:'深圳阳光医院',value: 98,symbol:'pin'},
+{name:'昆明华美美莱整形医院',value: 47,symbol:'pin'},
+{name:'云南玛莉亚女子医院',value: 74,symbol:'pin'},
+{name:'云南玛莉亚医院',value: 59,symbol:'pin'},
+{name:'昆明西昌路医院',value: 68,symbol:'pin'},
+{name:'昆明阳光医院',value:100,symbol:'pin'},
+{name:'昆明仁爱医院',value: 11,symbol:'pin'},
+{name:'昆明九州医院',value: 35,symbol:'pin'},
+{name:'解放军478医院妇产中心',value: 60,symbol:'pin'},
+{name:'昆明九州泌尿医院',value: 49,symbol:'pin'},
+{name:'玉溪九州医院',value:100,symbol:'pin'},
+{name:'富源阳光医院',value: 98,symbol:'pin'},
+{name:'曲靖九州医院',value: 90,symbol:'pin'},
+{name:'重庆华美美莱整形医院',value: 20,symbol:'pin'},
+{name:'重庆华山中医乳腺病医院',value: 50,symbol:'pin'},
+{name:'重庆坤如玛丽医院',value: 19,symbol:'pin'},
+{name:'重庆现代女子医院',value: 78,symbol:'pin'},
+{name:'重庆都市丽人医院',value: 36,symbol:'pin'},
+{name:'重庆万州博生医院',value: 12,symbol:'pin'},
+{name:'重庆万州美妇产医院',value: 71,symbol:'pin'},
+{name:'涪陵博生和美妇产医院',value: 59,symbol:'pin'},
+{name:'重庆市爱德华医院',value: 16,symbol:'pin'},
+{name:'重庆五洲女子医院',value: 14,symbol:'pin'},
+{name:'第三军医大学重庆新桥医院',value: 60,symbol:'pin'},
+{name:'重庆阳光医院',value: 15,symbol:'pin'},
+{name:'重庆生殖健康医院',value: 30,symbol:'pin'},
+{name:'重庆红楼医院',value:  8,symbol:'pin'},
+{name:'解放军第324医院',value: 75,symbol:'pin'},
+{name:'涪陵三峡医院',value: 41,symbol:'pin'},
+{name:'重庆红十字会医院',value: 61,symbol:'pin'},
+{name:'成都长征医院',value: 13,symbol:'pin'},
+{name:'成都博爱医院',value: 12,symbol:'pin'},
+{name:'成都丽人女子医院',value: 65,symbol:'pin'},
+{name:'成都华美美莱整形医院',value: 54,symbol:'pin'},
+{name:'四川华美紫馨医学美容医院',value: 78,symbol:'pin'},
+{name:'成都安琪儿妇产医院',value: 31,symbol:'pin'},
+{name:'成都蜀都乳腺医院',value: 36,symbol:'pin'},
+{name:'成都糖尿病专科医院',value: 49,symbol:'pin'},
+{name:'成都曙光男科医院',value: 62,symbol:'pin'},
+{name:'成都玛利亚妇产医院',value: 49,symbol:'pin'},
+{name:'成都欧亚男科医院',value: 20,symbol:'pin'},
+{name:'四川阳光妇科医院',value: 17,symbol:'pin'},
+{name:'成都康新妇科医院',value: 33,symbol:'pin'},
+{name:'成都济民女子医院',value: 63,symbol:'pin'},
+{name:'成都糖尿病专科医院',value:100,symbol:'pin'},
+{name:'成都曙光男科医院',value: 45,symbol:'pin'},
+{name:'解放军第三十七医院',value: 45,symbol:'pin'},
+{name:'遵义女子医院',value: 27,symbol:'pin'},
+{name:'凉山妇产医院',value: 95,symbol:'pin'},
+{name:'凉山男科医院',value:  2,symbol:'pin'},
+{name:'南充解放军51医院',value: 88,symbol:'pin'},
+{name:'武警四川总队医院',value:  8,symbol:'pin'},
+{name:'福州华美美莱整形医院',value: 74,symbol:'pin'},
+{name:'福州鼓楼医院',value: 78,symbol:'pin'},
+{name:'福州现代妇产医院',value: 95,symbol:'pin'},
+{name:'福州左海医院',value: 75,symbol:'pin'},
+{name:'福州总医院第二附属医院',value: 63,symbol:'pin'},
+{name:'福清阳光女子医院',value: 38,symbol:'pin'},
+{name:'福州东南女子医院',value: 32,symbol:'pin'},
+{name:'福州福兴妇产医院',value: 10,symbol:'pin'},
+{name:'福州誉盛医院',value: 42,symbol:'pin'},
+{name:'舟山现代妇科医院',value: 66,symbol:'pin'},
+{name:'舟山市千岛医院妇产科',value: 38,symbol:'pin'},
+{name:'厦门登特口腔医院',value: 58,symbol:'pin'},
+{name:'厦门友好妇科',value: 36,symbol:'pin'},
+{name:'厦门湖里康乐门诊部',value: 10,symbol:'pin'},
+{name:'莆田丽人妇科医院',value: 58,symbol:'pin'},
+{name:'莆田盛兴医院',value: 39,symbol:'pin'},
+{name:'莆田中西医肛肠医院',value: 53,symbol:'pin'},
+{name:'宁波美莱整形美容医院',value: 34,symbol:'pin'},
+{name:'宁波博爱医院',value: 53,symbol:'pin'},
+{name:'宁波虹桥医院',value: 56,symbol:'pin'},
+{name:'宁波欧亚男科医院',value: 54,symbol:'pin'},
+{name:'宁波甬城医院',value: 44,symbol:'pin'},
+{name:'慈溪圣爱医院',value: 92,symbol:'pin'},
+{name:'杭州新东方妇产科医院',value: 45,symbol:'pin'},
+{name:'杭州玛莉亚妇女医院',value: 69,symbol:'pin'},
+{name:'杭州虹桥医院',value: 55,symbol:'pin'},
+{name:'杭州建国医院',value: 49,symbol:'pin'},
+{name:'杭州天目山医院',value: 54,symbol:'pin'},
+{name:'杭州萧山九龙男科医院',value:  7,symbol:'pin'},
+{name:'杭州广仁医院',value: 79,symbol:'pin'},
+{name:'杭州阿波罗男子医院',value: 29,symbol:'pin'},
+{name:'杭州和睦医院',value: 47,symbol:'pin'},
+{name:'杭州真爱医院',value: 23,symbol:'pin'},
+{name:'湖州阳光女子医院',value:100,symbol:'pin'},
+{name:'泉州华美美莱整形医院',value: 18,symbol:'pin'},
+{name:'泉州南亚华侨医院',value: 76,symbol:'pin'},
+{name:'泉州新阳光女子医院',value: 64,symbol:'pin'},
+{name:'泉州坤如玛丽医院',value: 99,symbol:'pin'},
+{name:'泉州南亚医院',value:  9,symbol:'pin'},
+{name:'浙江金华博康生殖医院',value: 51,symbol:'pin'},
+{name:'浙江新安国际医院',value: 51,symbol:'pin'},
+{name:'嘉兴曙光中西医结合医院',value: 69,symbol:'pin'},
+{name:'嘉兴博爱医院',value: 93,symbol:'pin'},
+{name:'温岭和平医院',value: 73,symbol:'pin'},
+{name:'瑞安华东医院',value: 88,symbol:'pin'},
+{name:'温州长征医院',value: 96,symbol:'pin'},
+{name:'温州协和医院',value: 58,symbol:'pin'},
+{name:'温州建国医院',value: 23,symbol:'pin'},
+{name:'温州红旗医院',value: 95,symbol:'pin'},
+{name:'温州爱尔五官科医院',value: 93,symbol:'pin'},
+{name:'龙岩女子医院',value: 45,symbol:'pin'},
+{name:'龙岩阳光医院',value: 59,symbol:'pin'},
+{name:'济南美莱整形医院',value: 63,symbol:'pin'},
+{name:'济南乳腺医院',value: 42,symbol:'pin'},
+{name:'济南坤如玛丽医院',value: 64,symbol:'pin'},
+{name:'济南华夏医院',value: 72,symbol:'pin'},
+{name:'济南整形美容医院',value: 30,symbol:'pin'},
+{name:'济南妇科医院',value: 14,symbol:'pin'},
+{name:'山东红十字会医院',value: 97,symbol:'pin'},
+{name:'济南骨科医院',value: 55,symbol:'pin'},
+{name:'济南阳光女子医院',value:100,symbol:'pin'},
+{name:'潍坊博爱医院',value: 49,symbol:'pin'},
+{name:'潍坊长安医院',value: 69,symbol:'pin'},
+{name:'潍坊和平医院',value: 77,symbol:'pin'},
+{name:'青岛妇婴医院',value: 11,symbol:'pin'},
+{name:'青岛玛丽妇产医院',value: 51,symbol:'pin'},
+{name:'青岛长征院',value: 86,symbol:'pin'},
+{name:'青岛曙光男科医院',value: 69,symbol:'pin'},
+{name:'山东青岛曙光医院',value: 94,symbol:'pin'},
+{name:'青岛集美整形美容医院',value: 56,symbol:'pin'},
+{name:'青岛新阳光医院',value: 39,symbol:'pin'},
+{name:'齐河阳光医院',value: 99,symbol:'pin'},
+{name:'威海现代女子医院',value: 41,symbol:'pin'},
+{name:'聊城东昌府三医院',value: 31,symbol:'pin'},
+{name:'山东淄博金盾医院',value: 42,symbol:'pin'},
+{name:'淄博女子医院',value:  6,symbol:'pin'},
+{name:'黑龙江玛丽亚妇产医院',value: 70,symbol:'pin'},
+{name:'黑龙江东北医院',value: 64,symbol:'pin'},
+{name:'黑龙江和平医院',value: 44,symbol:'pin'},
+{name:'黑龙江和美妇产医院',value: 51,symbol:'pin'},
+{name:'哈尔滨市生殖保健中心院',value: 79,symbol:'pin'},
+{name:'哈尔滨欧亚男科医院',value: 58,symbol:'pin'},
+{name:'黑龙江长庚耳鼻喉医院',value: 18,symbol:'pin'},
+{name:'黑龙江阳光女子医院',value: 41,symbol:'pin'},
+{name:'黑龙江省武警黄金医院妇科',value:  4,symbol:'pin'},
+{name:'长春同济医院',value: 44,symbol:'pin'},
+{name:'吉林总队医院',value: 44,symbol:'pin'},
+{name:'长春长庚耳鼻喉医院',value:100,symbol:'pin'},
+{name:'长春阳光女子医院',value: 65,symbol:'pin'},
+{name:'长春阳光口腔医院',value: 51,symbol:'pin'},
+{name:'四平阳光医院',value: 88,symbol:'pin'},
+{name:'延吉博生现代妇科医院',value: 10,symbol:'pin'},
+{name:'沈阳北陵医院',value: 73,symbol:'pin'},
+{name:'沈阳曙光男科医院',value: 98,symbol:'pin'},
+{name:'武警辽宁省总队医院',value: 32,symbol:'pin'},
+{name:'解放军沈阳463医院希美整形美容',value: 23,symbol:'pin'},
+{name:'大连长城妇科医院',value: 74,symbol:'pin'},
+{name:'大连新世纪医院',value: 74,symbol:'pin'},
+{name:'大连阳光医院',value: 41,symbol:'pin'},
+{name:'无锡玛丽亚医院',value: 72,symbol:'pin'},
+{name:'无锡嘉仕恒信医院',value: 86,symbol:'pin'},
+{name:'无锡南站医院',value: 39,symbol:'pin'},
+{name:'无锡虹桥医院',value: 77,symbol:'pin'},
+{name:'江阴东方女子医院',value: 44,symbol:'pin'},
+{name:'宜兴武警医院',value: 42,symbol:'pin'},
+{name:'江阴九龙泌尿外科医院',value: 11,symbol:'pin'},
+{name:'无锡新区医院',value: 34,symbol:'pin'},
+{name:'江苏施尔美整形美容医院',value:  7,symbol:'pin'},
+{name:'南京曙光医院',value: 27,symbol:'pin'},
+{name:'南京江宁博爱医院',value: 25,symbol:'pin'},
+{name:'南京市江宁区众彩门诊部',value: 50,symbol:'pin'},
+{name:'南京世纪现代妇产医院（南院、东院）',value: 89,symbol:'pin'},
+{name:'南京建国男科医院',value: 67,symbol:'pin'},
+{name:'南京康豪妇科',value: 64,symbol:'pin'},
+{name:'南京阳光肿瘤医院',value:  4,symbol:'pin'},
+{name:'张家港朝阳五官科医院',value: 54,symbol:'pin'},
+{name:'江苏泰州红房子医院',value: 61,symbol:'pin'},
+{name:'泰州市海陵医院',value: 26,symbol:'pin'},
+{name:'泰州海陵女子医院',value: 78,symbol:'pin'},
+{name:'盐城协和康复医院',value: 13,symbol:'pin'},
+{name:'宿迁市妇产医院',value: 62,symbol:'pin'},
+{name:'泗洪阳光儿童医院',value: 13,symbol:'pin'},
+{name:'江苏淮安中山医院',value: 35,symbol:'pin'},
+{name:'淮安生殖医院',value: 23,symbol:'pin'},
+{name:'江苏海安华山医院',value: 32,symbol:'pin'},
+{name:'南通和美家妇产科医院',value: 88,symbol:'pin'},
+{name:'南通长城医院',value: 41,symbol:'pin'},
+{name:'武汉华夏医院',value: 93,symbol:'pin'},
+{name:'武汉华美医院',value: 90,symbol:'pin'},
+{name:'武汉现代女子妇科医院',value: 31,symbol:'pin'},
+{name:'武汉当代佳丽医院',value: 93,symbol:'pin'},
+{name:'湖北荣军医院',value:  8,symbol:'pin'},
+{name:'武汉阳光女子医院',value: 91,symbol:'pin'},
+{name:'武汉华仁医院',value: 48,symbol:'pin'},
+{name:'荆州华康医院',value: 20,symbol:'pin'},
+{name:'黄冈泌尿专科医院',value: 23,symbol:'pin'},
+{name:'湖北黄石福康医院',value: 16,symbol:'pin'},
+{name:'襄阳市第五人民医院',value: 44,symbol:'pin'},
+{name:'乌海现代医院',value: 30,symbol:'pin'},
+{name:'内蒙古天骄医院',value: 91,symbol:'pin'},
+{name:'呼和浩特五洲女子医院',value: 10,symbol:'pin'},
+{name:'贵州退休医师医院',value: 16,symbol:'pin'},
+{name:'贵阳五官中心',value:  8,symbol:'pin'},
+{name:'贵阳长江医院',value: 31,symbol:'pin'},
+{name:'贵阳和谐阳光医院',value: 61,symbol:'pin'},
+{name:'贵阳马王庙医院',value:  7,symbol:'pin'},
+{name:'贵阳现代女子医院',value: 58,symbol:'pin'},
+{name:'贵阳和美妇产医院',value: 78,symbol:'pin'},
+{name:'铜仁华夏医院',value:  5,symbol:'pin'},
+{name:'安顺阳光妇科医院',value: 79,symbol:'pin'},
+{name:'毕节现代医院',value: 82,symbol:'pin'},
+{name:'长沙华夏医院',value:  6,symbol:'pin'},
+{name:'长沙湘江医院七大医院',value: 27,symbol:'pin'},
+{name:'长沙阳光医院',value: 96,symbol:'pin'},
+{name:'长沙仁爱医院',value: 28,symbol:'pin'},
+{name:'长沙恒生手外科医院',value: 84,symbol:'pin'},
+{name:'长沙博大泌尿专科医院',value: 36,symbol:'pin'},
+{name:'长沙南方骨外科医院',value: 49,symbol:'pin'},
+{name:'长沙现代女子医院',value: 25,symbol:'pin'},
+{name:'长沙丽人妇产医院',value: 16,symbol:'pin'},
+{name:'武警湖南省总队医院',value: 63,symbol:'pin'},
+{name:'湖南郴州福康医院',value: 47,symbol:'pin'},
+{name:'湘潭阳光眼科中心',value: 41,symbol:'pin'},
+{name:'娄底阳光医院',value: 42,symbol:'pin'},
+{name:'南昌市第五医院',value: 19,symbol:'pin'},
+{name:'南昌仁爱女子医院',value: 59,symbol:'pin'},
+{name:'南昌曙光手足外科医院',value: 99,symbol:'pin'},
+{name:'南昌佳美美容医院',value: 62,symbol:'pin'},
+{name:'南昌华山不孕不育医院',value: 19,symbol:'pin'},
+{name:'南昌博爱泌尿专科医院',value: 10,symbol:'pin'},
+{name:'南昌东大肛肠专科医院',value: 95,symbol:'pin'},
+{name:'南昌博大耳鼻咽喉专科医院',value: 69,symbol:'pin'},
+{name:'南昌泌尿专科医院',value: 73,symbol:'pin'},
+{name:'九江玛丽亚医院',value: 76,symbol:'pin'},
+{name:'九江新世纪医院',value:  5,symbol:'pin'},
+{name:'九江阳光女子医院',value: 41,symbol:'pin'},
+{name:'江西吉安市第二人民医院',value: 75,symbol:'pin'},
+{name:'萍乡市新世纪泌尿专科医院',value: 55,symbol:'pin'},
+{name:'萍乡妇科医院',value: 66,symbol:'pin'},
+{name:'赣州现代泌尿专科医院',value: 71,symbol:'pin'},
+{name:'上饶东大肛肠专科医院',value: 38,symbol:'pin'},
+{name:'上饶协和医院',value:  7,symbol:'pin'},
+{name:'山西现代妇产医院',value:  5,symbol:'pin'},
+{name:'山西民生医院',value: 21,symbol:'pin'},
+{name:'太原糖尿病专科医院',value: 85,symbol:'pin'},
+{name:'太原新医医院',value: 19,symbol:'pin'},
+{name:'太原益民中医院',value: 98,symbol:'pin'},
+{name:'武警山西总队医院',value: 98,symbol:'pin'},
+{name:'山西长庚耳鼻喉医院',value: 51,symbol:'pin'},
+{name:'临汾现代女子医院',value: 29,symbol:'pin'},
+{name:'山西阳泉东方生殖医院',value: 58,symbol:'pin'},
+{name:'长治女子医院',value: 12,symbol:'pin'},
+{name:'大同新时代妇科医院',value: 30,symbol:'pin'},
+{name:'晋城现代女子医院',value: 17,symbol:'pin'},
+{name:'晋城生殖医院',value: 91,symbol:'pin'},
+{name:'山西新阳光妇科医院',value: 71,symbol:'pin'},
+{name:'运城禹都人民医院',value: 81,symbol:'pin'},
+{name:'西安俪人医院',value: 34,symbol:'pin'},
+{name:'武警陕西总队医院',value:  6,symbol:'pin'},
+{name:'西安阳光医院',value: 52,symbol:'pin'},
+{name:'包头现代女子妇产医院',value: 35,symbol:'pin'},
+{name:'澳美佳女子医院',value: 57,symbol:'pin'},
+{name:'蚌埠解放军一二三中心医院',value: 25,symbol:'pin'},
+{name:'涡阳阳光医院',value: 78,symbol:'pin'},
+{name:'芜湖阳光眼科医院',value: 17,symbol:'pin'},
+{name:'芜湖丹凤朝阳妇科医院',value: 49,symbol:'pin'},
+{name:'巢湖康平妇产医院',value: 54,symbol:'pin'},
+{name:'巢湖阳光妇幼医院',value: 13,symbol:'pin'},
+{name:'淮北女子医院',value: 33,symbol:'pin'},
+{name:'淮北阳光心理院',value: 48,symbol:'pin'},
+{name:'合肥市中山医院',value: 17,symbol:'pin'},
+{name:'合肥九龙男科医院',value: 14,symbol:'pin'},
+{name:'合肥丹凤朝阳妇科医院',value: 77,symbol:'pin'},
+{name:'安阳协和医院',value:  1,symbol:'pin'},
+{name:'河南中都皮肤病医院',value: 72,symbol:'pin'},
+{name:'河南省军区医院',value: 10,symbol:'pin'},
+{name:'郑州集美整形美容医院',value: 60,symbol:'pin'},
+{name:'郑州华夏白癜风医院',value: 28,symbol:'pin'},
+{name:'巩义阳光医院',value: 54,symbol:'pin'},
+{name:'郑州华山医院',value: 10,symbol:'pin'},
+{name:'许昌新时代妇科医院',value: 45,symbol:'pin'},
+{name:'许昌凤凰医院',value: 66,symbol:'pin'},
+{name:'许昌中山医院',value: 84,symbol:'pin'},
+{name:'廊坊万福医院',value: 82,symbol:'pin'},
+{name:'廊坊世纪协和医院',value:  9,symbol:'pin'},
+{name:'保定京津医院',value: 78,symbol:'pin'},
+{name:'保定世纪协和医院',value: 44,symbol:'pin'},
+{name:'保定长安医院',value: 31,symbol:'pin'},
+{name:'保定现代女子医院',value: 88,symbol:'pin'},
+{name:'保定白癜风医院',value: 71,symbol:'pin'},
+{name:'唐山京城皮肤病医院',value:100,symbol:'pin'},
+{name:'唐山女子医院',value: 21,symbol:'pin'},
+{name:'唐山红十字医院',value: 90,symbol:'pin'},
+{name:'解放军534医院',value: 80,symbol:'pin'},
+{name:'洛阳牡丹女子医院',value: 16,symbol:'pin'},
+{name:'信阳泌尿外科医院',value: 66,symbol:'pin'},
+{name:'平顶山市武警医院',value: 60,symbol:'pin'},
+{name:'漯河东方医院',value: 70,symbol:'pin'},
+{name:'河北东方中西医结合医院',value: 61,symbol:'pin'},
+{name:'石家庄美联臣医疗美容医院',value: 66,symbol:'pin'},
+{name:'邯郸仁爱妇科医院',value:  3,symbol:'pin'},
+{name:'西藏博爱医院',value: 96,symbol:'pin'},
+{name:'拉萨北大泌尿生殖医院',value: 53,symbol:'pin'},
+{name:'宁夏西京妇产医院',value: 13,symbol:'pin'},
+{name:'兰州仁和医院',value:  6,symbol:'pin'},
+{name:'广西阳光医院',value:  3,symbol:'pin'},
+{name:'桂林阳光医院',value:  3,symbol:'pin'},
+{name:'柳州福康医院',value: 51,symbol:'pin'},
+{name:'伊犁阳光女子医院',value: 34,symbol:'pin'},
+{name:'伊宁阳光女子医院',value: 40,symbol:'pin'},
+{name:'新彊维吾尔自治区人民医院肿瘤中心',value: 52,symbol:'pin'},
+{name:'新疆爱德华医院',value: 84,symbol:'pin'},
+{name:'武警海南总队医院妇科中心',value: 17,symbol:'pin'}
+      ]},
+      geoCoord:{'上海市闵行区中医院': [121.42502,31.09354],
+'上海华美美莱整形医院': [121.42899,31.23277],
+'上海万众医院': [121.42672,31.19537],
+'上海安真医院': [121.23528,31.00906],
+'上海福华医院': [121.75317,31.04560],
+'上海玛丽女子医院': [121.12533,31.15449],
+'上海真爱女子医院': [121.43826,31.21937],
+'上海心脏病医院': [121.48790,31.24916],
+'上海远大心胸医院': [121.44877,31.17593],
+'上海仁爱医院': [121.44233,31.18185],
+'上海天大医疗美容医院': [121.41806,31.22211],
+'上海沪申五官科医院': [121.44923,31.16301],
+'上海博爱医院': [121.45102,31.21486],
+'上海新虹桥医院': [121.40424,31.20913],
+'上海九龙男子医院': [121.41775,31.22267],
+'上海城市女子医院': [121.38382,31.25582],
+'上海西郊骨科医院': [121.48790,31.24916],
+'上海真美妇科医院': [121.51767,31.29510],
+'上海南浦妇科医院': [121.51993,31.20992],
+'上海虹桥医院': [121.40134,31.18060],
+'上海健桥医院': [121.47116,31.25818],
+'上海博爱医院': [121.45102,31.21486],
+'上海长江医院': [121.50519,31.26191],
+'解放军411医院': [113.23080,35.24171],
+'上海阳光中医医院': [121.48790,31.24916],
+'上海英港泌尿外科医院': [121.50380,31.37942],
+'上海阿波罗男子医院': [121.49111,31.21759],
+'上海玫瑰女子医院': [121.45804,31.25339],
+'上海康新医院': [121.44804,31.24273],
+'上海圣爱医院': [121.25842,31.37771],
+'上海同德医院': [121.11204,31.16742],
+'上海安平医院': [121.70283,31.20845],
+'江东泌尿外科医院': [121.59800,29.87539],
+'上海九州泌尿医院': [121.48790,31.24916],
+'上海青城医院': [121.12176,31.16584],
+'上海博大医院': [121.23619,31.01155],
+'上海中亚医院': [121.24178,31.37900],
+'北京华美美莱整形医院': [116.42277,39.93154],
+'北京俪人女子医院': [116.39565,39.92999],
+'北京北海医院': [116.40272,39.94135],
+'北京前海股骨头医院': [116.39095,39.93916],
+'北京市慧慈医院': [117.12858,40.14852],
+'北京五洲女子医院': [116.48373,39.89791],
+'北京圣保罗男子医院': [116.39565,39.92999],
+'北京恒安中医院': [116.48584,39.88995],
+'北京建国医院': [116.48481,39.92028],
+'北京国际医疗中心': [116.47250,39.95562],
+'北京天伦不孕不育医院': [116.44203,39.92441],
+'北京美联臣医疗美容医院': [116.46871,39.89274],
+'北京慧中医院': [116.39565,39.92999],
+'北京阳光丽人妇科医院': [116.37411,39.93681],
+'北京恒安中医院': [116.48584,39.88995],
+'北京京城皮肤病医院': [116.37202,40.01451],
+'北京京北医院': [116.35677,40.03501],
+'北京瑞京糖尿病医院': [116.45839,39.86332],
+'北京众安康中医骨科': [116.39565,39.92999],
+'北京玛丽妇婴医院': [116.43777,39.96571],
+'北京麦瑞骨科医院': [116.42495,40.02963],
+'北京健宫医院': [116.38211,39.88697],
+'苏州东吴医院': [120.60552,31.28659],
+'苏州华美美莱整形医院': [120.61991,31.31799],
+'昆山虹桥医院': [120.98722,31.37636],
+'常熟东方妇科医院': [120.75142,31.66264],
+'常熟仁爱医院': [120.83149,31.66945],
+'昆山阳光医院': [120.96214,31.31981],
+'苏州圣爱医院': [120.56533,31.30277],
+'苏州新医科': [120.61991,31.31799],
+'天津坤如玛丽医院': [117.21081,39.14393],
+'天津华北医院': [117.23244,39.13788],
+'天津华厦医院': [117.21081,39.14393],
+'天津丽人女子医院': [117.24397,39.11625],
+'天津华山医院': [117.16959,39.13394],
+'天津怡泰生殖专科医院': [117.15856,39.13675],
+'天津现代女子医院': [117.20966,39.14090],
+'天津怡泰医院': [117.15856,39.13675],
+'天津乐园医院': [117.22650,39.09810],
+'天津长庚耳鼻喉医院': [117.18706,39.18250],
+'广州华美美莱整形医院': [113.39344,23.20258],
+'广州现代医院': [113.31510,23.16290],
+'广州长安医院': [113.34273,23.13885],
+'广州益寿医院': [113.25566,23.17722],
+'广州利德医院': [113.30576,23.16005],
+'番禺东方俪人医院': [113.37375,22.94602],
+'番禺玛莉亚肛肠医院': [113.41680,22.93459],
+'广州圣亚泌尿外科医院': [113.32144,23.14388],
+'广州女子医院': [113.24324,23.10500],
+'广州市江南医院': [113.31952,23.09732],
+'广州济慈医院': [113.56189,23.10973],
+'广东民安医院': [113.30343,23.13912],
+'广州长泰医院': [113.42127,23.12610],
+'广州健安医院': [113.62551,23.12771],
+'广州458医院': [113.31860,23.13727],
+'广州花都人爱医院': [113.21251,23.40289],
+'广州远东美容医院': [113.26436,23.17892],
+'珠海惠爱医院': [113.56738,22.23244],
+'珠海九龙医院': [113.58025,22.25195],
+'珠海阳光医院': [113.59362,22.25512],
+'惠州仁德妇科医院': [114.40943,23.08068],
+'惠阳女子医院': [114.47565,22.78014],
+'惠州东江泌尿专科医院': [114.41789,23.08091],
+'中山现代妇科医院': [113.40135,22.51823],
+'中山市国丹中医院': [113.46467,22.55778],
+'中山阳光医院': [113.38490,22.50947],
+'汕头妇产医院': [116.73783,23.37819],
+'东莞现代妇科医院': [113.80726,23.06512],
+'东莞常平医院': [114.02401,22.97282],
+'东莞康桥妇科医院': [114.11105,22.81867],
+'东莞乌沙医院': [113.78866,22.80006],
+'东莞万福妇产医院': [113.70183,22.82007],
+'东莞南华妇科医院': [113.92003,22.96606],
+'东莞东方泌尿专科医院': [113.78492,23.04700],
+'江门玛丽妇科医院': [113.07573,22.59780],
+'江门福康医院': [113.07813,22.57512],
+'肇庆福康医院': [112.49843,23.06169],
+'佛山三水女子医院': [112.89332,23.17503],
+'顺德广济中医院': [113.18703,22.84851],
+'顺德新世纪泌尿医院': [113.24545,22.81868],
+'顺德庄头医院': [113.20421,22.99537],
+'顺德阳光康复医院': [113.24651,22.84773],
+'深圳美莱美容医院': [114.02597,22.54605],
+'深圳福华中西医结合医院': [114.09080,22.54338],
+'深圳博爱医院': [114.11141,22.55842],
+'深圳曙光医院': [114.11417,22.55322],
+'深圳远东妇儿科医院': [114.13035,22.54983],
+'深圳仁爱医院': [114.04790,22.52625],
+'深圳和美妇儿科医院': [113.92860,22.54635],
+'深圳仁康医院': [114.12454,22.59111],
+'深圳罗岗医院': [114.13258,22.60214],
+'深圳雪象医院': [114.08508,22.65720],
+'深圳健安医院': [114.04451,22.63505],
+'深圳华南妇科医院': [114.35137,22.69930],
+'深圳国瑞泌尿外科医院': [114.02597,22.54605],
+'深圳韩美医疗美容医院': [114.02597,22.54605],
+'深圳健丰医院': [114.33723,22.70688],
+'深圳龙济医院': [114.01900,22.66463],
+'深圳同仁妇科医院': [113.87835,22.58146],
+'深圳凤凰医院': [114.14423,22.55273],
+'深圳阳光医院': [114.11819,22.54667],
+'昆明华美美莱整形医院': [102.71460,25.04915],
+'云南玛莉亚女子医院': [102.72434,25.06104],
+'云南玛莉亚医院': [102.72459,25.06055],
+'昆明西昌路医院': [102.70618,25.04029],
+'昆明阳光医院': [102.71460,25.04915],
+'昆明仁爱医院': [102.71523,25.07294],
+'昆明九州医院': [102.71460,25.04915],
+'解放军478医院妇产中心': [113.23080,35.24171],
+'昆明九州泌尿医院': [102.71460,25.04915],
+'玉溪九州医院': [102.54507,24.37045],
+'富源阳光医院': [104.26158,25.66467],
+'曲靖九州医院': [103.78254,25.52076],
+'重庆华美美莱整形医院': [106.66219,29.03084],
+'重庆华山中医乳腺病医院': [108.43071,31.06566],
+'重庆坤如玛丽医院': [106.53064,29.54461],
+'重庆现代女子医院': [106.57959,29.53553],
+'重庆都市丽人医院': [106.53064,29.54461],
+'重庆万州博生医院': [108.41344,30.71005],
+'重庆万州美妇产医院': [108.38669,30.81171],
+'涪陵博生和美妇产医院': [107.40267,29.71696],
+'重庆市爱德华医院': [106.46539,29.55922],
+'重庆五洲女子医院': [106.52042,29.53352],
+'第三军医大学重庆新桥医院': [106.44435,29.52852],
+'重庆阳光医院': [106.53498,29.58763],
+'重庆生殖健康医院': [106.52773,29.58596],
+'重庆红楼医院': [106.52967,29.54591],
+'解放军第324医院': [113.34108,23.09963],
+'涪陵三峡医院': [107.40663,29.70074],
+'重庆红十字会医院': [107.78904,30.66652],
+'成都长征医院': [103.67073,30.63643],
+'成都博爱医院': [104.09428,30.65912],
+'成都丽人女子医院': [104.07298,30.67637],
+'成都华美美莱整形医院': [104.14623,30.68307],
+'四川华美紫馨医学美容医院': [103.77114,29.58068],
+'成都安琪儿妇产医院': [104.08694,30.61384],
+'成都蜀都乳腺医院': [104.06496,30.67836],
+'成都糖尿病专科医院': [103.63534,30.99713],
+'成都曙光男科医院': [104.04663,30.66501],
+'成都玛利亚妇产医院': [104.06792,30.67994],
+'成都欧亚男科医院': [104.04769,30.65992],
+'四川阳光妇科医院': [104.03121,30.64443],
+'成都康新妇科医院': [104.08316,30.67618],
+'成都济民女子医院': [104.06792,30.67994],
+'成都糖尿病专科医院': [103.63534,30.99713],
+'成都曙光男科医院': [104.04663,30.66501],
+'解放军第三十七医院': [113.34108,23.09963],
+'遵义女子医院': [106.94127,27.72640],
+'凉山妇产医院': [102.26258,27.89194],
+'凉山男科医院': [102.25959,27.89239],
+'南充解放军51医院': [106.09350,30.81049],
+'武警四川总队医院': [102.89916,30.36748],
+'福州华美美莱整形医院': [119.33022,26.04713],
+'福州鼓楼医院': [119.31697,26.08640],
+'福州现代妇产医院': [119.30145,26.11446],
+'福州左海医院': [119.29446,26.10710],
+'福州总医院第二附属医院': [119.54669,26.64485],
+'福清阳光女子医院': [119.37755,25.63812],
+'福州东南女子医院': [119.34625,26.06130],
+'福州福兴妇产医院': [119.35967,26.07775],
+'福州誉盛医院': [119.36591,26.07888],
+'舟山现代妇科医院': [122.11016,30.01962],
+'舟山市千岛医院妇产科': [122.16987,30.03601],
+'厦门登特口腔医院': [118.12961,24.48911],
+'厦门友好妇科': [118.10389,24.48923],
+'厦门湖里康乐门诊部': [118.12417,24.51278],
+'莆田丽人妇科医院': [119.01103,25.43062],
+'莆田盛兴医院': [119.10964,25.31542],
+'莆田中西医肛肠医院': [119.07773,25.44845],
+'宁波美莱整形美容医院': [121.56367,29.87183],
+'宁波博爱医院': [121.57901,29.88526],
+'宁波虹桥医院': [121.57901,29.88526],
+'宁波欧亚男科医院': [121.55640,29.86596],
+'宁波甬城医院': [121.57901,29.88526],
+'慈溪圣爱医院': [121.24486,30.18639],
+'杭州新东方妇产科医院': [120.21339,30.27007],
+'杭州玛莉亚妇女医院': [120.19954,30.24414],
+'杭州虹桥医院': [120.19072,30.25305],
+'杭州建国医院': [120.21938,30.25924],
+'杭州天目山医院': [120.10960,30.27058],
+'杭州萧山九龙男科医院': [120.28660,30.15441],
+'杭州广仁医院': [120.21453,30.28685],
+'杭州阿波罗男子医院': [120.18903,30.27617],
+'杭州和睦医院': [120.12807,30.31562],
+'杭州真爱医院': [120.21938,30.25924],
+'湖州阳光女子医院': [120.13724,30.87793],
+'泉州华美美莱整形医院': [118.67770,24.60799],
+'泉州南亚华侨医院': [118.91484,25.12630],
+'泉州新阳光女子医院': [118.60449,24.88995],
+'泉州坤如玛丽医院': [118.61542,24.91407],
+'泉州南亚医院': [118.61565,24.91554],
+'浙江金华博康生殖医院': [119.68469,29.11831],
+'浙江新安国际医院': [120.70147,30.77118],
+'嘉兴曙光中西医结合医院': [120.77856,30.74344],
+'嘉兴博爱医院': [120.70793,30.51872],
+'温岭和平医院': [121.37284,28.50622],
+'瑞安华东医院': [120.66084,27.78570],
+'温州长征医院': [120.66909,28.01909],
+'温州协和医院': [120.70142,28.01320],
+'温州建国医院': [120.67185,27.98751],
+'温州红旗医院': [120.69454,27.98832],
+'温州爱尔五官科医院': [120.73528,27.99549],
+'龙岩女子医院': [117.03405,25.07497],
+'龙岩阳光医院': [117.03314,25.09271],
+'济南美莱整形医院': [117.05545,36.66048],
+'济南乳腺医院': [117.02497,36.68278],
+'济南坤如玛丽医院': [117.01977,36.67903],
+'济南华夏医院': [117.00582,36.69050],
+'济南整形美容医院': [117.02497,36.68278],
+'济南妇科医院': [116.99875,36.65521],
+'山东红十字会医院': [116.98977,36.66367],
+'济南骨科医院': [117.00406,36.64192],
+'济南阳光女子医院': [117.02336,36.66578],
+'潍坊博爱医院': [119.40480,36.85167],
+'潍坊长安医院': [119.14263,36.71611],
+'潍坊和平医院': [119.15893,36.71946],
+'青岛妇婴医院': [120.32563,36.07070],
+'青岛玛丽妇产医院': [120.38266,36.09341],
+'青岛长征院': [120.38443,36.10521],
+'青岛曙光男科医院': [120.38443,36.10521],
+'山东青岛曙光医院': [120.41734,36.08939],
+'青岛集美整形美容医院': [120.38443,36.10521],
+'青岛新阳光医院': [120.42416,36.15967],
+'齐河阳光医院': [116.67825,36.72345],
+'威海现代女子医院': [122.09396,37.52879],
+'聊城东昌府三医院': [115.90771,36.45583],
+'山东淄博金盾医院': [118.06802,36.82130],
+'淄博女子医院': [118.05416,36.82654],
+'黑龙江玛丽亚妇产医院': [126.67317,45.75035],
+'黑龙江东北医院': [126.65861,45.75080],
+'黑龙江和平医院': [126.67520,45.77278],
+'黑龙江和美妇产医院': [126.67937,45.74842],
+'哈尔滨市生殖保健中心院': [126.67481,45.76244],
+'哈尔滨欧亚男科医院': [126.67800,45.78355],
+'黑龙江长庚耳鼻喉医院': [126.62927,45.74343],
+'黑龙江阳光女子医院': [128.04741,47.35659],
+'黑龙江省武警黄金医院妇科': [126.64403,45.70945],
+'长春同济医院': [125.31919,43.90034],
+'吉林总队医院': [125.30403,43.94330],
+'长春长庚耳鼻喉医院': [125.34386,43.89503],
+'长春阳光女子医院': [125.31364,43.89834],
+'长春阳光口腔医院': [125.31364,43.89834],
+'四平阳光医院': [124.82564,43.50723],
+'延吉博生现代妇科医院': [129.52386,42.91870],
+'沈阳北陵医院': [123.43834,41.84542],
+'沈阳曙光男科医院': [123.43279,41.80864],
+'武警辽宁省总队医院': [123.42050,41.86880],
+'解放军沈阳463医院希美整形美容': [123.47919,41.79913],
+'大连长城妇科医院': [121.59348,38.94871],
+'大连新世纪医院': [121.59348,38.94871],
+'大连阳光医院': [121.60832,38.91275],
+'无锡玛丽亚医院': [120.30155,31.58376],
+'无锡嘉仕恒信医院': [120.26993,31.55847],
+'无锡南站医院': [120.32942,31.56824],
+'无锡虹桥医院': [120.35074,31.56691],
+'江阴东方女子医院': [120.29258,31.90293],
+'宜兴武警医院': [119.79027,31.36224],
+'江阴九龙泌尿外科医院': [120.31068,31.83743],
+'无锡新区医院': [120.35914,31.55606],
+'江苏施尔美整形美容医院': [118.80923,32.04197],
+'南京曙光医院': [118.78927,32.01273],
+'南京江宁博爱医院': [118.86966,31.96343],
+'南京市江宁区众彩门诊部': [118.83542,31.86397],
+'南京世纪现代妇产医院（南院、东院）': [118.92939,32.04381],
+'南京建国男科医院': [118.80258,32.01993],
+'南京康豪妇科': [118.77807,32.05724],
+'南京阳光肿瘤医院': [118.74195,32.06137],
+'张家港朝阳五官科医院': [120.53979,31.87974],
+'江苏泰州红房子医院': [119.94031,32.48867],
+'泰州市海陵医院': [119.91961,32.47605],
+'泰州海陵女子医院': [119.92117,32.48826],
+'盐城协和康复医院': [120.14887,33.37986],
+'宿迁市妇产医院': [118.27730,33.96478],
+'泗洪阳光儿童医院': [118.31255,33.42596],
+'江苏淮安中山医院': [119.04967,33.60848],
+'淮安生殖医院': [119.01528,33.61964],
+'江苏海安华山医院': [120.47687,32.54399],
+'南通和美家妇产科医院': [120.90178,31.96923],
+'南通长城医院': [120.84037,32.02098],
+'武汉华夏医院': [114.34043,30.53793],
+'武汉华美医院': [114.30134,30.60741],
+'武汉现代女子妇科医院': [114.26781,30.57545],
+'武汉当代佳丽医院': [114.31620,30.58108],
+'湖北荣军医院': [114.38387,30.51157],
+'武汉阳光女子医院': [114.31620,30.58108],
+'武汉华仁医院': [114.35452,30.53426],
+'荆州华康医院': [112.22717,30.35145],
+'黄冈泌尿专科医院': [114.87741,30.44927],
+'湖北黄石福康医院': [115.10853,30.21538],
+'襄阳市第五人民医院': [112.25009,32.22917],
+'乌海现代医院': [106.83129,39.67813],
+'内蒙古天骄医院': [111.65868,40.84864],
+'呼和浩特五洲女子医院': [111.67274,40.80652],
+'贵州退休医师医院': [106.71974,26.57023],
+'贵阳五官中心': [106.70918,26.62991],
+'贵阳长江医院': [106.71815,26.58892],
+'贵阳和谐阳光医院': [106.67415,26.58758],
+'贵阳马王庙医院': [106.66035,26.58921],
+'贵阳现代女子医院': [106.71138,26.58902],
+'贵阳和美妇产医院': [106.69963,26.53691],
+'铜仁华夏医院': [109.20113,27.74443],
+'安顺阳光妇科医院': [105.93131,26.25693],
+'毕节现代医院': [105.29377,27.30759],
+'长沙华夏医院': [113.08653,28.23666],
+'长沙湘江医院七大医院': [113.08820,28.24550],
+'长沙阳光医院': [112.98451,28.18901],
+'长沙仁爱医院': [112.98622,28.21978],
+'长沙恒生手外科医院': [113.01364,28.14268],
+'长沙博大泌尿专科医院': [113.00343,28.18737],
+'长沙南方骨外科医院': [113.08052,28.22977],
+'长沙现代女子医院': [113.00555,28.17338],
+'长沙丽人妇产医院': [113.01279,28.19130],
+'武警湖南省总队医院': [111.72066,27.69586],
+'湖南郴州福康医院': [113.03384,25.81138],
+'湘潭阳光眼科中心': [112.91883,27.87001],
+'娄底阳光医院': [112.00658,27.75718],
+'南昌市第五医院': [115.92232,28.63815],
+'南昌仁爱女子医院': [115.88937,28.66060],
+'南昌曙光手足外科医院': [115.92996,28.66076],
+'南昌佳美美容医院': [115.92828,28.65321],
+'南昌华山不孕不育医院': [115.89353,28.68958],
+'南昌博爱泌尿专科医院': [115.89329,28.69206],
+'南昌东大肛肠专科医院': [115.89299,28.69208],
+'南昌博大耳鼻咽喉专科医院': [115.89353,28.68958],
+'南昌泌尿专科医院': [115.89353,28.68958],
+'九江玛丽亚医院': [115.98697,29.72915],
+'九江新世纪医院': [115.98748,29.72844],
+'九江阳光女子医院': [115.98697,29.72925],
+'江西吉安市第二人民医院': [114.99002,27.10332],
+'萍乡市新世纪泌尿专科医院': [113.85992,27.63954],
+'萍乡妇科医院': [113.85824,27.65388],
+'赣州现代泌尿专科医院': [114.96906,25.82757],
+'上饶东大肛肠专科医院': [117.97489,28.46663],
+'上饶协和医院': [117.98302,28.44765],
+'山西现代妇产医院': [112.58636,37.84578],
+'山西民生医院': [112.55153,37.84416],
+'太原糖尿病专科医院': [112.58970,37.85796],
+'太原新医医院': [112.59003,37.83749],
+'太原益民中医院': [112.58935,37.84515],
+'武警山西总队医院': [112.58487,37.81111],
+'山西长庚耳鼻喉医院': [112.59293,37.85052],
+'临汾现代女子医院': [111.52295,36.07728],
+'山西阳泉东方生殖医院': [113.58800,37.86363],
+'长治女子医院': [113.10709,36.19885],
+'大同新时代妇科医院': [113.29575,40.11703],
+'晋城现代女子医院': [112.85644,35.50318],
+'晋城生殖医院': [112.86141,35.50017],
+'山西新阳光妇科医院': [112.58430,37.83286],
+'运城禹都人民医院': [111.02158,35.04234],
+'西安俪人医院': [108.91452,34.23490],
+'武警陕西总队医院': [109.50379,35.86003],
+'西安阳光医院': [108.97777,34.32520],
+'包头现代女子妇产医院': [109.84609,40.65983],
+'澳美佳女子医院': [117.38357,32.95657],
+'蚌埠解放军一二三中心医院': [117.37281,32.94550],
+'涡阳阳光医院': [116.24704,33.48870],
+'芜湖阳光眼科医院': [118.38411,31.36602],
+'芜湖丹凤朝阳妇科医院': [118.37616,31.36656],
+'巢湖康平妇产医院': [117.88923,31.60373],
+'巢湖阳光妇幼医院': [117.88049,31.60873],
+'淮北女子医院': [116.79990,33.97288],
+'淮北阳光心理院': [116.81433,33.97957],
+'合肥市中山医院': [117.32081,31.87924],
+'合肥九龙男科医院': [117.28270,31.86694],
+'合肥丹凤朝阳妇科医院': [117.31285,31.88919],
+'安阳协和医院': [114.34108,36.09687],
+'河南中都皮肤病医院': [113.74671,34.75559],
+'河南省军区医院': [113.68014,34.77152],
+'郑州集美整形美容医院': [113.64964,34.75661],
+'郑州华夏白癜风医院': [113.69127,34.72206],
+'巩义阳光医院': [112.99051,34.74541],
+'郑州华山医院': [113.60666,34.74249],
+'许昌新时代妇科医院': [113.82408,34.02224],
+'许昌凤凰医院': [113.82738,34.02876],
+'许昌中山医院': [113.83035,34.03419],
+'廊坊万福医院': [116.71236,39.54559],
+'廊坊世纪协和医院': [116.71502,39.51822],
+'保定京津医院': [115.52354,38.87115],
+'保定世纪协和医院': [115.49183,38.86622],
+'保定长安医院': [115.49481,38.88656],
+'保定现代女子医院': [115.46321,38.88862],
+'保定白癜风医院': [115.49979,38.85329],
+'唐山京城皮肤病医院': [118.15669,39.63580],
+'唐山女子医院': [118.14529,39.63078],
+'唐山红十字医院': [118.12124,39.83315],
+'解放军534医院': [113.23080,35.24171],
+'洛阳牡丹女子医院': [112.44752,34.65737],
+'信阳泌尿外科医院': [114.08549,32.12858],
+'平顶山市武警医院': [113.30085,33.74530],
+'漯河东方医院': [114.04720,33.58367],
+'河北东方中西医结合医院': [114.49274,38.04143],
+'石家庄美联臣医疗美容医院': [114.49274,38.04143],
+'邯郸仁爱妇科医院': [114.48269,36.60931],
+'西藏博爱医院': [ 89.13798,31.36732],
+'拉萨北大泌尿生殖医院': [ 91.11189,29.66256],
+'宁夏西京妇产医院': [106.28905,38.45647],
+'兰州仁和医院': [103.83515,36.04710],
+'广西阳光医院': [108.92427,23.55225],
+'桂林阳光医院': [110.26092,25.26290],
+'柳州福康医院': [109.44496,24.30006],
+'伊犁阳光女子医院': [106.38620,39.01537],
+'伊宁阳光女子医院': [ 81.28905,44.02036],
+'新彊维吾尔自治区人民医院肿瘤中心': [ 87.62130,43.79128],
+'新疆爱德华医院': [105.58731,30.50744],
+'武警海南总队医院妇科中心': [110.37421,20.04515]
+                  }
+
+
+    },
+    ]
+};
+
+var myChart = BMapExt.initECharts(container);
+                       window.onresize = myChart.onresize;
+                       BMapExt.setOption(optionID_20160507102219_25810);
+                       }
+);
+                       })();</script>
+
+<p>还是贴张截图吧…万一有手机党呢..</p>
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/102.png"></p>
+<p>最后,把所有的代码放在一起,方便大家调用(顺便我可以数一下有几行,不到30,啧啧啧)</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">##获取数据</span></div><div class="line">raw = readLines(<span class="string">"http://news.ifeng.com/mainland/special/ptxyy/"</span>,</div><div class="line">                encoding = <span class="string">"UTF-8"</span>)</div><div class="line">rawHospital = raw[<span class="number">123</span> : <span class="number">238</span>]</div><div class="line"><span class="comment">## 数据整理</span></div><div class="line">extFun = <span class="keyword">function</span>(x)&#123;</div><div class="line">  split = strsplit(x, <span class="string">"','"</span>)</div><div class="line">  out = strsplit(split[[<span class="number">1</span>]][<span class="number">2</span>], <span class="string">"&lt;br/&gt;"</span>)</div><div class="line">  <span class="keyword">return</span>(out)</div><div class="line">&#125;</div><div class="line">extFun(rawHospital[<span class="number">1</span>])</div><div class="line">hosList = sapply(rawHospital,extFun)</div><div class="line">hospital = c()</div><div class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">1</span>:length(hosList)) hospital = append(hospital, hosList[[i]])</div><div class="line"><span class="comment">## 获取经纬度</span></div><div class="line"><span class="keyword">library</span>(baidumap)</div><div class="line">blackHospital = getCoordinate(hospital, formatted = <span class="literal">T</span>)</div><div class="line">blackHospital = na.omit(blackHospital)</div><div class="line">plotdata = data.frame(lon = blackHospital[,<span class="number">1</span>],</div><div class="line">                      lat = blackHospital[,<span class="number">2</span>],</div><div class="line">                      city = rownames(blackHospital))</div><div class="line"><span class="comment">## 绘制地图</span></div><div class="line"><span class="keyword">library</span>(REmap)</div><div class="line">remapB(markPointData = data.frame(plotdata$city),</div><div class="line">       markPointTheme = markPointControl(symbol = <span class="string">"pin"</span>,</div><div class="line">                                         effect=<span class="literal">F</span>,</div><div class="line">                                         symbolSize = <span class="number">5</span>,</div><div class="line">                                         color=<span class="string">"red"</span>),</div><div class="line">       geoData = plotdata)</div></pre></td></tr></table></figure>
+
+
+  </article>
+  </script>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+  <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_24x24" style = 'float:right'>
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+      </div>
+      <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+      <!-- JiaThis Button END -->
+
+  <!-- 多说评论框 start -->
+  <!-- <div class="ds-thread" data-thread-key="莆田医院的可视化(R)" data-title="莆田医院的可视化(R)" data-url="langdawei.com/2016/05/07/blackhospital.html"></div> -->
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <!-- <script type="text/javascript">
+  var duoshuoQuery = {short_name:"lchiffon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script> -->
+  <!-- 多说公共JS代码 end -->
+
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  const gitment = new Gitment({
+    owner: 'lchiffon',
+    repo: 'blogbuilder',
+    oauth: {
+      client_id: '7ae350c4fb8aa708af09',
+      client_secret: '1260522fee3e783d77736648af95caae8b8e015a',
+    },
+    // ...
+    // For more available options, check out the documentation below
+  })
+
+  gitment.render('container')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+
+  <div class="busuanzi center">
+    page PV:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    site PV:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    site UV:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+
+
+    </div>
+  </div>
+   <a id="rocket" href="#top" class=""></a>
+   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot container">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <i class="fa fa-arrow-right"></i>
+        </a>
+        © Chiffon 2014-2017
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+$(".dropdown").click(function(event) {
+  var current = $(this);
+  event.stopPropagation();
+  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
+});
+$(document).click(function(){
+    $(".dropdown-content").removeClass("open");
+})
+
+var path = "/search.xml";
+searchFunc(path, 'local-search-input', 'local-search-result');
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="UA-66633229-1" />
+  
+  <title>中文优化的slidify</title>
+  <meta name="author" content="Chiffon Lang">
+   <meta name="description" content="slidify是款用Rmd生成精美slides的R包，作者是Ramnath Vaidyanathan.以前我也写过关于slidify中文支持的博客和slidify中的reveal.
+后来由于slidify的种种原因,windows下很多用户都没法正常的使用slidify,(尤其是推出新版string">
+  
+
+  <meta property="og:title" content="中文优化的slidify"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="七风阁"/>
+ <meta property="og:image" content="undefined"/>
+  
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="七风阁" type="application/atom+xml">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+  <a id="top"></a>
+  <div id='wx_pic' style='display:none;'><img src='/wx_share.png'/></div>
+  <div id="main">
+    <div class="back">
+      <a href="/" class="black-color"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+    <div class="behind">
+
+      <div class="description">
+        &nbsp;不写R包的分析师不是好全栈
+      </div>
+    </div>
+    <div class="container">
+      
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        中文优化的slidify
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      
+<time datetime="2016-02-27T00:00:00.000Z">
+  <i class="fa fa-calendar"></i>&nbsp;
+  2016-02-27
+</time>
+
+
+
+    
+    &nbsp;
+    <i class="fa fa-tag"></i>&nbsp;
+    <a href="/categories/R/">R</a>
+
+
+
+
+
+    </div>
+    <hr>
+    <div class="picture-container">
+      
+    </div>
+    <p><a href="slidify.org">slidify</a>是款用Rmd生成精美slides的R包，作者是<a href="https://github.com/ramnathv" target="_blank" rel="external">Ramnath Vaidyanathan</a>.<br>以前我也写过关于<a href="http://lchiffon.github.io/2014/11/29/slidify-chinese.html">slidify中文支持的博客</a>和<a href="http://lchiffon.github.io/2015/05/08/RevealJS.html">slidify中的reveal</a>.</p>
+<p>后来由于slidify的种种原因,windows下很多用户都没法正常的使用slidify,(尤其是推出新版stringr和slidify后)</p>
+<p>目前,我fork了Ramnath的slidify包,并在尝试改造成一个中文友好的版本(目前进展不错)</p>
+<p>可以使用以下方式来安装:</p>
+<pre><code>library(devtools)
+install_github(&quot;lchiffon/slidify&quot;)
+install_github(&quot;ramnath/slidifyLibraries&quot;)
+</code></pre><p>不用费心于0.6.2的stringr,不用更改系统语言,不用控制slidify的版本…我只想说应该没问题(测了几次基本没问题)</p>
+<p>欢迎大家试用并提出问题/修改意见<br>这个包并没有在CRAN的镜像上，而是托管在Github上，需要用以下方法安装:</p>
+<pre><code>library(devtools)
+install_github(&quot;lchiffon/slidify&quot;)
+install_github(&quot;ramnath/slidifyLibraries&quot;)
+</code></pre><p>不用费心于0.6.2的stringr,不用更改系统语言,不用控制slidify的版本…我只想说应该没问题(测了几次基本没问题)</p>
+<p>欢迎大家试用并提出问题/修改意见<br>这个包并没有在CRAN的镜像上，而是托管在Github上，需要用以下方法安装:</p>
+<p>(在运行之前需要保证安装了devtools,如果没有请跑下<code>install.packages(&#39;devtools&#39;)</code>)</p>
+
+
+  </article>
+  </script>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+  <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_24x24" style = 'float:right'>
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+      </div>
+      <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+      <!-- JiaThis Button END -->
+
+  <!-- 多说评论框 start -->
+  <!-- <div class="ds-thread" data-thread-key="中文优化的slidify" data-title="中文优化的slidify" data-url="langdawei.com/2016/02/27/slidify2.html"></div> -->
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <!-- <script type="text/javascript">
+  var duoshuoQuery = {short_name:"lchiffon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script> -->
+  <!-- 多说公共JS代码 end -->
+
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  const gitment = new Gitment({
+    owner: 'lchiffon',
+    repo: 'blogbuilder',
+    oauth: {
+      client_id: '7ae350c4fb8aa708af09',
+      client_secret: '1260522fee3e783d77736648af95caae8b8e015a',
+    },
+    // ...
+    // For more available options, check out the documentation below
+  })
+
+  gitment.render('container')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+
+  <div class="busuanzi center">
+    page PV:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    site PV:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    site UV:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+
+
+    </div>
+  </div>
+   <a id="rocket" href="#top" class=""></a>
+   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot container">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <i class="fa fa-arrow-right"></i>
+        </a>
+        © Chiffon 2014-2017
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+$(".dropdown").click(function(event) {
+  var current = $(this);
+  event.stopPropagation();
+  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
+});
+$(document).click(function(){
+    $(".dropdown-content").removeClass("open");
+})
+
+var path = "/search.xml";
+searchFunc(path, 'local-search-input', 'local-search-result');
+
+</script>
+
+</body>
+</html>

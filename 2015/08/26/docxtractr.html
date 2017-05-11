@@ -1,0 +1,367 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="UA-66633229-1" />
+  
+  <title>R中的黑魔法--读取WORD文档中的表格</title>
+  <meta name="author" content="Chiffon Lang">
+   <meta name="description" content="今天早上刷RSS,看到一条消息,说有个包能读取docx的文件,于是就去看了看,玩起来还不错的样子.所有我就写了一个简单的攻略.从使用,中文支持,还有这个包的原理进行一些叙述,以方便大家使用这个黑魔法_.
+
+docxtractr是由hrbrmstr托管在github上的开源项目,目前作者正在为CRAN">
+  
+
+  <meta property="og:title" content="R中的黑魔法--读取WORD文档中的表格"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="七风阁"/>
+ <meta property="og:image" content="undefined"/>
+  
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="七风阁" type="application/atom+xml">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+  <a id="top"></a>
+  <div id='wx_pic' style='display:none;'><img src='/wx_share.png'/></div>
+  <div id="main">
+    <div class="back">
+      <a href="/" class="black-color"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+    <div class="behind">
+
+      <div class="description">
+        &nbsp;不写R包的分析师不是好全栈
+      </div>
+    </div>
+    <div class="container">
+      
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        R中的黑魔法--读取WORD文档中的表格
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      
+<time datetime="2015-08-26T00:00:00.000Z">
+  <i class="fa fa-calendar"></i>&nbsp;
+  2015-08-26
+</time>
+
+
+
+    
+    &nbsp;
+    <i class="fa fa-tag"></i>&nbsp;
+    <a href="/categories/R/">R</a>
+
+
+
+
+
+    </div>
+    <hr>
+    <div class="picture-container">
+      
+    </div>
+    <p>今天早上刷RSS,看到一条消息,说有个包能读取docx的文件,于是就去看了看,玩起来还不错的样子.<br>所有我就写了一个简单的攻略.从使用,中文支持,还有这个包的原理进行一些叙述,以方便大家使用这个黑魔法<sup>_<sup>.</sup></sup></p>
+
+<p><code>docxtractr</code>是由<a href="https://github.com/hrbrmstr" target="_blank" rel="external">hrbrmstr</a>托管在github上的开源项目,目前作者正在为CRAN check做最后的一些工作,<a href="https://github.com/hrbrmstr/docxtractr" target="_blank" rel="external">这里</a>是该项目github的主页,<br>这里是作者写的<a href="http://rud.is/b/2015/08/24/new-pacakge-docxtractr-easily-extract-tables-from-microsoft-word-docs/" target="_blank" rel="external">推广软文</a><br>(都是鹰文的blog)</p>
+
+<p><br></p>
+
+<h3>安装</h3>
+
+<p><code>docxtractr</code>包的安装需要使用devtools包</p>
+
+<pre><code class="r">devtools::install_github(&quot;hrbrmstr/docxtractr&quot;)
+library(docxtractr)
+</code></pre>
+
+<p><br></p>
+
+<h3>参考示例</h3>
+
+<p>先拿一个简单的示例来热热身.</p>
+
+<p>图片中是一个docx文件,这个文件中有5个表格,尝试读取其中的第一个表格</p>
+
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/30.png"></p>
+
+<pre><code class="r">complx &lt;- read_docx(system.file(&quot;examples/complex.docx&quot;,
+                                package=&quot;docxtractr&quot;))
+docx_tbl_count(complx)
+</code></pre>
+
+<pre><code>## [1] 5
+</code></pre>
+
+<pre><code class="r">docx_extract_tbl(complx, 1, header=TRUE)
+</code></pre>
+
+<pre><code>## Source: local data frame [3 x 4]
+##
+##   This      Is     A   Column
+## 1    1     Cat   3.4      Dog
+## 2    3    Fish 100.3     Bird
+## 3    5 Pelican   -99 Kangaroo
+</code></pre>
+
+<p>读取的结果可以转换为一个数据框,进行进一步的操作:</p>
+
+<pre><code class="r">docx_tbl = docx_extract_tbl(complx, 1, header=TRUE)
+as.data.frame(docx_tbl)
+</code></pre>
+
+<pre><code>##   This      Is     A   Column
+## 1    1     Cat   3.4      Dog
+## 2    3    Fish 100.3     Bird
+## 3    5 Pelican   -99 Kangaroo
+</code></pre>
+
+<p><br></p>
+
+<h3>非结构化的表格</h3>
+
+<p><code>docxtract</code>可以读取结构化和非结构化的表格,作者提供了一个非结构化表格的例子:</p>
+
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/31.png"></p>
+
+<p>尝试一下它的读取:</p>
+
+<pre><code class="r">## 读取并查看表的个数
+realworld = read_docx(
+               system.file(&quot;examples/realworld.docx&quot;,
+                            package=&quot;docxtractr&quot;))
+docx_tbl_count(realworld)
+</code></pre>
+
+<pre><code>## [1] 8
+</code></pre>
+
+<pre><code class="r">## 读取第一个表格
+docx_extract_tbl(realworld, 1, header=TRUE)
+</code></pre>
+
+<pre><code>## Source: local data frame [8 x 9]
+##
+##   Lesson 1:  Step 1        NA       NA.1                   NA.2
+## 1           Country Birthrate Death Rate Population Growth 2005
+## 2               USA      2.06      0.51%                  0.92%
+## 3             China      1.62       0.3%                   0.6%
+## 4             Egypt      2.83      0.41%                   2.0%
+## 5             India      2.35      0.34%                  1.56%
+## 6             Italy      1.28      0.72%                  0.35%
+## 7            Mexico      2.43      0.25%                  1.41%
+## 8           Nigeria      4.78      0.26%                  2.46%
+## Variables not shown: NA (chr), NA (chr), NA (chr), NA (chr), NA (chr)
+</code></pre>
+
+<pre><code class="r">## 读取第二个表格
+docx_extract_tbl(realworld, 2, header=TRUE)
+</code></pre>
+
+<pre><code>## Source: local data frame [8 x 3]
+##
+##   Lesson 1:  Step 2                                             NA
+## 1           Country                   Shape of Pyramid: Prediction
+## 2               USA Stable base, stable middle, narrow at very top
+## 3             China                         Narrow base, large top
+## 4             Egypt                         Large base, narrow top
+## 5             India                      Larger base, narrower top
+## 6             Italy         Stable base, stable middle, larger top
+## 7            Mexico                       Large base, narrower top
+## 8           Nigeria                         Large base, narrow top
+## Variables not shown: NA (chr)
+</code></pre>
+
+<p>与图片中的表格对比,看起来还可以,对吧~</p>
+
+<p><code>docxtract</code>会直接把少的地方加上NA&hellip;(类似<code>read.table</code>中的<code>fill=T</code>)</p>
+
+<p><br></p>
+
+<h3>请问你支持中文么?</h3>
+
+<p>docxtract的开发者并没有在函数中嵌入读取中文时常需要调(jiu)整(jie)的encoding参数,所以,我比较好奇:</p>
+
+<p><strong>docxtract支持中文形式么?</strong></p>
+
+<p>为了验证这个问题,我建立了一个docx的文件,里面扔了一个表格,表格的形式为:</p>
+
+<table><thead><br><tr><br><th>This</th><br><th>Is</th><br><th>A</th><br><th>Column</th><br></tr><br></thead><tbody><br><tr><br><td>1</td><br><td>Cat</td><br><td>3.4</td><br><td>狗</td><br></tr><br><tr><br><td>3</td><br><td>Fish</td><br><td>100.3</td><br><td>鸟</td><br></tr><br><tr><br><td>5</td><br><td>Pelican</td><br><td>-99</td><br><td>袋鼠</td><br></tr><br></tbody></table>
+
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/32.png"></p>
+
+<pre><code class="r">complx &lt;- read_docx(&quot;newTry.docx&quot;)
+docx_extract_tbl(complx, 1, header=TRUE)
+</code></pre>
+
+<pre><code>## Source: local data frame [3 x 4]
+##
+##   This      Is     A Column
+## 1    1     Cat   3.4     狗
+## 2    3    Fish 100.3     鸟
+## 3    5 Pelican   -99   袋鼠
+</code></pre>
+
+<p><strong>还不错,读取成功了&hellip;</strong></p>
+
+<p>看起来很美好,但是,<strong>这是在Linux下实现的结果</strong>,在windows下并不能成功读取出文件的中文形式-_-||</p>
+
+<p><br></p>
+
+<h4>win下的中文问题</h4>
+
+<p>Tips: <strong>以下是我对原因的一些探索,跳过并不影响阅读</strong></p>
+
+<p>对于原始的函数,read_docx,类似<a href="http://lchiffon.github.io/2014/11/29/slidify-chinese.html">slidify中文乱码的问题</a><br>我尝试更改了本地语言格式:</p>
+
+<ul><br><li>设置语言为中文(<code>Sys.setlocale(&quot;LC_CTYPE&quot;, &quot;chs&quot;)</code>)的时候完全不能读取</li><br><li>设置语言为英文的时候(<code>Sys.setlocale(&quot;LC_CTYPE&quot;, &quot;eng&quot;)</code>)可以读出现乱码<br><br><ul><br><li><code>Encoding()</code>函数检测读取出内容的编码为&#39;unknown&#39;</li><br><li>尝试用<code>iconv</code>或者<code>stringi</code>包中的函数进行转换,&#39;GBK&#39;,&#39;GB2312&#39;,&#39;ASCII&#39;均无法识别</li><br></ul></li><br></ul>
+
+<p>之后的尝试便进入了混乱模式:</p>
+
+<p>于是我去clone了他的源码,做了一些更改,<code>docxtract</code>是基于<code>xml2</code>包来实现读写的<br><code>xml_read</code>函数中有一个<code>encoding</code>的选项,我把这个选项加了进去并重新加载更改后的包也并没有解决这个问题<br>&hellip;&hellip;&hellip;</p>
+
+<h4>废了这么多话,最后想说的是windows用户并不能进行中文表格的读取&hellip;</h4>
+
+<p><br></p>
+
+<h3>docx的原理</h3>
+
+<p>如果你尝试读取一个doc文件,<code>docxtract</code>是不支持的,为什么呢,先看一段<a href="http://baike.baidu.com/link?url=tDQlEgjyfoAFLkI2DS8IW2PIMKOWuGsKgyAPD_4rblSyszFpArcYrNTnVQzNCm5JsnORK75P140bmD81fYC_Ha" target="_blank" rel="external">百度百科</a></p>
+
+<blockquote><br><p>docx格式的文件本质上是一个ZIP文件。将一个docx文件的后缀改为ZIP后是可以用解压工具打开或是解压的。事实上，Word2007的基本文件就是ZIP格式的，他可以算作是docx文件的容器。<br>docx 格式文件的主要内容是保存为XML格式的，但文件并非直接保存于磁盘。它是保存在一个ZIP文件中，然后取扩展名为docx。<br>将.docx 格式的文件后缀改为ZIP后解压, 可以看到解压出来的文件夹中有word这样一个文件夹，它包含了Word文档的大部分内容。而其中的document.xml文件则包含了文档的主要文本内容。</p><br></blockquote>
+
+<p><code>docxtract</code>就是通过xml来进行读取的,doc文件不能被转换为xml,所以也就不能读取了&hellip;</p>
+
+<h3>总结</h3>
+
+<ul><br><li><code>docxtractr</code>包可以完成一些简单的docx中表格读取的问题</li><br><li>可以处理结构化和非结构化的数据读取</li><br><li>对于中文,与很多包类似,支持Liunx(MAC应该也没问题),Windows用户暂时享受不到它的光芒</li><br><li>由于原理的问题,不支持doc文件的读取</li><br></ul>
+
+
+  </article>
+  </script>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+  <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_24x24" style = 'float:right'>
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+      </div>
+      <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+      <!-- JiaThis Button END -->
+
+  <!-- 多说评论框 start -->
+  <!-- <div class="ds-thread" data-thread-key="R中的黑魔法--读取WORD文档中的表格" data-title="R中的黑魔法--读取WORD文档中的表格" data-url="langdawei.com/2015/08/26/docxtractr.html"></div> -->
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <!-- <script type="text/javascript">
+  var duoshuoQuery = {short_name:"lchiffon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script> -->
+  <!-- 多说公共JS代码 end -->
+
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  const gitment = new Gitment({
+    owner: 'lchiffon',
+    repo: 'blogbuilder',
+    oauth: {
+      client_id: '7ae350c4fb8aa708af09',
+      client_secret: '1260522fee3e783d77736648af95caae8b8e015a',
+    },
+    // ...
+    // For more available options, check out the documentation below
+  })
+
+  gitment.render('container')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+
+  <div class="busuanzi center">
+    page PV:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    site PV:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    site UV:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+
+
+    </div>
+  </div>
+   <a id="rocket" href="#top" class=""></a>
+   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot container">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <i class="fa fa-arrow-right"></i>
+        </a>
+        © Chiffon 2014-2017
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+$(".dropdown").click(function(event) {
+  var current = $(this);
+  event.stopPropagation();
+  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
+});
+$(document).click(function(){
+    $(".dropdown-content").removeClass("open");
+})
+
+var path = "/search.xml";
+searchFunc(path, 'local-search-input', 'local-search-result');
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="UA-66633229-1" />
+  
+  <title>snippets代码快捷键</title>
+  <meta name="author" content="Chiffon Lang">
+   <meta name="description" content="好久没更博客了,最近给自己挖的坑有点多,都在慢慢填坑了,索性最近deadline都过去了,水一篇小博客介绍下Rstudio里面的Snippets
+我们在编写代码的时候,总会遇到一些需要反复使用的代码片段.这时候就需要反复的复制和黏贴,大大影响效率.这时,可重用的代码片段就用上了,像Eclipse或者">
+  
+
+  <meta property="og:title" content="snippets代码快捷键"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="七风阁"/>
+ <meta property="og:image" content="undefined"/>
+  
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="七风阁" type="application/atom+xml">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+  <a id="top"></a>
+  <div id='wx_pic' style='display:none;'><img src='/wx_share.png'/></div>
+  <div id="main">
+    <div class="back">
+      <a href="/" class="black-color"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+    <div class="behind">
+
+      <div class="description">
+        &nbsp;不写R包的分析师不是好全栈
+      </div>
+    </div>
+    <div class="container">
+      
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        snippets代码快捷键
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      
+<time datetime="2015-10-18T00:00:00.000Z">
+  <i class="fa fa-calendar"></i>&nbsp;
+  2015-10-18
+</time>
+
+
+
+    
+    &nbsp;
+    <i class="fa fa-tag"></i>&nbsp;
+    <a href="/categories/R/">R</a>
+
+
+
+
+
+    </div>
+    <hr>
+    <div class="picture-container">
+      
+    </div>
+    <p>好久没更博客了,最近给自己挖的坑有点多,都在慢慢填坑了,索性最近deadline都过去了,水一篇小博客介绍下Rstudio里面的Snippets</p>
+<p>我们在编写代码的时候,总会遇到一些需要反复使用的代码片段.这时候就需要反复的复制和黏贴,大大影响效率.这时,可重用的代码片段就用上了,像Eclipse或者Sublime里面也是有Snippets相关模块的,今天简单介绍下Rstudio里面的Snippets模块</p>
+<ul>
+<li>Rstudio版本</li>
+<li>Version 0.99.441</li>
+<li>Windows系统</li>
+<li>R3.2.0</li>
+</ul>
+<h3 id="最简单的应用"><a href="#最简单的应用" class="headerlink" title="最简单的应用"></a>最简单的应用</h3><p>在脚本里面输入<code>for</code>,再按两下Tab键,你会看到,Rstudio自动补齐了for函数所需要的条件,大小括号等,一个输入完成后,再按tab跳到下一个输入的位置,就是这么简单:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for (variable in vector) &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Snippet功能的开启和调整"><a href="#Snippet功能的开启和调整" class="headerlink" title="Snippet功能的开启和调整"></a>Snippet功能的开启和调整</h3><p>在Tools—&gt;Global Options–&gt;code里面开启和关闭Snippets的功能,默认是开启的</p>
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/37.png"></p>
+<p>点旁边的Edit Snippets来查看和修改所有的snippets代码重用</p>
+<p><img src="http://7xr5em.com1.z0.glb.clouddn.com/38.png"></p>
+<p>Rstudio提供了R,py,C,Java,SQL,JavaScript的snippets,而在R的代码重用里面,主要是以下的一些功能:</p>
+<ul>
+<li><p>library类:</p>
+<ul>
+<li>lib—&gt;library</li>
+<li>req—&gt;require</li>
+</ul>
+</li>
+<li><p>Method类:</p>
+<ul>
+<li>sg—-&gt;setGeneric</li>
+<li>sm—-&gt;setMethod</li>
+<li>sc—-&gt;setClass</li>
+</ul>
+</li>
+<li><p>loop类:</p>
+<ul>
+<li>for</li>
+<li>while</li>
+<li>switch</li>
+</ul>
+</li>
+<li><p>if类:</p>
+<ul>
+<li>if</li>
+<li>el—&gt;else</li>
+<li>ei—&gt;else if</li>
+</ul>
+</li>
+<li><p>apply类(这部分和基本函数相同,只是帮你补齐参数)</p>
+</li>
+<li><p>fun—&gt;function</p>
+</li>
+</ul>
+<h3 id="个性化Snippets"><a href="#个性化Snippets" class="headerlink" title="个性化Snippets"></a>个性化Snippets</h3><p>在Edit Snippets里面就可以个性化自己的Snippets</p>
+<p>比如我很在意大括号之前不要空格这个问题,就可以把原来的Snippets里面的括号去掉.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">snippet for</div><div class="line">	for ($&#123;1:variable&#125; in $&#123;2:vector&#125;) &#123;</div><div class="line">		$&#123;0&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>Snippets的语法类似Shell,<code>$</code>代表了不同参数的位置,用Tab来进行切换,输入完会跳到<code>$(0)</code>的位置.</p>
+<p>Rstudio还是一个很不错的编辑器的,内置的Shell,可以选用VIM来编辑等等,希望本文可以让更多的人更快的完成R脚本的编写.</p>
+
+
+  </article>
+  </script>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+  <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_24x24" style = 'float:right'>
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+      </div>
+      <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+      <!-- JiaThis Button END -->
+
+  <!-- 多说评论框 start -->
+  <!-- <div class="ds-thread" data-thread-key="snippets代码快捷键" data-title="snippets代码快捷键" data-url="langdawei.com/2015/10/18/snippets.html"></div> -->
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <!-- <script type="text/javascript">
+  var duoshuoQuery = {short_name:"lchiffon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script> -->
+  <!-- 多说公共JS代码 end -->
+
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  const gitment = new Gitment({
+    owner: 'lchiffon',
+    repo: 'blogbuilder',
+    oauth: {
+      client_id: '7ae350c4fb8aa708af09',
+      client_secret: '1260522fee3e783d77736648af95caae8b8e015a',
+    },
+    // ...
+    // For more available options, check out the documentation below
+  })
+
+  gitment.render('container')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+
+  <div class="busuanzi center">
+    page PV:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    site PV:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    site UV:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+
+
+    </div>
+  </div>
+   <a id="rocket" href="#top" class=""></a>
+   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot container">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <i class="fa fa-arrow-right"></i>
+        </a>
+        © Chiffon 2014-2017
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+$(".dropdown").click(function(event) {
+  var current = $(this);
+  event.stopPropagation();
+  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
+});
+$(document).click(function(){
+    $(".dropdown-content").removeClass("open");
+})
+
+var path = "/search.xml";
+searchFunc(path, 'local-search-input', 'local-search-result');
+
+</script>
+
+</body>
+</html>

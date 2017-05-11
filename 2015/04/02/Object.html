@@ -1,0 +1,210 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="UA-66633229-1" />
+  
+  <title>S4对象的应用:没有括号的函数</title>
+  <meta name="author" content="Chiffon Lang">
+   <meta name="description" content="ChiffonThursday, April 02, 2015
+
+
+在R语言中,所有的函数都是以括号结尾的,可不可以建立一个没有括号的函数呢?
+这个问题来源于一个群友的小问题:
+
+我想用一个字母,比如“q”来实现quit(&amp;quot;no&amp;quot;)的功能
+如果这个方法存在,R的使用也可以变得更加">
+  
+
+  <meta property="og:title" content="S4对象的应用:没有括号的函数"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="七风阁"/>
+ <meta property="og:image" content="undefined"/>
+  
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="七风阁" type="application/atom+xml">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+  <a id="top"></a>
+  <div id='wx_pic' style='display:none;'><img src='/wx_share.png'/></div>
+  <div id="main">
+    <div class="back">
+      <a href="/" class="black-color"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+    <div class="behind">
+
+      <div class="description">
+        &nbsp;不写R包的分析师不是好全栈
+      </div>
+    </div>
+    <div class="container">
+      
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        S4对象的应用:没有括号的函数
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      
+<time datetime="2015-04-02T00:00:00.000Z">
+  <i class="fa fa-calendar"></i>&nbsp;
+  2015-04-02
+</time>
+
+
+
+    
+    &nbsp;
+    <i class="fa fa-tag"></i>&nbsp;
+    <a href="/categories/R/">R</a>
+
+
+
+
+
+    </div>
+    <hr>
+    <div class="picture-container">
+      
+    </div>
+    <div id="header"><br><h4 class="author"><em>Chiffon</em></h4><br><h4 class="date"><em>Thursday, April 02, 2015</em></h4><br></div>
+
+
+<p></p><p>在R语言中,所有的函数都是以括号结尾的,可不可以建立一个没有括号的函数呢?</p><p></p>
+<p></p><p>这个问题来源于一个群友的小问题:</p><p></p>
+<p><blockquote></blockquote></p>
+<p></p><p>我想用一个字母,比如“q”来实现<code>quit(&quot;no&quot;)</code>的功能</p><br><p></p>
+<p></p><p>如果这个方法存在,R的使用也可以变得更加方便:</p><p></p>
+<p></p><p>输入<code>work</code> 加载常用的几个包</p><p></p>
+<p></p><p>按<code>q</code>,直接保存并退出</p><p></p>
+<p></p><p>…..</p><p></p>
+<div class="section level3"><br><h3>找找灵感</h3><br><p>如果想找一个相似的对象的话,<code>version</code>是个不错的例子</p><br><pre class="r"><code>version</code></pre><br><pre><code>##                _<br>## platform       x86_64-w64-mingw32<br>## arch           x86_64<br>## os             mingw32<br>## system         x86_64, mingw32<br>## status<br>## major          3<br>## minor          1.1<br>## year           2014<br>## month          07<br>## day            10<br>## svn rev        66115<br>## language       R<br>## version.string R version 3.1.1 (2014-07-10)<br>## nickname       Sock it to Me</code></pre><br><pre class="r"><code>class(version)</code></pre><br><pre><code>## [1] &quot;simple.list&quot;</code></pre><br><p><code>version</code> 是R中默认存在的一个对象,它会打印出R内核的版本,建立时间,nickname等等~如果你注意到的话,<code>version</code>是一个<code>simple.list</code>,并不是常见的list,vector等变量.</p><br><p>当然上述的功能是可以实现的,具体的实现是依靠R中的S4对象来完成的,一个不错的博客可以看<a href="http://blog.fens.me/r-class-s4/" target="_blank" rel="external">张丹的博客</a></p><br><p>需要做的思路如下:</p><br><ul><br><li>定义一个S4的类</li><br><li>将<code>q</code>定义为这个类的对象</li><br><li>定义这个S4类的方法,使得<code>q</code>输出的时候执行我们想要的代码</li><br></ul><br></div><br><div class="section level2"><br><h2>解决方法</h2><br><div id="s4" class="section level3"><br><h3>定义一个S4的类</h3><br><p>定义一个S4的类使用的是<code>setClass</code>函数,第一个参数<code>&quot;fruit&quot;</code>代表这个类的名字,<code>slot</code>参数定义的是这个类中各个属性的类型.</p><br><p>换句话说,你可以把一个S4的对象看做一个<code>list</code>对象,这个对象中每个元素是可以定义成你想要的类型.在这里,我随便定义四个属性,名字,价格,颜色和甜度.</p><br><pre class="r"><code>fruit = setClass(&quot;fruit&quot;,<br>         slots = c(name = &quot;character&quot;,<br>                   price=&quot;numeric&quot;,<br>                   color=&quot;character&quot;,<br>                   sweet=&quot;logical&quot;))</code></pre><br></div><br><div id="apple" class="section level3"><br><h3>将<code>apple</code>定义为这个类的对象</h3><br><p>定义一个名为<code>apple</code>的<code>fruit</code>.其中,价格等于5,颜色是红色,而且是甜的.对于一个s4的对象,调用各个属性的方法是用@(类似<code>dataframe</code>是用$,还记得吧~)</p><br><pre class="r"><code>apple = fruit(name = &quot;apple&quot;,<br>              price = 5,<br>              color= &quot;red&quot;,<br>              sweet = T)<br>apple</code></pre><br><pre><code>## An object of class &quot;fruit&quot;<br>## Slot &quot;name&quot;:<br>## [1] &quot;apple&quot;<br>##<br>## Slot &quot;price&quot;:<br>## [1] 5<br>##<br>## Slot &quot;color&quot;:<br>## [1] &quot;red&quot;<br>##<br>## Slot &quot;sweet&quot;:<br>## [1] TRUE</code></pre><br><pre class="r"><code>apple@price</code></pre><br><pre><code>## [1] 5</code></pre><br><pre class="r"><code>apple@color</code></pre><br><pre><code>## [1] &quot;red&quot;</code></pre><br><pre class="r"><code>apple@sweet</code></pre><br><pre><code>## [1] TRUE</code></pre><br></div><br><div id="s4" class="section level3"><br><h3>定义这个S4类的方法</h3><br><p>以上,定义一个S4的类和一个list是没有太大区别的,都是把自己需要的对象塞到一起,然后…就没有然后了.实际上,S4对象最灵活的地方在于你可以定义这个对象的方法(method)</p><br><p>比如我们常见的<code>lm</code>对象可以使用<code>plot</code>,<code>summary</code>,<code>predict</code>来调用它,实际上,这些方法是定义在<code>plot.lm</code>,<code>summary.lm</code>,<code>predict.lm</code>里面的.</p><br><div id="fruitprint" class="section level4"><br><h4>对fruit定义一个print的方法:</h4><br><pre class="r"><code>print.fruit = function(fruit){<br>  if(fruit@sweet){<br>  out = paste0(fruit@name,&quot;’s price is &quot;,<br>               fruit@price,&quot;.\n&quot;,<br>               &quot;It’s &quot;,fruit@color,&quot; and sweet!&quot;)<br>  }else{<br>    out = &quot;It’s not a sweet fruit!!!&quot;<br>  }<br>  cat(out)<br>}</code></pre><br><p>用print来展示这个对象:</p><br><pre class="r"><code>print(apple)</code></pre><br><pre><code>## apple’s price is 5.<br>## It’s red and sweet!</code></pre><br><p>需要用到的一个方法是<code>show</code>,顾名思义,它是用来Show(展示)这个对象的方法.如果不定义的话,是这样的:</p><br><pre class="r"><code>apple</code></pre><br><pre><code>## An object of class &quot;fruit&quot;<br>## Slot &quot;name&quot;:<br>## [1] &quot;apple&quot;<br>##<br>## Slot &quot;price&quot;:<br>## [1] 5<br>##<br>## Slot &quot;color&quot;:<br>## [1] &quot;red&quot;<br>##<br>## Slot &quot;sweet&quot;:<br>## [1] TRUE</code></pre><br><p>接下来,我们想输入apple的时候自动跳出我们之前用<code>print</code>方法输出的结果,需要使用<code>setMethod</code>来实现:</p><br><pre class="r"><code>setMethod(&quot;show&quot;,&quot;fruit&quot;,<br>          print.fruit<br>          )</code></pre><br><pre><code>## Warning: For function ‘show’, signature ‘fruit’: argument in method<br>## definition changed from (fruit) to (object)</code></pre><br><pre><code>## [1] &quot;show&quot;</code></pre><br><p>定义完<code>fruit</code>的<code>show</code>方法,就改变了这个函数的展示方式</p><br><pre class="r"><code>apple</code></pre><br><pre><code>## apple’s price is 5.<br>## It’s red and sweet!</code></pre><br></div><br></div><br></div><br><div id="r" class="section level2"><br><h2>一个字母退出R</h2><br><p>同样的方法,给q这个对象添加一个方法:<code>show</code></p><br><p>这个方法的最终意义就是在你输入q,按回车,自动退出R</p><br><pre class="r"><code>abc = setClass(&quot;abc&quot;,<br>         slots = c(x=&quot;numeric&quot;))<br> q = abc(x = 1)<br><br>setMethod(&quot;show&quot;,&quot;abc&quot;,<br>           function(x){<br>             quit(‘no’)<br>}<br>          )<br>q</code></pre><br><p>这个不要乱运行!!会自动退出并<strong>不保存</strong>各位R中的结果哦~!!</p><br><p>运行一遍,R已关闭,各位晚安~</p><br></div>
+
+
+  </article>
+  </script>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+  <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_24x24" style = 'float:right'>
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+      </div>
+      <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+      <!-- JiaThis Button END -->
+
+  <!-- 多说评论框 start -->
+  <!-- <div class="ds-thread" data-thread-key="S4对象的应用:没有括号的函数" data-title="S4对象的应用:没有括号的函数" data-url="langdawei.com/2015/04/02/Object.html"></div> -->
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <!-- <script type="text/javascript">
+  var duoshuoQuery = {short_name:"lchiffon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script> -->
+  <!-- 多说公共JS代码 end -->
+
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  const gitment = new Gitment({
+    owner: 'lchiffon',
+    repo: 'blogbuilder',
+    oauth: {
+      client_id: '7ae350c4fb8aa708af09',
+      client_secret: '1260522fee3e783d77736648af95caae8b8e015a',
+    },
+    // ...
+    // For more available options, check out the documentation below
+  })
+
+  gitment.render('container')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+
+  <div class="busuanzi center">
+    page PV:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    site PV:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    site UV:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+
+
+    </div>
+  </div>
+   <a id="rocket" href="#top" class=""></a>
+   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot container">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <i class="fa fa-arrow-right"></i>
+        </a>
+        © Chiffon 2014-2017
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+$(".dropdown").click(function(event) {
+  var current = $(this);
+  event.stopPropagation();
+  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
+});
+$(document).click(function(){
+    $(".dropdown-content").removeClass("open");
+})
+
+var path = "/search.xml";
+searchFunc(path, 'local-search-input', 'local-search-result');
+
+</script>
+
+</body>
+</html>

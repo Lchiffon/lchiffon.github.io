@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="UA-66633229-1" />
+  
+  <title>REmap分享</title>
+  <meta name="author" content="Chiffon Lang">
+   <meta name="description" content="基本介绍
+slides
+slides Rmd
+Github链接
+yc_1993:可视化篇：R可视化–迁徙/通勤图
+可视化篇：R可视化–map图
+
+如何获取帮助
+百度/google
+issue
+stackoverflow
+
+其他功能介绍knitr在knitr中使用REmap
+12345remap.in">
+  
+
+  <meta property="og:title" content="REmap分享"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="七风阁"/>
+ <meta property="og:image" content="undefined"/>
+  
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="七风阁" type="application/atom+xml">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+  <a id="top"></a>
+  <div id='wx_pic' style='display:none;'><img src='/wx_share.png'/></div>
+  <div id="main">
+    <div class="back">
+      <a href="/" class="black-color"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+    <div class="behind">
+
+      <div class="description">
+        &nbsp;不写R包的分析师不是好全栈
+      </div>
+    </div>
+    <div class="container">
+      
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        REmap分享
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      
+<time datetime="2016-07-30T00:00:00.000Z">
+  <i class="fa fa-calendar"></i>&nbsp;
+  2016-07-30
+</time>
+
+
+
+    
+    &nbsp;
+    <i class="fa fa-tag"></i>&nbsp;
+    <a href="/categories/slides/">幻灯片保存</a>
+
+
+
+
+
+    </div>
+    <hr>
+    <div class="picture-container">
+      
+    </div>
+    <h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><ul>
+<li><a href="http://lchiffon.github.io/REmap/REmapExamples/Nanchang/?theme=sky#/slide-1">slides</a></li>
+<li><a href="http://lchiffon.github.io/REmap/REmapExamples/Nanchang/index.Rmd">slides Rmd</a></li>
+<li><a href="https://github.com/lchiffon/REmap" target="_blank" rel="external">Github链接</a></li>
+<li><a href="http://blog.csdn.net/yc_1993/article/details/51407981" target="_blank" rel="external">yc_1993:可视化篇：R可视化–迁徙/通勤图</a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzA3MTM3NTA5Ng==&amp;mid=2651054452&amp;idx=1&amp;sn=e7719b13c1174a024358d43b3d334ed6&amp;scene=1&amp;srcid=0729t5U7XNGCUXZTfTIyr4BH&amp;pass_ticket=2nU9lE1qDt9q520ewexQCXKHI16DYucJRmnbQl5kncRPZ0%2BQkgv9ipHMJ5sGHMs5#rd" target="_blank" rel="external">可视化篇：R可视化–map图</a></li>
+</ul>
+<h2 id="如何获取帮助"><a href="#如何获取帮助" class="headerlink" title="如何获取帮助"></a>如何获取帮助</h2><ul>
+<li>百度/google</li>
+<li><a href="https://github.com/lchiffon/REmap/issues" target="_blank" rel="external">issue</a></li>
+<li><a href="http://stackoverflow.com" target="_blank" rel="external">stackoverflow</a></li>
+</ul>
+<h2 id="其他功能介绍"><a href="#其他功能介绍" class="headerlink" title="其他功能介绍"></a>其他功能介绍</h2><h3 id="knitr"><a href="#knitr" class="headerlink" title="knitr"></a>knitr</h3><p><a href="http://lchiffon.github.io/2015/10/27/knitrREmap.html">在knitr中使用REmap</a></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">remap.init()</div><div class="line"><span class="comment">## 绘制地图</span></div><div class="line">p = remap(demoC)</div><div class="line"><span class="comment">## knitr展示</span></div><div class="line">knitrREmap(p,local=<span class="literal">F</span>)</div></pre></td></tr></table></figure>
+<h3 id="shiny"><a href="#shiny" class="headerlink" title="shiny"></a>shiny</h3><ul>
+<li>D:/Program Files/R/R-3.2.0/library/REmap/shiny/shinyBmap</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(REmap)</div><div class="line"><span class="keyword">library</span>(shiny)</div><div class="line">runApp(system.file(<span class="string">"shiny"</span>,<span class="string">"shinyBmap"</span>, package = <span class="string">"REmap"</span>))</div></pre></td></tr></table></figure>
+<h3 id="个性化定制"><a href="#个性化定制" class="headerlink" title="个性化定制"></a>个性化定制</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">options(browser =getOption(<span class="string">"viewer"</span>))</div><div class="line">data(demoC)</div><div class="line"><span class="comment">## Test for Bmap</span></div><div class="line">geoData  = get_geo_position(unique(demoC[demoC==demoC]))</div><div class="line"><span class="comment"># this may take some time,be patient~</span></div><div class="line">remapB(markLineData = demoC,geoData = geoData)</div><div class="line">remapB(markLineData = demoC,geoData = geoData,</div><div class="line">       markLineTheme = markLineControl(color = <span class="string">'red'</span>))</div><div class="line">data(demoC)</div><div class="line">demoC$tooltip = sample(letters,nrow(demoC))</div><div class="line">remapB(markLineData = demoC,geoData = geoData,</div><div class="line">       markLineTheme = markLineControl(color = <span class="string">'red'</span>))</div><div class="line">newdata = data.frame(a = demoC[,<span class="number">2</span>],</div><div class="line">                     color = c(rep(<span class="string">"blue"</span>,<span class="number">5</span>),rep(<span class="string">"red"</span>,<span class="number">5</span>)))</div><div class="line">remapB(markPointData = newdata,</div><div class="line">       color = <span class="string">"Blue"</span>,geoData = geoData)</div><div class="line">newdata$symbolSize = <span class="number">1</span>:<span class="number">10</span></div><div class="line">remapB(markPointData = newdata,</div><div class="line">       color = <span class="string">"Blue"</span>,geoData = geoData)</div><div class="line">newdata$tooltip = paste(newdata$a,newdata$symbolSize,sep = <span class="string">":"</span>)</div><div class="line">remapB(markPointData = newdata,</div><div class="line">       color = <span class="string">"Blue"</span>,geoData = geoData)</div><div class="line">data(chinaIphone)</div><div class="line"><span class="comment">## markLineControl</span></div><div class="line">mapdata = chinaIphone</div><div class="line">geoData  = get_geo_position(unique(demoC[demoC==demoC]))</div><div class="line">out = remapC(data = mapdata,</div><div class="line">             color = c(<span class="string">"white"</span>,<span class="string">"white"</span>),</div><div class="line">             theme=get_theme(<span class="string">"none"</span>,<span class="string">"white"</span>,<span class="string">"white"</span>,<span class="string">"white"</span>,<span class="string">'white'</span>),</div><div class="line">             markPointData = demoC[,<span class="number">2</span>],</div><div class="line">             markPointTheme = markPointControl(</div><div class="line">               symbol = <span class="string">"image://http://lchiffon.github.io/reveal_slidify/pic/ghost.png"</span>,</div><div class="line">               symbolSize = <span class="number">50</span>,</div><div class="line">               effectType = <span class="string">'bounce'</span> ),</div><div class="line">             geoData = geoData)</div><div class="line">out</div></pre></td></tr></table></figure>
+
+
+  </article>
+  </script>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+  <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_24x24" style = 'float:right'>
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+      </div>
+      <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+      <!-- JiaThis Button END -->
+
+  <!-- 多说评论框 start -->
+  <!-- <div class="ds-thread" data-thread-key="REmap分享" data-title="REmap分享" data-url="langdawei.com/2016/07/30/xqcourse.html"></div> -->
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <!-- <script type="text/javascript">
+  var duoshuoQuery = {short_name:"lchiffon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script> -->
+  <!-- 多说公共JS代码 end -->
+
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  const gitment = new Gitment({
+    owner: 'lchiffon',
+    repo: 'blogbuilder',
+    oauth: {
+      client_id: '7ae350c4fb8aa708af09',
+      client_secret: '1260522fee3e783d77736648af95caae8b8e015a',
+    },
+    // ...
+    // For more available options, check out the documentation below
+  })
+
+  gitment.render('container')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+
+  <div class="busuanzi center">
+    page PV:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    site PV:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    site UV:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+
+
+    </div>
+  </div>
+   <a id="rocket" href="#top" class=""></a>
+   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot container">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <i class="fa fa-arrow-right"></i>
+        </a>
+        © Chiffon 2014-2017
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+$(".dropdown").click(function(event) {
+  var current = $(this);
+  event.stopPropagation();
+  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
+});
+$(document).click(function(){
+    $(".dropdown-content").removeClass("open");
+})
+
+var path = "/search.xml";
+searchFunc(path, 'local-search-input', 'local-search-result');
+
+</script>
+
+</body>
+</html>

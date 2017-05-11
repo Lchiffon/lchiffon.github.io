@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="UA-66633229-1" />
+  
+  <title>REmap使用手册(4)</title>
+  <meta name="author" content="Chiffon Lang">
+   <meta name="description" content="REmap是一个基于Echarts http://echarts.baidu.com 的一个R包.主要的目的是为广大数据玩家提供一个简便的,可交互的地图数据可视化工具.目前托管在github, https://github.com/lchiffon/REmap
+markLinemarkLine是Ec">
+  
+
+  <meta property="og:title" content="REmap使用手册(4)"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="七风阁"/>
+ <meta property="og:image" content="undefined"/>
+  
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="七风阁" type="application/atom+xml">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+  <a id="top"></a>
+  <div id='wx_pic' style='display:none;'><img src='/wx_share.png'/></div>
+  <div id="main">
+    <div class="back">
+      <a href="/" class="black-color"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+    <div class="behind">
+
+      <div class="description">
+        &nbsp;不写R包的分析师不是好全栈
+      </div>
+    </div>
+    <div class="container">
+      
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        REmap使用手册(4)
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      
+<time datetime="2015-08-01T00:00:00.000Z">
+  <i class="fa fa-calendar"></i>&nbsp;
+  2015-08-01
+</time>
+
+
+
+    
+    &nbsp;
+    <i class="fa fa-tag"></i>&nbsp;
+    <a href="/categories/R/">R</a>
+
+
+
+
+
+    </div>
+    <hr>
+    <div class="picture-container">
+      
+    </div>
+    <p></p><p>REmap是一个基于Echarts <a href="http://echarts.baidu.com" class="uri" target="_blank" rel="external">http://echarts.baidu.com</a> 的一个R包.主要的目的是为广大数据玩家提供一个简便的,可交互的地图数据可视化工具.目前托管在github, <a href="https://github.com/lchiffon/REmap" class="uri" target="_blank" rel="external">https://github.com/lchiffon/REmap</a></p><p></p>
+<div id="markline" class="section level2"><br><h2>markLine</h2><br><p>markLine是Echarts中进行标线的工具.通过标线(直线,曲线),可以完成很多有意思的可视化</p><br><img src="http://7xr5em.com1.z0.glb.clouddn.com/15.png"><br><p>先说一下markLine相关的参数,这些参数可以在remapC或者remapB中调用:</p><br><ul><br><li>markLineData 标线使用的数据,第一列为出发地,第二列为目的地</li><br><li>markLineTheme 控制标线颜色,形状等,由<code>markLineControl</code>来控制</li><br><li>geoData 标中各个点的经纬度坐标,如果没有,会使用BaiduAPI自动查找</li><br></ul><br><p>一个简单的示例:</p><br><pre class="r"><code>remapB(title = &quot;Remap:  百度迁徙模拟&quot;,<br>       color = &quot;Blue&quot;,<br>       markLineData = demoC)</code></pre><br>       <img src="http://7xr5em.com1.z0.glb.clouddn.com/15.png"><br><br><div id="marklinetheme" class="section level4"><br><h4>markLineTheme</h4><br><p>markLineTheme控制了标线的风格,使用<code>markLineControl</code>来调用,这里列出主要的参数:</p><br><pre class="r"><code>markLineControl(symbolSize = c(2,4),<br>      smoothness = 0.2,<br>      effect = T,<br>      lineWidth = 1,<br>      lineType = ‘solid’,<br>      color = &quot;Random&quot;) </code></pre><br><ul><br><li>SymbolSize:<br><ul><br><li>形状的大小,标线默认是一段无形状,一段箭头,如果不想要箭头可以使用<code>symbolSize = c(0,0)</code></li><br></ul></li><br><li>smoothness:<br><ul><br><li>曲线的弯曲度,取0标线会退化为直线</li><br></ul></li><br><li>effect:<br><ul><br><li>炫光特效,标线较多的时候建议关闭</li><br></ul></li><br><li>lineWidth:<br><ul><br><li>标线的宽度</li><br></ul></li><br><li>lineType:<br><ul><br><li>标线的样式: ’solid’实线’dotted’点线或者 ’dashed’虚线</li><br></ul></li><br><li>color:<br><ul><br><li>颜色,默认为随机颜色,设置一个颜色会取为固定颜色</li><br><li>此外对markLineData下设置color变量会覆盖该颜色</li><br></ul></li><br></ul><br><pre class="r"><code>remapB(title = &quot;Remap:  百度迁徙模拟&quot;,<br>       color = &quot;Blue&quot;,<br>       markLineData = demoC,<br>       markLineTheme = markLineControl(symbolSize = c(0,0),<br>                                       lineWidth = 10,<br>                                       lineType = ‘dashed’))</code></pre><br><br><img src="http://7xr5em.com1.z0.glb.clouddn.com/22.png"><br><br><p>设置额外的颜色:</p><br><pre class="r"><code>demoC$color = sample(c(&quot;red&quot;,&quot;blue&quot;),10,replace = T)<br><br>remapB(title = &quot;Remap:  百度迁徙模拟&quot;,<br>       color = &quot;Blue&quot;,<br>       markLineData = demoC,<br>       markLineTheme = markLineControl(symbolSize = c(0,0),<br>                                       lineWidth = 10,<br>                                       effect = F,<br>                                       lineType = ‘dashed’))</code></pre><br><br><img src="http://7xr5em.com1.z0.glb.clouddn.com/23.png"><br><br></div><br><div id="geodata" class="section level4"><br><h4>geoData</h4><br><p>mapC和mapB中,都会有geoData这个变量,用以储存markLine和markPoint的地理位置信息.具体的格式与<code>get_city_coord</code>返回相同:</p><br><ul><br><li>第一列lon</li><br><li>第二列lat</li><br><li>第三列地理名称</li><br></ul><br><pre class="r"><code>get_geo_position(c(&quot;Beijing&quot;,&quot;Shanghai&quot;,&quot;Guangzhou&quot;))</code></pre><br><pre class="r"><code>       lon      lat      city<br>1 116.4232 39.91528   Beijing<br>2 121.5221 31.30477  Shanghai<br>3 113.2684 23.12980 Guangzhou</code></pre><br><p>下面是一个例子,通过这个例子可以看到markLine的使用方式</p><br></div><br><div id="example" class="section level4"><br><h4>Example:地铁线路可视化</h4><br><p>这里,我们使用REmap中自带的<code>subway</code>来进行演示,是上海地铁一号线的线路信息,其中<code>subway[[1]]</code>为各个点的经纬度坐标,<code>subway[[2]]</code>为各个点的连线方式.(数据来源于百度API)</p><br><p>各个点的经纬度坐标</p><br><pre class="r"><code>head(subway[[1]])</code></pre><br><pre class="r"><code>               V1              V2              name<br>1 121.43102542826 31.398676380258 yihaoxian Point 1<br>2 121.43132186908 31.397705460498 yihaoxian Point 2<br>3 121.43154644546 31.396665178073 yihaoxian Point 3<br>4 121.43339695481 31.391602304084 yihaoxian Point 4<br>5 121.43433119254 31.387733681833 yihaoxian Point 5<br>6 121.43766390598 31.374986126392 yihaoxian Point 6</code></pre><br><p>各个点的连线方式</p><br><pre class="r"><code>head(subway[[2]])</code></pre><br><pre class="r"><code>             origin       destination<br>1 yihaoxian Point 1 yihaoxian Point 2<br>2 yihaoxian Point 2 yihaoxian Point 3<br>3 yihaoxian Point 3 yihaoxian Point 4<br>4 yihaoxian Point 4 yihaoxian Point 5<br>5 yihaoxian Point 5 yihaoxian Point 6<br>6 yihaoxian Point 6 yihaoxian Point 7</code></pre><br><pre class="r"><code>remapB(center = get_city_coord(&quot;上海&quot;),<br>       zoom = 13,<br>       title = &quot;Remap:  上海地铁一号线&quot;,<br>       color = &quot;Blue&quot;,<br>       markLineData = subway[[2]],<br>       markLineTheme = markLineControl(smoothness = 0,<br>                                       effect = T,<br>                                       symbolSize = c(0,0)),<br>       geoData = subway[[1]])</code></pre><br><img src="http://7xr5em.com1.z0.glb.clouddn.com/24.png"><br></div><br></div>
+
+
+  </article>
+  </script>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+  <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_24x24" style = 'float:right'>
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+      </div>
+      <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+      <!-- JiaThis Button END -->
+
+  <!-- 多说评论框 start -->
+  <!-- <div class="ds-thread" data-thread-key="REmap使用手册(4)" data-title="REmap使用手册(4)" data-url="langdawei.com/2015/08/01/remap4.html"></div> -->
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <!-- <script type="text/javascript">
+  var duoshuoQuery = {short_name:"lchiffon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script> -->
+  <!-- 多说公共JS代码 end -->
+
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  const gitment = new Gitment({
+    owner: 'lchiffon',
+    repo: 'blogbuilder',
+    oauth: {
+      client_id: '7ae350c4fb8aa708af09',
+      client_secret: '1260522fee3e783d77736648af95caae8b8e015a',
+    },
+    // ...
+    // For more available options, check out the documentation below
+  })
+
+  gitment.render('container')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+
+  <div class="busuanzi center">
+    page PV:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    site PV:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    site UV:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+
+
+    </div>
+  </div>
+   <a id="rocket" href="#top" class=""></a>
+   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot container">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <i class="fa fa-arrow-right"></i>
+        </a>
+        © Chiffon 2014-2017
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+$(".dropdown").click(function(event) {
+  var current = $(this);
+  event.stopPropagation();
+  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
+});
+$(document).click(function(){
+    $(".dropdown-content").removeClass("open");
+})
+
+var path = "/search.xml";
+searchFunc(path, 'local-search-input', 'local-search-result');
+
+</script>
+
+</body>
+</html>

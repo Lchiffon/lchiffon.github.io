@@ -1,0 +1,268 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="UA-66633229-1" />
+  
+  <title>Python 正则表达式II</title>
+  <meta name="author" content="Chiffon Lang">
+   <meta name="description" content="Python &amp;#27491;&amp;#21017;&amp;#34920;&amp;#36798;&amp;#24335;(&amp;#20108;)&amp;#182;&amp;#21152;&amp;#36733;&amp;#30456;&amp;#20851;&amp;#24211;&amp;#182;In&amp;nbsp;[4]:    from nltk.book import *im">
+  
+
+  <meta property="og:title" content="Python 正则表达式II"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="七风阁"/>
+ <meta property="og:image" content="undefined"/>
+  
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="七风阁" type="application/atom+xml">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+  <a id="top"></a>
+  <div id='wx_pic' style='display:none;'><img src='/wx_share.png'/></div>
+  <div id="main">
+    <div class="back">
+      <a href="/" class="black-color"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+    <div class="behind">
+
+      <div class="description">
+        &nbsp;不写R包的分析师不是好全栈
+      </div>
+    </div>
+    <div class="container">
+      
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        Python 正则表达式II
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      
+<time datetime="2015-06-26T00:00:00.000Z">
+  <i class="fa fa-calendar"></i>&nbsp;
+  2015-06-26
+</time>
+
+
+
+    
+    &nbsp;
+    <i class="fa fa-tag"></i>&nbsp;
+    <a href="/categories/jspy/">JsPy&Others</a>
+
+
+
+
+
+    </div>
+    <hr>
+    <div class="picture-container">
+      
+    </div>
+      <div tabindex="-1" id="notebook" class="border-box-sizing"><br>    <div class="container" id="notebook-container"><br><br><div class="cell border-box-sizing text_cell rendered"><br><div class="prompt input_prompt"><br></div><br><div class="inner_cell"><br><div class="text_cell_render border-box-sizing rendered_html"><br><h2 id="Python-&#27491;&#21017;&#34920;&#36798;&#24335;(&#20108;)">Python &#27491;&#21017;&#34920;&#36798;&#24335;(&#20108;)<a class="anchor-link" href="#Python-&#27491;&#21017;&#34920;&#36798;&#24335;(&#20108;)">&#182;</a></h2><h3 id="&#21152;&#36733;&#30456;&#20851;&#24211;">&#21152;&#36733;&#30456;&#20851;&#24211;<a class="anchor-link" href="#&#21152;&#36733;&#30456;&#20851;&#24211;">&#182;</a></h3><br></div><br></div><br></div><br><div class="cell border-box-sizing code_cell rendered"><br><div class="input"><br><div class="prompt input_prompt">In&nbsp;[4]:</div><br><div class="inner_cell"><br>    <div class="input_area"><br><div class=" highlight hl-ipython2"><pre><span class="kn">from</span> <span class="nn">nltk.book</span> <span class="kn">import</span> <span class="o">*</span><br><span class="kn">import</span> <span class="nn">nltk</span><br><span class="kn">import</span> <span class="nn">re</span><br></pre></div>
+
+<p></p></div><br></div><br></div><p></p>
+<div class="output_wrapper"><br><div class="output"><br><br><br><div class="output_area"><div class="prompt"></div><br><div class="output_subarea output_stream output_stdout output_text"><br><pre><strong><em> Introductory Examples for the NLTK Book </em></strong><br>Loading text1, …, text9 and sent1, …, sent9<br>Type the name of the text or sentence to view it.<br>Type: &apos;texts()&apos; or &apos;sents()&apos; to list the materials.<br>text1: Moby Dick by Herman Melville 1851<br>text2: Sense and Sensibility by Jane Austen 1811<br>text3: The Book of Genesis<br>text4: Inaugural Address Corpus<br>text5: Chat Corpus<br>text6: Monty Python and the Holy Grail<br>text7: Wall Street Journal<br>text8: Personals Corpus<br>text9: The Man Who Was Thursday by G . K . Chesterton 1908<br></pre><br></div><br></div>
+
+<p></p></div><br></div><p></p>
+<p></p></div><p></p>
+<div class="cell border-box-sizing text_cell rendered"><br><div class="prompt input_prompt"><br></div><br><div class="inner_cell"><br><div class="text_cell_render border-box-sizing rendered_html"><br><ul><br><li>输入测试文本:</li><br></ul><br><br></div><br></div><br></div><br><div class="cell border-box-sizing code_cell rendered"><br><div class="input"><br><div class="prompt input_prompt">In&nbsp;[24]:</div><br><div class="inner_cell"><br>    <div class="input_area"><br><div class=" highlight hl-ipython2"><pre><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;Alcie.txt&quot;</span><span class="p">,</span><span class="s">&quot;r&quot;</span><span class="p">)</span><br><span class="n">text</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><br><span class="n">raw</span> <span class="o">=</span> <span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">text</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">text</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">text</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><br><span class="c">## raw = &quot;&quot;.join(text)</span><br><span class="k">print</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span><br></pre></div>
+
+<p></p></div><br></div><br></div><p></p>
+<div class="output_wrapper"><br><div class="output"><br><br><br><div class="output_area"><div class="prompt"></div><br><div class="output_subarea output_stream output_stdout output_text"><br><pre>Alice was beginning to get very tired of sitting by her sister on the bank,<br> and of having nothing to do: once or twice she had peeped into the<br> book her sister was reading, but it had no pictures or conversations<br> in it, &quot;and what is the use of a book,&quot;thought Alice &quot;without pictures or conversation?&apos;<br></pre><br></div><br></div>
+
+<p></p></div><br></div><p></p>
+<p></p></div><p></p>
+<div class="cell border-box-sizing text_cell rendered"><br><div class="prompt input_prompt"><br></div><br><div class="inner_cell"><br><div class="text_cell_render border-box-sizing rendered_html"><br><h3 id="\s&#21644;\w,&#23545;&#25991;&#26412;&#36827;&#34892;&#20998;&#21106;">\s&#21644;\w,&#23545;&#25991;&#26412;&#36827;&#34892;&#20998;&#21106;<a class="anchor-link" href="#\s&#21644;\w,&#23545;&#25991;&#26412;&#36827;&#34892;&#20998;&#21106;">&#182;</a></h3><h4 id="&#23581;&#35797;&#23558;&#36825;&#20010;&#25991;&#26412;&#36827;&#34892;&#20998;&#21106;:">&#23581;&#35797;&#23558;&#36825;&#20010;&#25991;&#26412;&#36827;&#34892;&#20998;&#21106;:<a class="anchor-link" href="#&#23581;&#35797;&#23558;&#36825;&#20010;&#25991;&#26412;&#36827;&#34892;&#20998;&#21106;:">&#182;</a></h4><ul><br><li>使用r’ ‘分割</li><br><li>使用r’[ \t\n]+’分割</li><br><li>使用正则表达r’\s+’分割</li><br></ul><br><br></div><br></div><br></div>re.split(r’ ‘,raw)<br>re.split(r’[ \t\n]+’,raw)<br>re.split(r’\s+’,raw)<br><div class="cell border-box-sizing text_cell rendered"><br><div class="prompt input_prompt"><br></div><br><div class="inner_cell"><br><div class="text_cell_render border-box-sizing rendered_html"><br><p>结果比较长就不贴出来了</p><br><ul><br><li>第一个正则表达是有问题的,仅使用空格进行分割会忽略制表符(\t)和换行符(\n)</li><br><li>第二个正则表达匹配了一个或者多个空格/制表/换行符,可以合适的对文本进行分割</li><br><li>第三个正则表达最简洁,和第二个效果相同,是re库的内置缩写,\s代替了空格/制表/换行符</li><br><li>值得一提的是\S代表了\s的补,也就是所有非空格/制表/换行符</li><br></ul><br><h4 id="&#20877;&#27425;,&#20351;&#29992;\w&#26469;&#36827;&#34892;&#20998;&#21106;">&#20877;&#27425;,&#20351;&#29992;\w&#26469;&#36827;&#34892;&#20998;&#21106;<a class="anchor-link" href="#&#20877;&#27425;,&#20351;&#29992;\w&#26469;&#36827;&#34892;&#20998;&#21106;">&#182;</a></h4><p>\w代替了所有字母,数字和下划线</p><br><p>r’\w’ = r’[a-zA-Z0-9_]’</p><br><p>同样的,\W代替了\w的补,所有非字母,数字和下划线</p><br><br></div><br></div><br></div><br><div class="cell border-box-sizing code_cell rendered"><br><div class="input"><br><div class="prompt input_prompt">In&nbsp;[30]:</div><br><div class="inner_cell"><br>    <div class="input_area"><br><div class=" highlight hl-ipython2"><pre><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">r&#39;\W+&#39;</span><span class="p">,</span><span class="n">raw</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span><br></pre></div>
+
+<p></p></div><br></div><br></div><p></p>
+<div class="output_wrapper"><br><div class="output"><br><br><br><div class="output_area"><div class="prompt output_prompt">Out[30]:</div>
+
+
+<div class="output_text output_subarea output_execute_result"><br><pre>[&apos;Alice&apos;, &apos;was&apos;, &apos;beginning&apos;, &apos;to&apos;, &apos;get&apos;, &apos;very&apos;, &apos;tired&apos;, &apos;of&apos;, &apos;sitting&apos;]</pre><br></div>
+
+<p></p></div><p></p>
+<p></p></div><br></div><p></p>
+<p></p></div><p></p>
+<div class="cell border-box-sizing code_cell rendered"><br><div class="input"><br><div class="prompt input_prompt">In&nbsp;[32]:</div><br><div class="inner_cell"><br>    <div class="input_area"><br><div class=" highlight hl-ipython2"><pre><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;\w+&#39;</span><span class="p">,</span><span class="n">raw</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span><br></pre></div>
+
+<p></p></div><br></div><br></div><p></p>
+<div class="output_wrapper"><br><div class="output"><br><br><br><div class="output_area"><div class="prompt output_prompt">Out[32]:</div>
+
+
+<div class="output_text output_subarea output_execute_result"><br><pre>[&apos;Alice&apos;, &apos;was&apos;, &apos;beginning&apos;, &apos;to&apos;, &apos;get&apos;, &apos;very&apos;, &apos;tired&apos;, &apos;of&apos;, &apos;sitting&apos;]</pre><br></div>
+
+<p></p></div><p></p>
+<p></p></div><br></div><p></p>
+<p></p></div><p></p>
+<div class="cell border-box-sizing text_cell rendered"><br><div class="prompt input_prompt"><br></div><br><div class="inner_cell"><br><div class="text_cell_render border-box-sizing rendered_html"><br><p>再看这样一个例子:</p><br><p>加入我们想分割: “I’m very tired!”</p><br><p>其中”‘m”部分想单独取出,用之前的方法是行不通的:</p><br><br></div><br></div><br></div><br><div class="cell border-box-sizing code_cell rendered"><br><div class="input"><br><div class="prompt input_prompt">In&nbsp;[34]:</div><br><div class="inner_cell"><br>    <div class="input_area"><br><div class=" highlight hl-ipython2"><pre><span class="n">raw2</span> <span class="o">=</span> <span class="s">&quot;I&#39;m very tired!&quot;</span><br><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;\w+&#39;</span><span class="p">,</span><span class="n">raw2</span><span class="p">)</span><br></pre></div>
+
+<p></p></div><br></div><br></div><p></p>
+<div class="output_wrapper"><br><div class="output"><br><br><br><div class="output_area"><div class="prompt output_prompt">Out[34]:</div>
+
+
+<div class="output_text output_subarea output_execute_result"><br><pre>[&apos;I&apos;, &apos;m&apos;, &apos;very&apos;, &apos;tired&apos;]</pre><br></div>
+
+<p></p></div><p></p>
+<p></p></div><br></div><p></p>
+<p></p></div><p></p>
+<div class="cell border-box-sizing code_cell rendered"><br><div class="input"><br><div class="prompt input_prompt">In&nbsp;[35]:</div><br><div class="inner_cell"><br>    <div class="input_area"><br><div class=" highlight hl-ipython2"><pre><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;\w+|\S\w&#39;</span><span class="p">,</span><span class="n">raw2</span><span class="p">)</span><br></pre></div>
+
+<p></p></div><br></div><br></div><p></p>
+<div class="output_wrapper"><br><div class="output"><br><br><br><div class="output_area"><div class="prompt output_prompt">Out[35]:</div>
+
+
+<div class="output_text output_subarea output_execute_result"><br><pre>[&apos;I&apos;, &quot;&apos;m&quot;, &apos;very&apos;, &apos;tired&apos;]</pre><br></div>
+
+<p></p></div><p></p>
+<p></p></div><br></div><p></p>
+<p></p></div><p></p>
+<div class="cell border-box-sizing text_cell rendered"><br><div class="prompt input_prompt"><br></div><br><div class="inner_cell"><br><div class="text_cell_render border-box-sizing rendered_html"><br><p>其他常用的正则表达式的符号还有\d,\D(代表数字)</p><br><table><br><thead><tr><br><th>符号</th><br><th>功能</th><br></tr><br></thead><br><tbody><br><tr><br><td>\b</td><br><td>词边界</td><br></tr><br><tr><br><td>\d</td><br><td>任一十进制数字 r’[0-9]’</td><br></tr><br><tr><br><td>\D</td><br><td>任何非数字字符 r’[^0-9]’</td><br></tr><br><tr><br><td>\s</td><br><td>任何空白字符 r’\t\n\r\f\v’</td><br></tr><br><tr><br><td>\S</td><br><td>任何非空白字符 r’[^\t\n\r\f\v]’</td><br></tr><br><tr><br><td>\w</td><br><td>任何字母数字下划线 r’[a-zA-Z0-9<em>]’</em></td><br></tr><br><tr><br><td>\W</td><br><td>任何非字母数字下划线 r’[^a-zA-Z0-9]’</td><br></tr><br><tr><br><td>\t</td><br><td>制表符</td><br></tr><br><tr><br><td>\n</td><br><td>换行符</td><br></tr><br></tbody><br></table><br><br></div><br></div><br></div><br><div class="cell border-box-sizing text_cell rendered"><br><div class="prompt input_prompt"><br></div><br><div class="inner_cell"><br><div class="text_cell_render border-box-sizing rendered_html"><br><h3 id="nltk&#20013;&#30340;&#20998;&#35789;">nltk&#20013;&#30340;&#20998;&#35789;<a class="anchor-link" href="#nltk&#20013;&#30340;&#20998;&#35789;">&#182;</a></h3><p>nltk中也提供了分词的形式:</p><br><br><pre><code>nltk.regexp_tokensize()<br><br></code></pre><br><p>据说这个函数的分词效率更高,并避免了括号特殊处理的需要,看下面的例子:</p><br><br></div><br></div><br></div><br><div class="cell border-box-sizing code_cell rendered"><br><div class="input"><br><div class="prompt input_prompt">In&nbsp;[39]:</div><br><div class="inner_cell"><br>    <div class="input_area"><br><div class=" highlight hl-ipython2"><pre><span class="n">text</span> <span class="o">=</span> <span class="s">&quot;That U.S.A poster-print costs $12.40…&quot;</span><br><span class="n">pattern</span> <span class="o">=</span> <span class="s">r&#39;&#39;&#39;(?x) ## allow verbose regexps</span><br><span class="s">      ([A-Z].)+    ## abbreviations, e.g U.S.A</span><br><span class="s">    | \w+(-\w+)*   ## words like A-B</span><br><span class="s">    | \$?\d+(.\d+)?%? ## e.g $12.3 40%</span><br><span class="s">    | ...       ## ellipsis</span><br><span class="s">    | [][.,:&quot;&#39;?():-_`] ## seperate tokens</span><br><span class="s">    &#39;&#39;&#39;</span><br></pre></div>
+
+<p></p></div><br></div><br></div><p></p>
+<p></p></div><p></p>
+<div class="cell border-box-sizing code_cell rendered"><br><div class="input"><br><div class="prompt input_prompt">In&nbsp;[40]:</div><br><div class="inner_cell"><br>    <div class="input_area"><br><div class=" highlight hl-ipython2"><pre><span class="n">nltk</span><span class="o">.</span><span class="n">regexp_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">pattern</span><span class="p">)</span><br></pre></div>
+
+<p></p></div><br></div><br></div><p></p>
+<div class="output_wrapper"><br><div class="output"><br><br><br><div class="output_area"><div class="prompt output_prompt">Out[40]:</div>
+
+
+<div class="output_text output_subarea output_execute_result"><br><pre>[&apos;Th&apos;, &apos;at&apos;, &apos;U.S.A &apos;, &apos;poster-print&apos;, &apos;costs&apos;, &apos;$12.40&apos;, &apos;…&apos;]</pre><br></div>
+
+<p></p></div><p></p>
+<p></p></div><br></div><p></p>
+<p></p></div><p></p>
+<div class="cell border-box-sizing code_cell rendered"><br><div class="input"><br><div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div><br><div class="inner_cell"><br>    <div class="input_area"><br><div class=" highlight hl-ipython2"><pre><br></pre></div>
+
+<p></p></div><br></div><br></div><p></p>
+<p></p></div><br>    </div><br>  </div><p></p>
+
+
+  </article>
+  </script>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+  <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_24x24" style = 'float:right'>
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+      </div>
+      <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+      <!-- JiaThis Button END -->
+
+  <!-- 多说评论框 start -->
+  <!-- <div class="ds-thread" data-thread-key="Python 正则表达式II" data-title="Python 正则表达式II" data-url="langdawei.com/2015/06/26/python-nltk-2.html"></div> -->
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <!-- <script type="text/javascript">
+  var duoshuoQuery = {short_name:"lchiffon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script> -->
+  <!-- 多说公共JS代码 end -->
+
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  const gitment = new Gitment({
+    owner: 'lchiffon',
+    repo: 'blogbuilder',
+    oauth: {
+      client_id: '7ae350c4fb8aa708af09',
+      client_secret: '1260522fee3e783d77736648af95caae8b8e015a',
+    },
+    // ...
+    // For more available options, check out the documentation below
+  })
+
+  gitment.render('container')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+
+  <div class="busuanzi center">
+    page PV:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    site PV:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    site UV:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+
+
+    </div>
+  </div>
+   <a id="rocket" href="#top" class=""></a>
+   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot container">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <i class="fa fa-arrow-right"></i>
+        </a>
+        © Chiffon 2014-2017
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+$(".dropdown").click(function(event) {
+  var current = $(this);
+  event.stopPropagation();
+  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
+});
+$(document).click(function(){
+    $(".dropdown-content").removeClass("open");
+})
+
+var path = "/search.xml";
+searchFunc(path, 'local-search-input', 'local-search-result');
+
+</script>
+
+</body>
+</html>
