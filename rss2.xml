@@ -8,7 +8,7 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Tue, 20 Jun 2017 09:59:06 GMT</pubDate>
+    <pubDate>Tue, 20 Jun 2017 10:02:33 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -30,7 +30,7 @@
 <li>用threejs将图片映射在一个球上(类似3D地图的实现)</li>
 <li>之后就可以玩这个球了噗哈哈</li>
 </ol>
-<p><a href="https://user-images.githubusercontent.com/7221728/27312445-ec960882-559a-11e7-860a-2c87de242ce4.png" target="_blank" rel="external">https://user-images.githubusercontent.com/7221728/27312445-ec960882-559a-11e7-860a-2c87de242ce4.png</a></p>
+<p><img src="https://user-images.githubusercontent.com/7221728/27312445-ec960882-559a-11e7-860a-2c87de242ce4.png" alt=""></p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(threejs)</div><div class="line"><span class="keyword">library</span>(wordcloud2)</div><div class="line"><span class="keyword">library</span>(htmlwidgets)</div><div class="line"><span class="keyword">library</span>(webshot)</div><div class="line">hw = wordcloud2(demoFreqC,size = <span class="number">4</span>)</div><div class="line">saveWidget(hw,<span class="string">"1.html"</span>,selfcontained = <span class="literal">F</span>)</div><div class="line">webshot(<span class="string">"1.html"</span>,<span class="string">"1.jpeg"</span>,vwidth = <span class="number">4000</span>, vheight = <span class="number">2000</span>, delay =<span class="number">20</span>)</div><div class="line">earth &lt;- <span class="string">"1.jpeg"</span></div><div class="line">globejs(img=earth, bg=<span class="string">"white"</span>)</div></pre></td></tr></table></figure>
 ]]></content:encoded>
       
