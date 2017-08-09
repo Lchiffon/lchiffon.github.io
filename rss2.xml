@@ -8,14 +8,14 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Wed, 09 Aug 2017 10:16:06 GMT</pubDate>
+    <pubDate>Wed, 09 Aug 2017 10:21:45 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
       <title>如何不污染作用域</title>
-      <link>http://lchiffon.github.io/2017/04/25/jsfunction.html</link>
-      <guid>http://lchiffon.github.io/2017/04/25/jsfunction.html</guid>
-      <pubDate>Tue, 25 Apr 2017 00:00:00 GMT</pubDate>
+      <link>http://lchiffon.github.io/2017/08/09/jsfunction.html</link>
+      <guid>http://lchiffon.github.io/2017/08/09/jsfunction.html</guid>
+      <pubDate>Wed, 09 Aug 2017 00:00:00 GMT</pubDate>
       <description>
       
         &lt;p&gt;JS代码里面有个有趣的函数写法, 是把一个函数&lt;strong&gt;定义好之后立即执行&lt;/strong&gt;, 这样函数内部的内容不会污染整个作用域(大概可以用这个词吧)&lt;/p&gt;
@@ -42,7 +42,33 @@
 <p>恩恩, 大概就是这样, GL, HF~</p>
 ]]></content:encoded>
       
-      <comments>http://lchiffon.github.io/2017/04/25/jsfunction.html#disqus_thread</comments>
+      <comments>http://lchiffon.github.io/2017/08/09/jsfunction.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>可以滚的词云, 就问你怕不怕</title>
+      <link>http://lchiffon.github.io/2017/06/20/candy.html</link>
+      <guid>http://lchiffon.github.io/2017/06/20/candy.html</guid>
+      <pubDate>Tue, 20 Jun 2017 00:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;昨天看到了一个很有意思的Issue, 问&lt;a href=&quot;https://github.com/Lchiffon/wordcloud2/issues/21&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;可不可以做一个3D球形的词云:)&lt;/a&gt;&lt;/p&gt;
+&lt;p
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>昨天看到了一个很有意思的Issue, 问<a href="https://github.com/Lchiffon/wordcloud2/issues/21" target="_blank" rel="external">可不可以做一个3D球形的词云:)</a></p>
+<p>想想是可以实现的, 过程中用了一些黑魔法:</p>
+<ol>
+<li>用webshot将词云截图成一个图片</li>
+<li>用threejs将图片映射在一个球上(类似3D地图的实现)</li>
+<li>之后就可以玩这个球了噗哈哈</li>
+</ol>
+<p><img src="https://user-images.githubusercontent.com/7221728/27312445-ec960882-559a-11e7-860a-2c87de242ce4.png" alt=""></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(threejs)</div><div class="line"><span class="keyword">library</span>(wordcloud2)</div><div class="line"><span class="keyword">library</span>(htmlwidgets)</div><div class="line"><span class="keyword">library</span>(webshot)</div><div class="line">hw = wordcloud2(demoFreqC,size = <span class="number">4</span>)</div><div class="line">saveWidget(hw,<span class="string">"1.html"</span>,selfcontained = <span class="literal">F</span>)</div><div class="line">webshot(<span class="string">"1.html"</span>,<span class="string">"1.jpeg"</span>,vwidth = <span class="number">4000</span>, vheight = <span class="number">2000</span>, delay =<span class="number">20</span>)</div><div class="line">earth &lt;- <span class="string">"1.jpeg"</span></div><div class="line">globejs(img=earth, bg=<span class="string">"white"</span>)</div></pre></td></tr></table></figure>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2017/06/20/candy.html#disqus_thread</comments>
     </item>
     
     <item>
@@ -113,32 +139,6 @@
 ]]></content:encoded>
       
       <comments>http://lchiffon.github.io/2017/04/25/questions.html#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>可以滚的词云, 就问你怕不怕</title>
-      <link>http://lchiffon.github.io/2017/04/25/candy.html</link>
-      <guid>http://lchiffon.github.io/2017/04/25/candy.html</guid>
-      <pubDate>Tue, 25 Apr 2017 00:00:00 GMT</pubDate>
-      <description>
-      
-        &lt;p&gt;昨天看到了一个很有意思的Issue, 问&lt;a href=&quot;https://github.com/Lchiffon/wordcloud2/issues/21&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;可不可以做一个3D球形的词云:)&lt;/a&gt;&lt;/p&gt;
-&lt;p
-      
-      </description>
-      
-      <content:encoded><![CDATA[<p>昨天看到了一个很有意思的Issue, 问<a href="https://github.com/Lchiffon/wordcloud2/issues/21" target="_blank" rel="external">可不可以做一个3D球形的词云:)</a></p>
-<p>想想是可以实现的, 过程中用了一些黑魔法:</p>
-<ol>
-<li>用webshot将词云截图成一个图片</li>
-<li>用threejs将图片映射在一个球上(类似3D地图的实现)</li>
-<li>之后就可以玩这个球了噗哈哈</li>
-</ol>
-<p><img src="https://user-images.githubusercontent.com/7221728/27312445-ec960882-559a-11e7-860a-2c87de242ce4.png" alt=""></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(threejs)</div><div class="line"><span class="keyword">library</span>(wordcloud2)</div><div class="line"><span class="keyword">library</span>(htmlwidgets)</div><div class="line"><span class="keyword">library</span>(webshot)</div><div class="line">hw = wordcloud2(demoFreqC,size = <span class="number">4</span>)</div><div class="line">saveWidget(hw,<span class="string">"1.html"</span>,selfcontained = <span class="literal">F</span>)</div><div class="line">webshot(<span class="string">"1.html"</span>,<span class="string">"1.jpeg"</span>,vwidth = <span class="number">4000</span>, vheight = <span class="number">2000</span>, delay =<span class="number">20</span>)</div><div class="line">earth &lt;- <span class="string">"1.jpeg"</span></div><div class="line">globejs(img=earth, bg=<span class="string">"white"</span>)</div></pre></td></tr></table></figure>
-]]></content:encoded>
-      
-      <comments>http://lchiffon.github.io/2017/04/25/candy.html#disqus_thread</comments>
     </item>
     
     <item>
