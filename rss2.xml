@@ -8,33 +8,69 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Tue, 20 Jun 2017 10:02:33 GMT</pubDate>
+    <pubDate>Wed, 09 Aug 2017 10:16:06 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>可以滚的词云, 就问你怕不怕</title>
-      <link>http://lchiffon.github.io/2017/04/25/candy.html</link>
-      <guid>http://lchiffon.github.io/2017/04/25/candy.html</guid>
+      <title>如何不污染作用域</title>
+      <link>http://lchiffon.github.io/2017/04/25/jsfunction.html</link>
+      <guid>http://lchiffon.github.io/2017/04/25/jsfunction.html</guid>
       <pubDate>Tue, 25 Apr 2017 00:00:00 GMT</pubDate>
       <description>
       
-        &lt;p&gt;昨天看到了一个很有意思的Issue, 问&lt;a href=&quot;https://github.com/Lchiffon/wordcloud2/issues/21&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;可不可以做一个3D球形的词云:)&lt;/a&gt;&lt;/p&gt;
-&lt;p
+        &lt;p&gt;JS代码里面有个有趣的函数写法, 是把一个函数&lt;strong&gt;定义好之后立即执行&lt;/strong&gt;, 这样函数内部的内容不会污染整个作用域(大概可以用这个词吧)&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;g
       
       </description>
       
-      <content:encoded><![CDATA[<p>昨天看到了一个很有意思的Issue, 问<a href="https://github.com/Lchiffon/wordcloud2/issues/21" target="_blank" rel="external">可不可以做一个3D球形的词云:)</a></p>
-<p>想想是可以实现的, 过程中用了一些黑魔法:</p>
-<ol>
-<li>用webshot将词云截图成一个图片</li>
-<li>用threejs将图片映射在一个球上(类似3D地图的实现)</li>
-<li>之后就可以玩这个球了噗哈哈</li>
-</ol>
-<p><img src="https://user-images.githubusercontent.com/7221728/27312445-ec960882-559a-11e7-860a-2c87de242ce4.png" alt=""></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(threejs)</div><div class="line"><span class="keyword">library</span>(wordcloud2)</div><div class="line"><span class="keyword">library</span>(htmlwidgets)</div><div class="line"><span class="keyword">library</span>(webshot)</div><div class="line">hw = wordcloud2(demoFreqC,size = <span class="number">4</span>)</div><div class="line">saveWidget(hw,<span class="string">"1.html"</span>,selfcontained = <span class="literal">F</span>)</div><div class="line">webshot(<span class="string">"1.html"</span>,<span class="string">"1.jpeg"</span>,vwidth = <span class="number">4000</span>, vheight = <span class="number">2000</span>, delay =<span class="number">20</span>)</div><div class="line">earth &lt;- <span class="string">"1.jpeg"</span></div><div class="line">globejs(img=earth, bg=<span class="string">"white"</span>)</div></pre></td></tr></table></figure>
+      <content:encoded><![CDATA[<p>JS代码里面有个有趣的函数写法, 是把一个函数<strong>定义好之后立即执行</strong>, 这样函数内部的内容不会污染整个作用域(大概可以用这个词吧)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> XXX</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<p>虽然这样的代码在R里面也是可以用滴, 但是相比于JS这种写法的流行程度, 在R里面基本没怎么见人用过,<br>非要强说的话apply类函数里面也是有这样的匿名函数, 但是不太常见这种定义立即执行的过程.</p>
+<p>然而仔细想想还是有几个使用的场景的</p>
+<h2 id="读取数据并执行操作"><a href="#读取数据并执行操作" class="headerlink" title="读取数据并执行操作"></a>读取数据并执行操作</h2><p>一个经典的例子是读取数据, 做一些操作, 做好之后把结果存在另一个文件里面, 如何保证变量空间中绝对干净?<br>可以使用这样的定义执行过程:</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="keyword">function</span>()&#123;</div><div class="line"> dat = read.csv(<span class="string">"data/dat.csv"</span>)</div><div class="line"> model = lm(y~.,dat)</div><div class="line"> res = predict(model,newx=dat)</div><div class="line"> dat$res = res</div><div class="line"> write.csv(dat, <span class="string">"data/datResult.csv"</span>)</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<p>当然, 这只是省掉了<code>rm(dat,model,res)</code>这样一句代码</p>
+<h2 id="do的过程"><a href="#do的过程" class="headerlink" title="do的过程"></a>do的过程</h2><p>这个东西感觉又是个冷门的很的知识, 这个<code>do</code>来源于<code>dplyr::do</code>的函数(plyr中也有, 但不做讨论), 这个<code>do</code>的功能是对一个<code>group_by</code><br>之后的数据框做汇总整理, 再返回一个数据框</p>
+<p>比如帮助文档里面有这样的一个例子:</p>
+<p>对数据的<code>cyl</code>进行group by, 对每个小组训练一个线性模型, 再取出它的参数, <strong>需要分两步<code>do</code>执行</strong><br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">by_cyl &lt;- group_by(mtcars, cyl)</div><div class="line">do(by_cyl, head(., <span class="number">2</span>))</div><div class="line"><span class="comment"># 根据groupby 训练N个模型</span></div><div class="line">models &lt;- by_cyl %&gt;% do(mod = lm(mpg ~ disp, data = .))</div><div class="line">models</div></pre></td></tr></table></figure></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Source: local data frame [<span class="number">3</span> x <span class="number">2</span>]</div><div class="line">Groups: &lt;by row&gt;</div><div class="line"></div><div class="line"><span class="comment"># A tibble: 3 × 2</span></div><div class="line">    cyl      mod</div><div class="line">* &lt;dbl&gt;   &lt;list&gt;</div><div class="line"><span class="number">1</span>     <span class="number">4</span> &lt;S3: lm&gt;</div><div class="line"><span class="number">2</span>     <span class="number">6</span> &lt;S3: lm&gt;</div><div class="line"><span class="number">3</span>     <span class="number">8</span> &lt;S3: lm&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 提取参数</span></div><div class="line">models %&gt;% do(data.frame(coef = coef(.$mod)))</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Source: local data frame [<span class="number">6</span> x <span class="number">1</span>]</div><div class="line">Groups: &lt;by row&gt;</div><div class="line"></div><div class="line"><span class="comment"># A tibble: 6 × 1</span></div><div class="line">          coef</div><div class="line">*        &lt;dbl&gt;</div><div class="line"><span class="number">1</span> <span class="number">40.871955322</span></div><div class="line"><span class="number">2</span> -<span class="number">0.135141815</span></div><div class="line"><span class="number">3</span> <span class="number">19.081987419</span></div><div class="line"><span class="number">4</span>  <span class="number">0.003605119</span></div><div class="line"><span class="number">5</span> <span class="number">22.032798914</span></div><div class="line"><span class="number">6</span> -<span class="number">0.019634095</span></div></pre></td></tr></table></figure>
+<p>但如果用定义函数立即执行的操作, 是可以在函数内部为所欲为的写代码了:</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">models2 &lt;- by_cyl %&gt;% do((<span class="keyword">function</span>()&#123;</div><div class="line">		mod = lm(mpg ~ disp, data = .)</div><div class="line">		data.frame(coef = coef(mod))</div><div class="line">	&#125;)())</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Source: local data frame [<span class="number">6</span> x <span class="number">2</span>]</div><div class="line">Groups: cyl [<span class="number">3</span>]</div><div class="line"></div><div class="line">    cyl         coef</div><div class="line">  &lt;dbl&gt;        &lt;dbl&gt;</div><div class="line"><span class="number">1</span>     <span class="number">4</span> <span class="number">40.871955322</span></div><div class="line"><span class="number">2</span>     <span class="number">4</span> -<span class="number">0.135141815</span></div><div class="line"><span class="number">3</span>     <span class="number">6</span> <span class="number">19.081987419</span></div><div class="line"><span class="number">4</span>     <span class="number">6</span>  <span class="number">0.003605119</span></div><div class="line"><span class="number">5</span>     <span class="number">8</span> <span class="number">22.032798914</span></div><div class="line"><span class="number">6</span>     <span class="number">8</span> -<span class="number">0.019634095</span></div></pre></td></tr></table></figure>
+<p>恩恩, 大概就是这样, GL, HF~</p>
 ]]></content:encoded>
       
-      <comments>http://lchiffon.github.io/2017/04/25/candy.html#disqus_thread</comments>
+      <comments>http://lchiffon.github.io/2017/04/25/jsfunction.html#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>多说再见</title>
+      <link>http://lchiffon.github.io/2017/04/25/duoshuo.html</link>
+      <guid>http://lchiffon.github.io/2017/04/25/duoshuo.html</guid>
+      <pubDate>Tue, 25 Apr 2017 00:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;多说是一个国内为各种网站和博客提供评论窗的网站, 今年三月, 慢慢听到这样的一个消息:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;重要通知: 多说即将关闭&lt;br&gt;多说网 发表于 3月21日&lt;br&gt;因公司业务调整，非常遗憾的向大家宣布多说项目即将关闭。 我们将于2017年6月1
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>多说是一个国内为各种网站和博客提供评论窗的网站, 今年三月, 慢慢听到这样的一个消息:</p>
+<blockquote>
+<p>重要通知: 多说即将关闭<br>多说网 发表于 3月21日<br>因公司业务调整，非常遗憾的向大家宣布多说项目即将关闭。 我们将于2017年6月1日正式关停服务，在此之前您可以通过后台的数据导出功能导出自己站点的评论数据。 对此给您造成的不便，我们深表歉意，感谢您的一路相伴。</p>
+</blockquote>
+<p>也就是说从14年用到现在的多说就要这样没了, 忧伤, 也算是一个被微信公众号逼死的公司吧,<br>不过真心感谢多说团队的坚持和付出, 话说多说如果愿意提供付费服务我也愿意啊…</p>
+<p>一边忧伤一边寻找替代的东西, <del>没打赏就算了</del>总不能没评论吧…</p>
+<h1 id="Disqus"><a href="#Disqus" class="headerlink" title="Disqus"></a>Disqus</h1><p>Disqus是老牌评论插件, 完全没有像多说的垃圾评论和关闭问题, 唯一不爽的一点就是Disqus是一个被墙的插件, 如果改用Disqus, hexo分分钟搞定, 但是墙掉的总是会有点不舒服, 再找找</p>
+<h1 id="搜狐肠炎"><a href="#搜狐肠炎" class="headerlink" title="搜狐肠炎"></a>搜狐肠炎</h1><p>哦不, 是搜狐畅言, 基本类似的功能, 以搜狐的风格, 果然有不少杂七杂八的东西, 忍痛注册, 需要备案号… :88:</p>
+<h1 id="友言"><a href="#友言" class="headerlink" title="友言"></a>友言</h1><p>友言也是一个第三方的插件, 是做JiaThis的公司做的, 但是看谁在用的时候发现都是各种小网站, 而且没人用, 放弃…</p>
+<h1 id="gitment"><a href="#gitment" class="headerlink" title="gitment"></a>gitment</h1><p>gitment是一个用github issue来代替评论的插件: 使用一个github的issue来代替评论, 评论需要登陆github账号, 没有github不能评论, 项目地址 <a href="https://github.com/imsun/gitment#get-started" target="_blank" rel="external">https://github.com/imsun/gitment#get-started</a></p>
+]]></content:encoded>
+      
+      <comments>http://lchiffon.github.io/2017/04/25/duoshuo.html#disqus_thread</comments>
     </item>
     
     <item>
@@ -80,31 +116,29 @@
     </item>
     
     <item>
-      <title>多说再见</title>
-      <link>http://lchiffon.github.io/2017/04/25/duoshuo.html</link>
-      <guid>http://lchiffon.github.io/2017/04/25/duoshuo.html</guid>
+      <title>可以滚的词云, 就问你怕不怕</title>
+      <link>http://lchiffon.github.io/2017/04/25/candy.html</link>
+      <guid>http://lchiffon.github.io/2017/04/25/candy.html</guid>
       <pubDate>Tue, 25 Apr 2017 00:00:00 GMT</pubDate>
       <description>
       
-        &lt;p&gt;多说是一个国内为各种网站和博客提供评论窗的网站, 今年三月, 慢慢听到这样的一个消息:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;重要通知: 多说即将关闭&lt;br&gt;多说网 发表于 3月21日&lt;br&gt;因公司业务调整，非常遗憾的向大家宣布多说项目即将关闭。 我们将于2017年6月1
+        &lt;p&gt;昨天看到了一个很有意思的Issue, 问&lt;a href=&quot;https://github.com/Lchiffon/wordcloud2/issues/21&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;可不可以做一个3D球形的词云:)&lt;/a&gt;&lt;/p&gt;
+&lt;p
       
       </description>
       
-      <content:encoded><![CDATA[<p>多说是一个国内为各种网站和博客提供评论窗的网站, 今年三月, 慢慢听到这样的一个消息:</p>
-<blockquote>
-<p>重要通知: 多说即将关闭<br>多说网 发表于 3月21日<br>因公司业务调整，非常遗憾的向大家宣布多说项目即将关闭。 我们将于2017年6月1日正式关停服务，在此之前您可以通过后台的数据导出功能导出自己站点的评论数据。 对此给您造成的不便，我们深表歉意，感谢您的一路相伴。</p>
-</blockquote>
-<p>也就是说从14年用到现在的多说就要这样没了, 忧伤, 也算是一个被微信公众号逼死的公司吧,<br>不过真心感谢多说团队的坚持和付出, 话说多说如果愿意提供付费服务我也愿意啊…</p>
-<p>一边忧伤一边寻找替代的东西, <del>没打赏就算了</del>总不能没评论吧…</p>
-<h1 id="Disqus"><a href="#Disqus" class="headerlink" title="Disqus"></a>Disqus</h1><p>Disqus是老牌评论插件, 完全没有像多说的垃圾评论和关闭问题, 唯一不爽的一点就是Disqus是一个被墙的插件, 如果改用Disqus, hexo分分钟搞定, 但是墙掉的总是会有点不舒服, 再找找</p>
-<h1 id="搜狐肠炎"><a href="#搜狐肠炎" class="headerlink" title="搜狐肠炎"></a>搜狐肠炎</h1><p>哦不, 是搜狐畅言, 基本类似的功能, 以搜狐的风格, 果然有不少杂七杂八的东西, 忍痛注册, 需要备案号… :88:</p>
-<h1 id="友言"><a href="#友言" class="headerlink" title="友言"></a>友言</h1><p>友言也是一个第三方的插件, 是做JiaThis的公司做的, 但是看谁在用的时候发现都是各种小网站, 而且没人用, 放弃…</p>
-<h1 id="gitment"><a href="#gitment" class="headerlink" title="gitment"></a>gitment</h1><p>gitment是一个用github issue来代替评论的插件: 使用一个github的issue来代替评论, 评论需要登陆github账号, 没有github不能评论, 项目地址 <a href="https://github.com/imsun/gitment#get-started" target="_blank" rel="external">https://github.com/imsun/gitment#get-started</a></p>
+      <content:encoded><![CDATA[<p>昨天看到了一个很有意思的Issue, 问<a href="https://github.com/Lchiffon/wordcloud2/issues/21" target="_blank" rel="external">可不可以做一个3D球形的词云:)</a></p>
+<p>想想是可以实现的, 过程中用了一些黑魔法:</p>
+<ol>
+<li>用webshot将词云截图成一个图片</li>
+<li>用threejs将图片映射在一个球上(类似3D地图的实现)</li>
+<li>之后就可以玩这个球了噗哈哈</li>
+</ol>
+<p><img src="https://user-images.githubusercontent.com/7221728/27312445-ec960882-559a-11e7-860a-2c87de242ce4.png" alt=""></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(threejs)</div><div class="line"><span class="keyword">library</span>(wordcloud2)</div><div class="line"><span class="keyword">library</span>(htmlwidgets)</div><div class="line"><span class="keyword">library</span>(webshot)</div><div class="line">hw = wordcloud2(demoFreqC,size = <span class="number">4</span>)</div><div class="line">saveWidget(hw,<span class="string">"1.html"</span>,selfcontained = <span class="literal">F</span>)</div><div class="line">webshot(<span class="string">"1.html"</span>,<span class="string">"1.jpeg"</span>,vwidth = <span class="number">4000</span>, vheight = <span class="number">2000</span>, delay =<span class="number">20</span>)</div><div class="line">earth &lt;- <span class="string">"1.jpeg"</span></div><div class="line">globejs(img=earth, bg=<span class="string">"white"</span>)</div></pre></td></tr></table></figure>
 ]]></content:encoded>
       
-      <comments>http://lchiffon.github.io/2017/04/25/duoshuo.html#disqus_thread</comments>
+      <comments>http://lchiffon.github.io/2017/04/25/candy.html#disqus_thread</comments>
     </item>
     
     <item>
@@ -287,7 +321,7 @@
 <p>还有一个例子为用<code>v-on:click</code>来对事件进行绑定.</p>
 <h3 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h3><p>用<code>.</code>绑定特殊后缀, 比如用<code>.prevent</code>修饰符告诉<code>v-on</code>调用<code>event.preventDefault()</code>:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">v-on:submit.prevent</span>=<span class="string">"onSubmit"</span>&gt;</span><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><p>使用<code>|</code>来做文本格式化:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">\&#123;\&#123; message | capitalize &#125;&#125;</div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:id</span>=<span class="string">"rawId | formatId"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p><code>v-bind</code>仅在2.1.0之后才可以使用.<br>在Vue中的定义如下:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="comment">// el,data,..</span></div><div class="line">  filters:&#123;</div><div class="line">    <span class="attr">capitalize</span>: <span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">      <span class="keyword">if</span>(!value) <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">      value = value.toString()</div><div class="line">      <span class="keyword">return</span> value.chartAt(<span class="number">0</span>).toUpperCase() + value.slice(<span class="number">1</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p><code>v-bind</code>仅在2.1.0之后才可以使用.<br>在Vue中的定义如下:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="comment">// el,data,..</span></div><div class="line">  filters:&#123;</div><div class="line">    capitalize: <span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">      <span class="keyword">if</span>(!value) <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">      value = value.toString()</div><div class="line">      <span class="keyword">return</span> value.chartAt(<span class="number">0</span>).toUpperCase() + value.slice(<span class="number">1</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <p>过滤器可以串联,可以传其他参数.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">\&#123;\&#123; message | filter1 | filter(Arg2, Arg3) &#125;&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="缩写"><a href="#缩写" class="headerlink" title="缩写"></a>缩写</h2><p><code>v-bind</code>可以缩写为<code>:</code><br><code>v-on</code>可以缩写为<code>@</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--完整语法--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-bind:href</span>=<span class="string">"url"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--缩写--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">:href</span>=<span class="string">"url"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--完整语法--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-on:click</span>=<span class="string">"doSth"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--缩写--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> @<span class="attr">click</span>=<span class="string">"doSth"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
 ]]></content:encoded>
@@ -327,8 +361,8 @@
 <li>每个实例都会自动<strong>代理</strong>data中的对象的所有属性</li>
 <li>只有data的对象是可以被<strong>代理</strong>的</li>
 </ol>
-<h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;</div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">data</span>: data</div><div class="line">&#125;)</div><div class="line"></div><div class="line">data.a==vm.a</div><div class="line"><span class="comment">//设置属性会影响原始数据</span></div><div class="line">vm.a=<span class="number">2</span></div><div class="line">data.a</div><div class="line"><span class="comment">//2</span></div><div class="line"></div><div class="line"><span class="comment">//设置原始数据也会影响Vue对象</span></div><div class="line">data.a=<span class="number">3</span></div><div class="line">vm.a</div></pre></td></tr></table></figure>
-<h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;</div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">"#example"</span>,</div><div class="line">  <span class="attr">data</span>: data</div><div class="line">&#125;)</div><div class="line"></div><div class="line">vm.$data === data</div><div class="line">vm.$el === <span class="built_in">document</span>.getElementById(<span class="string">'example'</span>)</div><div class="line"></div><div class="line"><span class="comment">// $watch是一个实例方法</span></div><div class="line">vm.$watch(<span class="string">'a'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">newVal,oldVal</span>)</span>&#123;</div><div class="line">  <span class="comment">//该方法将在`vm.a改变后被调用`</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;</div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  data: data</div><div class="line">&#125;)</div><div class="line"></div><div class="line">data.a==vm.a</div><div class="line"><span class="comment">//设置属性会影响原始数据</span></div><div class="line">vm.a=<span class="number">2</span></div><div class="line">data.a</div><div class="line"><span class="comment">//2</span></div><div class="line"></div><div class="line"><span class="comment">//设置原始数据也会影响Vue对象</span></div><div class="line">data.a=<span class="number">3</span></div><div class="line">vm.a</div></pre></td></tr></table></figure>
+<h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;</div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">"#example"</span>,</div><div class="line">  data: data</div><div class="line">&#125;)</div><div class="line"></div><div class="line">vm.$data === data</div><div class="line">vm.$el === <span class="built_in">document</span>.getElementById(<span class="string">'example'</span>)</div><div class="line"></div><div class="line"><span class="comment">// $watch是一个实例方法</span></div><div class="line">vm.$watch(<span class="string">'a'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">newVal,oldVal</span>)</span>&#123;</div><div class="line">  <span class="comment">//该方法将在`vm.a改变后被调用`</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <h3 id="实例生命周期"><a href="#实例生命周期" class="headerlink" title="实例生命周期"></a>实例生命周期</h3><p>create-&gt;mounted-&gt;updated-&gt;destroyed</p>
 <p><code>this</code>用于指向调用它的实例<br><img src="https://cn.vuejs.org/images/lifecycle.png" alt=""></p>
 ]]></content:encoded>
@@ -370,22 +404,22 @@
 <p>引用:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'https://unpkg.com/vue/dist/vue.js'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>vue与vue-cli:<br>vue-cli是vue的一个命令行工具, 在熟悉vue之后会进行学习.</p>
 <h3 id="声明式渲染"><a href="#声明式渲染" class="headerlink" title="声明式渲染"></a>声明式渲染</h3><h4 id="例子1"><a href="#例子1" class="headerlink" title="例子1"></a>例子1</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">  \&#123;\&#123; message &#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#app'</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">message</span>: <span class="string">'Hello Vue!'</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#app'</span>,</div><div class="line">  data: &#123;</div><div class="line">    message: <span class="string">'Hello Vue!'</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>JS中将app与html的DOM绑定到了一起, 所以可以在浏览器中的控制台中更改: <code>app.message=&quot;XXX&quot;</code>来<br>动态修改DOM, (也就可以避免使用jQuery+ifelse去做判断更新的复杂代码).</p>
 <h4 id="例子2"><a href="#例子2" class="headerlink" title="例子2"></a>例子2</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-2"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">v-bind:title</span>=<span class="string">"message"</span>&gt;</span></div><div class="line">    Hover your mouse over me for a few seconds to see my dynamically bound title!</div><div class="line">  <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app2 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#app-2'</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">message</span>: <span class="string">'You loaded this page on '</span> + <span class="keyword">new</span> <span class="built_in">Date</span>()</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app2 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#app-2'</span>,</div><div class="line">  data: &#123;</div><div class="line">    message: <span class="string">'You loaded this page on '</span> + <span class="keyword">new</span> <span class="built_in">Date</span>()</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>这个例子里面用VUE绑定了一个DOM, <code>v-bind</code>被称为一个<strong>指令</strong>, 以<code>v-</code>开头代表是一个Vue.js<br>的特殊属性, 就像Agular中的<code>ng-</code>一样.这句指令(<code>v-bind:title=&quot;message&quot;</code>)代表将这个DOM的<br><code>title</code>属性与Vue实例的<code>message</code>绑定到一起.</p>
 <p>同样的, 在控制台中可以使用<code>app2.message=&#39;Other commments&#39;</code>进行更新.</p>
 <h3 id="条件与循环"><a href="#条件与循环" class="headerlink" title="条件与循环"></a>条件与循环</h3><h4 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-3"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">"seen"</span>&gt;</span></div><div class="line">    Now U C ME<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app3 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">    <span class="attr">el</span>: <span class="string">"#app-3"</span>,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">      <span class="attr">seen</span>: <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app3 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">    el: <span class="string">"#app-3"</span>,</div><div class="line">    data: &#123;</div><div class="line">      seen: <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
 <p>这里例子中有一个<code>v-if</code>的属性, 代表如果是true, 将进行显示, 否则不显示.<br>控制台中用<code>app3.seen=false</code>进行隐藏. 过渡中有<a href="https://cn.vuejs.org/v2/guide/transitions.html" target="_blank" rel="external">可以有隐藏效果</a></p>
 <h4 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'app-4'</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ol</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"todo in todos"</span>&gt;</span></div><div class="line">      \&#123;\&#123; todo.text &#125;&#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app4 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">"#app-4"</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">todos</span>: [</div><div class="line">      &#123;<span class="attr">text</span>: <span class="string">'Learn JS'</span>&#125;,</div><div class="line">      &#123;<span class="attr">text</span>: <span class="string">'Learn Vue'</span>&#125;,</div><div class="line">      &#123;<span class="attr">text</span>: <span class="string">'Build Something awesome'</span>&#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app4 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">"#app-4"</span>,</div><div class="line">  data: &#123;</div><div class="line">    todos: [</div><div class="line">      &#123;<span class="attr">text</span>: <span class="string">'Learn JS'</span>&#125;,</div><div class="line">      &#123;<span class="attr">text</span>: <span class="string">'Learn Vue'</span>&#125;,</div><div class="line">      &#123;<span class="attr">text</span>: <span class="string">'Build Something awesome'</span>&#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>可以用<code>app4.todos.push({text:&#39;new message!&#39;})</code>来更新一个新的内容~</p>
 <h3 id="处理用户输入"><a href="#处理用户输入" class="headerlink" title="处理用户输入"></a>处理用户输入</h3><h4 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h4><p><code>v-on</code>用于绑定事件,Vue中的methods实现方法的定义.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-5"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>\&#123;\&#123;message&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"reverseMessage"</span>&gt;</span>Reverse Message<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#app-5'</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">message</span>: <span class="string">'Hello Vue.js!'</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">methods</span>:&#123;</div><div class="line">    <span class="attr">reverseMessage</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      <span class="keyword">this</span>.message = <span class="keyword">this</span>.message.split(<span class="string">""</span>).reverse().join(<span class="string">""</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#app-5'</span>,</div><div class="line">  data: &#123;</div><div class="line">    message: <span class="string">'Hello Vue.js!'</span></div><div class="line">  &#125;,</div><div class="line">  methods:&#123;</div><div class="line">    reverseMessage: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      <span class="keyword">this</span>.message = <span class="keyword">this</span>.message.split(<span class="string">""</span>).reverse().join(<span class="string">""</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <h4 id="双向绑定"><a href="#双向绑定" class="headerlink" title="双向绑定"></a>双向绑定</h4><p><code>v-model</code>用于绑定DOM和输入<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-6"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>\&#123;\&#123;message&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"message"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app6 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">"#app-6"</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">message</span>: <span class="string">"Hello Vue~"</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app6 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">"#app-6"</span>,</div><div class="line">  data: &#123;</div><div class="line">    message: <span class="string">"Hello Vue~"</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <h3 id="构造用户组件"><a href="#构造用户组件" class="headerlink" title="构造用户组件"></a>构造用户组件</h3><p>这部分稍微有点抽象,过程是这样的:</p>
 <ol>
 <li>用Vue定义一个新的DOM, 如教程中所讲, 一个组件实质上是一个有预定义选项的Vue实例</li>
@@ -393,7 +427,7 @@
 <li>对这个组件绑定数据</li>
 </ol>
 <p><code>Vue.component</code>定义DOM, <code>props</code>定义传入对象, <code>templates</code>决定输出内容<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-7"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ol</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tool-set</span> <span class="attr">v-for</span>=<span class="string">"a in todoList"</span> <span class="attr">v-bind:todo</span>=<span class="string">"a"</span>&gt;</span><span class="tag">&lt;/<span class="name">tool-set</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Vue.component(<span class="string">"tool-set"</span>,&#123;</div><div class="line">  <span class="attr">props</span>:[<span class="string">'todo'</span>],</div><div class="line">  <span class="attr">template</span>:<span class="string">'&lt;li&gt;\&#123;\&#123;todo.text&#125;&#125;&lt;/li&gt;'</span></div><div class="line">&#125;)</div><div class="line"><span class="keyword">var</span> app7 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>:<span class="string">"#app-7"</span>,</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">todoList</span>: [</div><div class="line">      &#123;<span class="attr">text</span>: <span class="string">"No.1"</span>&#125;,</div><div class="line">      &#123;<span class="attr">text</span>: <span class="string">"No.2"</span>&#125;,</div><div class="line">      &#123;<span class="attr">text</span>: <span class="string">"No.3"</span>&#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Vue.component(<span class="string">"tool-set"</span>,&#123;</div><div class="line">  props:[<span class="string">'todo'</span>],</div><div class="line">  template:<span class="string">'&lt;li&gt;\&#123;\&#123;todo.text&#125;&#125;&lt;/li&gt;'</span></div><div class="line">&#125;)</div><div class="line"><span class="keyword">var</span> app7 = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  el:<span class="string">"#app-7"</span>,</div><div class="line">  data: &#123;</div><div class="line">    todoList: [</div><div class="line">      &#123;<span class="attr">text</span>: <span class="string">"No.1"</span>&#125;,</div><div class="line">      &#123;<span class="attr">text</span>: <span class="string">"No.2"</span>&#125;,</div><div class="line">      &#123;<span class="attr">text</span>: <span class="string">"No.3"</span>&#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 ]]></content:encoded>
       
       <comments>http://lchiffon.github.io/2017/02/07/vue01.html#disqus_thread</comments>
@@ -779,144 +813,6 @@
 ]]></content:encoded>
       
       <comments>http://lchiffon.github.io/2016/06/22/coder.html#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>Introdcution to Wordccloud2</title>
-      <link>http://lchiffon.github.io/2016/06/10/wordcloud.html</link>
-      <guid>http://lchiffon.github.io/2016/06/10/wordcloud.html</guid>
-      <pubDate>Fri, 10 Jun 2016 00:00:00 GMT</pubDate>
-      <description>
-      
-        &lt;p&gt;This is an introduction to &lt;code&gt;wordcloud2&lt;/code&gt;  &lt;a href=&quot;http://github.com/lchiffon/wordcloud2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;packag
-      
-      </description>
-      
-      <content:encoded><![CDATA[<p>This is an introduction to <code>wordcloud2</code>  <a href="http://github.com/lchiffon/wordcloud2" target="_blank" rel="external">package</a>. This package provides an HTML5 interface to wordcloud for data visualization. <a href="https://github.com/timdream/wordcloud2.js" target="_blank" rel="external">Timdream’s wordcloud2.js</a> is used in this package.<br><img src="http://7xr5em.com1.z0.glb.clouddn.com/wordcloud2.png" alt=""></p>
-<p>This document show two main function in <code>Wordcloud2</code>:</p>
-<ol>
-<li><code>wordcloud2</code>: provide traditional wordcloud with HTML5</li>
-<li><code>letterCloud</code>: provide wordcloud with selected word(letters).</li>
-</ol>
-<h3 id="install-wordcloud2"><a href="#install-wordcloud2" class="headerlink" title="install wordcloud2"></a>install wordcloud2</h3><p>You may have installed this package. Well, I still want to leave these codes here for installing.</p>
-<pre><code>devtools::install_github(&quot;lchiffon/wordcloud2&quot;)
-</code></pre><h3 id="wordlcoud2-function"><a href="#wordlcoud2-function" class="headerlink" title="wordlcoud2 function"></a><code>wordlcoud2</code> function</h3><p>You can use wordcloud directly:</p>
-<pre><code>library(wordcloud2)
-wordcloud2(data = demoFreq)
-</code></pre><p><img src="http://7xr5em.com1.z0.glb.clouddn.com/ex0.png" alt=""></p>
-<p><code>demoFreq</code> is a data.frame including word and freq in each column.</p>
-<pre><code>head(demoFreq)
-
-
-         word freq
-oil       oil   85
-said     said   73
-prices prices   48
-opec     opec   42
-mln       mln   31
-the       the   26
-</code></pre><h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><ul>
-<li><code>data</code><ul>
-<li>A data frame including word and freq in each column</li>
-</ul>
-</li>
-<li><code>size</code><ul>
-<li>Font size, default is 1. The larger size means the bigger word.</li>
-</ul>
-</li>
-<li><code>fontFamily</code><ul>
-<li>Font to use.</li>
-</ul>
-</li>
-<li><code>fontWeight</code><ul>
-<li>Font weight to use, e.g. normal, bold or 600</li>
-</ul>
-</li>
-<li><code>color</code><ul>
-<li>color of the text, keyword ‘random-dark’ and ‘random-light’ can be used. color vector is also supported in this param</li>
-</ul>
-</li>
-<li><code>minSize</code><ul>
-<li>A character string of the subtitle</li>
-</ul>
-</li>
-<li><code>backgroundColor</code><ul>
-<li>Color of the background.</li>
-</ul>
-</li>
-<li><code>gridSize</code><ul>
-<li>Size of the grid in pixels for marking the availability of the canvas the larger the grid size, the bigger the gap between words.</li>
-</ul>
-</li>
-<li><code>minRotation</code><ul>
-<li>If the word should rotate, the minimum rotation (in rad) the text should rotate.</li>
-</ul>
-</li>
-<li><code>maxRotation</code><ul>
-<li>If the word should rotate, the maximum rotation (in rad) the text should rotate. Set the two value equal to keep all text in one angle.</li>
-</ul>
-</li>
-<li><code>rotateRatio</code><ul>
-<li>Probability for the word to rotate. Set the number to 1 to always rotate.</li>
-</ul>
-</li>
-<li><code>shape</code><ul>
-<li>The shape of the “cloud” to draw. Can be a keyword present. Available presents are ‘circle’ (default), ‘cardioid’ (apple or heart shape curve, the most known polar equation), ‘diamond’ (alias of square), ‘triangle-forward’, ‘triangle’, ‘pentagon’, and ‘star’.</li>
-</ul>
-</li>
-<li><code>ellipticity</code><ul>
-<li>degree of “flatness” of the shape wordcloud2.js should draw.</li>
-</ul>
-</li>
-<li><code>figPath</code><ul>
-<li>A fig used for the wordcloud.</li>
-</ul>
-</li>
-<li><code>widgetsize</code><ul>
-<li>size of the widgets</li>
-</ul>
-</li>
-</ul>
-<h4 id="Example1-use-color-and-backgroundcolor"><a href="#Example1-use-color-and-backgroundcolor" class="headerlink" title="Example1: use color and backgroundcolor"></a>Example1: use color and backgroundcolor</h4><pre><code>wordcloud2(demoFreq, color = &quot;random-light&quot;, backgroundColor = &quot;grey&quot;)
-</code></pre><p><img src="http://7xr5em.com1.z0.glb.clouddn.com/ex1.png" alt=""></p>
-<h4 id="Example2-use-rotations"><a href="#Example2-use-rotations" class="headerlink" title="Example2: use rotations"></a>Example2: use rotations</h4><pre><code>wordcloud2(demoFreq, minRotation = -pi/6, maxRotation = -pi/6, minSize = 10,
-  rotateRatio = 1)
-</code></pre><p><img src="http://7xr5em.com1.z0.glb.clouddn.com/ex3.png" alt=""></p>
-<h4 id="Example3-use-figure-file-as-a-mask"><a href="#Example3-use-figure-file-as-a-mask" class="headerlink" title="Example3: use figure file as a mask."></a>Example3: use figure file as a mask.</h4><p>For example, <code>t.png</code> is A BIRD with black and white:<br><img src="http://7xr5em.com1.z0.glb.clouddn.com/t.png" alt=""></p>
-<pre><code>figPath = system.file(&quot;examples/t.png&quot;,package = &quot;wordcloud2&quot;)
-wordcloud2(demoFreq, figPath = figPath, size = 1.5,color = &quot;skyblue&quot;)
-</code></pre><p><img src="http://7xr5em.com1.z0.glb.clouddn.com/tcloud.png" alt=""></p>
-<h3 id="letterCloud-function"><a href="#letterCloud-function" class="headerlink" title="letterCloud function"></a><code>letterCloud</code> function</h3><p><code>letterCloud</code> provide the function to create a wordcloud with a word, like this:</p>
-<pre><code>letterCloud(demoFreq, word = &quot;R&quot;, size = 2)
-</code></pre><p><img src="http://7xr5em.com1.z0.glb.clouddn.com/R.png" alt=""></p>
-<p>Or:</p>
-<pre><code>letterCloud(demoFreq, word = &quot;WORDCLOUD2&quot;, wordSize = 1)
-</code></pre><p><img src="http://7xr5em.com1.z0.glb.clouddn.com/wordcloud2.png" alt=""><br><strong>wordcloud with fig and letterCloud may disappeared in Rstudio Viewer, open into browser when you meet this bug</strong></p>
-<h4 id="Parameters-1"><a href="#Parameters-1" class="headerlink" title="Parameters"></a>Parameters</h4><ul>
-<li><code>data</code><ul>
-<li>A data frame including word and freq in each column</li>
-</ul>
-</li>
-<li><code>word</code><ul>
-<li>A word to create shape for wordcloud.</li>
-</ul>
-</li>
-<li><code>wordSize</code><ul>
-<li>Parameter of the size of the word, default is 2.</li>
-</ul>
-</li>
-<li><code>letterFont</code><ul>
-<li>Letter font</li>
-</ul>
-</li>
-<li><code>...</code><ul>
-<li>Other parameters for wordcloud2<br>Go to <a href="http://github.com/lchiffon/wordcloud2" target="_blank" rel="external">wordcloud2</a> in the github to leave a comment or give this package a star.</li>
-</ul>
-</li>
-</ul>
-]]></content:encoded>
-      
-      <comments>http://lchiffon.github.io/2016/06/10/wordcloud.html#disqus_thread</comments>
     </item>
     
   </channel>

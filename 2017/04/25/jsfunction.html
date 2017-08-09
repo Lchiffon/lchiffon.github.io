@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="UA-66633229-1" />
+  
+  <title>如何不污染作用域</title>
+  <meta name="author" content="Chiffon Lang">
+   <meta name="description" content="JS代码里面有个有趣的函数写法, 是把一个函数定义好之后立即执行, 这样函数内部的内容不会污染整个作用域(大概可以用这个词吧)
+123(function()&amp;#123; XXX&amp;#125;)()
+虽然这样的代码在R里面也是可以用滴, 但是相比于JS这种写法的流行程度, 在R里面基本没怎么见人用过,非">
+  
+
+  <meta property="og:title" content="如何不污染作用域"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="七风阁"/>
+ <meta property="og:image" content="undefined"/>
+  
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="七风阁" type="application/atom+xml">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+  <a id="top"></a>
+  <div id='wx_pic' style='display:none;'><img src='/wx_share.png'/></div>
+  <div id="main">
+    <div class="back">
+      <a href="/" class="black-color"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+    <div class="behind">
+
+      <div class="description">
+        &nbsp;不写R包的分析师不是好全栈
+      </div>
+    </div>
+    <div class="container">
+      
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        如何不污染作用域
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      
+<time datetime="2017-04-25T00:00:00.000Z">
+  <i class="fa fa-calendar"></i>&nbsp;
+  2017-04-25
+</time>
+
+
+
+    
+    &nbsp;
+    <i class="fa fa-tag"></i>&nbsp;
+    <a href="/categories/R/">R</a>
+
+
+
+
+
+    </div>
+    <hr>
+    <div class="picture-container">
+      
+    </div>
+    <p>JS代码里面有个有趣的函数写法, 是把一个函数<strong>定义好之后立即执行</strong>, 这样函数内部的内容不会污染整个作用域(大概可以用这个词吧)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> XXX</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<p>虽然这样的代码在R里面也是可以用滴, 但是相比于JS这种写法的流行程度, 在R里面基本没怎么见人用过,<br>非要强说的话apply类函数里面也是有这样的匿名函数, 但是不太常见这种定义立即执行的过程.</p>
+<p>然而仔细想想还是有几个使用的场景的</p>
+<h2 id="读取数据并执行操作"><a href="#读取数据并执行操作" class="headerlink" title="读取数据并执行操作"></a>读取数据并执行操作</h2><p>一个经典的例子是读取数据, 做一些操作, 做好之后把结果存在另一个文件里面, 如何保证变量空间中绝对干净?<br>可以使用这样的定义执行过程:</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="keyword">function</span>()&#123;</div><div class="line"> dat = read.csv(<span class="string">"data/dat.csv"</span>)</div><div class="line"> model = lm(y~.,dat)</div><div class="line"> res = predict(model,newx=dat)</div><div class="line"> dat$res = res</div><div class="line"> write.csv(dat, <span class="string">"data/datResult.csv"</span>)</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<p>当然, 这只是省掉了<code>rm(dat,model,res)</code>这样一句代码</p>
+<h2 id="do的过程"><a href="#do的过程" class="headerlink" title="do的过程"></a>do的过程</h2><p>这个东西感觉又是个冷门的很的知识, 这个<code>do</code>来源于<code>dplyr::do</code>的函数(plyr中也有, 但不做讨论), 这个<code>do</code>的功能是对一个<code>group_by</code><br>之后的数据框做汇总整理, 再返回一个数据框</p>
+<p>比如帮助文档里面有这样的一个例子:</p>
+<p>对数据的<code>cyl</code>进行group by, 对每个小组训练一个线性模型, 再取出它的参数, <strong>需要分两步<code>do</code>执行</strong><br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">by_cyl &lt;- group_by(mtcars, cyl)</div><div class="line">do(by_cyl, head(., <span class="number">2</span>))</div><div class="line"><span class="comment"># 根据groupby 训练N个模型</span></div><div class="line">models &lt;- by_cyl %&gt;% do(mod = lm(mpg ~ disp, data = .))</div><div class="line">models</div></pre></td></tr></table></figure></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Source: local data frame [<span class="number">3</span> x <span class="number">2</span>]</div><div class="line">Groups: &lt;by row&gt;</div><div class="line"></div><div class="line"><span class="comment"># A tibble: 3 × 2</span></div><div class="line">    cyl      mod</div><div class="line">* &lt;dbl&gt;   &lt;list&gt;</div><div class="line"><span class="number">1</span>     <span class="number">4</span> &lt;S3: lm&gt;</div><div class="line"><span class="number">2</span>     <span class="number">6</span> &lt;S3: lm&gt;</div><div class="line"><span class="number">3</span>     <span class="number">8</span> &lt;S3: lm&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 提取参数</span></div><div class="line">models %&gt;% do(data.frame(coef = coef(.$mod)))</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Source: local data frame [<span class="number">6</span> x <span class="number">1</span>]</div><div class="line">Groups: &lt;by row&gt;</div><div class="line"></div><div class="line"><span class="comment"># A tibble: 6 × 1</span></div><div class="line">          coef</div><div class="line">*        &lt;dbl&gt;</div><div class="line"><span class="number">1</span> <span class="number">40.871955322</span></div><div class="line"><span class="number">2</span> -<span class="number">0.135141815</span></div><div class="line"><span class="number">3</span> <span class="number">19.081987419</span></div><div class="line"><span class="number">4</span>  <span class="number">0.003605119</span></div><div class="line"><span class="number">5</span> <span class="number">22.032798914</span></div><div class="line"><span class="number">6</span> -<span class="number">0.019634095</span></div></pre></td></tr></table></figure>
+<p>但如果用定义函数立即执行的操作, 是可以在函数内部为所欲为的写代码了:</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">models2 &lt;- by_cyl %&gt;% do((<span class="keyword">function</span>()&#123;</div><div class="line">		mod = lm(mpg ~ disp, data = .)</div><div class="line">		data.frame(coef = coef(mod))</div><div class="line">	&#125;)())</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Source: local data frame [<span class="number">6</span> x <span class="number">2</span>]</div><div class="line">Groups: cyl [<span class="number">3</span>]</div><div class="line"></div><div class="line">    cyl         coef</div><div class="line">  &lt;dbl&gt;        &lt;dbl&gt;</div><div class="line"><span class="number">1</span>     <span class="number">4</span> <span class="number">40.871955322</span></div><div class="line"><span class="number">2</span>     <span class="number">4</span> -<span class="number">0.135141815</span></div><div class="line"><span class="number">3</span>     <span class="number">6</span> <span class="number">19.081987419</span></div><div class="line"><span class="number">4</span>     <span class="number">6</span>  <span class="number">0.003605119</span></div><div class="line"><span class="number">5</span>     <span class="number">8</span> <span class="number">22.032798914</span></div><div class="line"><span class="number">6</span>     <span class="number">8</span> -<span class="number">0.019634095</span></div></pre></td></tr></table></figure>
+<p>恩恩, 大概就是这样, GL, HF~</p>
+
+
+  </article>
+  </script>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+  <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_24x24" style = 'float:right'>
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+      </div>
+      <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+      <!-- JiaThis Button END -->
+
+  <!-- 多说评论框 start -->
+  <!-- <div class="ds-thread" data-thread-key="如何不污染作用域" data-title="如何不污染作用域" data-url="langdawei.com/2017/04/25/jsfunction.html"></div> -->
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <!-- <script type="text/javascript">
+  var duoshuoQuery = {short_name:"lchiffon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script> -->
+  <!-- 多说公共JS代码 end -->
+
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  const gitment = new Gitment({
+    owner: 'lchiffon',
+    repo: 'blogbuilder',
+    oauth: {
+      client_id: '7ae350c4fb8aa708af09',
+      client_secret: '1260522fee3e783d77736648af95caae8b8e015a',
+    },
+    // ...
+    // For more available options, check out the documentation below
+  })
+
+  gitment.render('container')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+
+  <div class="busuanzi center">
+    页阅读量:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    站访问量:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    站访客数:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+
+
+    </div>
+  </div>
+   <a id="rocket" href="#top" class=""></a>
+   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot container">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <i class="fa fa-arrow-right"></i>
+        </a>
+        © Chiffon 2014-2017
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+$(".dropdown").click(function(event) {
+  var current = $(this);
+  event.stopPropagation();
+  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
+});
+$(document).click(function(){
+    $(".dropdown-content").removeClass("open");
+})
+
+var path = "/search.xml";
+searchFunc(path, 'local-search-input', 'local-search-result');
+
+
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-66633229-1', 'auto');
+ga('send', 'pageview');
+
+
+</script>
+
+</body>
+</html>
