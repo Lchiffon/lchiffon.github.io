@@ -78,7 +78,7 @@
       
     </div>
     <p>这两天处理了REmap里面遗留的一个功能框架—-knitr,感谢周扬大大提醒我最新的htmltools,补全了最后一块拼图</p><p></p>
-<p>首先需要安装最新版的htmltools<br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">devtools::install_github(<span class="string">"rstudio/htmltools"</span>)</div></pre></td></tr></table></figure></p>
+<p>首先需要安装最新版的htmltools<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">devtools::install_github(<span class="string">"rstudio/htmltools"</span>)</span><br></pre></td></tr></table></figure></p>
 <p>接下来,就可以开始我们的knitr之旅了,别忘了Chorme浏览器…</p>
 <h3 id="基本情况"><a href="#基本情况" class="headerlink" title="基本情况"></a>基本情况</h3><p>目前REmap的knitr支持情况如下:</p>
 <ul>
@@ -101,14 +101,14 @@
 <li>移植到自己blog的话,记得把JS文件拷走…</li>
 </ul>
 <p>以下是示例部分</p>
-<h4 id="remap函数"><a href="#remap函数" class="headerlink" title="remap函数"></a><em>remap</em>函数</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(REmap)</div><div class="line"><span class="comment">## 加载依赖</span></div><div class="line">remap.init()</div></pre></td></tr></table></figure>
+<h4 id="remap函数"><a href="#remap函数" class="headerlink" title="remap函数"></a><em>remap</em>函数</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(REmap)</span><br><span class="line"><span class="comment">## 加载依赖</span></span><br><span class="line">remap.init()</span><br></pre></td></tr></table></figure>
 <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
 <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
 <script type="text/javascript" src="http://lchiffon.github.io/reveal_slidify/echarts/require/main.js"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=q9U1lWgCK1aBGVC1DVWrgWa7"></script>
 <script type="text/javascript" src="http://echarts.baidu.com/doc/asset/js/jquery.min.js"></script>
 
-<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## 绘制地图</span></div><div class="line">p = remap(demoC)</div><div class="line"><span class="comment">## knitr展示</span></div><div class="line">knitrREmap(p,local=<span class="literal">F</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 绘制地图</span></span><br><span class="line">p = remap(demoC)</span><br><span class="line"><span class="comment">## knitr展示</span></span><br><span class="line">knitrREmap(p,local=<span class="literal">F</span>)</span><br></pre></td></tr></table></figure>
 <p><div id="ID_20151027142224_129" style="height:300px; width:100%"></div></p>
 <script>  var myChart = echarts.init(document.getElementById('ID_20151027142224_129'));
 
@@ -240,7 +240,7 @@
   myChart.setOption(options);    </script>
 
 
-<h4 id="remapC函数"><a href="#remapC函数" class="headerlink" title="remapC函数"></a><em>remapC</em>函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">## 绘制地图</div><div class="line">data = data.frame(country = mapNames(&amp;quot;xizang&amp;quot;),</div><div class="line">                   value = 5*sample(7)+200)</div><div class="line"></div><div class="line">p = remapC(data,maptype = &amp;quot;xizang&amp;quot;,color = &apos;skyblue&apos;)</div><div class="line">## knitr展示</div><div class="line">knitrREmap(p)</div></pre></td></tr></table></figure>
+<h4 id="remapC函数"><a href="#remapC函数" class="headerlink" title="remapC函数"></a><em>remapC</em>函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">## 绘制地图</span><br><span class="line">data = data.frame(country = mapNames(&amp;quot;xizang&amp;quot;),</span><br><span class="line">                   value = 5*sample(7)+200)</span><br><span class="line"></span><br><span class="line">p = remapC(data,maptype = &amp;quot;xizang&amp;quot;,color = &apos;skyblue&apos;)</span><br><span class="line">## knitr展示</span><br><span class="line">knitrREmap(p)</span><br></pre></td></tr></table></figure>
 <p><div id="ID_20151027142224_137" style="height:300px; width:100%"></div></p>
 <script>  var myChart = echarts.init(document.getElementById('ID_20151027142224_137'));
 
@@ -321,7 +321,7 @@
   };
     myChart.setOption(options);    </script>
 
-<h4 id="remapB函数"><a href="#remapB函数" class="headerlink" title="remapB函数"></a><em>remapB</em>函数</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## 绘制地图</span></div><div class="line">p = remapB(markLineData = demoC)</div><div class="line"><span class="comment">## knitr展示</span></div><div class="line">knitrREmap(p)</div></pre></td></tr></table></figure>
+<h4 id="remapB函数"><a href="#remapB函数" class="headerlink" title="remapB函数"></a><em>remapB</em>函数</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 绘制地图</span></span><br><span class="line">p = remapB(markLineData = demoC)</span><br><span class="line"><span class="comment">## knitr展示</span></span><br><span class="line">knitrREmap(p)</span><br></pre></td></tr></table></figure>
 <p><div id="ID_20151027142225_154" style="height:300px; width:100%"></div></p>
 <script>
                 (function () {
@@ -466,7 +466,7 @@ var myChart = BMapExt.initECharts(container);
 
 
 <h4 id="remapH函数"><a href="#remapH函数" class="headerlink" title="remapH函数"></a><em>remapH</em>函数</h4><p><code>remapH</code>函数是最近新写的,用于绘制热力图</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## 绘制地图</span></div><div class="line">plotdata = sampleData()</div><div class="line">p = remapH(plotdata)</div><div class="line"><span class="comment">## knitr展示</span></div><div class="line">knitrREmap(p,height = <span class="string">'500px'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 绘制地图</span></span><br><span class="line">plotdata = sampleData()</span><br><span class="line">p = remapH(plotdata)</span><br><span class="line"><span class="comment">## knitr展示</span></span><br><span class="line">knitrREmap(p,height = <span class="string">'500px'</span>)</span><br></pre></td></tr></table></figure>
 <p><div id="ID_20151027142225_165" style="height:500px; width:100%"></div></p>
 <script>  var myChart = echarts.init(document.getElementById("ID_20151027142225_165"));
   var heatData = [[105.889946753159,28.5720410645008,0.66391058312729],

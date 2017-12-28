@@ -81,7 +81,7 @@
 <p>然而, 在开发过程中, 出现了一个神奇的bug, 看到问题后我哭笑不得, 然后认真地把它记录下来:</p>
 <p><del>前两天去静安寺上香,祈祷了三件事, 代码无bug, 航班不晚点, 机油速脱单. 看来只能指望后两件事情实现了</del></p>
 <p>其实问题就是我写的两个包, <code>leafletCN</code>与<code>REmap</code>里面竟然有一个函数名是重复了:(. 所以二者不能同时使用, kkk.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">leafletCN::mapNames		Demo dataset and other function</div><div class="line">maps::internal		Internally Required Functions</div><div class="line">REmap::mapNames		Get the names of a choropleth map for remapC</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">leafletCN::mapNames		Demo dataset and other function</span><br><span class="line">maps::internal		Internally Required Functions</span><br><span class="line">REmap::mapNames		Get the names of a choropleth map for remapC</span><br></pre></td></tr></table></figure>
 <p>从此不得不感慨自己的智商是不是有下限, 速度改掉leafletCN里面的函数名, 不过CRAN上面是没办法了..</p>
 <p>请让我等几个月更新到CRAN, 否则Uwe又要找我事情了..</p>
 

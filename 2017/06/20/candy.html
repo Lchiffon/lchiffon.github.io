@@ -83,7 +83,7 @@
     <div class="picture-container">
       
     </div>
-    <p>昨天看到了一个很有意思的Issue, 问<a href="https://github.com/Lchiffon/wordcloud2/issues/21" target="_blank" rel="external">可不可以做一个3D球形的词云:)</a></p>
+    <p>昨天看到了一个很有意思的Issue, 问<a href="https://github.com/Lchiffon/wordcloud2/issues/21" target="_blank" rel="noopener">可不可以做一个3D球形的词云:)</a></p>
 <p>想想是可以实现的, 过程中用了一些黑魔法:</p>
 <ol>
 <li>用webshot将词云截图成一个图片</li>
@@ -91,7 +91,7 @@
 <li>之后就可以玩这个球了噗哈哈</li>
 </ol>
 <p><img src="https://user-images.githubusercontent.com/7221728/27312445-ec960882-559a-11e7-860a-2c87de242ce4.png" alt=""></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(threejs)</div><div class="line"><span class="keyword">library</span>(wordcloud2)</div><div class="line"><span class="keyword">library</span>(htmlwidgets)</div><div class="line"><span class="keyword">library</span>(webshot)</div><div class="line">hw = wordcloud2(demoFreqC,size = <span class="number">4</span>)</div><div class="line">saveWidget(hw,<span class="string">"1.html"</span>,selfcontained = <span class="literal">F</span>)</div><div class="line">webshot(<span class="string">"1.html"</span>,<span class="string">"1.jpeg"</span>,vwidth = <span class="number">4000</span>, vheight = <span class="number">2000</span>, delay =<span class="number">20</span>)</div><div class="line">earth &lt;- <span class="string">"1.jpeg"</span></div><div class="line">globejs(img=earth, bg=<span class="string">"white"</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(threejs)</span><br><span class="line"><span class="keyword">library</span>(wordcloud2)</span><br><span class="line"><span class="keyword">library</span>(htmlwidgets)</span><br><span class="line"><span class="keyword">library</span>(webshot)</span><br><span class="line">hw = wordcloud2(demoFreqC,size = <span class="number">4</span>)</span><br><span class="line">saveWidget(hw,<span class="string">"1.html"</span>,selfcontained = <span class="literal">F</span>)</span><br><span class="line">webshot(<span class="string">"1.html"</span>,<span class="string">"1.jpeg"</span>,vwidth = <span class="number">4000</span>, vheight = <span class="number">2000</span>, delay =<span class="number">20</span>)</span><br><span class="line">earth &lt;- <span class="string">"1.jpeg"</span></span><br><span class="line">globejs(img=earth, bg=<span class="string">"white"</span>)</span><br></pre></td></tr></table></figure>
 
 
   </article>

@@ -79,7 +79,7 @@ docxtractr是由hrbrmstr托管在github上的开源项目,目前作者正在为C
     </div>
     <p>今天早上刷RSS,看到一条消息,说有个包能读取docx的文件,于是就去看了看,玩起来还不错的样子.<br>所有我就写了一个简单的攻略.从使用,中文支持,还有这个包的原理进行一些叙述,以方便大家使用这个黑魔法<sup>_<sup>.</sup></sup></p>
 
-<p><code>docxtractr</code>是由<a href="https://github.com/hrbrmstr" target="_blank" rel="external">hrbrmstr</a>托管在github上的开源项目,目前作者正在为CRAN check做最后的一些工作,<a href="https://github.com/hrbrmstr/docxtractr" target="_blank" rel="external">这里</a>是该项目github的主页,<br>这里是作者写的<a href="http://rud.is/b/2015/08/24/new-pacakge-docxtractr-easily-extract-tables-from-microsoft-word-docs/" target="_blank" rel="external">推广软文</a><br>(都是鹰文的blog)</p>
+<p><code>docxtractr</code>是由<a href="https://github.com/hrbrmstr" target="_blank" rel="noopener">hrbrmstr</a>托管在github上的开源项目,目前作者正在为CRAN check做最后的一些工作,<a href="https://github.com/hrbrmstr/docxtractr" target="_blank" rel="noopener">这里</a>是该项目github的主页,<br>这里是作者写的<a href="http://rud.is/b/2015/08/24/new-pacakge-docxtractr-easily-extract-tables-from-microsoft-word-docs/" target="_blank" rel="noopener">推广软文</a><br>(都是鹰文的blog)</p>
 
 <p><br></p>
 
@@ -242,7 +242,7 @@ docx_extract_tbl(complx, 1, header=TRUE)
 
 <h3>docx的原理</h3>
 
-<p>如果你尝试读取一个doc文件,<code>docxtract</code>是不支持的,为什么呢,先看一段<a href="http://baike.baidu.com/link?url=tDQlEgjyfoAFLkI2DS8IW2PIMKOWuGsKgyAPD_4rblSyszFpArcYrNTnVQzNCm5JsnORK75P140bmD81fYC_Ha" target="_blank" rel="external">百度百科</a></p>
+<p>如果你尝试读取一个doc文件,<code>docxtract</code>是不支持的,为什么呢,先看一段<a href="http://baike.baidu.com/link?url=tDQlEgjyfoAFLkI2DS8IW2PIMKOWuGsKgyAPD_4rblSyszFpArcYrNTnVQzNCm5JsnORK75P140bmD81fYC_Ha" target="_blank" rel="noopener">百度百科</a></p>
 
 <blockquote><br><p>docx格式的文件本质上是一个ZIP文件。将一个docx文件的后缀改为ZIP后是可以用解压工具打开或是解压的。事实上，Word2007的基本文件就是ZIP格式的，他可以算作是docx文件的容器。<br>docx 格式文件的主要内容是保存为XML格式的，但文件并非直接保存于磁盘。它是保存在一个ZIP文件中，然后取扩展名为docx。<br>将.docx 格式的文件后缀改为ZIP后解压, 可以看到解压出来的文件夹中有word这样一个文件夹，它包含了Word文档的大部分内容。而其中的document.xml文件则包含了文档的主要文本内容。</p><br></blockquote>
 

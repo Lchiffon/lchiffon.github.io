@@ -78,15 +78,15 @@
     <div class="picture-container">
       
     </div>
-    <p>感谢@yycc,提供百度地图新增的一个地图样式的支持.链接在<a href="http://developer.baidu.com/map/custom/list.htm" target="_blank" rel="external">这里</a>我将REmap中remap函数新增很多不同的themes,用color来进行控制,已更新github~<br>用如下的命令重新安装:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">devtools::install_github(&quot;lchiffon/REmap&quot;)</div></pre></td></tr></table></figure>
+    <p>感谢@yycc,提供百度地图新增的一个地图样式的支持.链接在<a href="http://developer.baidu.com/map/custom/list.htm" target="_blank" rel="noopener">这里</a>我将REmap中remap函数新增很多不同的themes,用color来进行控制,已更新github~<br>用如下的命令重新安装:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">devtools::install_github(&quot;lchiffon/REmap&quot;)</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>REmap是一个托管于<a href="http://github.com/lchiffon/REmap" target="_blank" rel="external">github</a>的R包,可以完成基于Echarts的交互式地图绘制.<br>历史文章见<a href="http://lchiffon.github.io/2015/07/23/REmapGuide.html">这里</a></p>
+<p>REmap是一个托管于<a href="http://github.com/lchiffon/REmap" target="_blank" rel="noopener">github</a>的R包,可以完成基于Echarts的交互式地图绘制.<br>历史文章见<a href="http://lchiffon.github.io/2015/07/23/REmapGuide.html">这里</a></p>
 </blockquote>
 <p>先贴下效果图(几个暗色系还是不错的,由于地图是基于城市优化的,所以在国家级的效果上看其实一般,细节之处,大家可以自己尝试):</p>
 <p><img src="http://lchiffon.github.io/reveal_slidify/echarts/all.png" alt=""></p>
 <p>使用方法如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">library(REmap)</div><div class="line">geoData  = get_geo_position(unique(demoC[demoC==demoC]))</div><div class="line"># this may take some time,be patient~</div><div class="line"></div><div class="line">remapB(markLineData = demoC,geoData = geoData)</div><div class="line"></div><div class="line"># Different themes</div><div class="line">remapB(markLineData = demoC,color = &quot;Blue&quot;,geoData = geoData)</div><div class="line">remapB(markLineData = demoC,color = &quot;light&quot;,geoData = geoData)</div><div class="line">remapB(markLineData = demoC,color = &quot;dark&quot;,geoData = geoData)</div><div class="line">remapB(markLineData = demoC,color = &quot;redalert&quot;,geoData = geoData)</div><div class="line">remapB(markLineData = demoC,color = &quot;googlelite&quot;,geoData = geoData)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">library(REmap)</span><br><span class="line">geoData  = get_geo_position(unique(demoC[demoC==demoC]))</span><br><span class="line"># this may take some time,be patient~</span><br><span class="line"></span><br><span class="line">remapB(markLineData = demoC,geoData = geoData)</span><br><span class="line"></span><br><span class="line"># Different themes</span><br><span class="line">remapB(markLineData = demoC,color = &quot;Blue&quot;,geoData = geoData)</span><br><span class="line">remapB(markLineData = demoC,color = &quot;light&quot;,geoData = geoData)</span><br><span class="line">remapB(markLineData = demoC,color = &quot;dark&quot;,geoData = geoData)</span><br><span class="line">remapB(markLineData = demoC,color = &quot;redalert&quot;,geoData = geoData)</span><br><span class="line">remapB(markLineData = demoC,color = &quot;googlelite&quot;,geoData = geoData)</span><br></pre></td></tr></table></figure>
 <p>color变量继以前的”Bright”和”Blue”外,新增以下支持:</p>
 <ul>
 <li>“light”<ul>
@@ -134,7 +134,7 @@
 </ul>
 </li>
 </ul>
-<p>具体可参看百度链接:<a href="http://developer.baidu.com/map/custom/list.htm" target="_blank" rel="external">http://developer.baidu.com/map/custom/list.htm</a></p>
+<p>具体可参看百度链接:<a href="http://developer.baidu.com/map/custom/list.htm" target="_blank" rel="noopener">http://developer.baidu.com/map/custom/list.htm</a></p>
 
 
   </article>
