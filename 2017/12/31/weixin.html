@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="UA-66633229-1" />
+  
+  <title>R构件后台服务器</title>
+  <meta name="author" content="Chiffon Lang">
+   <meta name="description" content="这是一个R为微信后台做服务的项目，这个项目并不需要其他的公众号权限，只要个人的公众号权限就可以。
+项目地址： https://github.com/Lchiffon/Example-for-R-Weixin
+文件：
+Inception/api.Rconfig.iniutils.R
+
+Inceptio">
+  
+
+  <meta property="og:title" content="R构件后台服务器"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="七风阁"/>
+ <meta property="og:image" content="undefined"/>
+  
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="七风阁" type="application/atom+xml">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+  <a id="top"></a>
+  <div id='wx_pic' style='display:none;'><img src='/wx_share.png'/></div>
+  <div id="main">
+    <div class="back">
+      <a href="/" class="black-color"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+    <div class="behind">
+
+      <div class="description">
+        &nbsp;不写R包的分析师不是好全栈
+      </div>
+    </div>
+    <div class="container">
+      
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        R构件后台服务器
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      
+<time datetime="2017-12-31T00:00:00.000Z">
+  <i class="fa fa-calendar"></i>&nbsp;
+  2017-12-31
+</time>
+
+
+
+    
+    &nbsp;
+    <i class="fa fa-tag"></i>&nbsp;
+    <a href="/categories/R/">R</a>
+
+
+
+
+
+    </div>
+    <hr>
+    <div class="picture-container">
+      
+    </div>
+    <p>这是一个R为微信后台做服务的项目，这个项目并不需要其他的公众号权限，只要个人的公众号权限就可以。</p>
+<p>项目地址： <a href="https://github.com/Lchiffon/Example-for-R-Weixin" target="_blank" rel="noopener">https://github.com/Lchiffon/Example-for-R-Weixin</a></p>
+<p>文件：</p>
+<p>Inception/<br>api.R<br>config.ini<br>utils.R</p>
+<ul>
+<li>Inception/ <ul>
+<li>这里存储了一个深度学习的模型文件</li>
+</ul>
+</li>
+<li>api.R <ul>
+<li>这里是后台的脚本</li>
+</ul>
+</li>
+<li>utils.R<ul>
+<li>这里存储了模型的执行文件</li>
+</ul>
+</li>
+</ul>
+<h2 id="接口部分"><a href="#接口部分" class="headerlink" title="接口部分"></a>接口部分</h2><p>这里是通过fiery包构建了后端的服务器，后台需要做的是把自己的服务器IP登记到微信的公众平台上， 登记之后运行这个服务，就可以开启整个服务了</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(fiery)</span><br><span class="line"></span><br><span class="line"><span class="keyword">source</span>(<span class="string">'config.ini'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">source</span>(<span class="string">"utils.R"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a New App</span></span><br><span class="line"></span><br><span class="line">app &lt;- Fire$new()</span><br><span class="line"></span><br><span class="line">app$host = IP</span><br><span class="line"></span><br><span class="line">app$port = port</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app$on(<span class="string">'start'</span>, <span class="keyword">function</span>(server, <span class="keyword">...</span>) &#123;</span><br><span class="line"></span><br><span class="line">  server$set_data(<span class="string">'visits'</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">  server$set_data(<span class="string">'cycles'</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Count the number of cycles (internal loops)</span></span><br><span class="line"></span><br><span class="line">app$on(<span class="string">'cycle-start'</span>, <span class="keyword">function</span>(server, <span class="keyword">...</span>) &#123;</span><br><span class="line"></span><br><span class="line">  server$set_data(<span class="string">'cycles'</span>, server$get_data(<span class="string">'cycles'</span>) + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Count the number of requests</span></span><br><span class="line"></span><br><span class="line">app$on(<span class="string">'before-request'</span>, <span class="keyword">function</span>(server, <span class="keyword">...</span>) &#123;</span><br><span class="line"></span><br><span class="line">  server$set_data(<span class="string">'visits'</span>, server$get_data(<span class="string">'visits'</span>) + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Handle requests</span></span><br><span class="line"></span><br><span class="line">app$on(<span class="string">'request'</span>, <span class="keyword">function</span>(server, request, <span class="keyword">...</span>) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  request$parse_raw()</span><br><span class="line"></span><br><span class="line">  message(request$as_message())</span><br><span class="line"></span><br><span class="line">  print(rawToChar(request$body))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  msgXML = rawToChar(request$body)</span><br><span class="line"></span><br><span class="line">  ori = extractWeixin(msgXML, <span class="string">"ToUserName"</span>)</span><br><span class="line"></span><br><span class="line">  user = extractWeixin(msgXML, <span class="string">"FromUserName"</span>)</span><br><span class="line"></span><br><span class="line">  time = as.POSIXct(as.numeric(extractWeixin(msgXML, <span class="string">"CreateTime"</span>,<span class="literal">F</span>)),</span><br><span class="line"></span><br><span class="line">                    origin = <span class="string">"1970-01-01"</span>)</span><br><span class="line"></span><br><span class="line">  msgType = extractWeixin(msgXML, <span class="string">"MsgType"</span>)</span><br><span class="line"></span><br><span class="line">  content = extractWeixin(msgXML, <span class="string">"Content"</span>)</span><br><span class="line"></span><br><span class="line">  messageId =  extractWeixin(msgXML, <span class="string">"MsgId"</span>,<span class="literal">F</span>)</span><br><span class="line"></span><br><span class="line">  PicUrl = extractWeixin(msgXML, <span class="string">"PicUrl"</span>)</span><br><span class="line"></span><br><span class="line">  print(PicUrl)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># output = sprintf('"%s","%s","%s","%s","%s"\n',user,time,msgType,content,messageId)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  response &lt;- request$respond()</span><br><span class="line"></span><br><span class="line">  response$status &lt;- <span class="number">200L</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#response$body &lt;- paste0('&lt;h1&gt;This is indeed a test. You are number ', server$get_data('visits'), '&lt;/h1&gt;')</span></span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  theQuery = request$query</span><br><span class="line"></span><br><span class="line">  <span class="comment"># theQ &lt;&lt;- theQuery</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(<span class="string">'echostr'</span> %<span class="keyword">in</span>% names(theQuery))&#123;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    response$body = regmatches(request$querystring,</span><br><span class="line"></span><br><span class="line">                               gregexpr(<span class="string">"(?&lt;=echostr=).+(?=&amp;t)"</span>,</span><br><span class="line"></span><br><span class="line">                                        request$querystring,</span><br><span class="line"></span><br><span class="line">                                        perl = <span class="literal">TRUE</span>))</span><br><span class="line"></span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line"></span><br><span class="line">    print(<span class="number">123</span>)</span><br><span class="line"></span><br><span class="line">    response$body = returnMsg(ori,user, time, msgType, content, messageId, PicUrl)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment"># cat(response$body)</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># response$body &lt;- 'success'</span></span><br><span class="line"></span><br><span class="line">  response$type &lt;- <span class="string">'html'</span></span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Show number of requests in the console</span></span><br><span class="line"></span><br><span class="line">app$on(<span class="string">'after-request'</span>, <span class="keyword">function</span>(server, <span class="keyword">...</span>) &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">#message(server$get_data('visits'))</span></span><br><span class="line"></span><br><span class="line">  flush.console()</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Be polite</span></span><br><span class="line"></span><br><span class="line">app$on(<span class="string">'end'</span>, <span class="keyword">function</span>(server) &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment"># sink()</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#message('Goodbye')</span></span><br><span class="line"></span><br><span class="line">  flush.console()</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app$ignite(showcase = <span class="literal">TRUE</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="函数部分"><a href="#函数部分" class="headerlink" title="函数部分"></a>函数部分</h2><p>函数部分这里主要有三个函数，它会自动被api.R调用：</p>
+<ul>
+<li>extractWeixin<ul>
+<li>从微信发送的XML格式的消息中截取出需要的信息</li>
+</ul>
+</li>
+<li>showPic<ul>
+<li>一个深度学习的封包函数，返回最合适的类别</li>
+</ul>
+</li>
+<li>returnMsg<ul>
+<li>构建返回给微信的XML格式的函数</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 微信数据截取函数</span></span><br><span class="line"></span><br><span class="line">extractWeixin = <span class="keyword">function</span>(msgXML, pattern,CDATA = <span class="literal">T</span>)&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(CDATA)</span><br><span class="line"></span><br><span class="line">    regPattern = paste0(<span class="string">"(?&lt;="</span>, pattern, <span class="string">"&gt;&lt;\\!\\[CDATA\\[)[\\s\\S]+(?=\\]\\]&gt;&lt;/"</span>,</span><br><span class="line"></span><br><span class="line">                        pattern, <span class="string">")"</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">    regPattern = paste0(<span class="string">"(?&lt;="</span>, pattern, <span class="string">"&gt;).+(?=&lt;/"</span>,</span><br><span class="line"></span><br><span class="line">                        pattern, <span class="string">")"</span>)</span><br><span class="line"></span><br><span class="line">  regmatches(msgXML,</span><br><span class="line"></span><br><span class="line">             gregexpr(regPattern,</span><br><span class="line"></span><br><span class="line">                      msgXML,</span><br><span class="line"></span><br><span class="line">                      perl = <span class="literal">TRUE</span>))[[<span class="number">1</span>]]</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!<span class="keyword">require</span>(mxnet))&#123;</span><br><span class="line"></span><br><span class="line">  install.packages(<span class="string">"drat"</span>, repos=<span class="string">"https://cran.rstudio.com"</span>)</span><br><span class="line"></span><br><span class="line">  drat:::addRepo(<span class="string">"dmlc"</span>)</span><br><span class="line"></span><br><span class="line">  install.packages(<span class="string">"mxnet"</span>)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">library</span>(mxnet)</span><br><span class="line"></span><br><span class="line"><span class="keyword">library</span>(imager)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 载入模型</span></span><br><span class="line"></span><br><span class="line">model = mx.model.load(<span class="string">"Inception/Inception_BN"</span>, iteration=<span class="number">39</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 载入mean image</span></span><br><span class="line"></span><br><span class="line">mean.img = as.array(mx.nd.load(<span class="string">"Inception/mean_224.nd"</span>)[[<span class="string">"mean_img"</span>]])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">im &lt;- load.image(system.file(<span class="string">"extdata/parrots.png"</span>, package = <span class="string">"imager"</span>))</span><br><span class="line"></span><br><span class="line">plot(im)</span><br><span class="line"></span><br><span class="line">preproc.image &lt;- <span class="keyword">function</span>(im, mean.image) &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment"># crop the image</span></span><br><span class="line"></span><br><span class="line">  shape &lt;- dim(im)</span><br><span class="line"></span><br><span class="line">  short.edge &lt;- min(shape[<span class="number">1</span>:<span class="number">2</span>])</span><br><span class="line"></span><br><span class="line">  xx &lt;- floor((shape[<span class="number">1</span>] - short.edge) / <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">  yy &lt;- floor((shape[<span class="number">2</span>] - short.edge) / <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">  cropped &lt;- crop.borders(im, xx, yy)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># resize to 224 x 224, needed by input of the model.</span></span><br><span class="line"></span><br><span class="line">  resized &lt;- resize(cropped, <span class="number">224</span>, <span class="number">224</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># convert to array (x, y, channel)</span></span><br><span class="line"></span><br><span class="line">  arr &lt;- as.array(resized) * <span class="number">255</span></span><br><span class="line"></span><br><span class="line">  dim(arr) &lt;- c(<span class="number">224</span>, <span class="number">224</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># subtract the mean</span></span><br><span class="line"></span><br><span class="line">  normed &lt;- arr - mean.img</span><br><span class="line"></span><br><span class="line">  <span class="comment"># Reshape to format needed by mxnet (width, height, channel, num)</span></span><br><span class="line"></span><br><span class="line">  dim(normed) &lt;- c(<span class="number">224</span>, <span class="number">224</span>, <span class="number">3</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span>(normed)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">normed &lt;- preproc.image(im, mean.img)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">prob &lt;- predict(model, X=normed)</span><br><span class="line"></span><br><span class="line">max.idx &lt;- max.col(t(prob))</span><br><span class="line"></span><br><span class="line">synsets &lt;- readLines(<span class="string">"Inception/synset.txt"</span>)</span><br><span class="line"></span><br><span class="line">print(paste0(<span class="string">"Predicted Top-class: "</span>, synsets[[max.idx]]))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">showPic = <span class="keyword">function</span>(input)&#123;</span><br><span class="line"></span><br><span class="line">  cat &lt;- load.image(input)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># plot(cat)</span></span><br><span class="line"></span><br><span class="line">  normed &lt;- preproc.image(cat, mean.img)</span><br><span class="line"></span><br><span class="line">  prob &lt;- predict(model, X=normed)</span><br><span class="line"></span><br><span class="line">  max.idx &lt;- max.col(t(prob))</span><br><span class="line"></span><br><span class="line">  print(paste0(<span class="string">"Predicted Top-class: "</span>, synsets[[max.idx]]))</span><br><span class="line"></span><br><span class="line">  output = strsplit(synsets[[max.idx]],<span class="string">" "</span>)[[<span class="number">1</span>]]</span><br><span class="line"></span><br><span class="line">  output[<span class="number">1</span>] = <span class="string">''</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span>(paste(output,collapse=<span class="string">" "</span>))</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">returnMsg = <span class="keyword">function</span>(ori,user, time, msgType, content, messageId,PicUrl)&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(length(PicUrl)==<span class="number">0</span>)&#123;</span><br><span class="line"></span><br><span class="line">    cat(<span class="number">234</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span>(<span class="string">'success'</span>)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  cat(<span class="number">123</span>)</span><br><span class="line">  filename = paste0(<span class="string">"data/"</span>,format(Sys.time(),<span class="string">"%Y%m%d%M"</span>))</span><br><span class="line"></span><br><span class="line">  download.file(PicUrl,destfile = filename)</span><br><span class="line">  output = sprintf(<span class="string">"&lt;xml&gt;</span></span><br><span class="line"><span class="string">    &lt;ToUserName&gt;&lt;![CDATA[%s]]&gt;&lt;/ToUserName&gt;</span></span><br><span class="line"><span class="string">    &lt;FromUserName&gt;&lt;![CDATA[%s]]&gt;&lt;/FromUserName&gt;</span></span><br><span class="line"><span class="string">    &lt;CreateTime&gt;%s&lt;/CreateTime&gt;</span></span><br><span class="line"><span class="string">    &lt;MsgType&gt;&lt;![CDATA[text]]&gt;&lt;/MsgType&gt;</span></span><br><span class="line"><span class="string">    &lt;Content&gt;&lt;![CDATA[介尼玛似一个%s]]&gt;&lt;/Content&gt;</span></span><br><span class="line"><span class="string">    &lt;/xml&gt;"</span>,user,ori,as.numeric(Sys.time()),showPic(filename))</span><br><span class="line">  <span class="keyword">return</span>(output)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+  </article>
+  </script>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+
+  <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_24x24" style = 'float:right'>
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+      </div>
+      <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+      <!-- JiaThis Button END -->
+
+  <!-- 多说评论框 start -->
+  <!-- <div class="ds-thread" data-thread-key="R构件后台服务器" data-title="R构件后台服务器" data-url="langdawei.com/2017/12/31/weixin.html"></div> -->
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <!-- <script type="text/javascript">
+  var duoshuoQuery = {short_name:"lchiffon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script> -->
+  <!-- 多说公共JS代码 end -->
+
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  const gitment = new Gitment({
+    owner: 'lchiffon',
+    repo: 'blogbuilder',
+    oauth: {
+      client_id: '7ae350c4fb8aa708af09',
+      client_secret: '1260522fee3e783d77736648af95caae8b8e015a',
+    },
+    // ...
+    // For more available options, check out the documentation below
+  })
+
+  gitment.render('container')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+
+  <div class="busuanzi center">
+    page PV:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    site PV:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    site UV:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+
+
+    </div>
+  </div>
+   <a id="rocket" href="#top" class=""></a>
+   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot container">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <i class="fa fa-arrow-right"></i>
+        </a>
+        © Chiffon 2014-2017
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+$(".dropdown").click(function(event) {
+  var current = $(this);
+  event.stopPropagation();
+  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
+});
+$(document).click(function(){
+    $(".dropdown-content").removeClass("open");
+})
+
+var path = "/search.xml";
+searchFunc(path, 'local-search-input', 'local-search-result');
+
+
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-66633229-1', 'auto');
+ga('send', 'pageview');
+
+
+</script>
+
+</body>
+</html>
